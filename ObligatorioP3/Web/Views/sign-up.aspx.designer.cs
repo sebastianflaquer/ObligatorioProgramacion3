@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web {
+namespace Web.Views {
     
     
-    public partial class WebForm1 {
+    public partial class sign_up {
     }
 }

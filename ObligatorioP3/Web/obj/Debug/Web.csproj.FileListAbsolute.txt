@@ -103,3 +103,12 @@ D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\bin\Microsoft.CodeDom.Provider
 D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
 D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\obj\Debug\Web.dll
 D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\obj\Debug\Web.pdb
+D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\bin\Antlr3.Runtime.dll
+D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\bin\Microsoft.Web.Infrastructure.dll
+D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\bin\Newtonsoft.Json.dll
+D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\bin\System.Web.Optimization.dll
+D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\bin\WebGrease.dll
+D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\bin\Antlr3.Runtime.pdb
+D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\bin\Newtonsoft.Json.xml
+D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\bin\System.Web.Optimization.xml
