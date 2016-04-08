@@ -9,7 +9,6 @@ namespace BienvenidosUY
     public class Anuncio
     {
         public int id { get; set; }
-        public static int ultId { get; set; }
         public string nombre { get; set; }
         public Alojamiento alojamiento { get; set; }
         public string descripcion { get; set; }

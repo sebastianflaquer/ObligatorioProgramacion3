@@ -1,4 +1,9 @@
 
+create database BienvenidosUY
+
+go
+use BienvenidosUY
+
 CREATE TABLE REGISTRADO(
 	id int PRIMARY KEY IDENTITY,
 	nombre varchar(30) not null,
@@ -8,10 +13,21 @@ CREATE TABLE REGISTRADO(
 	direccion varchar (50) not null,
 	celular varchar (20),
 	foto varbinary(max),
-	descripcion varchar(250),
-	idRegistrado_Anuncio int REFERENCES REGISTRADO_ANUNCIO,
-	idRegistrado_Reserva int REFERENCES REGISTRADO_RESERVA
+	descripcion varchar(250)
 )
+
+CREATE TABLE ALOJAMIENTO(
+	id int PRIMARY KEY IDENTITY,
+	categoria varchar(20) CHECK(categoria IN ('Apartamento', 'Casa', 'Hotel', 'Hostel', 'Posada', 'Bungalow', 'Cabania', 'Casa rodante', 'Rancho')),
+	tipoHabitacion varchar(20) CHECK(tipoHabitacion IN ('Todo', 'Habitacion privada', 'Habitacion compartida')),
+	banioPrivado bit,
+	cantHuespedes int,
+	ciudad varchar(20) not null,
+	barrio varchar(20),
+	calificacion int
+)
+
+go
 
 CREATE TABLE ANUNCIO(
 	id int PRIMARY KEY IDENTITY,
@@ -21,8 +37,7 @@ CREATE TABLE ANUNCIO(
 	direccion1 varchar(40) not null,
 	direccion2 varchar(40),
 	fotos varbinary(max),
-	precioBase decimal(12,2) not null,
-	idAnuncio_RangoFechas int REFERENCES ANUNCIO_RANGOFECHAS
+	precioBase decimal(12,2) not null
 )
 
 CREATE TABLE RESERVA(
@@ -32,17 +47,7 @@ CREATE TABLE RESERVA(
 	fechaFin datetime not null
 )
 
-CREATE TABLE ALOJAMIENTO(
-	id int PRIMARY KEY IDENTITY,
-	categoria varchar(20) CHECK(categoria IN ('Apartamento', 'Casa', 'Hotel', 'Hostel', 'Posada', 'Bungalow', 'Cabania', 'Casa rodante', 'Rancho')),
-	tipoHabitacion varchar(20) CHECK(tipoHabitacion IN ('Todo', 'Habitacion privada', 'Habitacion compartida')),
-	banioPrivado boolean,
-	cantHuespedes int,
-	ciudad varchar(20) not null,
-	barrio varchar(20),
-	idAlojamiento_Servicio int REFERENCES ALOJAMIENTO_SERVICIO,
-	calificacion int
-)
+
 
 CREATE TABLE RANGOFECHAS(
 	id int PRIMARY KEY IDENTITY,
@@ -58,29 +63,33 @@ CREATE TABLE SERVICIO(
 	descripcion varchar(250)
 )
 
+go
 
 CREATE TABLE REGISTRADO_ANUNCIO(
-	id int PRIMARY KEY IDENTITY,
 	idRegistrado int REFERENCES REGISTRADO not null,
-	idAnuncio int REFERENCES ANUNCIO not null
+	idAnuncio int REFERENCES ANUNCIO not null,
+	PRIMARY KEY(idRegistrado, idAnuncio)
 )
+go
 
 CREATE TABLE REGISTRADO_RESERVA(
-	id int PRIMARY KEY IDENTITY,
 	idRegistrado int REFERENCES REGISTRADO not null,
-	idReserva int REFERENCES RESERVA not null
+	idReserva int REFERENCES RESERVA not null,
+	PRIMARY KEY(idRegistrado, idReserva)
 )
+go
 
 CREATE TABLE ANUNCIO_RANGOFECHAS(
-	id int PRIMARY KEY IDENTITY,
 	idAnuncio int REFERENCES ANUNCIO not null,
-	idRangoFechas int REFERENCES RANGOFECHAS not null
+	idRangoFechas int REFERENCES RANGOFECHAS not null,
+	PRIMARY KEY(idAnuncio, idRangoFechas)
 )
+go
 
 CREATE TABLE ALOJAMIENTO_SERVICIO(
-	id int PRIMARY KEY IDENTITY,
 	idAlojamiento int REFERENCES ALOJAMIENTO not null,
-	idServicio int REFERENCES SERVICIO not null
+	idServicio int REFERENCES SERVICIO not null,
+	PRIMARY KEY(idAlojamiento, idServicio)
 )
 
 

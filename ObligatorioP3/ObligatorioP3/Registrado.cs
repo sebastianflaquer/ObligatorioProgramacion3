@@ -9,7 +9,6 @@ namespace BienvenidosUY
     public class Registrado
     {
         public int id { get; set; }
-        public static int ultId { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string mail { get; set; }
