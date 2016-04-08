@@ -15,7 +15,7 @@ namespace Web
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            Persistente.StringConexion = ConfigurationManager.ConnectionStrings["miConexion"].ConnectionString;
+            //Persistente.StringConexion = ConfigurationManager.ConnectionStrings["miConexion"].ConnectionString;
         }
 
         protected void Session_Start(object sender, EventArgs e)
