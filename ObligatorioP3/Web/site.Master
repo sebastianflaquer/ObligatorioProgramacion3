@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="site.master.cs" Inherits="Web.site" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+
+   <%-- <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>--%>
+    <%--<webopt:bundlereference runat="server" path="~/Content/css" />--%>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="hd">
+            <h1>Bienvenidos UY</h1>
+            <nav>
+                <a href="#">Menu 1</a>
+                <a href="#">Menu 2</a>
+                <a href="#">Menu 3</a>
+            </nav>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

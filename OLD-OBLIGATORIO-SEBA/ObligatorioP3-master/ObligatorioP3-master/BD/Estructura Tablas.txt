@@ -1,0 +1,101 @@
+
+Roles (IdRol, NombreRol, DetalleRol)
+
+create table Roles(
+	IdRol int identity(1,1) primary key, 
+	NombreRol varchar(30), 
+	DetalleRol varchar(50)
+)
+
+Usuarios (idUsuario, MailUsuario, PassUsuario, IdRol)
+
+Create table Usuario(
+	idUsuario int identity(1,1) primary key, 
+	MailUsuario varchar(30), 
+	PassUsuario varchar(30), 
+	IdRol int
+)
+
+Empresas ( IdEmpresa, Nombre, Telefono, Mails, Url, idUsuario)
+
+create table Empresa(
+	IdEmpresa, 
+	Nombre, 
+	Telefono, 
+	Mails, 
+	Url, 
+	idUsuario
+)
+
+Administradores (idAdmin, NroFuncionario, Nombre, Apellido, Telefono, Cargo, idUsuario)
+
+create table Administradores(
+	idAdmin, 
+	NroFuncionario, 
+	Nombre, 
+	Apellido, 
+	Telefono, 
+	Cargo, 
+	idUsuario
+)
+
+Eventos (IdEmpresa, Titulo,Descripcion, NombreArtistas, Fecha, Hora, NombreLugar, DireccionLugar, BarrioLugar, CapasidadMaxima, Imagen, Precio, Estado)
+
+create table Eventos(
+	IdEmpresa, 
+	Titulo,
+	Descripcion, 
+	NombreArtistas, 
+	Fecha, 
+	Hora, 
+	NombreLugar, 
+	DireccionLugar, 
+	BarrioLugar, 
+	CapasidadMaxima, 
+	Imagen, 
+	Precio, 
+	Estado
+)
+
+
+
+
+
+
+
+
+
+Create table Roles(
+	NombreRol varchar(30) primary key;
+	DetalleRol Varchar (300)
+)
+
+Create table Usuario(
+	idCodigo int IDENTITY(1,1) primary key,
+	NombreRol varchar(50) foreign key, 
+	Nombre varchar(30), 
+	Apellido varchar(30), 
+	NroFuncionario int, 
+	Email varchar(50) unique, 
+	MailsPrivados varchar(300), 
+	Password varchar(50), 
+	Telefono varchar(30), 
+	Cargo varchar(50), 
+	Url varchar(50)
+)
+
+create table Evento(
+	Titulo varchar(30) primary key,
+	Descripcion varchar(300),
+	NombreArtista varchar(300),
+	fecha date,
+	hora time,
+	nombreLugar varchar(50),
+	direccionLugar varchar(50),
+	imagen varbinary(MAX),
+	precio varchar(300),
+	estado char(1),
+	idCodigo int ,
+	constraint fk_idEmpresa Foreign key (idCodigo) references Usuario,
+	constraint ck_estado check (estado in('C', 'D', 'A'))
+)
