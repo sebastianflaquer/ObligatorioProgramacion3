@@ -1,0 +1,94 @@
+
+
+1- Cual sería la diferencia entre un usuario no registrado y el registrado sin rol (ni huésped ni anfitrión)?
+
+Hay dos tipos de usuarios: registrados y no registrados. Los usuarios registrados pueden publicar y/o reservar para lo cual deben loguearse previamente en el sistema. Los no registrados sólo pueden ver los anuncios (para eso no se requiere login).
+
+2- Se implementara baja y/o modificación de anuncios y usuarios?
+
+Sí, pero como interesa mantener registros históricos, solamente se podrán dar de baja aquellos alojamientos que nunca se hayan reservado y aquellos usuarios que no tengan actividad (nunca reservaron ni publicaron nada). 
+
+3- Los usuarios tienen acceso a agún tipo de area personal desde donde modificar su información? datos personales, reservas, anuncios? 
+
+Los usuarios se auto-gestionan. Por lo tanto, deberán poder realizar esas acciones sobre sus propias reservas, anuncios, perfil, etc.
+
+4- Que requisitos debe cumplir el email? y el celular?
+
+El e-mail debe estar bien formado (reglas básicas conocidas) y el celular debe ser numérico.
+
+5-3.Es necesario identificar si el usuario es anfitrión o huésped?
+ Un mismo usuario puede ser tanto anfitrión como huésped.
+ 
+6-La calificación corresponde solamente al alojamiento, anfitrión o ambos?
+Se califican los alojamientos. 
+
+
+RESERVAS:
+
+1- Las mismas pueden ser dadas de baja? en caso afirmativo, que condiciones deben cumplirse para esto? quienes pueden dar la baja? (huesped, anfitrion o ambos)
+
+Las reservas pueden ser dadas de bajas. La letra lo dice: "...cancelarla siempre y cuando la fecha de cancelación sea anterior a la fecha de inicio de la reserva". La pueden dar de baja tanto huéspedes como anfitriones, siempre que sean el huésped que hizo la reserva o el dueño del alojamiento reservado.
+
+2- Se pueden modificar reservas? en caso de respuesta afirmativa, que información de las mismas es modificable y que condiciones de modificación deben cumplirse? quienes pueden modificar reservas?
+
+Se podrán modificar la cantidad de pasajeros y el rango de fechas de la reserva siempre y cuando el alojamiento esté disponible entre esas fechas y exista cupo suficiente de pasajeros. Solamente los huéspedes pueden modificar sus propias reservas.
+
+ALOJAMIENTOS:
+
+1- A partir de una respuesta que realizaste el día de ayer entendemos que se pueden dar de alta alojamientos que no estén publicados, es esto efectivamente así?
+
+Para poder crear un anuncio, el alojamiento que se anuncia debe estar creado previamente. Por lo tanto podrían haber alojamientos no publicados. También se podrían eliminar anuncios, lo que no implica eliminar el alojamiento respectivo ya que se podría anunciar nuevamente en un futuro.
+
+2- Que condiciones deben ser tenidas en cuenta para eliminar alojamientos?
+
+Que no estén anunciados ni reservados.
+
+3- bajo que condiciones se puede realizar una modificación y que información de los mismos es modificable?
+
+Las condiciones son las mismas que para la eliminación. Se pueden modificar todos sus datos.
+
+
+ANUNCIOS:
+
+1- Que condiciones deben ser tenidas para eliminar anuncios?
+
+Los anuncios se pueden eliminar en cualquier momento. Esto no implica que se cancelen las reservas ya existentes para el alojamiento anunciado.
+
+2- Que información y bajo que condiciones es modificable para los anuncios?
+
+Se pueden modificar todos sus datos siempre y cuando no existan reservas vigentes del alojamiento anunciado.
+
+3- Agregar rangos de fechas entre los cuales se puede realizar una reserva de un alojamiento es considerado una modificación de anuncio? 
+
+Sí.
+
+
+
+
+*****************************************************************
+/* Preguntas Nuestras                                          */
+*****************************************************************
+
+1 - Cuando das de alta un alojamiento, ya se crea el anuncio y queda publicado?
+No. El anuncio se da de alta para un alojamiento que ya debería estar ingresado en el sistema.
+
+2 - Se puede eliminar un anuncio y no eliminar un alojamiento?
+Sí. Se puede eliminar un anuncio y luego crear otro diferente para el mismo alojamiento.
+
+c) Listado de Anuncios.
+1 - Quien puede ver el listado de anuncios con todos los datos? 
+Cualquier usuario registrado puede ver el listado de anuncios. Esto ya fue respondido en detalle en otra pregunta del foro.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
