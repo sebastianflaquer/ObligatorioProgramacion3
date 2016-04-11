@@ -14,14 +14,14 @@ namespace Web.Views
         //PAGE LOAD
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((Boolean)Session["logueado"]) //Si esta logeado
-            {
-                Response.Redirect("../");
-            }
-            else //Si no esta logeado
-            {
+            //if ((Boolean)Session["logueado"]) //Si esta logeado
+            //{
+            //    Response.Redirect("../");
+            //}
+            //else //Si no esta logeado
+            //{
 
-            }
+            //}
         }
 
     }
