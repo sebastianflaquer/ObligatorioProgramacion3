@@ -42,12 +42,6 @@
             </div>
 
 
-            
-
-            
-
-            
-
             <div class="form-group">
                 <label for="exampleInputEmail1">Nombre</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
