@@ -9,9 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
 
-   <%-- <asp:PlaceHolder runat="server">
+    <%--<asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>--%>
+
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
@@ -19,25 +20,37 @@
 <body>
     <form id="form1" runat="server">
 
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts>
+                <asp:ScriptReference Path="~/Scripts/jquery-1.10.2.min.js" />
+                <asp:ScriptReference Path="~/Scripts/bootstrap.min.js" />
+            </Scripts>
+        </asp:ScriptManager>
+
         <!-- HD -->
         <nav class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">BienvenidosUY!</a>
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">BienvenidosUY!</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse pull-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="sign-up.aspx">Sing In</a></li>
+                        <li><a href="register.aspx">Register</a></li>
+                        <li><a href="alojamientos.aspx">Alojamientos</a></li>
+                        <li><a href="anuncios.aspx">Anuncios</a></li>
+                        <li><a href="crear-alojamiento.aspx">Crear Alojamiento</a></li>
+                        <li><a href="crear-anuncio.aspx">Crear Anuncio</a></li>
+                        <li><a href="perfil.aspx">Perfil</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
             </div>
-            <div id="navbar" class="collapse navbar-collapse pull-right">
-              <ul class="nav navbar-nav">
-                <li><a href="sign-up.aspx">Sing In</a></li>
-                <li><a href="register.aspx">Register</a></li>
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div>
         </nav>
         <!-- END HD -->
 
@@ -51,5 +64,7 @@
         <!-- END CONTAINER -->
 
     </form>
+
+
 </body>
 </html>
