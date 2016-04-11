@@ -8,3 +8,8 @@ C:\Users\Sebastian\Downloads\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug
 C:\Users\Sebastian\Downloads\ObligatorioP3\ObligatorioP3\ObligatorioP3\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
 C:\Users\Sebastian\Downloads\ObligatorioP3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.dll
 C:\Users\Sebastian\Downloads\ObligatorioP3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.pdb
+D:\git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.dll
+D:\git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.pdb
+D:\git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
+D:\git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.dll
+D:\git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.pdb

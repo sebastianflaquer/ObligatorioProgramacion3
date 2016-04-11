@@ -20,7 +20,10 @@ namespace Web
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            Session["logueado"] = false;
+            Session["nombre"] = "";
+            Session["email"] = "";
+            Session["idRol"] = "";
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
