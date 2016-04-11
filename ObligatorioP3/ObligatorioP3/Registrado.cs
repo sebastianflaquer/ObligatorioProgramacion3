@@ -138,7 +138,7 @@ namespace BienvenidosUY
                 pars.Add(new SqlParameter("@Id", this.id));
 
                 con.Open();
-                reader = this.EjecutarQuery(con, "ProductoPorId", CommandType.StoredProcedure, pars);
+                reader = this.EjecutarQuery(con, "Registrado_BuscarRegistrado", CommandType.StoredProcedure, pars);
 
                 if (reader.Read())
                 {
