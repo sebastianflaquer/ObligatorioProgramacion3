@@ -9,7 +9,7 @@ namespace BienvenidosUY
     public class Alojamiento
     {
         public int id { get; set; }
-        public string categoria { get; set; }
+        public Categoria categoria { get; set; }
         public string tipoHabitacion { get; set; }
         public bool banioPrivado { get; set; }
         public int cantHuespedes { get; set; }

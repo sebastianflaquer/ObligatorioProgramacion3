@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Alojamiento.cs" />
     <Compile Include="Anuncio.cs" />
+    <Compile Include="Categoria.cs" />
     <Compile Include="Persistente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RangoFechas.cs" />
