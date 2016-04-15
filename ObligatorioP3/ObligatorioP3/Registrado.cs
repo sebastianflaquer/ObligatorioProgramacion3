@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace BienvenidosUY
         public string password { get; set; }
         public string direccion { get; set; }
         public string celular { get; set; }
-        public string foto { get; set; }
+        public System.IO.Stream foto { get; set; }
         public string descripcion { get; set; }
         public List<Anuncio> anuncios { get; set; }
         public List<Reserva> reservas { get; set; }
@@ -46,23 +47,31 @@ namespace BienvenidosUY
         public override bool Leer()
         {
             bool retorno = false;
-            SqlConnection con = null;
-            SqlDataReader reader = null;
 
             try
             {
-                con = new SqlConnection(Persistente.StringConexion);
-                List<SqlParameter> pars = new List<SqlParameter>();
-                pars.Add(new SqlParameter("@Id", this.id));
 
-                con.Open();
-                reader = this.EjecutarQuery(con, "ProductoPorId", CommandType.StoredProcedure, pars);
+                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+                cn.ConnectionString = cadenaConexion;
 
-                if (reader.Read())
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "LeerUsuario";
+                cmd.Parameters.Add(new SqlParameter("@mail", this.mail));
+
+                SqlDataReader drResults;
+
+                cmd.Connection = cn;
+                cn.Open();
+                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                if (drResults.Read())
                 {
-                    this.nombre = reader["Nombre"].ToString();
+                    string nombre = drResults["mail"].ToString();
                     retorno = true;
                 }
+
             }
             catch
             {
@@ -70,39 +79,120 @@ namespace BienvenidosUY
             }
             finally
             {
-                if (con != null && con.State == ConnectionState.Open) con.Close();
-                if (reader != null) reader.Close();
+                //if (con != null && con.State == ConnectionState.Open) con.Close();
+                //if (reader != null) reader.Close();
             }
-
+            
             return retorno;
+
+            //bool retorno = false;
+            //SqlConnection con = null;
+            //SqlDataReader reader = null;
+
+            //try
+            //{
+            //    con = new SqlConnection(Persistente.StringConexion);
+            //    List<SqlParameter> pars = new List<SqlParameter>();
+            //    pars.Add(new SqlParameter("@Id", this.id));
+
+            //    con.Open();
+            //    reader = this.EjecutarQuery(con, "ProductoPorId", CommandType.StoredProcedure, pars);
+
+            //    if (reader.Read())
+            //    {
+            //        this.nombre = reader["Nombre"].ToString();
+            //        retorno = true;
+            //    }
+            //}
+            //catch
+            //{
+            //    throw;
+            //}
+            //finally
+            //{
+            //    if (con != null && con.State == ConnectionState.Open) con.Close();
+            //    if (reader != null) reader.Close();
+            //}
+
         }
 
         //GUARDAR
         public override bool Guardar()
         {
-            bool retorno = false;
 
-            try
-            {
-                List<SqlParameter> pars = new List<SqlParameter>();
-                pars.Add(new SqlParameter("@Nombre", this.Nombre));
-                pars.Add(new SqlParameter("@Precio", this.Precio));
-                SqlParameter par = new SqlParameter();
-                par.ParameterName = "@NuevoId";
-                par.SqlDbType = SqlDbType.Int;
-                par.Direction = ParameterDirection.Output;
-                pars.Add(par);
+            SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
 
-                int afectadas = this.EjecutarNoQuery("NuevoProducto", CommandType.StoredProcedure, pars);
-                retorno = afectadas == 1;
+            bool ok = false;
+            int afectadas = 0;
 
-                if (retorno) this.Id = (int)par.Value;
+            try{
+                using (SqlCommand cmd = new SqlCommand()) {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "RegistroUsuario";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));
+                    cmd.Parameters.Add(new SqlParameter("@apellido", this.apellido));
+                    cmd.Parameters.Add(new SqlParameter("@mail", this.mail));
+                    cmd.Parameters.Add(new SqlParameter("@password", this.password));
+                    cmd.Parameters.Add(new SqlParameter("@direccion", this.direccion));
+                    cmd.Parameters.Add(new SqlParameter("@celular", this.celular));
+                    cmd.Parameters.Add(new SqlParameter("@foto", this.foto));
+                    cmd.Parameters.Add(new SqlParameter("@descripcion", this.descripcion));
+                    cn.Open();
+                    afectadas = cmd.ExecuteNonQuery();
+                    cn.Close();
+                }
+
+                if (afectadas != -1){
+                    ok = false;
+                }
+                else{
+                    ok = true;
+                }
+                
             }
             catch
             {
                 throw;
             }
-            return retorno;
+            finally
+            {
+                //if (con != null && con.State == ConnectionState.Open) con.Close();
+                //if (reader != null) reader.Close();
+            }
+
+            return ok;
+
+
+            //bool retorno = false;
+
+            //try
+            //{
+            //    List<SqlParameter> pars = new List<SqlParameter>();
+
+            //    SqlParameter par = new SqlParameter();
+
+            //    //esto se utiliza si queremos retornar el ID
+            //    //par.ParameterName = "@NuevoId";
+            //    //par.SqlDbType = SqlDbType.Int;
+            //    //par.Direction = ParameterDirection.Output;
+
+            //    pars.Add(par);
+
+            //    int afectadas = this.EjecutarNoQuery("RegistroUsuario", CommandType.StoredProcedure, pars);
+            //    retorno = afectadas == 1;
+
+            //    //esto se utiliza si queremos retornar el ID
+            //    //if (retorno) this.Id = (int)par.Value;
+            //}
+            //catch
+            //{
+            //    throw;
+            //}
+            //
+
         }
 
         //TRAER TODO
@@ -124,39 +214,39 @@ namespace BienvenidosUY
         }
 
         //SE FIJA SI EXISTE EL USUARIO - ESTO ES ESTATICO PORQUE ES UN METODO DE CLASE
-        public static int ExisteUsuario( string UserName , string Password) {
+        //public int ExisteUsuario( string UserName , string Password) {
 
-            int retorno = -1;
-            SqlConnection con = null;
-            SqlDataReader reader = null;
+        //    int retorno = -1;
+        //    SqlConnection con = null;
+        //    SqlDataReader reader = null;
 
-            try
-            {
-                con = new SqlConnection(Persistente.StringConexion);
-                List<SqlParameter> pars = new List<SqlParameter>();
-                pars.Add(new SqlParameter("@Id", this.id));
+        //    try
+        //    {
+        //        con = new SqlConnection(Persistente.StringConexion);
+        //        List<SqlParameter> pars = new List<SqlParameter>();
+        //        pars.Add(new SqlParameter("@Id", this.id));
 
-                con.Open();
-                reader = this.EjecutarQuery(con, "Registrado_BuscarRegistrado", CommandType.StoredProcedure, pars);
+        //        con.Open();
+        //        reader = this.EjecutarQuery(con, "Registrado_BuscarRegistrado", CommandType.StoredProcedure, pars);
 
-                if (reader.Read())
-                {
-                    this.nombre = reader["Nombre"].ToString();
-                    retorno = this.id;
-                }
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                if (con != null && con.State == ConnectionState.Open) con.Close();
-                if (reader != null) reader.Close();
-            }
+        //        if (reader.Read())
+        //        {
+        //            this.nombre = reader["Nombre"].ToString();
+        //            retorno = this.id;
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        if (con != null && con.State == ConnectionState.Open) con.Close();
+        //        if (reader != null) reader.Close();
+        //    }
 
-            return retorno;
+        //    return retorno;
 
-        }
+        //}
     }
 }
