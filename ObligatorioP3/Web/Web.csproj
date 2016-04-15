@@ -177,7 +177,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Views\perfil.aspx" />
-    <Content Include="Views\register.aspx" />
+    <Content Include="Views\registro.aspx" />
     <Content Include="Views\sign-up.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -235,9 +235,12 @@
     <Compile Include="Views\perfil.aspx.designer.cs">
       <DependentUpon>perfil.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\register.aspx.cs">
-      <DependentUpon>register.aspx</DependentUpon>
+    <Compile Include="Views\registro.aspx.cs">
+      <DependentUpon>registro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\registro.aspx.designer.cs">
+      <DependentUpon>registro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\sign-up.aspx.cs">
       <DependentUpon>sign-up.aspx</DependentUpon>

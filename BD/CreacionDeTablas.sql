@@ -16,9 +16,14 @@ CREATE TABLE REGISTRADO(
 	descripcion varchar(250)
 )
 
+CREATE TABLE CATEGORIA(
+id int PRIMARY KEY IDENTITY,
+nombre varchar(30) CHECK(nombre IN ('Apartamento', 'Casa', 'Hotel', 'Hostel', 'Posada', 'Bungalow', 'Cabania', 'Casa rodante', 'Rancho'))
+)
+
 CREATE TABLE ALOJAMIENTO(
 	id int PRIMARY KEY IDENTITY,
-	categoria varchar(20) CHECK(categoria IN ('Apartamento', 'Casa', 'Hotel', 'Hostel', 'Posada', 'Bungalow', 'Cabania', 'Casa rodante', 'Rancho')),
+	idCategoria int REFERENCES CATEGORIA not null,
 	tipoHabitacion varchar(20) CHECK(tipoHabitacion IN ('Todo', 'Habitacion privada', 'Habitacion compartida')),
 	banioPrivado bit,
 	cantHuespedes int,
@@ -37,14 +42,17 @@ CREATE TABLE ANUNCIO(
 	direccion1 varchar(40) not null,
 	direccion2 varchar(40),
 	fotos varbinary(max),
-	precioBase decimal(12,2) not null
+	precioBase decimal(12,2) not null,
+	idRegistrado int REFERENCES REGISTRADO not null
+
 )
 
 CREATE TABLE RESERVA(
 	id int PRIMARY KEY IDENTITY,
 	idAnuncio int REFERENCES ANUNCIO not null,
 	fechaInicio datetime not null,
-	fechaFin datetime not null
+	fechaFin datetime not null,
+	idRegistrado int REFERENCES REGISTRADO not null
 )
 
 
@@ -53,7 +61,8 @@ CREATE TABLE RANGOFECHAS(
 	id int PRIMARY KEY IDENTITY,
 	fechaInicio datetime,
 	fechaFin datetime,
-	precio decimal(12,2)
+	precio decimal(12,2),
+	idAnuncio int REFERENCES ANUNCIO not null
 )
 
 
@@ -63,27 +72,7 @@ CREATE TABLE SERVICIO(
 	descripcion varchar(250)
 )
 
-go
 
-CREATE TABLE REGISTRADO_ANUNCIO(
-	idRegistrado int REFERENCES REGISTRADO not null,
-	idAnuncio int REFERENCES ANUNCIO not null,
-	PRIMARY KEY(idRegistrado, idAnuncio)
-)
-go
-
-CREATE TABLE REGISTRADO_RESERVA(
-	idRegistrado int REFERENCES REGISTRADO not null,
-	idReserva int REFERENCES RESERVA not null,
-	PRIMARY KEY(idRegistrado, idReserva)
-)
-go
-
-CREATE TABLE ANUNCIO_RANGOFECHAS(
-	idAnuncio int REFERENCES ANUNCIO not null,
-	idRangoFechas int REFERENCES RANGOFECHAS not null,
-	PRIMARY KEY(idAnuncio, idRangoFechas)
-)
 go
 
 CREATE TABLE ALOJAMIENTO_SERVICIO(

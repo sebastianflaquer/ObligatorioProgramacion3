@@ -76,33 +76,32 @@ namespace BienvenidosUY
 
             return retorno;
         }
-        
+
         //GUARDAR
         public override bool Guardar()
         {
-            //bool retorno = false;
+            bool retorno = false;
 
-            //try
-            //{
-            //    List<SqlParameter> pars = new List<SqlParameter>();
-            //    pars.Add(new SqlParameter("@Nombre", this.Nombre));
-            //    pars.Add(new SqlParameter("@Precio", this.Precio));
-            //    SqlParameter par = new SqlParameter();
-            //    par.ParameterName = "@NuevoId";
-            //    par.SqlDbType = SqlDbType.Int;
-            //    par.Direction = ParameterDirection.Output;
-            //    pars.Add(par);
+            try
+            {
+                List<SqlParameter> pars = new List<SqlParameter>();
+                pars.Add(new SqlParameter("@Nombre", this.Nombre));
+                pars.Add(new SqlParameter("@Precio", this.Precio));
+                SqlParameter par = new SqlParameter();
+                par.ParameterName = "@NuevoId";
+                par.SqlDbType = SqlDbType.Int;
+                par.Direction = ParameterDirection.Output;
+                pars.Add(par);
 
-            //    int afectadas = this.EjecutarNoQuery("NuevoProducto", CommandType.StoredProcedure, pars);
-            //    retorno = afectadas == 1;
+                int afectadas = this.EjecutarNoQuery("NuevoProducto", CommandType.StoredProcedure, pars);
+                retorno = afectadas == 1;
 
-            //    if (retorno) this.Id = (int)par.Value;
-            //}
-            //catch
-            //{
-            //    throw;
-            //}
-            bool retorno = true;
+                if (retorno) this.Id = (int)par.Value;
+            }
+            catch
+            {
+                throw;
+            }
             return retorno;
         }
 
