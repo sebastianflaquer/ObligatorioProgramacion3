@@ -2,3 +2,4 @@ D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\Obli
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.pdb
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.dll
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.pdb
+D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\ObligatorioP3\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
