@@ -27,8 +27,8 @@ namespace Web.Views
         //LOGIN
         protected void LogIn(object sender, EventArgs e)
         {
-
-            int idrol = Registrado.Instancia.ExisteUsuario(this.UserName.Text, this.Password.Text);
+            //
+            int idrol = Registrado.ExisteUsuario(this.UserName.Text, this.Password.Text);
             if (idrol == 1)
             {
                 //Empresa unaEmpresa = new Empresa();

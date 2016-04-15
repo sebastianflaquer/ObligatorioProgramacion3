@@ -124,8 +124,8 @@ namespace BienvenidosUY
             throw new NotImplementedException();
         }
 
-        //SE FIJA SI EXISTE EL USUARIO
-        public int ExisteUsuario( string UserName , string Password) {
+        //SE FIJA SI EXISTE EL USUARIO - ESTO ES ESTATICO PORQUE ES UN METODO DE CLASE
+        public static int ExisteUsuario( string UserName , string Password) {
 
             int retorno = -1;
             SqlConnection con = null;
