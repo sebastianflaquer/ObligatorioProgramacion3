@@ -12,32 +12,52 @@ namespace Web.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsCallback)
+            {
 
+            }
+            else {
+                //UsuarioNombre.Text="";
+                //UsuarioApellido.Text = "";
+                //UsuarioMail.Text = "";
+                //UsuarioPassword.Text = "";
+                //UsuarioPassword.Text = "";
+                //UsuarioCelular.Text = "";
+                //UsuarioFoto.FileContent = null;
+                //UsuarioDescripcion.Text = "";
+                //UsuarioDireccion.Text = "";
+                //UsuarioNombre.Text = "";
+                //UsuarioNombre.Text = "";
+                //UsuarioNombre.Text = "";
+            }
         }
 
-
+        //BTN REGISTRO DE USUARIOS
         protected void btnRegistroUsuario(object sender, EventArgs e)
         {
+            //VALIDA LA PAGINA
             Page.Validate();
 
+            //SI ES VALIDA EJECUTA LA FUNCION
             if (Page.IsValid)
             {
+
                 bool esUsuario = false;
                 
-                //validar aca que el mail no se repita
+                //VALIDA QUE LA PERSONA QUE SE ESTA REGISTRANDO NO ESTE LOGEADA YA
                 Registrado reg = new Registrado();
                 reg.mail = this.UsuarioMail.Text;
+                //LEE USUARIO
                 esUsuario = reg.Leer();
 
-                if (esUsuario)//si ya es usuario
+                if (esUsuario)//SI YA ES USUARIO
                 {
                     //Usuario inexistente
                     this.errorField.Visible = true;
                     this.lblErrorMsj.InnerHtml = "<div class='alert alert-danger'><button data-dismiss='alert' class='close' type='button'>×</button><span>Ya existe un usuario con ese mail.</span></div>";
                 }
-                else//si no es usuario lo crea
+                else//SI NO ES USUARIO LO CREA
                 {
-
                     //variables
                     bool afectadas;
 
@@ -54,6 +74,26 @@ namespace Web.Views
 
                     //Carga en afectadas el retorno de Guardar();
                     afectadas = reg.Guardar();
+
+                    if (afectadas) {
+                        //Usuario inexistente
+                        this.errorField.Visible = true;
+                        this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El registro se completo con exito.</span></div>";
+
+                        //LIMPIAR EL FORMULARIO
+                        UsuarioNombre.Text="";
+                        UsuarioApellido.Text = "";
+                        UsuarioMail.Text = "";
+                        UsuarioPassword.Text = "";
+                        UsuarioPassword.Text = "";
+                        UsuarioCelular.Text = "";
+                        //UsuarioFoto.FileContent = null;
+                        UsuarioDescripcion.Text = "";
+                        UsuarioDireccion.Text = "";
+                        UsuarioNombre.Text = "";
+                        UsuarioNombre.Text = "";
+                        UsuarioNombre.Text = "";
+                    }
                 }
             }
         }
