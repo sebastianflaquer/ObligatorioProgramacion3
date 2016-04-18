@@ -23,7 +23,7 @@ namespace Web
             Session["logueado"] = false;
             Session["nombre"] = "";
             Session["email"] = "";
-            Session["idRol"] = "";
+            Session["id"] = "";
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

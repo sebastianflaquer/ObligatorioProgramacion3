@@ -12,23 +12,12 @@ namespace Web.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsCallback)
-            {
-
+            //Si es PostBack
+            if(IsPostBack){
+                
             }
             else {
-                //UsuarioNombre.Text="";
-                //UsuarioApellido.Text = "";
-                //UsuarioMail.Text = "";
-                //UsuarioPassword.Text = "";
-                //UsuarioPassword.Text = "";
-                //UsuarioCelular.Text = "";
-                //UsuarioFoto.FileContent = null;
-                //UsuarioDescripcion.Text = "";
-                //UsuarioDireccion.Text = "";
-                //UsuarioNombre.Text = "";
-                //UsuarioNombre.Text = "";
-                //UsuarioNombre.Text = "";
+               
             }
         }
 

@@ -16,7 +16,7 @@ namespace Web.Views
         {
             if ((bool)Session["logueado"]) //Si esta logeado
             {
-                Response.Redirect("../");
+                Response.Redirect("../Views/home.aspx");
             }
             else //Si no esta logeado
             {
@@ -25,11 +25,36 @@ namespace Web.Views
         }
 
         //LOGIN
-        protected void LogIn(object sender, EventArgs e)
+        protected void BtnLogIn(object sender, EventArgs e)
         {
+            Registrado reg = new Registrado();
+            reg.mail = this.TxtMail.Text;
+            bool existe = reg.Leer();
 
+            if (existe)
+            {
+                string retornoPass = reg.ComprobarPass();
+                string password = this.TxtPassword.Text;
 
-            //
+                if (password == retornoPass) {
+                    //Le agrega los datos a la Session
+                    Session["logueado"] = true;
+                    Session["mail"] = reg.mail;
+                    Response.Redirect("../Views/home.aspx");
+                }
+                else{
+                    //Usuario inexistente
+                    this.errorField.Visible = true;
+                    this.lblErrorMsj.InnerHtml = "<div class='alert alert-danger'><button data-dismiss='alert' class='close' type='button'>×</button><span>Contraseña incorrecto</span></div>";
+                }
+            }
+            else {
+
+                //Usuario inexistente
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-danger'><button data-dismiss='alert' class='close' type='button'>×</button><span>Usuario inexistente, o incorrecto</span></div>";
+            }
+
             //int idrol = Registrado.ExisteUsuario(this.UserName.Text, this.Password.Text);
             //if (idrol == 1)
             //{

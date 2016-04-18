@@ -40,16 +40,63 @@
                     <a class="navbar-brand" href="Views/home.aspx">BienvenidosUY!</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse pull-right">
-                    <ul class="nav navbar-nav">
-                        <li><a href="sign-up.aspx">Sing In</a></li>
-                        <li><a href="registro.aspx">Register</a></li>
+                    
+                    <ul id="divMenuLogeado" visible="false" class="nav navbar-nav" runat="server">
                         <li><a href="alojamientos.aspx">Alojamientos</a></li>
                         <li><a href="anuncios.aspx">Anuncios</a></li>
                         <li><a href="crear-alojamiento.aspx">Crear Alojamiento</a></li>
                         <li><a href="crear-anuncio.aspx">Crear Anuncio</a></li>
-                        <li><a href="perfil.aspx">Perfil</a></li>
+                        <li>
+                            <a runat="server" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><asp:Label ID="lblEmailMaster" runat="server"></asp:Label></a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="perfil.aspx">Perfil</a></li>
+                                <li><asp:LinkButton ID="btnCerrarSesion"  onclick="btnCerrarSesion_Click" runat="server">Cerrar Sesion</asp:LinkButton></li>
+                            </ul>
+                        </li>
                     </ul>
+
+                    <ul id="divMenuDeslogeado" visible="false" class="nav navbar-nav" runat="server">
+                        <li><a href="sign-up.aspx">Sing In</a></li>
+                        <li><a href="registro.aspx">Register</a></li>
+                    </ul>
+
+                    <!-- MENU LOGEADO EMPRESA -->
+                    <%--<ul id="divMenuLogeado" visible=false class="nav navbar-nav" runat="server">
+                        <li><a href="../Account/Register">Alta Emp</a></li>
+                        <li><a runat="server" href="~/Account/listado-eventos.aspx">ListadoEven</a></li>
+                        <li><a runat="server" href="~/Account/listado-empresas.aspx">ListadoEmp</a></li>                        
+                        <li><a runat="server" href="~/Account/buscar-evento-fecha.aspx">Busqueda Evento</a></li>
+                    </ul>--%>
+                    <!-- MENU LOGEADO -->
+
+                    <!-- MENU LOGEADO USUARIO -->
+                    <%--<ul id="divMenuLogeadoUsuario" visible=false class="nav navbar-nav" runat="server">
+                        <li><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Account/crear-evento">Crear Evento</asp:HyperLink></li>
+                        <li><a runat="server" href="~/Account/listado-eventos.aspx">Historial Eventos</a></li>
+                    </ul>--%>
+                    <!-- MENU LOGEADO -->
+
+                    <!-- DATOS LOGEADO -->
+                    <%--<ul id="divDatosLogeado" visible=false class="nav navbar-nav navbar-right" runat="server">
+                        <li>
+                            <a runat="server" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><asp:Label ID="lblEmailMaster" runat="server"></asp:Label></a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="../Account/perfil.aspx">Perfil</a></li>
+                                <li><asp:LinkButton ID="btnCerrarSesion"  onclick="btnCerrarSesion_Click" runat="server">Cerrar Sesion</asp:LinkButton></li>
+                            </ul>
+                        </li>
+                    </ul>--%>
+                    <!-- DATOS LOGEADO -->
+
+                    <!-- MENU NO LOGEADO -->
+                    <%--<ul id="divLogin" class="nav navbar-nav navbar-right" runat="server">
+                        <li><a runat="server" href="~/Account/Register">Registro</a></li>
+                        <li><a runat="server" href="~/Account/Login">Login</a></li>
+                    </ul>--%>
+                    <!-- MENU NO LOGEADO -->
+
                 </div><!--/.nav-collapse -->
+
             </div>
         </nav>
         <!-- END HD -->

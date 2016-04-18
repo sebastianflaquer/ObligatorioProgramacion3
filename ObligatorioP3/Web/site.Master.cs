@@ -11,7 +11,27 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if ((bool)Session["logueado"]) //Si esta logeado
+            {
+                this.lblEmailMaster.Text = Session["mail"].ToString();
+                this.divMenuLogeado.Visible = true;
+                this.divMenuDeslogeado.Visible = false;
 
+            }
+            else //Si no esta logeado
+            {
+                this.divMenuLogeado.Visible = false;
+                this.divMenuDeslogeado.Visible = true;
+            }
+        }
+
+        //BTN CERRAR SESION
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session["logueado"] = false;
+            Session["email"] = "";
+            Response.Redirect("/Views/sign-up.aspx");
         }
     }
+
 }
