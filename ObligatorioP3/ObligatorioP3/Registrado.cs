@@ -214,39 +214,45 @@ namespace BienvenidosUY
         }
 
         //SE FIJA SI EXISTE EL USUARIO - ESTO ES ESTATICO PORQUE ES UN METODO DE CLASE
-        //public int ExisteUsuario( string UserName , string Password) {
+        public int ExisteUsuario( string UserName , string Password) {
 
-        //    int retorno = -1;
-        //    SqlConnection con = null;
-        //    SqlDataReader reader = null;
+            int retorno = -1;
+            SqlConnection con = null;
+            SqlDataReader reader = null;
 
-        //    try
-        //    {
-        //        con = new SqlConnection(Persistente.StringConexion);
-        //        List<SqlParameter> pars = new List<SqlParameter>();
-        //        pars.Add(new SqlParameter("@Id", this.id));
+            try
+            {
+                con = new SqlConnection(Persistente.StringConexion);
+                List<SqlParameter> pars = new List<SqlParameter>();
+                //pars.Add(new SqlParameter("@Id", this.id));
+                pars.Add(new SqlParameter("@mail", this.mail));
 
-        //        con.Open();
-        //        reader = this.EjecutarQuery(con, "Registrado_BuscarRegistrado", CommandType.StoredProcedure, pars);
+                con.Open();
+                //reader = this.EjecutarQuery(con, "Registrado_BuscarRegistrado", CommandType.StoredProcedure, pars);
+                reader = this.EjecutarQuery(con, "Login", CommandType.StoredProcedure, pars);
 
-        //        if (reader.Read())
-        //        {
-        //            this.nombre = reader["Nombre"].ToString();
-        //            retorno = this.id;
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        if (con != null && con.State == ConnectionState.Open) con.Close();
-        //        if (reader != null) reader.Close();
-        //    }
+                if (reader.Read())
+                {
+                    //this.nombre = reader["Nombre"].ToString();
+                    this.mail = reader["Mail"].ToString();
+                    retorno = this.id;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open) con.Close();
+                if (reader != null) reader.Close();
+            }
 
-        //    return retorno;
+            return retorno;
 
-        //}
+        }
+
+
+
     }
 }
