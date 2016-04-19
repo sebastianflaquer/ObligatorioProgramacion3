@@ -71,7 +71,6 @@ public partial class Account_perfil_empresa : System.Web.UI.Page
 
     protected void btnActualizarDatosAdmin(object sender, EventArgs e)
     {
-
         //UsuarioEventosUY.actualizarDatos(
         //    AdminNombre.Text,
         //    AdminHola.Text,
@@ -80,7 +79,6 @@ public partial class Account_perfil_empresa : System.Web.UI.Page
         //    AdminCargo.Text,
         //    Session["email"].ToString()
         //)
-
     }
 
     protected void btnEliminarCuenta(object sender, EventArgs e)

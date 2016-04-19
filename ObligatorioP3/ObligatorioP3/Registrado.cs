@@ -67,7 +67,18 @@ namespace BienvenidosUY
 
                 if (drResults.Read())
                 {
-                    string nombre = drResults["mail"].ToString();
+                    id =  Convert.ToInt32(drResults["id"]);
+                    nombre = drResults["nombre"].ToString();
+                    apellido = drResults["apellido"].ToString();
+                    mail = drResults["mail"].ToString();
+                    password = drResults["password"].ToString();
+                    direccion = drResults["direccion"].ToString();
+                    celular = drResults["celular"].ToString();
+                    descripcion = drResults["descripcion"].ToString();
+                    
+                    //Nos falta cargar la imagen
+                    //foto = drResults["foto"] as byte[];
+
                     retorno = true;
                 }
 
@@ -149,8 +160,7 @@ namespace BienvenidosUY
                 }
                 else{
                     ok = true;
-                }
-                
+                }                
             }
             catch
             {
@@ -203,7 +213,45 @@ namespace BienvenidosUY
         //MODIFICAR
         public override bool Modificar()
         {
-            throw new NotImplementedException();
+            bool retorno = false;
+
+            try
+            {
+                SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
+                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+                cn.ConnectionString = cadenaConexion;
+                
+                int afectadas = 0;
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "ModificarUsuario";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@id", this.id));
+                    cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));
+                    cmd.Parameters.Add(new SqlParameter("@apellido", this.apellido));
+                    cmd.Parameters.Add(new SqlParameter("@mail", this.mail));
+                    cmd.Parameters.Add(new SqlParameter("@direccion", this.direccion));
+                    cmd.Parameters.Add(new SqlParameter("@celular", this.celular));
+                    cmd.Parameters.Add(new SqlParameter("@descripcion", this.descripcion));
+                    cn.Open();
+                    afectadas = cmd.ExecuteNonQuery();
+                    cn.Close();
+
+                    retorno = true;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+
+            }
+
+            return retorno;
         }
 
         //ELIMINAR

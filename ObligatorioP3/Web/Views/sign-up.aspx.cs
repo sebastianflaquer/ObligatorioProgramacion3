@@ -40,6 +40,7 @@ namespace Web.Views
                     //Le agrega los datos a la Session
                     Session["logueado"] = true;
                     Session["mail"] = reg.mail;
+                    Session["id"] = reg.id;
                     Response.Redirect("../Views/home.aspx");
                 }
                 else{
@@ -84,8 +85,6 @@ namespace Web.Views
             //}
 
         }
-
-
-
+        
     }
 }

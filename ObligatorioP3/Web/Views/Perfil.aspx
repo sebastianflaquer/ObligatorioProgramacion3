@@ -1,16 +1,26 @@
 ﻿<%@ Page Title="Mi Perfil" Language="C#" MasterPageFile="~/site.Master" AutoEventWireup="true" CodeBehind="perfil.aspx.cs" Inherits="Web.Views.Perfil" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-    <h2><%: Title %>.</h2>
+    <br />
+    <br />
 
-    <%--<div class="row-fluid" id="errorField" runat="server" visible=false>
+    <div class="row-fluid" id="errorField" runat="server" visible=false>
         <div class="span12" ID="lblErrorMsj" runat="server">
             <div class="alert alert-error" >
                 <button data-dismiss="alert" class="close" type="button">×</button>            
                 <asp:Label runat="server"  Text="Label"></asp:Label>
             </div>
         </div>
-    </div>--%>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2><%: Title %>.</h2>            
+            <asp:Button runat="server" OnClick="btnActualizarPerfil" Text="Actualizar" CssClass="btn btn-primary pull-right" />
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-6">
@@ -27,29 +37,22 @@
                     <div class="form-group">
                         <label for="exampleInputFile">Imagen</label>
                         <input type="file" id="exampleInputFile">
-                        <p class="help-block">Example block-level help text here.</p>
                     </div>
 
                 </div>
-                <div class="col-md-8">
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Nombre de usuario</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-
-                </div>
+               
             </div>
 
-
             <div class="form-group">
-                <label for="exampleInputEmail1">Nombre</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <asp:Label runat="server" AssociatedControlID="ProfileNombre" CssClass="control-label">Nombre</asp:Label>
+                <asp:TextBox ID="ProfileNombre" CssClass="form-control" runat="server"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileNombre" CssClass="text-danger" ErrorMessage="El campo de Nombre es obligatorio." />
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Apellido</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <asp:TextBox ID="ProfileApellido" CssClass="form-control" runat="server"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileApellido" CssClass="text-danger" ErrorMessage="El campo de Apellido es obligatorio." />
             </div>
             
         </div>
@@ -57,37 +60,25 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleInputEmail1">E-mail</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputEmail1">Nombre de usuario</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputEmail1">Contraseña</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleInputEmail1">Repetir Contraseña</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <asp:TextBox ID="ProfileMail" ReadOnly="true" CssClass="disabled form-control" runat="server" />
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Direccion</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <asp:TextBox ID="ProfileDireccion" CssClass="form-control" runat="server"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileDireccion" CssClass="text-danger" ErrorMessage="El campo de Apellido es obligatorio." />
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Celular</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <asp:TextBox ID="ProfileCelular" CssClass="form-control" runat="server"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileCelular" CssClass="text-danger" ErrorMessage="El campo de Apellido es obligatorio." />
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Descripcion</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <asp:TextBox MaxLength="250" ID="ProfileDescripcion" TextMode="MultiLine" CssClass="form-control" runat="server" />     
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileDescripcion" CssClass="text-danger" ErrorMessage="El campo de Apellido es obligatorio." />           
             </div>
         </div>
     </div>

@@ -47,7 +47,7 @@
                         <li><a href="crear-alojamiento.aspx">Crear Alojamiento</a></li>
                         <li><a href="crear-anuncio.aspx">Crear Anuncio</a></li>
                         <li>
-                            <a runat="server" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><asp:Label ID="lblEmailMaster" runat="server"></asp:Label></a>
+                            <a runat="server" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><b><asp:Label ID="lblEmailMaster" runat="server"></asp:Label></b></a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                 <li><a href="perfil.aspx">Perfil</a></li>
                                 <li><asp:LinkButton ID="btnCerrarSesion"  onclick="btnCerrarSesion_Click" runat="server">Cerrar Sesion</asp:LinkButton></li>

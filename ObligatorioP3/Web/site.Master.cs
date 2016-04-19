@@ -29,7 +29,7 @@ namespace Web
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             Session["logueado"] = false;
-            Session["email"] = "";
+            Session["mail"] = "";
             Response.Redirect("/Views/sign-up.aspx");
         }
     }

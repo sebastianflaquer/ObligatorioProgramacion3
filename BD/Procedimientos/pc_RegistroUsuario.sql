@@ -1,4 +1,4 @@
-CREATE PROCEDURE RegistroUsuario
+create PROCEDURE RegistroUsuario
 	-- Add the parameters for the stored procedure here
 	@nombre VARCHAR(30),
 	@apellido VARCHAR(40),
