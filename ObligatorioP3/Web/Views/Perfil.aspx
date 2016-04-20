@@ -35,10 +35,9 @@
                     </div>
 
                     <div class="form-group">
-                    </div> 
                         <label for="exampleInputFile">Imagen</label>
-                        <input type="file"  id="exampleInputFile">
-                    </div> 
+                        <input type="file" id="exampleInputFile">
+                    </div>
 
                 </div>
                
