@@ -21,7 +21,7 @@ namespace BienvenidosUY
         public string password { get; set; }
         public string direccion { get; set; }
         public string celular { get; set; }
-        public System.IO.Stream foto { get; set; }
+        public string foto { get; set; }
         public string descripcion { get; set; }
         public List<Anuncio> anuncios { get; set; }
         public List<Reserva> reservas { get; set; }
@@ -48,12 +48,12 @@ namespace BienvenidosUY
         {
             bool retorno = false;
 
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "LeerUsuario";
@@ -72,12 +72,10 @@ namespace BienvenidosUY
                     apellido = drResults["apellido"].ToString();
                     mail = drResults["mail"].ToString();
                     password = drResults["password"].ToString();
+                    foto = drResults["foto"].ToString();
                     direccion = drResults["direccion"].ToString();
                     celular = drResults["celular"].ToString();
                     descripcion = drResults["descripcion"].ToString();
-                    
-                    //Nos falta cargar la imagen
-                    //foto = drResults["foto"] as byte[];
 
                     retorno = true;
                 }
@@ -89,7 +87,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
                 //if (reader != null) reader.Close();
             }
             
@@ -168,7 +166,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
                 //if (reader != null) reader.Close();
             }
 

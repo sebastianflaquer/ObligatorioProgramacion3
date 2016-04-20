@@ -33,12 +33,17 @@ namespace Web.Views
             reg.mail = Session["mail"].ToString();
             bool existe = reg.Leer();
 
+            string ruta = Server.MapPath("~/imagenes/perfil/");
+            string rutarelativa = "/imagenes/perfil/";
+            string nombrefoto = rutarelativa + reg.foto;
+
             //Cargamos el form con los datos del usuario
             this.ProfileNombre.Text = reg.nombre;
             this.ProfileApellido.Text = reg.apellido;
             this.ProfileMail.Text = reg.mail;
             this.ProfileDireccion.Text = reg.direccion;
             this.ProfileCelular.Text = reg.celular;
+            this.PerfilImagen.ImageUrl = nombrefoto;
             this.ProfileDescripcion.Text = reg.descripcion;
             //this.ProfileName.Text = ;
         }

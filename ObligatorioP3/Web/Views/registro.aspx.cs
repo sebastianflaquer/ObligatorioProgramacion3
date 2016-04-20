@@ -49,15 +49,17 @@ namespace Web.Views
                 {
                     //variables
                     bool afectadas;
-
+                    string ruta = Server.MapPath("~/imagenes/perfil/");
+                    string nombrefoto = reg.mail + '-' + this.UsuarioFoto.FileName;
+                    
                     //Crea un nuevo objeto Registrado y le carga los campos del formulario
                     //Registrado reg = new Registrado();
                     reg.nombre = this.UsuarioNombre.Text;
                     reg.apellido = this.UsuarioApellido.Text;
                     reg.mail = this.UsuarioMail.Text;
                     reg.password = this.UsuarioPassword.Text;
-                    reg.celular = this.UsuarioCelular.Text;
-                    reg.foto = this.UsuarioFoto.FileContent;
+                    reg.celular = this.UsuarioCelular.Text;                    
+                    reg.foto = nombrefoto;
                     reg.descripcion = this.UsuarioDescripcion.Text;
                     reg.direccion = this.UsuarioDireccion.Text;
 
@@ -65,7 +67,11 @@ namespace Web.Views
                     afectadas = reg.Guardar();
 
                     if (afectadas) {
-                        //Usuario inexistente
+
+                        //Guarda la foto en el servidor
+                        UsuarioFoto.SaveAs(ruta + nombrefoto);
+
+                        //Si pudo guardar el usuario
                         this.errorField.Visible = true;
                         this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El registro se completo con exito.</span></div>";
 
@@ -86,5 +92,6 @@ namespace Web.Views
                 }
             }
         }
+        //END BTN REGISTRO DE USUARIOS
     }
 }
