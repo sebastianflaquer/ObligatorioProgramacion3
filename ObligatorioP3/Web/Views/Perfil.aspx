@@ -53,8 +53,7 @@
                 <label for="exampleInputEmail1">Apellido</label>
                 <asp:TextBox ID="ProfileApellido" CssClass="form-control" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileApellido" CssClass="text-danger" ErrorMessage="El campo de Apellido es obligatorio." />
-            </div>
-            
+            </div>            
         </div>
 
         <div class="col-md-6">
