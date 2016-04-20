@@ -1,0 +1,7 @@
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Pesistencia\obj\Debug\Pesistencia.csprojResolveAssemblyReference.cache
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Pesistencia\bin\Debug\Pesistencia.dll
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Pesistencia\bin\Debug\Pesistencia.pdb
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Pesistencia\bin\Debug\Dominio.dll
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Pesistencia\bin\Debug\Dominio.pdb
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Pesistencia\obj\Debug\Pesistencia.dll
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Pesistencia\obj\Debug\Pesistencia.pdb

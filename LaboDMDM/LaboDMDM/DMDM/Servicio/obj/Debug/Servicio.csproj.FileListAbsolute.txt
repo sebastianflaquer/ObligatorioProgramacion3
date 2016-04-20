@@ -1,0 +1,9 @@
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Servicio\bin\Debug\Servicio.dll
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Servicio\bin\Debug\Servicio.pdb
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Servicio\obj\Debug\Servicio.csprojResolveAssemblyReference.cache
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Servicio\obj\Debug\Servicio.dll
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Servicio\obj\Debug\Servicio.pdb
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Servicio\bin\Debug\Dominio.dll
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Servicio\bin\Debug\Pesistencia.dll
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Servicio\bin\Debug\Dominio.pdb
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Servicio\bin\Debug\Pesistencia.pdb
