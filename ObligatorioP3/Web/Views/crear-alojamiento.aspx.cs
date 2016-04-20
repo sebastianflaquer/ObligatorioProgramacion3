@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BienvenidosUY;
 
 namespace Web.Views
 {
@@ -11,7 +12,50 @@ namespace Web.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Si es PostBack
+            if (IsPostBack)
+            {
 
+            }
+            else {
+
+            }
         }
+
+        protected void AgregarServicio_Click(object sender, EventArgs e)
+        {
+            //VALIDA LA PAGINA
+            Page.Validate();
+
+            //SI ES VALIDA EJECUTA LA FUNCION
+            if (Page.IsValid)
+            {
+                //variables
+                bool afectadas;
+
+                //Crea un nuevo objeto Servicio y le carga los campos del formulario
+                Servicio serv = new Servicio();
+                serv.nombre = this.NomServicio.Text;
+                serv.descripcion = this.DscServicio.Text;
+
+                //Carga en afectadas el retorno de Guardar();
+                afectadas = serv.Guardar();
+                if (afectadas)
+                {
+                    //LIMPIAR EL FORMULARIO
+                    Categoria.Text = "";
+                    TipoHabitacion.Text = "";
+                    BanioP.Checked = false;
+                    CantHuespedes.Text = "";
+                    CiudadAloj.Text = "";
+                    BarrioAloj.Text = "";
+                    NomServicio.Text = "";
+                    DscServicio.Text = "";
+                }
+                }
+
+
+
+            }
     }
 }
