@@ -1,0 +1,5 @@
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Dominio\bin\Debug\Dominio.dll
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Dominio\bin\Debug\Dominio.pdb
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Dominio\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Dominio\obj\Debug\Dominio.dll
+e:\Users\plinio\documents\visual studio 2015\Projects\DMDM\Dominio\obj\Debug\Dominio.pdb
