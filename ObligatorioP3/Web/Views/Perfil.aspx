@@ -33,10 +33,13 @@
                             <asp:Image ID="PerfilImagen" CssClass="img-circle" Width="200px" Height="200px" runat="server" />
                         </div>
                     </div>
-
+                    
                     <div class="form-group">
-                        <label for="exampleInputFile">Imagen</label>
-                        <input type="file" id="exampleInputFile">
+                        <asp:Label runat="server" AssociatedControlID="ProfileFoto" CssClass="col-md-2 control-label">Foto</asp:Label>
+                        <div class="col-md-10">
+                            <asp:FileUpload ID="ProfileFoto" runat="server" />                    
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileFoto" CssClass="text-danger" ErrorMessage="Debe subir una foto de perfil." />
+                        </div>
                     </div>
 
                 </div>

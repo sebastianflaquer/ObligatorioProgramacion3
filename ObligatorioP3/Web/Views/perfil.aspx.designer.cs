@@ -40,6 +40,15 @@ namespace Web.Views {
         protected global::System.Web.UI.WebControls.Image PerfilImagen;
         
         /// <summary>
+        /// ProfileFoto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload ProfileFoto;
+        
+        /// <summary>
         /// ProfileNombre control.
         /// </summary>
         /// <remarks>

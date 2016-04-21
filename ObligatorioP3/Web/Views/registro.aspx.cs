@@ -53,7 +53,6 @@ namespace Web.Views
                     string nombrefoto = reg.mail + '-' + this.UsuarioFoto.FileName.Replace(" ", "_");
 
                     //Crea un nuevo objeto Registrado y le carga los campos del formulario
-                    //Registrado reg = new Registrado();
                     reg.nombre = this.UsuarioNombre.Text;
                     reg.apellido = this.UsuarioApellido.Text;
                     reg.mail = this.UsuarioMail.Text;

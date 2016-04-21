@@ -57,13 +57,17 @@ namespace Web.Views
 
             if (Page.IsValid)
             {
-
                 Registrado reg = new Registrado();
+
+                string ruta = Server.MapPath("~/imagenes/perfil/");
+                string nombrefoto = reg.mail + '-' + this.ProfileFoto.FileName.Replace(" ", "_");
+
                 reg.id = Convert.ToInt32(Session["id"]);
                 reg.mail = Session["mail"].ToString();
                 reg.nombre = this.ProfileNombre.Text;
                 reg.apellido = this.ProfileApellido.Text;
                 reg.direccion = this.ProfileDireccion.Text;
+                reg.foto = nombrefoto;
                 reg.celular = this.ProfileCelular.Text;
                 reg.descripcion = this.ProfileDescripcion.Text;
 
@@ -72,6 +76,25 @@ namespace Web.Views
 
                 if (modifico)//si modifico
                 {
+                    //Guarda la foto en el servidor
+                    if (this.ProfileFoto.HasFile)
+                    {
+                        // Se separa la extensión del nombre del archivo para validarla
+                        string[] nomExt = this.ProfileFoto.FileName.Split('.');
+                        string tipoFile = nomExt[nomExt.Length - 1];
+                        //Revisamos si el archivo cuenta con una extension valida, pudiendo agregar o quitar.
+                        if ((tipoFile == "jpg") || (tipoFile == "png"))
+                        {
+                            this.ProfileFoto.SaveAs(Server.MapPath("~/imagenes/perfil/") + nombrefoto);
+                        }
+                    }
+                    else
+                    {
+                        //Si pudo guardar el usuario
+                        this.errorField.Visible = true;
+                        this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar guardar la imagen</span></div>";
+                    }
+
                     //Se pudieron modificar los datos
                     this.errorField.Visible = true;
                     this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>Los datos se modificaron correctamente.</span></div>";

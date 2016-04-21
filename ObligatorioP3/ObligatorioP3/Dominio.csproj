@@ -50,7 +50,9 @@
     <Compile Include="Registrado.cs" />
     <Compile Include="Reserva.cs" />
     <Compile Include="Servicio.cs" />
-    <Compile Include="System\Drawing\Bitmap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="System\Drawing\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
