@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BienvenidosUY;
 
 namespace Web.Views
 {
@@ -13,5 +14,38 @@ namespace Web.Views
         {
 
         }
+
+        protected void CrearYagregarRango_Click(object sender, EventArgs e)
+        {
+            //VALIDA LA PAGINA
+            Page.Validate();
+
+            //SI ES VALIDA EJECUTA LA FUNCION
+            if (Page.IsValid)
+            {
+                //variables
+                bool afectadas;
+
+                //Crea un nuevo objeto RangoFechas y le carga los campos del formulario
+                RangoFechas rangoF = new RangoFechas();
+                string txtDesde = this.fchaIniAnuncio.Text;
+                string txtHasta = this.fchaFinAnuncio.Text;
+                rangoF.fechaInicio = DateTime.Parse(txtDesde);
+                rangoF.fechaFin = DateTime.Parse(txtHasta);
+                rangoF.precio = decimal.Parse(this.PrecioRango.Text);
+
+                //Carga en afectadas el retorno de Guardar();
+                afectadas = rangoF.Guardar();
+                if (afectadas)
+                {
+                    //LIMPIAR 
+                    fchaIniAnuncio.Text = "";
+                    fchaFinAnuncio.Text = "";
+                    PrecioRango.Text = "";
+                }
+            }
+        }
+
+
     }
 }
