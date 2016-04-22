@@ -1,14 +1,6 @@
 ﻿<%@ Page Title="Mi Perfil" Language="C#" MasterPageFile="~/site.Master" AutoEventWireup="true" CodeBehind="perfil.aspx.cs" Inherits="Web.Views.Perfil" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-    <div class="row">
-        <div class="col-md-12">
-            <h2><%: Title %>.</h2>            
-            <asp:Button runat="server" OnClick="btnActualizarPerfil" Text="Actualizar" CssClass="btn btn-primary pull-right" />
-        </div>
-    </div>
-
-    <br />
     <br />
 
     <div class="row-fluid" id="errorField" runat="server" visible=false>
@@ -21,6 +13,13 @@
     </div>
 
     <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2><%: Title %>.</h2>            
+            <asp:Button runat="server" OnClick="btnActualizarPerfil" Text="Actualizar" CssClass="btn btn-primary pull-right" />
+        </div>
+    </div>
 
     <div class="row">
 
