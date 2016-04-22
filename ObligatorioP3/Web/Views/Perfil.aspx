@@ -23,29 +23,27 @@
     <br />
 
     <div class="row">
-        <div class="col-md-6">
-                
-            <div class="row">
-                <div class="col-md-4">
 
-                    <div class="form-group">
-                        <div class="img">
-                            <asp:Image ID="PerfilImagen" CssClass="img-circle" Width="200px" Height="200px" runat="server" />
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="ProfileFoto" CssClass="col-md-2 control-label">Foto</asp:Label>
-                        <div class="col-md-10">
-                            <asp:FileUpload ID="ProfileFoto" runat="server" />                    
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileFoto" CssClass="text-danger" ErrorMessage="Debe subir una foto de perfil." />
-                        </div>
-                    </div>
+        <div class="col-md-4">
 
+            <div class="form-group">
+                <div class="img">
+                    <asp:Label runat="server" AssociatedControlID="ProfileFoto" CssClass="col-md-2 control-label">Foto</asp:Label>
+                    <asp:Image ID="PerfilImagen" CssClass="img-circle" Width="200px" Height="200px" runat="server" />
                 </div>
-               
+            </div>
+                    
+            <div class="form-group">
+                <div class="col-md-10">
+                    <asp:FileUpload ID="ProfileFoto" runat="server" />                    
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileFoto" CssClass="text-danger" ErrorMessage="Debe subir una foto de perfil." />
+                </div>
             </div>
 
+        </div>
+
+        <div class="col-md-4">
+            
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="ProfileNombre" CssClass="control-label">Nombre</asp:Label>
                 <asp:TextBox ID="ProfileNombre" CssClass="form-control" runat="server"/>
@@ -57,13 +55,17 @@
                 <asp:TextBox ID="ProfileApellido" CssClass="form-control" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileApellido" CssClass="text-danger" ErrorMessage="El campo de Apellido es obligatorio." />
             </div>            
-        </div>
 
-        <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleInputEmail1">E-mail</label>
                 <asp:TextBox ID="ProfileMail" ReadOnly="true" CssClass="disabled form-control" runat="server" />
             </div>
+
+
+        </div>
+
+        <div class="col-md-4">
+            
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Direccion</label>

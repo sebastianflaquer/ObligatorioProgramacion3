@@ -58,6 +58,8 @@ namespace Web.Views
             if (Page.IsValid)
             {
                 Registrado reg = new Registrado();
+                reg.mail = Session["mail"].ToString();
+                reg.Leer();
 
                 string ruta = Server.MapPath("~/imagenes/perfil/");
                 string nombrefoto = reg.mail + '-' + this.ProfileFoto.FileName.Replace(" ", "_");
@@ -81,7 +83,7 @@ namespace Web.Views
                     {
                         // Se separa la extensión del nombre del archivo para validarla
                         string[] nomExt = this.ProfileFoto.FileName.Split('.');
-                        string tipoFile = nomExt[nomExt.Length - 1];
+                        string tipoFile = nomExt[nomExt.Length - 1].ToLower();
                         //Revisamos si el archivo cuenta con una extension valida, pudiendo agregar o quitar.
                         if ((tipoFile == "jpg") || (tipoFile == "png"))
                         {

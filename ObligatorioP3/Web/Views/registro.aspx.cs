@@ -86,9 +86,6 @@ namespace Web.Views
                             this.errorField.Visible = true;
                             this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar guardar la imagen</span></div>";
                         }
-                    }
-                    else
-                    {
 
                         //Si pudo guardar el usuario
                         this.errorField.Visible = true;
@@ -104,10 +101,15 @@ namespace Web.Views
                         //UsuarioFoto.FileContent = null;
                         UsuarioDescripcion.Text = "";
                         UsuarioDireccion.Text = "";
-                        UsuarioNombre.Text = "";
-                        UsuarioNombre.Text = "";
-                        UsuarioNombre.Text = "";
 
+                    }
+                    else
+                    {
+
+                        //Si NO pudo guardar el usuario
+                        this.errorField.Visible = true;
+                        this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>El registro no se pudo completar.</span></div>";
+                        
                     }
 
                 }

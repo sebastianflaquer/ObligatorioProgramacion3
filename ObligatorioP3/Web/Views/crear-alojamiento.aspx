@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Crear Alojamiento" Language="C#" MasterPageFile="~/site.Master" AutoEventWireup="true" CodeBehind="crear-alojamiento.aspx.cs" Inherits="Web.Views.crear_alojamiento" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- <h2><%: Title %>.</h2> 
+ <h2><%: Title %></h2> 
      <br />
     <br />
     <div class="row-fluid" id="errorField" runat="server" visible=false>
@@ -15,11 +15,17 @@
     <br />
     <div class="row">
         <div class="col-md-8">
-                
+            
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="Categoria" CssClass="control-label">Categoría:</asp:Label>
-                <asp:TextBox ID="Categoria" CssClass="form-control" runat="server"/>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Categoria" CssClass="text-danger" ErrorMessage="El campo Categoría es obligatorio." />
+                <asp:Label runat="server" AssociatedControlID="NombreAlojamiento" CssClass="control-label">Nombre:</asp:Label>
+                <asp:TextBox ID="NombreAlojamiento" CssClass="form-control" runat="server"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="NombreAlojamiento" CssClass="text-danger" ErrorMessage="El campo Categoría es obligatorio." />
+            </div>
+
+            <div class="form-group">
+                <asp:Label runat="server" AssociatedControlID="CategoriaDropD" CssClass="control-label">Categoría:</asp:Label>
+                <asp:DropDownList ID="CategoriaDropD" CssClass="form-control" runat="server"></asp:DropDownList>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="CategoriaDropD" CssClass="text-danger" ErrorMessage="El campo Categoría es obligatorio." />
             </div>
 
             <div class="form-group">
@@ -30,6 +36,7 @@
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="BanioP" CssClass="control-label">Baño Privado:</asp:Label>
                 <input id="BanioP" type="checkbox" CssClass="form-control" runat="server"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="TipoHabitacion" CssClass="text-danger" ErrorMessage="El campo Tipo Habitación es obligatorio." />
             </div>   
             <br />
             <div class="form-group">

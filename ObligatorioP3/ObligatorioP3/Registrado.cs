@@ -231,6 +231,7 @@ namespace BienvenidosUY
                     cmd.Parameters.Add(new SqlParameter("@apellido", this.apellido));
                     cmd.Parameters.Add(new SqlParameter("@mail", this.mail));
                     cmd.Parameters.Add(new SqlParameter("@direccion", this.direccion));
+                    cmd.Parameters.Add(new SqlParameter("@foto", this.foto));
                     cmd.Parameters.Add(new SqlParameter("@celular", this.celular));
                     cmd.Parameters.Add(new SqlParameter("@descripcion", this.descripcion));
                     cn.Open();

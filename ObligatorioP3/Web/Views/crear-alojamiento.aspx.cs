@@ -18,9 +18,29 @@ namespace Web.Views
 
             }
             else {
-
+                CargarFormularioAlojamiento();
             }
         }
+
+
+        protected void CargarFormularioAlojamiento(){
+
+            Categoria Cat = new Categoria();
+            List<Categoria> L1 = new List<Categoria>();
+            L1 = Cat.CargarCategorias();
+
+            CategoriaDropD.Items.Add("Item 1");
+            CategoriaDropD.Items.Add("Item 2");
+            CategoriaDropD.Items.Add("Item 3");
+            CategoriaDropD.Items.Add("Item 4");
+            CategoriaDropD.Items.Add("Item 5");
+            CategoriaDropD.Items.Add("Item 6");
+            CategoriaDropD.Items.Add("Item 7");
+            CategoriaDropD.Items.Add("Item 8");
+        }
+
+        
+
 
         protected void AgregarServicio_Click(object sender, EventArgs e)
         {
@@ -43,7 +63,7 @@ namespace Web.Views
                 if (afectadas)
                 {
                     //LIMPIAR EL FORMULARIO
-                    Categoria.Text = "";
+                    //Categoria.Text = "";
                     TipoHabitacion.Text = "";
                     BanioP.Checked = false;
                     CantHuespedes.Text = "";

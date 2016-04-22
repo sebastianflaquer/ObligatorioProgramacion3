@@ -9,6 +9,7 @@ namespace BienvenidosUY
     public class Alojamiento
     {
         public int id { get; set; }
+        public string nombre { get; set; }
         public Categoria categoria { get; set; }
         public string tipoHabitacion { get; set; }
         public bool banioPrivado { get; set; }
@@ -18,4 +19,5 @@ namespace BienvenidosUY
         public List<Servicio> servicios { get; set; }
         public int calificacion { get; set; }
     }
+
 }
