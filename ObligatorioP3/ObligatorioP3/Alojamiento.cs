@@ -14,7 +14,7 @@ namespace BienvenidosUY
         public string tipoHabitacion { get; set; }
         public bool banioPrivado { get; set; }
         public int cantHuespedes { get; set; }
-        public string ciudad { get; set; }
+        public Ciudad ciudad { get; set; }
         public string barrio { get; set; }
         public List<Servicio> servicios { get; set; }
         public int calificacion { get; set; }

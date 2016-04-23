@@ -49,22 +49,22 @@ namespace Web.Views {
         protected global::System.Web.UI.WebControls.DropDownList CategoriaDropD;
         
         /// <summary>
-        /// Control TipoHabitacion.
+        /// Control TipoHabitacionDropD.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TipoHabitacion;
+        protected global::System.Web.UI.WebControls.DropDownList TipoHabitacionDropD;
         
         /// <summary>
-        /// Control BanioP.
+        /// Control TipoBanioDropD.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox BanioP;
+        protected global::System.Web.UI.WebControls.DropDownList TipoBanioDropD;
         
         /// <summary>
         /// Control CantHuespedes.
@@ -76,13 +76,13 @@ namespace Web.Views {
         protected global::System.Web.UI.WebControls.TextBox CantHuespedes;
         
         /// <summary>
-        /// Control CiudadAloj.
+        /// Control CiudadDropD.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CiudadAloj;
+        protected global::System.Web.UI.WebControls.DropDownList CiudadDropD;
         
         /// <summary>
         /// Control BarrioAloj.
@@ -94,6 +94,24 @@ namespace Web.Views {
         protected global::System.Web.UI.WebControls.TextBox BarrioAloj;
         
         /// <summary>
+        /// Control ServiciosListBox.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ServiciosListBox;
+        
+        /// <summary>
+        /// Control lblNomServ.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNomServ;
+        
+        /// <summary>
         /// Control NomServicio.
         /// </summary>
         /// <remarks>
@@ -103,6 +121,15 @@ namespace Web.Views {
         protected global::System.Web.UI.WebControls.TextBox NomServicio;
         
         /// <summary>
+        /// Control lblDscServ.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDscServ;
+        
+        /// <summary>
         /// Control DscServicio.
         /// </summary>
         /// <remarks>
@@ -110,5 +137,14 @@ namespace Web.Views {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DscServicio;
+        
+        /// <summary>
+        /// Control btnAgrServ.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgrServ;
     }
 }
