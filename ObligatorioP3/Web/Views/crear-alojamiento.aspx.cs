@@ -78,42 +78,41 @@ namespace Web.Views
         //CREA EL NUEVO ALOJAMIENTO
         protected void btnCrearNuevoAlojamiento(object sender, EventArgs e)
         {
-            bool afectadas = false;
+            //bool afectadas = false;
 
             Alojamiento Aloj = new Alojamiento();
             Aloj.nombre = NombreAlojamiento.Text;
 
             Categoria cat = new Categoria();
             cat.nombre = CategoriaDropD.SelectedValue;
+            
             //CARGA LOS DATOS DE LA CATEGORIA - FALTA COMPLETAR
             cat.Leer();
             Aloj.categoria = cat;
-
+            
+            //TIPO HABITACION - se fiija si es compartido o no
             Aloj.tipoHabitacion = TipoHabitacionDropD.SelectedValue;
-
-            //se fiija si es compartido o no
-            if(TipoHabitacionDropD.SelectedValue == "Compartido"){
+            if (TipoHabitacionDropD.SelectedValue == "Compartido"){
                 Aloj.banioPrivado = false;
             }
             else{
                 Aloj.banioPrivado = true;
             }
 
+            // CANTIDAD HUESPEDES
             Aloj.cantHuespedes = int.Parse(CantHuespedes.Text);
-
+            
+            //CIUDAD - LEE LA CIUDAD SELECCIONADA
             Ciudad ciu = new Ciudad();
             ciu.nombre = CiudadDropD.SelectedValue;
             ciu.Leer();
-
             Aloj.ciudad = ciu;
 
+            //BARRIO - LEE EL BARRIO SELECCIONADO
             Aloj.barrio = BarrioAloj.Text;
-
             Aloj.servicios = new List<Servicio>();
-                //ServiciosListBox.SelectedItems;
-
+            //ServiciosListBox.SelectedItems;
             //afectadas = Aloj.Guardar();
-
         }
 
         //MUESTRA LOS CAMPOS
