@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BienvenidosUY
 {
-    public class Anuncio
+    public class Anuncio : Persistente
     {
         public int id { get; set; }
         public string nombre { get; set; }
@@ -18,5 +18,34 @@ namespace BienvenidosUY
         public decimal precioBase { get; set; }
         public List<RangoFechas> rangosFechas { get; set; }
 
+        //LEER
+        public override bool Leer()
+        {
+            throw new NotImplementedException();
+        }
+
+        //GUARDAR
+        public override bool Guardar()
+        {
+            throw new NotImplementedException();
+        }
+
+        //TRAER TODO
+        public override IEnumerable<object> TraerTodo()
+        {
+            throw new NotImplementedException();
+        }
+
+        //MODIFICAR
+        public override bool Modificar()
+        {
+            throw new NotImplementedException();
+        }
+
+        //ELIMINAR
+        public override bool Eliminar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

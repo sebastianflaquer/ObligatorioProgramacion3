@@ -14,9 +14,7 @@ namespace BienvenidosUY
         public int id { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
-
-
-
+        
         //Carga las lista de Servicios desde la DB
         public List<Servicio> CargarServicios()
         {
@@ -65,8 +63,7 @@ namespace BienvenidosUY
             return L1;
 
         }
-
-
+        
         //LEER 
         public override bool Leer()
         {
@@ -112,8 +109,7 @@ namespace BienvenidosUY
             return retorno;
 
         }
-
-
+        
         //GUARDAR
         public override bool Guardar()
         {
@@ -187,8 +183,7 @@ namespace BienvenidosUY
             //}
             //
         }
-
-
+        
         //TRAER TODO
         public override IEnumerable<object> TraerTodo()
         {
@@ -206,8 +201,6 @@ namespace BienvenidosUY
         {
             throw new NotImplementedException();
         }
-
-
 
     }
 }
