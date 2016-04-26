@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="Mi Perfil" Language="C#" MasterPageFile="~/site.Master" AutoEventWireup="true" CodeBehind="perfil.aspx.cs" Inherits="Web.Views.Perfil" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-    <br />
-
     <div class="row-fluid" id="errorField" runat="server" visible=false>
         <div class="span12" ID="lblErrorMsj" runat="server">
             <div class="alert alert-error" >
