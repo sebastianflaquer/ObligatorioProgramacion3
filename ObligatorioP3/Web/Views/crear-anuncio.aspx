@@ -22,9 +22,9 @@
             </div>
 
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="ElegirAloj" CssClass="control-label">Elegir Alojamiento:</asp:Label>
-                <asp:TextBox ID="ElegirAloj" CssClass="form-control" runat="server"/>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="ElegirAloj" CssClass="text-danger" ErrorMessage="El campo Elegir Alojamiento es obligatorio." />
+                <asp:Label runat="server" AssociatedControlID="ElejAlojDropD" CssClass="control-label">Seleccionar Alojamiento:</asp:Label>
+                <asp:DropDownList ID="ElejAlojDropD" CssClass="form-control" runat="server"></asp:DropDownList>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="ElejAlojDropD" CssClass="text-danger" ErrorMessage="El campo Categoría es obligatorio." />
             </div>
             
             <div class="form-group">

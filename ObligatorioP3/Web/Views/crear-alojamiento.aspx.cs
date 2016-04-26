@@ -64,7 +64,7 @@ namespace Web.Views
             }
             #endregion
 
-            //Carga las ciudades
+            //Carga los servicios
             #region Servicios
             Servicio serv = new Servicio();
             this.ServiciosListBox.DataSource = serv.CargarServicios();

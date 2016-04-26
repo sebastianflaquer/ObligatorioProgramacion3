@@ -67,6 +67,54 @@ namespace BienvenidosUY
         }
 
 
+        public List<Servicio> CargarServiciosPorAlojamiento(int idAlojamiento)
+        {
+            List<Servicio> L1 = new List<Servicio>();
+
+            //creamos la conexion
+            SqlConnection cn = new SqlConnection();
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "CargarServiciosPorAlojamiento";
+            cmd.Parameters.Add(new SqlParameter("@idAlojamiento", idAlojamiento));
+
+            SqlDataReader drResults;
+
+
+            try
+            {
+
+                cmd.Connection = cn;
+                cn.Open();
+                //todo lo que lee queda en drResults 
+                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (drResults.Read())
+                {
+                    Servicio serv = new Servicio();
+                    serv.id = Convert.ToInt32(drResults["id"]);
+                    serv.nombre = drResults["nombre"].ToString();
+                    serv.descripcion = drResults["descripcion"].ToString();
+                    L1.Add(serv);
+
+                }
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
+                //if (drResults != null) drResults.Close();
+            }
+            return L1;
+        }
+
         //LEER 
         public override bool Leer()
         {

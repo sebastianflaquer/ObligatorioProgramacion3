@@ -12,8 +12,33 @@ namespace Web.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Si es PostBack
+            if (IsPostBack)
+            {
 
+            }
+            else {
+                CargarAlojamientosDeUsuario();
+            }
         }
+
+        //CARGA LOS ALOJAMIENTOS DEPENDIENDO EL USUSARIO LOGUEADO
+        protected void CargarAlojamientosDeUsuario()
+        {
+
+            #region alojamientos
+            Alojamiento aloj = new Alojamiento();
+            List<Alojamiento> L1 = new List<Alojamiento>();
+
+            L1 = aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
+
+            //Recorre la lista de categorias y agrega al select
+            for (int i = 0; i < L1.Count; i++)
+            {
+                ElejAlojDropD.Items.Add(L1[i].nombre);
+            }
+        }
+            #endregion
 
         protected void CrearYagregarRango_Click(object sender, EventArgs e)
         {

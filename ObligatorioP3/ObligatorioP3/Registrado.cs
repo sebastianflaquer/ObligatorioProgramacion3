@@ -25,6 +25,7 @@ namespace BienvenidosUY
         public string descripcion { get; set; }
         public List<Anuncio> anuncios { get; set; }
         public List<Reserva> reservas { get; set; }
+        public List<Alojamiento> alojamientos { get; set; }
         //public static object Instancia { get; set; }
 
         #endregion
