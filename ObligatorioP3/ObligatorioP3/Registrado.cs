@@ -19,6 +19,7 @@ namespace BienvenidosUY
         public string apellido { get; set; }
         public string mail { get; set; }
         public string password { get; set; }
+        public string salt { get; set; }
         public string direccion { get; set; }
         public string celular { get; set; }
         public string foto { get; set; }
@@ -72,14 +73,13 @@ namespace BienvenidosUY
                     apellido = drResults["apellido"].ToString();
                     mail = drResults["mail"].ToString();
                     password = drResults["password"].ToString();
+                    salt = password = drResults["salt"].ToString();
                     foto = drResults["foto"].ToString();
                     direccion = drResults["direccion"].ToString();
                     celular = drResults["celular"].ToString();
                     descripcion = drResults["descripcion"].ToString();
-
                     retorno = true;
                 }
-
             }
             catch
             {
@@ -144,6 +144,7 @@ namespace BienvenidosUY
                     cmd.Parameters.Add(new SqlParameter("@apellido", this.apellido));
                     cmd.Parameters.Add(new SqlParameter("@mail", this.mail));
                     cmd.Parameters.Add(new SqlParameter("@password", this.password));
+                    cmd.Parameters.Add(new SqlParameter("@salt", this.salt.ToString()));
                     cmd.Parameters.Add(new SqlParameter("@direccion", this.direccion));
                     cmd.Parameters.Add(new SqlParameter("@celular", this.celular));
                     cmd.Parameters.Add(new SqlParameter("@foto", this.foto));
