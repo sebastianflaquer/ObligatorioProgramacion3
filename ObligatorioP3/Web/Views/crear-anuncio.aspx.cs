@@ -41,27 +41,27 @@ namespace Web.Views
             #endregion
 
         //CREAR ANUNCIO
-        protected void BtnCrearAnuncio(object sender, EventArgs e)
-        {
-            //VALIDA LA PAGINA
-            Page.Validate();
+        //protected void BtnCrearAnuncio(object sender, EventArgs e)
+        //{
+        //    //VALIDA LA PAGINA
+        //    Page.Validate();
 
-            //SI ES VALIDA EJECUTA LA FUNCION
-            if (Page.IsValid)
-            {
-                //creo un objeto anuncio
-                Anuncio anu = new Anuncio();
+        //    //SI ES VALIDA EJECUTA LA FUNCION
+        //    //if (Page.IsValid)
+        //    //{
+        //    //    //creo un objeto anuncio
+        //    //    Anuncio anu = new Anuncio();
 
-                anu.nombre = ;
-                anu.alojamiento = ;
-                anu.descripcion = ;
-                anu.direccion1 = ;
-                anu.direccion2 = ;
-                anu.fotos = ;
-                anu.precioBase = ;
-                anu.rangosFechas = ;
-                anu.guardar();
-            }
+        //    //    //anu.nombre = ;
+        //    //    //anu.alojamiento = ;
+        //    //    //anu.descripcion = ;
+        //    //    //anu.direccion1 = ;
+        //    //    //anu.direccion2 = ;
+        //    //    //anu.fotos = ;
+        //    //    //anu.precioBase = ;
+        //    //    //anu.rangosFechas = ;
+        //    //    //anu.guardar();
+        //    //}
 
         //CREAR Y AGREGAR RANGO FECHAS
         protected void CrearYagregarRango_Click(object sender, EventArgs e)
