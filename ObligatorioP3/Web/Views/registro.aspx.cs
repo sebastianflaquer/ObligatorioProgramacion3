@@ -33,7 +33,6 @@ namespace Web.Views
             //SI ES VALIDA EJECUTA LA FUNCION
             if (Page.IsValid)
             {
-
                 bool esUsuario = false;
 
                 //VALIDA QUE LA PERSONA QUE SE ESTA REGISTRANDO NO ESTE LOGEADA YA
@@ -60,7 +59,7 @@ namespace Web.Views
                     reg.apellido = this.UsuarioApellido.Text;
                     reg.mail = this.UsuarioMail.Text;
                     reg.salt = generarSalPass();
-                    reg.password = generarPasshashSalt(this.UsuarioPassword.Text) + reg.salt;
+                    reg.password = generarPasshashSalt(this.UsuarioPassword.Text, reg.salt);
                     reg.celular = this.UsuarioCelular.Text;
                     reg.foto = nombrefoto;
                     reg.descripcion = this.UsuarioDescripcion.Text;
@@ -71,7 +70,6 @@ namespace Web.Views
 
                     if (afectadas)
                     {
-
                         //Guarda la foto en el servidor
                         if (this.UsuarioFoto.HasFile)
                         {
@@ -112,10 +110,8 @@ namespace Web.Views
                         this.errorField.Visible = true;
                         this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>El registro no se pudo completar.</span></div>";
                      }
-
                 }
             }
-
         }
         // END 
 
@@ -127,9 +123,9 @@ namespace Web.Views
         }
 
         //GENERA EL HASH
-        public string generarPasshashSalt(string passwordIngreso)
+        public string generarPasshashSalt(string passwordIngreso, string salt)
         {
-            string hashresult = FormsAuthentication.HashPasswordForStoringInConfigFile(passwordIngreso, "SHA1");
+            string hashresult = FormsAuthentication.HashPasswordForStoringInConfigFile(passwordIngreso + salt, "SHA1");
             return hashresult;
         }
     }
