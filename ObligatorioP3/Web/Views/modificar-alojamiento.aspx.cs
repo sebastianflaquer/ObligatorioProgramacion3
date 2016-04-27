@@ -30,7 +30,7 @@ namespace Web.Views
             Alojamiento aloj = new Alojamiento();
             List<Alojamiento> L1 = new List<Alojamiento>();
 
-            L1 = aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
+            //L1 = aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
 
             //Recorre la lista de categorias y agrega al select
             for (int i = 0; i < L1.Count; i++)
@@ -83,7 +83,7 @@ namespace Web.Views
             //Carga los servicios
             #region Servicios
             Servicio serv = new Servicio();
-            this.ModServiciosListBox.DataSource = serv.CargarServiciosPorAlojamiento(aloj.id);   //ARREGLAR PARA QUE TOME EL ID
+            //this.ModServiciosListBox.DataSource = serv.CargarServiciosPorAlojamiento(aloj.id);   //ARREGLAR PARA QUE TOME EL ID
             this.ModServiciosListBox.DataValueField = "Nombre";
             //this.ServiciosListBox.DataTextField = "Listado";
             this.ModServiciosListBox.DataBind();

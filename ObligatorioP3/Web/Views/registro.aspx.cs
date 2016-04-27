@@ -53,13 +53,14 @@ namespace Web.Views
                     bool afectadas;
                     string ruta = Server.MapPath("~/imagenes/perfil/");
                     string nombrefoto = reg.mail + '-' + this.UsuarioFoto.FileName.Replace(" ", "_");
+                    string pimienta = "p1m13n7a";
 
                     //Crea un nuevo objeto Registrado y le carga los campos del formulario
                     reg.nombre = this.UsuarioNombre.Text;
                     reg.apellido = this.UsuarioApellido.Text;
                     reg.mail = this.UsuarioMail.Text;
                     reg.salt = generarSalPass();
-                    reg.password = generarPasshashSalt(this.UsuarioPassword.Text, reg.salt);
+                    reg.password = generarPasshashSalt(this.UsuarioPassword.Text, reg.salt, pimienta);
                     reg.celular = this.UsuarioCelular.Text;
                     reg.foto = nombrefoto;
                     reg.descripcion = this.UsuarioDescripcion.Text;
@@ -123,9 +124,9 @@ namespace Web.Views
         }
 
         //GENERA EL HASH
-        public string generarPasshashSalt(string passwordIngreso, string salt)
+        public string generarPasshashSalt(string passwordIngreso, string salt, string pimienta)
         {
-            string hashresult = FormsAuthentication.HashPasswordForStoringInConfigFile(passwordIngreso + salt, "SHA1");
+            string hashresult = FormsAuthentication.HashPasswordForStoringInConfigFile(passwordIngreso + salt + pimienta, "SHA1");
             return hashresult;
         }
     }

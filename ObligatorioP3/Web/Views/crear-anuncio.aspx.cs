@@ -30,12 +30,12 @@ namespace Web.Views
             Alojamiento aloj = new Alojamiento();
             List<Alojamiento> L1 = new List<Alojamiento>();
 
-            L1 = aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
+            //L1 = aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
 
             //Recorre la lista de categorias y agrega al select
             for (int i = 0; i < L1.Count; i++)
             {
-                ElejAlojDropD.Items.Add(L1[i].nombre);
+                //ElejAlojDropD.Items.Add(L1[i].nombre);
             }
         }
             #endregion

@@ -41,10 +41,11 @@ namespace Web.Views
 
             if (existe)
             {
-                string retornoPass = reg.ComprobarPass();
+                string retornoPass = reg.ComprobarPass().ToLower();
                 string password = this.TxtPassword.Text;
-                string salt = "10";
-                string passConHash = pasarAHash(password).ToLower()+salt;
+                string salt = reg.salt;
+                string pimienta = "p1m13n7a";
+                string passConHash = pasarAHash(password + salt + pimienta).ToLower();
 
                 //string passHash = password + salt;
 
