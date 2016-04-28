@@ -30,7 +30,7 @@ namespace Web.Views
             Alojamiento aloj = new Alojamiento();
             List<Alojamiento> L1 = new List<Alojamiento>();
 
-            //L1 = aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
+            L1 = aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
 
             //Recorre la lista de categorias y agrega al select
             for (int i = 0; i < L1.Count; i++)
@@ -42,6 +42,7 @@ namespace Web.Views
 
         protected void MostrarFormAModificar_Click(object sender, EventArgs e)
         {
+            #region MostrarCampos
             this.lblModAlojamiento.Visible = true;
             this.NombreModAlojamiento.Visible = true;
             this.lblModCat.Visible = true;
@@ -59,6 +60,7 @@ namespace Web.Views
             this.ModServiciosListBox.Visible = true;
             this.btnActAloj.Visible = true;
             this.lblModServ.Visible = true;
+            #endregion
 
             cargarAlojamiento();
 
@@ -68,24 +70,24 @@ namespace Web.Views
         private void cargarAlojamiento()
         {
             Alojamiento aloj = new Alojamiento();
-            aloj.nombre = this.ElejAlojamientoDropD.SelectedValue;    // TIENE QUE AGARRAR EL ID!!!!!
-            bool existe = aloj.Leer();                                //IMPLEMENTAR LEER
+            aloj.nombre = this.ElejAlojamientoDropD.SelectedValue;    
+            bool existe = aloj.Leer();                                
 
             //Cargamos el form con los datos del alojamiento
             this.NombreModAlojamiento.Text = aloj.nombre;
-            this.CategoriaDropD.Items.Add(aloj.categoria.ToString());
-            this.TipoHabitacionDropD.Items.Add(aloj.tipoHabitacion.ToString());
+            this.CategoriaDropD.Items.Add(aloj.categoria.nombre);
+            this.TipoHabitacionDropD.Items.Add(aloj.tipoHabitacion);
             this.TipoBanioDropD.Items.Add(aloj.banioPrivado.ToString());
             this.CantHuespedes.Text = aloj.cantHuespedes.ToString();
-            this.CiudadDropD.Items.Add(aloj.ciudad.ToString());
+            this.CiudadDropD.Items.Add(aloj.ciudad.nombre);
             this.BarrioAloj.Text = aloj.barrio;
 
             //Carga los servicios
             #region Servicios
             Servicio serv = new Servicio();
-            //this.ModServiciosListBox.DataSource = serv.CargarServiciosPorAlojamiento(aloj.id);   //ARREGLAR PARA QUE TOME EL ID
-            this.ModServiciosListBox.DataValueField = "Nombre";
-            //this.ServiciosListBox.DataTextField = "Listado";
+            this.ModServiciosListBox.DataSource = serv.CargarServiciosPorAlojamiento(aloj.id);   //ARREGLAR PARA QUE TOME EL ID
+            this.ModServiciosListBox.DataValueField = "Id";
+            this.ModServiciosListBox.DataTextField = "Nombre";
             this.ModServiciosListBox.DataBind();
             #endregion
 
