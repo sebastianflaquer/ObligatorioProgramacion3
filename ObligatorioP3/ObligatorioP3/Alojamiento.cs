@@ -128,6 +128,51 @@ namespace BienvenidosUY
         {
             throw new NotImplementedException();
         }
+
+        public List<Alojamiento> CargarAlojamientosPorUsuario(string mail)
+        {
+            List<Alojamiento> lista = new List<Alojamiento>();
+
+            try
+            {
+                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+                cn.ConnectionString = cadenaConexion;
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "AlojamientosPorUsuario";
+                cmd.Parameters.Add(new SqlParameter("@mail", mail));
+
+                SqlDataReader drResults;
+
+                cmd.Connection = cn;
+                cn.Open();
+                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                //RECORRER LA TABLA OBTENIDA DE LA CONSULTA, IR AGREGANDO LOS VALORES A LA LIST                
+                while (drResults.Read())
+                {
+                    Alojamiento aloj = new Alojamiento();
+                    aloj.id = Convert.ToInt32(drResults["Id"]);
+                    aloj.nombre = Convert.ToString(drResults["Nombre"]);
+                    lista.Add(aloj);
+                }
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                //if (con != null && con.State == ConnectionState.Open) con.Close();
+                //if (reader != null) reader.Close();
+            }
+
+            return lista;
+        }
+
     }
 
 }

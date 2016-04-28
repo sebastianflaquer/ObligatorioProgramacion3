@@ -21,12 +21,12 @@
                 <asp:TextBox ID="NombreAnuncio" CssClass="form-control" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="NombreAnuncio" CssClass="text-danger" ErrorMessage="El campo Nombre es obligatorio." />
             </div>
-
+            
             <!-- ELEGIR ALOJAMIENTO -->
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="ElejAlojDropD" CssClass="control-label">Seleccionar Alojamiento:</asp:Label>
-                <asp:DropDownList ID="ElejAlojDropD" CssClass="form-control" runat="server"></asp:DropDownList>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="ElejAlojDropD" CssClass="text-danger" ErrorMessage="El campo Categoría es obligatorio." />
+                <asp:Label runat="server" AssociatedControlID="DropDElegirAloj" CssClass="control-label">Seleccionar Alojamiento:</asp:Label>
+                <asp:DropDownList ID="DropDElegirAloj" CssClass="form-control" runat="server" DataTextField="Nombre" DataValueField="Id"></asp:DropDownList>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="DropDElegirAloj" CssClass="text-danger" ErrorMessage="El campo Categoría es obligatorio." />
             </div>
             
             <!-- DESCRIPCION -->
@@ -62,7 +62,7 @@
             <!-- PRECIO BASE -->
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="PrecioBaseAnuncio" CssClass="control-label">Precio Base:</asp:Label>
-                <asp:TextBox ID="PrecioBaseAnuncio" CssClass="form-control" runat="server"/>
+                <asp:TextBox ID="PrecioBaseAnuncio" CssClass="form-control" TextMode="Number" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioBaseAnuncio" CssClass="text-danger" ErrorMessage="El campo Precio Base es obligatorio." />
             </div>
             
@@ -88,20 +88,20 @@
             <!-- PRECIO -->
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="PrecioRango" CssClass="control-label">Precio:</asp:Label>
-                <asp:TextBox ID="PrecioRango" CssClass="form-control" runat="server"/>
+                <asp:TextBox ID="PrecioRango" CssClass="form-control" TextMode="Number" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioRango" CssClass="text-danger" ErrorMessage="El campo Precio del Rango es obligatorio." />
             </div>
             
             <!-- CREAR Y AGREGAR RANGO -->
             <div>
-                <asp:Button runat="server" Text="Crear Rango" CssClass="btn btn-primary pull-right" OnClick="CrearYagregarRango_Click" />
+                <asp:Button runat="server" Text="Agregar Rango" CssClass="btn btn-primary pull-right" OnClick="CrearYagregarRango_Click" />
             </div>
             
             <br />
             <br />
             
             <div>
-                <asp:Button runat="server" Text="Confirmar" CssClass="btn btn-primary pull-right" />
+                <asp:Button runat="server" Text="Confirmar" CssClass="btn btn-primary pull-right" OnClick="ConfAnuncio_Click" />
             </div>
         </div>
 
