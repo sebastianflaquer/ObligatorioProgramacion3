@@ -74,12 +74,16 @@
 
 
             <!-- SERVICIOS -->
+            <asp:Label runat="server" CssClass="text-success" ID="msjIncServ"></asp:Label>
             <div style="background-color:#808080; border:1px solid #808080; padding:15px;">
                 <div class="form-group">
                     <h4>Servicios</h4>      
                     <p>Seleccione todo los servicios que tenga el alojamiento</p>
-                    <asp:Button runat="server" Text="Crear Nuevo" CssClass="btn btn-primary pull-right" />
                     <asp:ListBox ID="ServiciosListBox" runat="server" SelectionMode="Multiple" Height="81px" Width="100%"></asp:ListBox>
+
+                    <asp:Button runat="server" Text="Agregar" CssClass="btn btn-primary pull-right" OnClick="incluirServicio_Click" />
+                    <br />
+                    <asp:Button runat="server" Text="Crear Nuevo" CssClass="btn btn-primary pull-right" />
                 </div>
 
                 <div id="agregarservicios">

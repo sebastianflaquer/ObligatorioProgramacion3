@@ -85,7 +85,7 @@ namespace Web.Views
                         }
                         else
                         {
-                            //Si pudo guardar el usuario
+                            //NO pudo guardar el usuario
                             this.errorField.Visible = true;
                             this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar guardar la imagen</span></div>";
                         }
