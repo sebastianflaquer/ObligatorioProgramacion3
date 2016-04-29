@@ -17,10 +17,8 @@ namespace Web.Views
         {
             //Si es PostBack
             if(IsPostBack){
-                
             }
             else {
-               
             }
         }
 
@@ -118,6 +116,7 @@ namespace Web.Views
 
         //GENERA LA SAL
         public string generarSalPass(){
+            //crea un obketo random y setea el numero del resultado.
             Random r = new Random();
             string retorno = r.Next().ToString();
             return retorno;
@@ -126,104 +125,10 @@ namespace Web.Views
         //GENERA EL HASH
         public string generarPasshashSalt(string passwordIngreso, string salt, string pimienta)
         {
+            //hace el Hash de el texto que se le pasa
             string hashresult = FormsAuthentication.HashPasswordForStoringInConfigFile(passwordIngreso + salt + pimienta, "SHA1");
             return hashresult;
         }
-    }
-    
-    //public enum Supported_HA {
-    //    SHA256, SHA384, SHA512
-    //}
 
-    #region estaesotraopcion
-    //public static string ComputeHash(string plainText, Supported_HA hash, byte[] salt)
-    //{
-    //    int minSaltLength = 4;
-    //    int maxSaltLength = 16;
-
-    //    byte[] SaltBytes = null;
-
-    //    if (salt != null)
-    //    {
-    //        SaltBytes = salt;
-    //    }
-    //    else {
-    //        Random r = new Random();
-    //        int SaltLength = r.Next(minSaltLength, maxSaltLength);
-    //        SaltBytes = new byte[SaltLength];
-    //        RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
-    //        rng.GetNonZeroBytes(SaltBytes);
-    //        rng.Dispose();
-    //    }
-
-    //    byte[] plainData = ASCIIEncoding.UTF8.GetBytes(plainText);
-    //    byte[] plainDataAndSalt = new byte[plainData.Length + SaltBytes.Length];
-
-    //    for (int x = 0; x < plainData.Length; x++)
-    //        plainDataAndSalt[x] = plainData[x];
-    //    for (int n = 0; n < SaltBytes.Length; n++)
-    //        plainDataAndSalt[plainData.Length + n] = SaltBytes[n];
-
-    //    byte[] hashValue = null;
-
-    //    switch (hash)
-    //    {
-    //        case Supported_HA.SHA256:
-    //            SHA256Managed sha = new SHA256Managed();
-    //            hashValue = sha.ComputeHash(plainDataAndSalt);
-    //            sha.Dispose();
-    //            break;
-    //        case Supported_HA.SHA384:
-    //            SHA256Managed sha1 = new SHA256Managed();
-    //            hashValue = sha1.ComputeHash(plainDataAndSalt);
-    //            sha1.Dispose();
-    //            break;
-    //        case Supported_HA.SHA512:
-    //            SHA256Managed sha2 = new SHA256Managed();
-    //            hashValue = sha2.ComputeHash(plainDataAndSalt);
-    //            sha2.Dispose();
-    //            break;
-    //    }
-
-    //    byte[] result = new byte[hashValue.Length + SaltBytes.Length];
-
-    //    for (int x = 0; x < hashValue.Length; x++)
-    //        result[x] = hashValue[x];
-    //    for (int n = 0; n < SaltBytes.Length; n++)
-    //        result[hashValue.Length + n] = SaltBytes[n];
-
-    //    return Convert.ToBase64String(result);
-            
-    //}
-
-    //public static bool Confirm(string plainText, String hashValue, Supported_HA hash)
-    //{
-    //    byte[] hashBytes = Convert.FromBase64String(hashValue);
-    //    return true;
-    //}
-    #endregion
-
-    #region estaesunaopcion
-    //CREAR SALT
-    //public string CreateSalt(int size)
-    //{
-    //    var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
-    //    var buff = new byte[size];
-    //    rng.GetBytes(buff);
-    //    return Convert.ToBase64String(buff);
-
-    //}
-
-    //GENERATE SHA256HASH
-    //public String GenerateSHA256Hash(String input, String salt)
-    //{
-    //    byte[] bytes = System.Text.Encoding.UTF8.GetBytes(input + salt);
-    //    System.Security.Cryptography.SHA256Managed sha256hashstring = new System.Security.Cryptography.SHA256Managed();
-    //    byte[] hash = sha256hashstring.ComputeHash(bytes);
-
-    //    return ByteArrayTextString(hash);
-    //}
-    #endregion
-
-    //}
+    }// END PUBLIC CLASS
 }
