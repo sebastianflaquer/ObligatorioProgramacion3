@@ -63,7 +63,14 @@ namespace Web.Views
 
                 string ruta = Server.MapPath("~/imagenes/perfil/");
                 string nombrefoto = reg.mail + '-' + this.ProfileFoto.FileName.Replace(" ", "_");
+                string nombreImagen = this.ProfileFoto.FileName;
 
+                //Si no actualiza la imagen
+                if(nombreImagen == "")
+                {
+                    nombrefoto = reg.foto;
+                }
+                
                 reg.id = Convert.ToInt32(Session["id"]);
                 reg.mail = Session["mail"].ToString();
                 reg.nombre = this.ProfileNombre.Text;
