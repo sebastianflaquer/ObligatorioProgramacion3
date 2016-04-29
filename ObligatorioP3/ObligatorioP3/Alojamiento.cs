@@ -23,10 +23,57 @@ namespace BienvenidosUY
         public int calificacion { get; set; }
         public Registrado registrado { get; set; }
 
-        //LEER
+        //LEER   
         public override bool Leer()
         {
-            throw new NotImplementedException();
+            bool retorno = false;
+
+            try
+            {
+                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+                cn.ConnectionString = cadenaConexion;
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "LeerAlojamiento";
+                cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));    //NO SE PUEDE REPETIR EL NOMBRE DE ALOJAMIENTOS PARA UN MISMO USUARIO
+
+                SqlDataReader drResults;
+
+                cmd.Connection = cn;
+                cn.Open();
+                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                if (drResults.Read())
+                {
+                    this.id = Convert.ToInt32(drResults["id"]);
+                    this.nombre = drResults["nombre"].ToString();
+                    this.categoria = new Categoria() { id = Convert.ToInt32(drResults["idCategoria"]) };
+                    this.tipoHabitacion = drResults["tipoHabitacion"].ToString();
+                    this.banioPrivado = Convert.ToBoolean(drResults["banioPrivado"]);
+                    this.cantHuespedes = Convert.ToInt32(drResults["cantHuespedes"]);
+                    this.barrio = drResults["barrio"].ToString();
+                    this.calificacion = Convert.ToInt32(drResults["calificacion"]);
+                    this.ciudad = new Ciudad() { id = Convert.ToInt32(drResults["idCiudad"]) };
+                    this.registrado = new Registrado() { id = Convert.ToInt32(drResults["idRegistrado"]) };
+
+
+                    retorno = true;
+                }
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                //if (con != null && con.State == ConnectionState.Open) con.Close();
+                //if (reader != null) reader.Close();
+            }
+
+            return retorno;
         }
 
         //GUARDAR
@@ -128,6 +175,51 @@ namespace BienvenidosUY
         {
             throw new NotImplementedException();
         }
+
+        public List<Alojamiento> CargarAlojamientosPorUsuario(string mail)
+        {
+            List<Alojamiento> lista = new List<Alojamiento>();
+
+            try
+            {
+                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+                cn.ConnectionString = cadenaConexion;
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "AlojamientosPorUsuario";
+                cmd.Parameters.Add(new SqlParameter("@mail", mail));
+
+                SqlDataReader drResults;
+
+                cmd.Connection = cn;
+                cn.Open();
+                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                //RECORRER LA TABLA OBTENIDA DE LA CONSULTA, IR AGREGANDO LOS VALORES A LA LIST                
+                while (drResults.Read())
+                {
+                    Alojamiento aloj = new Alojamiento();
+                    aloj.id = Convert.ToInt32(drResults["Id"]);
+                    aloj.nombre = Convert.ToString(drResults["Nombre"]);
+                    lista.Add(aloj);
+                }
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                //if (con != null && con.State == ConnectionState.Open) con.Close();
+                //if (reader != null) reader.Close();
+            }
+
+            return lista;
+        }
+
     }
 
 }
