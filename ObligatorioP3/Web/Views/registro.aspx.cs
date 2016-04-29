@@ -112,7 +112,6 @@ namespace Web.Views
                 }
             }
         }
-        // END 
 
         //GENERA LA SAL
         public string generarSalPass(){
