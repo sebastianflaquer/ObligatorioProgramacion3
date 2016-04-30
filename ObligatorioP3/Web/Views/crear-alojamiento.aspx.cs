@@ -82,7 +82,8 @@ namespace Web.Views
             bool ok = false;
 
             Alojamiento Aloj = new Alojamiento();
-            Aloj.nombre = NombreAlojamiento.Text;
+            string nomAloj = NombreAlojamiento.Text;
+            Aloj.nombre = nomAloj;
 
             Categoria cat = new Categoria();
             cat.nombre = CategoriaDropD.SelectedValue;
@@ -122,20 +123,33 @@ namespace Web.Views
             reg2.mail = Session["mail"].ToString();
             reg2.Leer();
             Aloj.registrado = reg2;
-            ok = Aloj.Guardar();
 
-            if (ok)
-            {
-                //Si pudo guardar el Alojamiento
-                this.errorField.Visible = true;
-                this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El Alojamiento se creó con exito.</span></div>";
-            }
-            else
+
+            //COMPRUEBA QUE NO SE REPITA EL NOMBRE DE ALOJAMIENTO PARA ESTE USUARIO
+            if (Aloj.ComprobarNombreAlojamiento(nomAloj, int.Parse(Session["id"].ToString())))
             {
                 //NO pudo guardar el Alojamiento
                 this.errorField.Visible = true;
-                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar crear el Alojamiento</span></div>";
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Nombre de Alojamiento repetido </span></div>";
             }
+            else
+            {
+                ok = Aloj.Guardar();
+
+                if (ok)
+                {
+                    //Si pudo guardar el Alojamiento
+                    this.errorField.Visible = true;
+                    this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El Alojamiento se creó con exito.</span></div>";
+                }
+                else
+                {
+                    //NO pudo guardar el Alojamiento
+                    this.errorField.Visible = true;
+                    this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar crear el Alojamiento</span></div>";
+                }
+            }
+
         }
 
         //MUESTRA LOS CAMPOS

@@ -97,19 +97,31 @@ namespace Web.Views
             anu.registrado = reg;
             anu.rangosFechas = Session["listaRangoFechas"] as List<RangoFechas>;
 
-            ok = anu.Guardar();
 
-            if (ok)
+
+            //COMPRUEBA QUE NO SE REPITA EL NOMBRE DE ANUNCIO PARA ESTE USUARIO
+            if (anu.ComprobarNombreAnuncio(anu.nombre, int.Parse(Session["id"].ToString())))
             {
-                //Si pudo guardar el Anuncio
+                //NO pudo guardar el Alojamiento
                 this.errorField.Visible = true;
-                this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El Anuncio se creó con exito.</span></div>";
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Nombre de Anuncio repetido </span></div>";
             }
             else
             {
-                //NO pudo guardar el Anuncio
-                this.errorField.Visible = true;
-                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar crear el Anuncio</span></div>";
+                ok = anu.Guardar();
+
+                if (ok)
+                {
+                    //Si pudo guardar el Alojamiento
+                    this.errorField.Visible = true;
+                    this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El Anuncio se creó con exito.</span></div>";
+                }
+                else
+                {
+                    //NO pudo guardar el Alojamiento
+                    this.errorField.Visible = true;
+                    this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar crear el Anuncio</span></div>";
+                }
             }
         }
     }

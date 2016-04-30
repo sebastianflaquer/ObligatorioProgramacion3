@@ -220,6 +220,48 @@ namespace BienvenidosUY
             return lista;
         }
 
+        public bool ComprobarNombreAlojamiento(string nomAloj, int idRegistrado)
+        {
+            bool retorno = false;
+
+            try
+            {
+                SqlConnection cn = new SqlConnection();
+                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+                cn.ConnectionString = cadenaConexion;
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "LeerAlojamientoPorUsuario";
+                cmd.Parameters.Add(new SqlParameter("@nombre", nomAloj));
+                cmd.Parameters.Add(new SqlParameter("@idRegistrado", idRegistrado));
+
+                SqlDataReader drResults;
+
+                cmd.Connection = cn;
+                cn.Open();
+                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                if (drResults.Read())
+                {
+                    string nombreAlojamiento = drResults["nombre"].ToString();
+                    retorno = true;
+                }
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                //if (con != null && con.State == ConnectionState.Open) con.Close();
+                //if (reader != null) reader.Close();
+            }
+
+            return retorno;
+        }
+
     }
 
 }
