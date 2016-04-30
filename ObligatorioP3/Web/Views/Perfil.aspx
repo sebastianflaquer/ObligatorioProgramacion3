@@ -56,12 +56,9 @@
                 <label for="exampleInputEmail1">E-mail</label>
                 <asp:TextBox ID="ProfileMail" ValidationGroup="actualizar" ReadOnly="true" CssClass="disabled form-control" runat="server" />
             </div>
-
-
         </div>
 
-        <div class="col-md-4">            
-
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="exampleInputEmail1">Direccion</label>
                 <asp:TextBox ValidationGroup="actualizar" ID="ProfileDireccion" CssClass="form-control" runat="server"/>
@@ -76,7 +73,7 @@
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Descripcion</label>
-                <asp:TextBox ValidationGroup="actualizar" MaxLength="250" ID="ProfileDescripcion" TextMode="MultiLine" CssClass="form-control" runat="server" />     
+                <asp:TextBox ValidationGroup="actualizar" MaxLength="250" ID="ProfileDescripcion" CssClass="form-control" runat="server" />     
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ProfileDescripcion" CssClass="text-danger" ErrorMessage="El campo de Apellido es obligatorio." />           
             </div>
         </div>

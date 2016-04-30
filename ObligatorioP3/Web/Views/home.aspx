@@ -12,7 +12,8 @@
 
     <div class="starter-template">
         <h2><%: Title %></h2>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <br />
+        <p class="lead">Aca van a ir cargado todos los Alojamientos</p>
     </div>
 
 </asp:Content>

@@ -81,7 +81,6 @@ D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\Web\bin\roslyn\Syste
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\Web\bin\roslyn\vbc.exe
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\Web\bin\roslyn\VBCSCompiler.exe
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\Web\bin\roslyn\VBCSCompiler.exe.config
-D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\Web\bin\Web.dll.config
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\Web\bin\Web.dll
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\Web\bin\Web.pdb
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\Web\bin\Microsoft.AI.Agent.Intercept.dll
@@ -200,3 +199,4 @@ D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\Obli
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\Web\obj\Debug\Web.dll
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\Web\obj\Debug\Web.pdb
+D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\Web\bin\Web.dll.config

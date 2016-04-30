@@ -84,8 +84,8 @@ namespace Web.Views
             Anuncio anu = new Anuncio();
             anu.nombre = this.NombreAnuncio.Text;
             Alojamiento aloj = new Alojamiento();
-            aloj.id = 8;                             //ARREGLAR
-                string pru = this.DropDElegirAloj.SelectedValue;
+            aloj.nombre = this.DropDElegirAloj.SelectedValue;
+            aloj.Leer();
             anu.alojamiento = aloj;
             anu.descripcion = this.DscAnuncio.Text;
             anu.direccion1 = this.Dir1Anuncio.Text;

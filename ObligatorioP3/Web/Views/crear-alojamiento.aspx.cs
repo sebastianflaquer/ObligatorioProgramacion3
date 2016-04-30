@@ -152,92 +152,85 @@ namespace Web.Views
 
         }
 
-        //MUESTRA LOS CAMPOS
-        protected void NuevoServicio_Click(object sender, EventArgs e)
-        {
-            this.NomServicio.Visible = true;
-            this.lblDscServ.Visible = true;
-            this.lblNomServ.Visible = true;
-            this.DscServicio.Visible = true;
-            this.btnAgrServ.Visible = true;
-
-            //VALIDA LA PAGINA
-            //Page.Validate();
-
-            //SI ES VALIDA EJECUTA LA FUNCION
-            //if (Page.IsValid)
-            //{
-
-            //variables
-            //bool afectadas;
-
-            //Crea un nuevo objeto Servicio y le carga los campos del formulario
-            //Servicio serv = new Servicio();
-            //serv.nombre = this.NomServicio.Text;
-            //serv.descripcion = this.DscServicio.Text;
-
-            //Carga en afectadas el retorno de Guardar();
-            //afectadas = serv.Guardar();
-            //if (afectadas)
-            //{
-            //LIMPIAR EL FORMULARIO
-            //Categoria.Text = "";
-            //BanioP.Checked = false;
-            //CantHuespedes.Text = "";
-            //CiudadAloj.Text = "";
-            //BarrioAloj.Text = "";
-            //NomServicio.Text = "";
-            //DscServicio.Text = "";
-            //}
-            //}
-
-        }
-
-        //CREA UN NUEVO SERVICIO
-        protected void btnAgrServ_Click(object sender, EventArgs e)
-        {
-            //VALIDA LA PAGINA
-            Page.Validate();
-
-            //SI ES VALIDA EJECUTA LA FUNCION
-            if (Page.IsValid)
-            {
-
-                //variables
-            bool afectadas;
-
-                //Crea un nuevo objeto Servicio y le carga los campos del formulario
-                Servicio serv = new Servicio();
-                serv.nombre = this.NomServicio.Text;
-                serv.descripcion = this.DscServicio.Text;
-
-                //Carga en afectadas el retorno de Guardar();
-                afectadas = serv.Guardar();
-                if (afectadas)
-                {
-                  //  LIMPIAR EL FORMULARIO
-                    //Categoria.Text = "";
-                    //BanioP.Checked = false;
-                    //CantHuespedes.Text = "";
-                    //CiudadAloj.Text = "";
-                    //BarrioAloj.Text = "";
-                    //NomServicio.Text = "";
-                    //DscServicio.Text = "";
-                }
-            }
-        }
-
 
         //AGREGAR SERVICIOS A LA LISTA
         protected void incluirServicio_Click(object sender, EventArgs e)
         {
+            //Oculta los mensajes de errores que se estan mostrando
+            this.errorField.Visible = false;
+            this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span></span></div>";
+
             List<Servicio> listaServicios = Session["listaServicios"] as List<Servicio>;
-            int idServ = int.Parse(this.ServiciosListBox.SelectedValue);
-            Servicio serv = new Servicio();
-            serv.id = idServ;
-            serv.Leer();
-            listaServicios.Add(serv);
-            this.msjIncServ.Text = "Servicio agregado!";
+
+            if (ServiciosListBox.SelectedValue == "") {
+
+                //NO selecciono ningun servicio
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Debe seleccionar un servicio</span></div>";
+            }
+            else{
+                int idServ = int.Parse(this.ServiciosListBox.SelectedValue);
+
+                //cuando ya tiene items en la lista
+                if (listaServicios.Count != 0)
+                {
+                    bool encuentra = false;
+                    int i = 0;
+                    while (!encuentra && i < listaServicios.Count){
+                        if(listaServicios[i].id != idServ)
+                        {
+                            i++;
+                        }
+                        else
+                        {
+                            encuentra = true;
+                        }
+                    }
+                    if (encuentra)
+                    {
+                        //volvio a seleccionar el mismo servicio
+                        this.errorField.Visible = true;
+                        this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Este servicio ya fue agregado</span></div>";
+                    }
+                    else
+                    {
+                        Servicio serv = new Servicio();
+                        serv.id = idServ;
+                        serv.Leer();
+                        listaServicios.Add(serv);
+                        this.lblListaServicios.InnerHtml += "<span class='label label-default'>" + listaServicios[i].nombre + "</span> ";
+                    }
+                    //int i = 0;
+                    //bool encontrado = false;
+                    //while( i < listaServicios.Count && encontrado == false){
+
+                    //    if ()
+                    //    {
+                    //        
+                    //    }
+                    //    else
+                    //    {
+                    //        
+                    //    }
+                    //}
+                }
+                else // no tiene items en la lista
+                {
+                    Servicio serv = new Servicio();
+                    serv.id = idServ;
+                    serv.Leer();
+                    listaServicios.Add(serv);
+                    this.lblListaServicios.InnerHtml += "<span class='label label-default'>" + serv.nombre + "</span> ";
+
+                    //El item se agrego correctamente
+                    this.errorField.Visible = true;
+                    this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>Se agrego el servicio correctamente</span></div>";
+
+                }
+
+            }
+            
+            //this.msjIncServ.Text = "Servicio agregado!";
         }
 
 

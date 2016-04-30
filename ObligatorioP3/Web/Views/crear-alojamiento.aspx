@@ -48,6 +48,17 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="TipoBanioDropD" CssClass="text-danger" ErrorMessage="El campo Tipo de Baño es obligatorio." />
             </div>
             
+            <!-- SERVICIOS -->
+            <div class="form-group">
+                <asp:Label runat="server" AssociatedControlID="ServiciosListBox" CssClass="control-label">Servicios</asp:Label>
+                <p>Seleccione todo los servicios que tenga el alojamiento</p>
+                <asp:ListBox ID="ServiciosListBox" ValidationGroup="Servicio" runat="server" SelectionMode="Multiple" Height="81px" Width="100%"></asp:ListBox>                
+                <asp:Button runat="server" Text="Agregar" ValidationGroup="Servicio"  CssClass="btn btn-primary pull-right" OnClick="incluirServicio_Click" />
+                <div ID="lblListaServicios" runat="server"></div>
+            </div>
+
+            <br />
+            <br />
 
             <!-- CANTIDAD HUESPEDES -->
             <div class="form-group">
@@ -71,37 +82,8 @@
                 <asp:TextBox ID="BarrioAloj" CssClass="form-control" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="BarrioAloj" CssClass="text-danger" ErrorMessage="El campo Barrio es obligatorio." />
             </div>
-
-
-            <!-- SERVICIOS -->
-            <asp:Label runat="server" CssClass="text-success" ID="msjIncServ"></asp:Label>
-            <div style="background-color:#808080; border:1px solid #808080; padding:15px;">
-                <div class="form-group">
-                    <h4>Servicios</h4>      
-                    <p>Seleccione todo los servicios que tenga el alojamiento</p>
-                    <asp:ListBox ID="ServiciosListBox" runat="server" SelectionMode="Multiple" Height="81px" Width="100%"></asp:ListBox>
-
-                    <asp:Button runat="server" Text="Agregar" CssClass="btn btn-primary pull-right" OnClick="incluirServicio_Click" />
-                    <br />
-                    <asp:Button runat="server" Text="Crear Nuevo" CssClass="btn btn-primary pull-right" />
-                </div>
-
-                <div id="agregarservicios">
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="NomServicio" CssClass="control-label" Visible ="false" ID="lblNomServ">Nombre del Servicio:</asp:Label>
-                        <asp:TextBox ID="NomServicio" CssClass="form-control" runat="server" Visible ="false"/>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="NomServicio" CssClass="text-danger" ErrorMessage="El campo Nombre del Servicio es obligatorio." />
-                    </div>
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="DscServicio" CssClass="control-label" Visible ="false" ID="lblDscServ">Descripción:</asp:Label>
-                        <asp:TextBox ID="DscServicio" CssClass="form-control" runat="server" Visible ="false"/>
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="DscServicio" CssClass="text-danger" ErrorMessage="El campo Descripción del Servicio es obligatorio." />
-                    </div>
-                    <asp:Button runat="server" Text="Agregar" CssClass="btn btn-primary pull-right" CausesValidation="false" Visible ="false" ID="btnAgrServ" OnClick="btnAgrServ_Click"/>
-                </div>
-                
-            </div>
-
+            
+            
             <br />
 
             <!-- BTN  CREAR ALOJAMIENTO -->

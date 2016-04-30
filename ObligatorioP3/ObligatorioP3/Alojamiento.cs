@@ -82,8 +82,10 @@ namespace BienvenidosUY
             SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
             string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
             cn.ConnectionString = cadenaConexion;
-            SqlTransaction trans = null;
 
+            //definimos la transaction null para poder tenerla en el catch
+            //SqlTransaction tr = null;
+            
             bool retorno = false;
             int afectadas = 0;
 
@@ -94,6 +96,7 @@ namespace BienvenidosUY
                     cmd.Connection = cn;
                     cmd.CommandText = "NuevoAlojamiento";
                     cmd.CommandType = CommandType.StoredProcedure;
+
                     cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));
                     cmd.Parameters.Add(new SqlParameter("@idCategoria", this.categoria.id));
                     cmd.Parameters.Add(new SqlParameter("@tipoHabitacion", this.tipoHabitacion));
@@ -106,17 +109,24 @@ namespace BienvenidosUY
                     cmd.Parameters.Add(new SqlParameter("@idRegistrado", this.registrado.id));
                     SqlParameter par = new SqlParameter();
                     par.ParameterName = "@NuevoId";
+
                     par.SqlDbType = SqlDbType.Int;
                     par.Direction = ParameterDirection.Output;
+
                     cmd.Parameters.Add(par);
                     cn.Open();
+
+                    //creamos la transaction TR        
+                    SqlTransaction tr = cn.BeginTransaction();
+                    //Le pasamos al CMD la transaction
+                    cmd.Transaction = tr;
+
                     afectadas = cmd.ExecuteNonQuery();
-
-
+                    
                     if (afectadas == 1)
                     {
                         this.id = (int)par.Value;
-                        cmd.CommandText = "NuevoServicio";
+                        cmd.CommandText = "AsociarServicioAlAlojamiento";
                         bool ok = true;
                         int i = 0;
                         while (i < this.servicios.Count && ok)
@@ -125,27 +135,28 @@ namespace BienvenidosUY
 
                             cmd.Parameters.Clear();
                             cmd.Parameters.AddWithValue("@IdAlojamiento", this.id);
-                            cmd.Parameters.AddWithValue("@nombre", serv.nombre);
-                            cmd.Parameters.AddWithValue("@descripcion", serv.descripcion);
+                            cmd.Parameters.AddWithValue("@IdServicio", serv.id);
                             ok = cmd.ExecuteNonQuery() == 1;
                             i++;
                         }
 
                         if (ok)
                         {
-                            trans.Commit();
+                            tr.Commit();
                             retorno = true;
                         }
                         else
                         {
-                            trans.Rollback();
+                            tr.Rollback();
                         }
                     }
                 }
             }
             catch
             {
-                if (trans != null) trans.Rollback();
+                //if (tr != null){
+                //    tr.Rollback();
+                //} 
                 throw;
             }
         

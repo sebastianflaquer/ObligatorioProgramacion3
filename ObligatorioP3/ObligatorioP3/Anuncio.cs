@@ -80,7 +80,7 @@ namespace BienvenidosUY
             SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
             string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
             cn.ConnectionString = cadenaConexion;
-            SqlTransaction trans = null;
+            //SqlTransaction trans = null;
 
             bool retorno = false;
             int afectadas = 0;
@@ -108,6 +108,12 @@ namespace BienvenidosUY
                     par.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(par);
                     cn.Open();
+
+                    //creamos la transaction TR        
+                    SqlTransaction tr = cn.BeginTransaction();
+                    //Le pasamos al CMD la transaction
+                    cmd.Transaction = tr;
+
                     afectadas = cmd.ExecuteNonQuery();
 
 
@@ -132,19 +138,19 @@ namespace BienvenidosUY
 
                         if (ok)
                         {
-                            trans.Commit();
+                            tr.Commit();
                             retorno = true;
                         }
                         else
                         {
-                            trans.Rollback();
+                            tr.Rollback();
                         }
                     }
                 }
             }
             catch
             {
-                if (trans != null) trans.Rollback();
+                //if (tr != null) tr.Rollback();
                 throw;
             }
 

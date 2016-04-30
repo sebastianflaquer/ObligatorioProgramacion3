@@ -108,7 +108,7 @@
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="UsuarioDescripcion" CssClass="col-md-2 control-label">Descripcion</asp:Label>
                 <div class="col-md-10">
-                    <asp:TextBox MaxLength="250" runat="server" ID="UsuarioDescripcion" TextMode="MultiLine" CssClass="form-control" />
+                    <asp:TextBox MaxLength="250" runat="server" ID="UsuarioDescripcion" CssClass="form-control" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="UsuarioDescripcion" CssClass="text-danger" ErrorMessage="El campo de Descripcion es obligatorio." />
                 </div>
             </div>
