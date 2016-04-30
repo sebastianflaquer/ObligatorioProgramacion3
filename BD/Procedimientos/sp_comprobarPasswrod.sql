@@ -9,4 +9,3 @@ create PROCEDURE ComprobarPassword
 		From REGISTRADO
 		where mail = @mail
 	END
-

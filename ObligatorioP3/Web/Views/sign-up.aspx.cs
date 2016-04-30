@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 
 namespace Web.Views
@@ -24,6 +25,13 @@ namespace Web.Views
             }
         }
 
+        //PASAR A HASH
+        protected string pasarAHash(string password)
+        {
+            string hashresult = FormsAuthentication.HashPasswordForStoringInConfigFile(password, "SHA1");
+            return hashresult;
+        }
+
         //LOGIN
         protected void BtnLogIn(object sender, EventArgs e)
         {
@@ -33,10 +41,15 @@ namespace Web.Views
 
             if (existe)
             {
-                string retornoPass = reg.ComprobarPass();
+                string retornoPass = reg.ComprobarPass().ToLower();
                 string password = this.TxtPassword.Text;
+                string salt = reg.salt;
+                string pimienta = "p1m13n7a";
+                string passConHash = pasarAHash(password + salt + pimienta).ToLower();
 
-                if (password == retornoPass) {
+                //string passHash = password + salt;
+
+                if (passConHash == retornoPass) {
                     //Le agrega los datos a la Session
                     Session["logueado"] = true;
                     Session["mail"] = reg.mail;

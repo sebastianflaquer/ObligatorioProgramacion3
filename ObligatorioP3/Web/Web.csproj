@@ -176,6 +176,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Views\modificar-alojamiento.aspx" />
+    <Content Include="Views\modificar-anuncio.aspx" />
     <Content Include="Views\perfil.aspx" />
     <Content Include="Views\registro.aspx" />
     <Content Include="Views\sign-up.aspx" />
@@ -227,6 +229,20 @@
     </Compile>
     <Compile Include="Views\home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\modificar-alojamiento.aspx.cs">
+      <DependentUpon>modificar-alojamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\modificar-alojamiento.aspx.designer.cs">
+      <DependentUpon>modificar-alojamiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\modificar-anuncio.aspx.cs">
+      <DependentUpon>modificar-anuncio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\modificar-anuncio.aspx.designer.cs">
+      <DependentUpon>modificar-anuncio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\perfil.aspx.cs">
       <DependentUpon>perfil.aspx</DependentUpon>

@@ -19,6 +19,7 @@ namespace Web.Views
             }
             else {
                 CargarFormularioAlojamiento();
+                Session["listaServicios"] = new List<Servicio>();
             }
         }
 
@@ -64,12 +65,12 @@ namespace Web.Views
             }
             #endregion
 
-            //Carga las ciudades
+            //Carga los servicios
             #region Servicios
             Servicio serv = new Servicio();
             this.ServiciosListBox.DataSource = serv.CargarServicios();
-            this.ServiciosListBox.DataValueField = "Nombre";
-            //this.ServiciosListBox.DataTextField = "Listado";
+            this.ServiciosListBox.DataValueField = "Id";
+            this.ServiciosListBox.DataTextField = "Nombre";
             this.ServiciosListBox.DataBind();
             #endregion
 
@@ -78,41 +79,76 @@ namespace Web.Views
         //CREA EL NUEVO ALOJAMIENTO
         protected void btnCrearNuevoAlojamiento(object sender, EventArgs e)
         {
-            bool afectadas = false;
+            bool ok = false;
 
             Alojamiento Aloj = new Alojamiento();
-            Aloj.nombre = NombreAlojamiento.Text;
+            string nomAloj = NombreAlojamiento.Text;
+            Aloj.nombre = nomAloj;
 
             Categoria cat = new Categoria();
             cat.nombre = CategoriaDropD.SelectedValue;
+            
             //CARGA LOS DATOS DE LA CATEGORIA - FALTA COMPLETAR
             cat.Leer();
             Aloj.categoria = cat;
-
+            
+            //TIPO HABITACION - se fiija si es compartido o no
             Aloj.tipoHabitacion = TipoHabitacionDropD.SelectedValue;
-
-            //se fiija si es compartido o no
-            if(TipoHabitacionDropD.SelectedValue == "Compartido"){
+            if (TipoHabitacionDropD.SelectedValue == "Compartido"){
                 Aloj.banioPrivado = false;
             }
             else{
                 Aloj.banioPrivado = true;
             }
 
+            // CANTIDAD HUESPEDES
             Aloj.cantHuespedes = int.Parse(CantHuespedes.Text);
-
+            
+            //CIUDAD - LEE LA CIUDAD SELECCIONADA
             Ciudad ciu = new Ciudad();
             ciu.nombre = CiudadDropD.SelectedValue;
             ciu.Leer();
-
             Aloj.ciudad = ciu;
 
+            //BARRIO - LEE EL BARRIO SELECCIONADO
             Aloj.barrio = BarrioAloj.Text;
 
-            Aloj.servicios = new List<Servicio>();
-                //ServiciosListBox.SelectedItems;
+            //CARGO LOS SERVICIOS AGREGADOS A LA LISTA
+            Aloj.servicios = Session["listaServicios"] as List<Servicio>;
+            //ServiciosListBox.SelectedItems;
 
-            //afectadas = Aloj.Guardar();
+            //A QUE USUARIO PRETENECE
+            Registrado reg2 = new Registrado();
+            reg2.id = int.Parse(Session["Id"].ToString());
+            reg2.mail = Session["mail"].ToString();
+            reg2.Leer();
+            Aloj.registrado = reg2;
+
+
+            //COMPRUEBA QUE NO SE REPITA EL NOMBRE DE ALOJAMIENTO PARA ESTE USUARIO
+            if (Aloj.ComprobarNombreAlojamiento(nomAloj, int.Parse(Session["id"].ToString())))
+            {
+                //NO pudo guardar el Alojamiento
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Nombre de Alojamiento repetido </span></div>";
+            }
+            else
+            {
+                ok = Aloj.Guardar();
+
+                if (ok)
+                {
+                    //Si pudo guardar el Alojamiento
+                    this.errorField.Visible = true;
+                    this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El Alojamiento se creó con exito.</span></div>";
+                }
+                else
+                {
+                    //NO pudo guardar el Alojamiento
+                    this.errorField.Visible = true;
+                    this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar crear el Alojamiento</span></div>";
+                }
+            }
 
         }
 
@@ -190,5 +226,21 @@ namespace Web.Views
                 }
             }
         }
+
+
+        //AGREGAR SERVICIOS A LA LISTA
+        protected void incluirServicio_Click(object sender, EventArgs e)
+        {
+            List<Servicio> listaServicios = Session["listaServicios"] as List<Servicio>;
+            int idServ = int.Parse(this.ServiciosListBox.SelectedValue);
+            Servicio serv = new Servicio();
+            serv.id = idServ;
+            serv.Leer();
+            listaServicios.Add(serv);
+            this.msjIncServ.Text = "Servicio agregado!";
+        }
+
+
+
     }
 }

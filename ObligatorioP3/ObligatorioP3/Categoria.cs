@@ -75,8 +75,45 @@ namespace BienvenidosUY
 
         public override bool Leer()
         {
-            //
-            return true;
+            bool retorno = false;
+
+            try
+            {
+                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+                cn.ConnectionString = cadenaConexion;
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "LeerCategoria";
+                cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));
+
+                SqlDataReader drResults;
+
+                cmd.Connection = cn;
+                cn.Open();
+                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                if (drResults.Read())
+                {
+                    id = Convert.ToInt32(drResults["id"]);
+                    nombre = drResults["nombre"].ToString();
+
+                    retorno = true;
+                }
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                //if (con != null && con.State == ConnectionState.Open) con.Close();
+                //if (reader != null) reader.Close();
+            }
+
+            return retorno;
         }
 
         public override bool Modificar()
