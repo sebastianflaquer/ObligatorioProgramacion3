@@ -52,7 +52,7 @@ namespace BienvenidosUY
             return reader;
         }
 
-        //METODO GENERAL QUE EJECUTA EL NOQUERY
+        //METODO GENERAL QUE EJECUTA EL NONQUERY
         public int EjecutarNoQuery(string text, CommandType tipo, List<SqlParameter> parametros)
         {
             int afectadas = -1;

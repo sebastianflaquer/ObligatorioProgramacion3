@@ -127,13 +127,18 @@ namespace BienvenidosUY
         //GUARDAR
         public override bool Guardar()
         {
-
+            //creamos un nuevo objeto SqlConnection
             SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
+            //creamos una variable de tipo string que guarda la cadena de conexion
             string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            //le pasamos a la SqlConnection la cadena de conexion (ConnectionString)
             cn.ConnectionString = cadenaConexion;
 
+
+            //Variables
             bool ok = false;
             int afectadas = 0;
+
 
             try{
                 using (SqlCommand cmd = new SqlCommand()) {
