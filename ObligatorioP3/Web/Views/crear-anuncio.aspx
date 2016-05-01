@@ -26,7 +26,7 @@
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="DropDElegirAloj" CssClass="control-label">Seleccionar Alojamiento:</asp:Label>
                 <asp:DropDownList ID="DropDElegirAloj" CssClass="form-control" runat="server" DataTextField="Nombre" DataValueField="Id"></asp:DropDownList>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="DropDElegirAloj" CssClass="text-danger" ErrorMessage="El campo Categoría es obligatorio." />
+                <asp:RequiredFieldValidator runat="server" ValidationGroup="anuncio" ControlToValidate="DropDElegirAloj" CssClass="text-danger" ErrorMessage="El campo Categoría es obligatorio." />
             </div>
             
             <!-- DESCRIPCION -->
@@ -50,14 +50,48 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Dir2Anuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="El campo Dirección 2 es obligatorio." />
             </div>  
 
-            <!-- FOTO -->
+            <!-- FOTO 1-->
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="FotosAnuncio" CssClass="col-md-2 control-label">Foto</asp:Label>
+                <asp:Label runat="server" AssociatedControlID="Foto1Anuncio" CssClass="col-md-2 control-label">Fotos:</asp:Label>
                 <div class="col-md-10">
-                    <asp:FileUpload ID="FotosAnuncio" runat="server" />                    
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="FotosAnuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="Debe subir una foto de Anuncio." />
+                    <asp:FileUpload ID="Foto1Anuncio" runat="server" />                    
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="Foto1Anuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="Debe subir una foto de Anuncio." />
                 </div>
             </div>
+            <!-- FOTO 2-->
+            <div class="form-group">
+                <asp:Label runat="server" AssociatedControlID="Foto2Anuncio" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-10">
+                    <asp:FileUpload ID="Foto2Anuncio" runat="server" />                    
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="Foto2Anuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="Debe subir una foto de Anuncio." />
+                </div>
+            </div>
+            <!-- FOTO 3-->
+            <div class="form-group">
+                <asp:Label runat="server" AssociatedControlID="Foto3Anuncio" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-10">
+                    <asp:FileUpload ID="Foto3Anuncio" runat="server" />                    
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="Foto3Anuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="Debe subir una foto de Anuncio." />
+                </div>
+            </div>
+           <%-- <!-- FOTO 4-->
+            <div class="form-group">
+                <asp:Label runat="server" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-10">
+                    <asp:FileUpload ID="Foto4Anuncio" runat="server"/>                    
+                    <!--<asp:RequiredFieldValidator runat="server" ControlToValidate="Foto4Anuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="Debe subir una foto de Anuncio." />-->
+                </div>
+            </div>
+            <br />
+            <!-- FOTO 5-->
+            <div class="form-group">
+                <asp:Label runat="server" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-10">
+                    <asp:FileUpload ID="Foto5Anuncio" runat="server"/>                    
+                    <!--<asp:RequiredFieldValidator runat="server" ControlToValidate="Foto5Anuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="Debe subir una foto de Anuncio." />-->
+                </div>
+            </div>--%>
+
 
             <!-- PRECIO BASE -->
             <div class="form-group">
@@ -75,33 +109,33 @@
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="fchaIniAnuncio" CssClass="control-label">Fecha Inicio:</asp:Label>
                 <asp:TextBox ID="fchaIniAnuncio" CssClass="form-control" runat="server" TextMode="Date"/>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="fchaIniAnuncio" ValidationGroup="rango" CssClass="text-danger" ErrorMessage="El campo Fecha Inicio es obligatorio." />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="fchaIniAnuncio" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Fecha Inicio es obligatorio." />
             </div>
 
             <!-- FECHA FIN -->
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="fchaFinAnuncio" CssClass="control-label">Fecha Fin:</asp:Label>
                 <asp:TextBox ID="fchaFinAnuncio" CssClass="form-control" runat="server" TextMode="Date"/>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="fchaFinAnuncio" ValidationGroup="rango" CssClass="text-danger" ErrorMessage="El campo Fecha Fin es obligatorio." />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="fchaFinAnuncio" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Fecha Fin es obligatorio." />
             </div>
 
             <!-- PRECIO -->
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="PrecioRango" CssClass="control-label">Precio:</asp:Label>
                 <asp:TextBox ID="PrecioRango" CssClass="form-control" TextMode="Number" runat="server"/>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioRango" ValidationGroup="rango" CssClass="text-danger" ErrorMessage="El campo Precio del Rango es obligatorio." />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioRango" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Precio del Rango es obligatorio." />
             </div>
             
             <!-- CREAR Y AGREGAR RANGO -->
             <div>
-                <asp:Button runat="server" Text="Agregar Rango" ValidationGroup="rango" CssClass="btn btn-primary pull-right" OnClick="CrearYagregarRango_Click" />
+                <asp:Button runat="server" Text="Agregar Rango" ValidationGroup="DatosRangoFch" CssClass="btn btn-primary pull-right" OnClick="CrearYagregarRango_Click" />
             </div>
             
             <br />
             <br />
             
             <div>
-                <asp:Button runat="server" Text="Confirmar" ValidationGroup="anuncio" CssClass="btn btn-primary pull-right" OnClick="ConfAnuncio_Click" />
+                <asp:Button runat="server" Text="Crear Anuncio" ValidationGroup="anuncio" CssClass="btn btn-primary pull-right" OnClick="ConfAnuncio_Click" />
             </div>
         </div>
 

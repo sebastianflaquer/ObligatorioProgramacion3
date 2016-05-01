@@ -155,6 +155,7 @@ D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\bin\System.Web.Optimization.xm
 D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
 D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\obj\Debug\Web.dll
 D:\git\ObligatorioProgramacion3\ObligatorioP3\Web\obj\Debug\Web.pdb
+D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\Web\bin\Web.dll.config
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\Web\bin\ApplicationInsights.config
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\Web\bin\roslyn\csc.exe
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -199,4 +200,3 @@ D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\Obli
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\Web\obj\Debug\Web.csprojResolveAssemblyReference.cache
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\Web\obj\Debug\Web.dll
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\Web\obj\Debug\Web.pdb
-D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\Web\bin\Web.dll.config

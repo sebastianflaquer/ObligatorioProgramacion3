@@ -22,7 +22,7 @@ namespace Web
         {
             Session["logueado"] = false;
             Session["nombre"] = "";
-            Session["email"] = "";
+            Session["mail"] = "";
             Session["id"] = "";
         }
 

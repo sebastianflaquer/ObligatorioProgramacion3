@@ -12,6 +12,7 @@ namespace BienvenidosUY
         public Anuncio anuncio { get; set; }
         public DateTime fechaInicio { get; set; }
         public DateTime fechaFin { get; set; }
+        public Registrado registrado { get; set; }
 
     }
 }

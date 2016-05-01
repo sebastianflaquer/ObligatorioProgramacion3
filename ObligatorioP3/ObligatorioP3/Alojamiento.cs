@@ -36,8 +36,20 @@ namespace BienvenidosUY
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "LeerAlojamiento";
-                cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));    //NO SE PUEDE REPETIR EL NOMBRE DE ALOJAMIENTOS PARA UN MISMO USUARIO
+
+                int id = this.id;
+                string nombre = this.nombre;
+
+                if (nombre != null)
+                {
+                    cmd.CommandText = "LeerAlojamiento";
+                    cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));    //NO SE PUEDE REPETIR EL NOMBRE DE ANUNCIO PARA UN MISMO USUARIO
+                }
+                else
+                {
+                    cmd.CommandText = "LeerAlojamientoXId";
+                    cmd.Parameters.Add(new SqlParameter("@id", this.id));    //NO SE PUEDE REPETIR EL NOMBRE DE ANUNCIO PARA UN MISMO USUARIO
+                }
 
                 SqlDataReader drResults;
 
@@ -187,6 +199,7 @@ namespace BienvenidosUY
             throw new NotImplementedException();
         }
 
+        //CARGAR ALOJAMIENTOS POR USUARIO
         public List<Alojamiento> CargarAlojamientosPorUsuario(string mail)
         {
             List<Alojamiento> lista = new List<Alojamiento>();
@@ -214,6 +227,40 @@ namespace BienvenidosUY
                     Alojamiento aloj = new Alojamiento();
                     aloj.id = Convert.ToInt32(drResults["Id"]);
                     aloj.nombre = Convert.ToString(drResults["Nombre"]);
+
+                    #region categoria
+                    Categoria cat = new Categoria();
+                    cat.id = Convert.ToInt32(drResults["idCategoria"]);
+                    cat.LeerPorId();
+                    aloj.categoria = cat;
+                    #endregion
+
+                    aloj.tipoHabitacion = drResults["tipoHabitacion"].ToString();
+
+                    aloj.banioPrivado = Convert.ToBoolean(drResults["banioPrivado"]);
+                    aloj.cantHuespedes = Convert.ToInt32(drResults["cantHuespedes"]);
+
+                    #region ciudad
+                    Ciudad ciud = new Ciudad();
+                    ciud.id = Convert.ToInt32(drResults["idCiudad"]);
+                    ciud.LeerXId();
+                    aloj.ciudad = ciud;
+                    #endregion
+
+                    aloj.barrio = Convert.ToString(drResults["barrio"]);
+
+
+                    List<Servicio> Lser = new List<Servicio>();
+                    Servicio ser = new Servicio();
+                    Lser = ser.CargarServiciosPorAlojamiento(aloj.id);
+                    aloj.servicios = Lser;
+
+
+                    aloj.calificacion = Convert.ToInt32(drResults["calificacion"]);
+
+                    Registrado reg = new Registrado();
+                    reg.id = Convert.ToInt32(drResults["idRegistrado"]);
+                    aloj.registrado = reg;
                     lista.Add(aloj);
                 }
 
@@ -231,6 +278,7 @@ namespace BienvenidosUY
             return lista;
         }
 
+        //COMPROBAR NOMBRE ALOJAMIENTO
         public bool ComprobarNombreAlojamiento(string nomAloj, int idRegistrado)
         {
             bool retorno = false;

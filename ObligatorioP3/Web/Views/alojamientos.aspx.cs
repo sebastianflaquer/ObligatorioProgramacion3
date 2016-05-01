@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BienvenidosUY;
 
 namespace Web.Views
 {
@@ -11,6 +12,9 @@ namespace Web.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Alojamiento Aloj = new Alojamiento();
+            this.GridAlojamientos.DataSource = Aloj.CargarAlojamientosPorUsuario( Session["mail"].ToString());
+            this.GridAlojamientos.DataBind();
 
         }
     }

@@ -215,7 +215,7 @@ namespace BienvenidosUY
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "ServiciosPorAlojamiento";
-                cmd.Parameters.Add(new SqlParameter("@idAloj", idAloj));
+                cmd.Parameters.Add(new SqlParameter("@idAlojamiento", idAloj));
 
                 SqlDataReader drResults;
 

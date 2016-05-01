@@ -1,10 +1,10 @@
 create PROCEDURE [dbo].[ServiciosPorAlojamiento]
-	@idAloj int
+	@idAlojamiento int
 	As
 	BEGIN
 		SET NOCOUNT ON
 
 select s.*
-from SERVICIO s
-where idAlojamiento = @idAloj
+from SERVICIO S, ALOJAMIENTO_SERVICIO S2
+where idAlojamiento = @idAlojamiento
 	END

@@ -41,9 +41,9 @@ namespace Web.Views
 
             //Carga el tipo de habitacion
             #region tipohabitacion
-            TipoHabitacionDropD.Items.Add("Todo el alojamiento");
-            TipoHabitacionDropD.Items.Add("Habitacion Privada");
-            TipoHabitacionDropD.Items.Add("Habitacion compartida");
+            TipoHabitacionDropD.Items.Add("Completo");
+            TipoHabitacionDropD.Items.Add("Privada");
+            TipoHabitacionDropD.Items.Add("compartida");
             #endregion
 
             //Carga el tipo de habitacion
@@ -200,19 +200,6 @@ namespace Web.Views
                         listaServicios.Add(serv);
                         this.lblListaServicios.InnerHtml += "<span class='label label-default'>" + listaServicios[i].nombre + "</span> ";
                     }
-                    //int i = 0;
-                    //bool encontrado = false;
-                    //while( i < listaServicios.Count && encontrado == false){
-
-                    //    if ()
-                    //    {
-                    //        
-                    //    }
-                    //    else
-                    //    {
-                    //        
-                    //    }
-                    //}
                 }
                 else // no tiene items en la lista
                 {

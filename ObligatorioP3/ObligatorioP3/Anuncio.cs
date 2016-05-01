@@ -35,8 +35,19 @@ namespace BienvenidosUY
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "LeerAnuncio";
-                cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));    //NO SE PUEDE REPETIR EL NOMBRE DE ANUNCIO PARA UN MISMO USUARIO
+
+                int id = this.id;
+                string nombre = this.nombre;
+
+                if(nombre != ""){
+                    cmd.CommandText = "LeerAnuncio";
+                    cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));    //NO SE PUEDE REPETIR EL NOMBRE DE ANUNCIO PARA UN MISMO USUARIO
+                }
+                else
+                {
+                    cmd.CommandText = "LeerAnuncioXId";
+                    cmd.Parameters.Add(new SqlParameter("@id", this.id));    //NO SE PUEDE REPETIR EL NOMBRE DE ANUNCIO PARA UN MISMO USUARIO
+                }
 
                 SqlDataReader drResults;
 
@@ -55,8 +66,6 @@ namespace BienvenidosUY
                     //this.fotos = drResults ...
                     this.precioBase = Convert.ToDecimal(drResults["precioBase"]);
                     this.registrado = new Registrado() { id = Convert.ToInt32(drResults["idRegistrado"]) };
-
-
                     retorno = true;
                 }
 
@@ -97,7 +106,7 @@ namespace BienvenidosUY
                     cmd.Parameters.Add(new SqlParameter("@descripcion", this.descripcion));
                     cmd.Parameters.Add(new SqlParameter("@direccion1", this.direccion1));
                     cmd.Parameters.Add(new SqlParameter("@direccion2", this.direccion2));
-                    //cmd.Parameters.Add(new SqlParameter("@fotos", this.fotos));
+                    cmd.Parameters.Add(new SqlParameter("@fotos", this.fotos));
                     cmd.Parameters.Add(new SqlParameter("@preciobase", this.precioBase));
                     cmd.Parameters.Add(new SqlParameter("@idRegistrado", this.registrado.id));
                     //cmd.Parameters.Add(new SqlParameter("@rangoFechas", this.rangosFechas));
@@ -208,6 +217,23 @@ namespace BienvenidosUY
                     Anuncio anu = new Anuncio();
                     anu.id = Convert.ToInt32(drResults["Id"]);
                     anu.nombre = Convert.ToString(drResults["Nombre"]);
+
+                    Alojamiento aloj = new Alojamiento();
+                    aloj.id = Convert.ToInt32(drResults["idAlojamiento"]);
+                    aloj.Leer();
+
+                    anu.alojamiento = aloj;
+
+
+                    anu.descripcion = Convert.ToString(drResults["Descripcion"]);
+                    anu.direccion1 = Convert.ToString(drResults["Direccion1"]);
+                    anu.direccion2 = Convert.ToString(drResults["Direccion2"]);
+
+                    //anu.fotos = ..;
+
+                    anu.precioBase = Convert.ToDecimal(drResults["precioBase"]);
+
+
                     lista.Add(anu);
                 }
 

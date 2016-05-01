@@ -24,7 +24,6 @@ namespace BienvenidosUY
         public string celular { get; set; }
         public string foto { get; set; }
         public string descripcion { get; set; }
-        public List<Reserva> reservas { get; set; }
         //public List<Alojamiento> alojamientos { get; set; }
         //public static object Instancia { get; set; }
 

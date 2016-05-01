@@ -12,7 +12,7 @@ create PROCEDURE [dbo].[AnunciosPorUsuario]
 	BEGIN
 		SET NOCOUNT ON
 
-		Select A.id, A.nombre
+		Select A.*
 		From ANUNCIO A, REGISTRADO R
 		where a.idRegistrado = r.id
 		AND R.mail = @mail
