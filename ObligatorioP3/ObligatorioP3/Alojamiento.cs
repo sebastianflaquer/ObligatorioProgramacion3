@@ -43,12 +43,12 @@ namespace BienvenidosUY
                 if (nombre != null)
                 {
                     cmd.CommandText = "LeerAlojamiento";
-                    cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));    //NO SE PUEDE REPETIR EL NOMBRE DE ANUNCIO PARA UN MISMO USUARIO
+                    cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));    //NO SE PUEDE REPETIR EL NOMBRE DE ALOJAMIENTO PARA UN MISMO USUARIO
                 }
                 else
                 {
                     cmd.CommandText = "LeerAlojamientoXId";
-                    cmd.Parameters.Add(new SqlParameter("@id", this.id));    //NO SE PUEDE REPETIR EL NOMBRE DE ANUNCIO PARA UN MISMO USUARIO
+                    cmd.Parameters.Add(new SqlParameter("@id", this.id));    
                 }
 
                 SqlDataReader drResults;

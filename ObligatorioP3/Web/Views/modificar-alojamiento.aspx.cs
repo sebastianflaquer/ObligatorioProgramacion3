@@ -75,11 +75,19 @@ namespace Web.Views
 
             //Cargamos el form con los datos del alojamiento
             this.NombreModAlojamiento.Text = aloj.nombre;
-            this.CategoriaDropD.Items.Add(aloj.categoria.nombre);
+
+            Categoria cat = new Categoria();
+            cat.id = aloj.categoria.id;
+            cat.Leer();
+            this.CategoriaDropD.Items.Add(cat.nombre);
             this.TipoHabitacionDropD.Items.Add(aloj.tipoHabitacion);
             this.TipoBanioDropD.Items.Add(aloj.banioPrivado.ToString());
             this.CantHuespedes.Text = aloj.cantHuespedes.ToString();
-            this.CiudadDropD.Items.Add(aloj.ciudad.nombre);
+
+            Ciudad ciud = new Ciudad();
+            ciud.id = aloj.ciudad.id;
+            ciud.Leer();
+            this.CiudadDropD.Items.Add(ciud.nombre);
             this.BarrioAloj.Text = aloj.barrio;
 
             //Carga los servicios

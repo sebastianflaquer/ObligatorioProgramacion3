@@ -85,8 +85,21 @@ namespace BienvenidosUY
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "LeerCategoria";
-                cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));
+
+
+                int id = this.id;
+                string nombre = this.nombre;
+
+                if (nombre != null)
+                {
+                    cmd.CommandText = "LeerCategoria";
+                    cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));   
+                }
+                else
+                {
+                    cmd.CommandText = "LeerCategoriaXId";
+                    cmd.Parameters.Add(new SqlParameter("@id", this.id));
+                }
 
                 SqlDataReader drResults;
 
