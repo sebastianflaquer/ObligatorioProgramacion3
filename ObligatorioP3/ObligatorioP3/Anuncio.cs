@@ -187,7 +187,61 @@ namespace BienvenidosUY
         //ELIMINAR
         public override bool Eliminar()
         {
-            throw new NotImplementedException();
+            bool retorno = false;
+            SqlConnection con = null;
+
+            try
+            {
+                con = new SqlConnection(Persistente.StringConexion);
+                con.Open();
+                SqlCommand cmd = new SqlCommand("EliminarAnuncio", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombre", this.nombre);
+
+                SqlParameter par = new SqlParameter();
+                par.ParameterName = "@nuevoId";
+                par.SqlDbType = SqlDbType.Int;
+                par.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(par);
+
+                //creamos la transaction TR        
+                SqlTransaction tr = con.BeginTransaction();
+                //Le pasamos al CMD la transaction
+                cmd.Transaction = tr;
+
+                int afectadas = cmd.ExecuteNonQuery();
+
+                if (afectadas == 1)
+                {
+                    this.id = (int)par.Value;
+                    cmd.CommandText = "EliminarRangoFecha";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", (int)par.Value);
+                    bool ok = true;
+                    ok = cmd.ExecuteNonQuery() == 1;
+
+                    if (ok)
+                    {
+                        tr.Commit();
+                        retorno = true;
+                    }
+                    else
+                    {
+                        tr.Rollback();
+                    }
+                }
+            }
+            catch
+            {
+                //if (tr != null) tr.Rollback();
+                throw;
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open) con.Close();
+                //if (reader != null) reader.Close();
+            }
+            return retorno;
         }
 
         public List<Anuncio> CargarAnunciosPorUsuario(string mail)

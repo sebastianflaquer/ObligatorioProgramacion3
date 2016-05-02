@@ -160,6 +160,7 @@
     <Content Include="Bundle.config" />
     <Content Include="Views\alojamientos.aspx" />
     <Content Include="Views\anuncios.aspx" />
+    <Content Include="Views\baja-alojamiento.aspx" />
     <Content Include="Views\baja-anuncio.aspx" />
     <Content Include="Views\crear-alojamiento.aspx" />
     <Content Include="Views\crear-anuncio.aspx" />
@@ -209,6 +210,13 @@
     </Compile>
     <Compile Include="Views\anuncios.aspx.designer.cs">
       <DependentUpon>anuncios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\baja-alojamiento.aspx.cs">
+      <DependentUpon>baja-alojamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\baja-alojamiento.aspx.designer.cs">
+      <DependentUpon>baja-alojamiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\baja-anuncio.aspx.cs">
       <DependentUpon>baja-anuncio.aspx</DependentUpon>
