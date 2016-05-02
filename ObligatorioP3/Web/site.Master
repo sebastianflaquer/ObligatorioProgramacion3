@@ -42,10 +42,24 @@
                 <div id="navbar" class="collapse navbar-collapse pull-right">
                     
                     <ul id="divMenuLogeado" visible="false" class="nav navbar-nav" runat="server">
-                        <li><a href="alojamientos.aspx">Alojamientos</a></li>
-                        <li><a href="anuncios.aspx">Anuncios</a></li>
-                        <li><a href="crear-alojamiento.aspx">Crear Alojamiento</a></li>
-                        <li><a href="crear-anuncio.aspx">Crear Anuncio</a></li>
+                        <li>
+                            <a id="dropdownMenu2" href="alojamientos.aspx" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Alojamientos</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li><a href="crear-alojamiento.aspx">Crear Alojamiento</a></li>
+                                <li><a href="modificar-alojamiento.aspx">Editar Alojamiento</a></li>
+                                <li><a href="baja-alojamiento.aspx">Eliminar Alojamiento</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a id="dropdownMenu3" href="anuncios.aspx" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Anuncios</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                                <li><a href="crear-anuncio.aspx">Crear Anuncio</a></li>
+                                <li><a href="modificar-anuncio.aspx">Editar Anuncios</a></li>
+                                <li><a href="baja-anuncio.aspx">Eliminar Anuncios</a></li>
+                            </ul>
+                        </li>
+                        
                         <li>
                             <a runat="server" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><b><asp:Label ID="lblEmailMaster" runat="server"></asp:Label></b></a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -56,7 +70,7 @@
                     </ul>
 
                     <ul id="divMenuDeslogeado" visible="false" class="nav navbar-nav" runat="server">
-                        <li><a href="sign-up.aspx">Sing In</a></li>
+                        <li><a href="sign-up.aspx">Sign In</a></li>
                         <li><a href="registro.aspx">Register</a></li>
                     </ul>
 
