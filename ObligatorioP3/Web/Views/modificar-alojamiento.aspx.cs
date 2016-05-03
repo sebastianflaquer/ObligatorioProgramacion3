@@ -22,10 +22,9 @@ namespace Web.Views
             }
         }
 
-        //CARGA LOS ALOJAMIENTOS DEPENDIENDO EL USUSARIO LOGUEADO
+        //CARGA LOS ALOJAMIENTOS DEPENDIENDO EL USUSARIO LOGUEADO al iniciar la pagina
         protected void CargarAlojamientosDeUsuario()
         {
-
             #region alojamientos
             Alojamiento aloj = new Alojamiento();
             List<Alojamiento> L1 = new List<Alojamiento>();
@@ -37,29 +36,15 @@ namespace Web.Views
             {
                 ElejAlojamientoDropD.Items.Add(L1[i].nombre);
             }
+            #endregion
         }
-        #endregion
+
 
         protected void MostrarFormAModificar_Click(object sender, EventArgs e)
         {
             #region MostrarCampos
-            this.lblModAlojamiento.Visible = true;
-            this.NombreModAlojamiento.Visible = true;
-            this.lblModCat.Visible = true;
-            this.CategoriaDropD.Visible = true;
-            this.lblModTipoHab.Visible = true;
-            this.TipoHabitacionDropD.Visible = true;
-            this.lblModTipoBano.Visible = true;
-            this.TipoBanioDropD.Visible = true;
-            this.lblModCantHuesp.Visible = true;
-            this.CantHuespedes.Visible = true;
-            this.lblModCiud.Visible = true;
-            this.CiudadDropD.Visible = true;
-            this.lblModBarrio.Visible = true;
-            this.BarrioAloj.Visible = true;
-            this.ModServiciosListBox.Visible = true;
-            this.btnActAloj.Visible = true;
-            this.lblModServ.Visible = true;
+            //muestra div del contenedor
+            this.contentModificar.Visible = true;
             #endregion
 
             cargarAlojamiento();

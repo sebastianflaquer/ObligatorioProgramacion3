@@ -231,7 +231,7 @@ namespace BienvenidosUY
                     #region categoria
                     Categoria cat = new Categoria();
                     cat.id = Convert.ToInt32(drResults["idCategoria"]);
-                    cat.LeerPorId();
+                    cat.Leer();
                     aloj.categoria = cat;
                     #endregion
 

@@ -19,6 +19,7 @@ namespace BienvenidosUY
 
         #endregion
         
+        //CARGAR CATEGORIAS
         public List<Categoria> CargarCategorias(){
 
             List<Categoria> L1 = new List<Categoria>();
@@ -63,16 +64,19 @@ namespace BienvenidosUY
             return L1;
         }
 
+        //ELIMINAR
         public override bool Eliminar()
         {
             throw new NotImplementedException();
         }
 
+        //GUARDAR
         public override bool Guardar()
         {
             throw new NotImplementedException();
         }
 
+        //LEER
         public override bool Leer()
         {
             bool retorno = false;
@@ -85,12 +89,11 @@ namespace BienvenidosUY
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
+                
+                int varid = this.id;
+                string varnombre = this.nombre;
 
-
-                int id = this.id;
-                string nombre = this.nombre;
-
-                if (nombre != null)
+                if (varnombre != null)
                 {
                     cmd.CommandText = "LeerCategoria";
                     cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));   
@@ -109,8 +112,8 @@ namespace BienvenidosUY
 
                 if (drResults.Read())
                 {
-                    id = Convert.ToInt32(drResults["id"]);
-                    nombre = drResults["nombre"].ToString();
+                    this.id = Convert.ToInt32(drResults["id"]);
+                    this.nombre = drResults["nombre"].ToString();
 
                     retorno = true;
                 }
@@ -129,58 +132,61 @@ namespace BienvenidosUY
             return retorno;
         }
 
+        //MODIFICAR
         public override bool Modificar()
         {
             throw new NotImplementedException();
         }
 
+        //TRAER TODO
         public override IEnumerable<object> TraerTodo()
         {
             throw new NotImplementedException();
         }
 
-        public bool LeerPorId(){
+        //LEER POR ID
+        //public bool LeerPorId(){
 
-            bool retorno = false;
+        //    bool retorno = false;
 
-            try
-            {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
+        //    try
+        //    {
+        //        SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+        //        string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+        //        cn.ConnectionString = cadenaConexion;
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "LeerCategoriaXId";
-                cmd.Parameters.Add(new SqlParameter("@id", this.id));
+        //        SqlCommand cmd = new SqlCommand();
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.CommandText = "LeerCategoriaXId";
+        //        cmd.Parameters.Add(new SqlParameter("@id", this.id));
 
-                SqlDataReader drResults;
+        //        SqlDataReader drResults;
 
-                cmd.Connection = cn;
-                cn.Open();
-                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+        //        cmd.Connection = cn;
+        //        cn.Open();
+        //        drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
-                if (drResults.Read())
-                {
-                    id = Convert.ToInt32(drResults["id"]);
-                    nombre = drResults["nombre"].ToString();
+        //        if (drResults.Read())
+        //        {
+        //            id = Convert.ToInt32(drResults["id"]);
+        //            nombre = drResults["nombre"].ToString();
 
-                    retorno = true;
-                }
+        //            retorno = true;
+        //        }
 
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
-            }
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        //if (con != null && con.State == ConnectionState.Open) con.Close();
+        //        //if (reader != null) reader.Close();
+        //    }
 
-            return retorno;
-        }
+        //    return retorno;
+        //}
 
     }
 }

@@ -91,10 +91,10 @@ namespace BienvenidosUY
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
-                int id = this.id;
-                string nombre = this.nombre;
+                int varid = this.id;
+                string varnombre = this.nombre;
 
-                if (nombre != null)
+                if (varnombre != null)
                 {
                     cmd.CommandText = "LeerCiudad";
                     cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));
@@ -113,8 +113,8 @@ namespace BienvenidosUY
 
                 if (drResults.Read())
                 {
-                    id = Convert.ToInt32(drResults["id"]);
-                    nombre = drResults["nombre"].ToString();
+                    this.id = Convert.ToInt32(drResults["id"]);
+                    this.nombre = drResults["nombre"].ToString();
 
                     retorno = true;
                 }
