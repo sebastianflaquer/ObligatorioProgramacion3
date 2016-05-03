@@ -77,7 +77,7 @@ namespace Web.Views
             //Carga los servicios
             #region Servicios
             Servicio serv = new Servicio();
-            this.ModServiciosListBox.DataSource = serv.CargarServiciosPorAlojamiento(aloj.id);   //ARREGLAR PARA QUE TOME EL ID
+            this.ModServiciosListBox.DataSource = serv.CargarServiciosPorAlojamiento(aloj.id); 
             this.ModServiciosListBox.DataValueField = "Id";
             this.ModServiciosListBox.DataTextField = "Nombre";
             this.ModServiciosListBox.DataBind();

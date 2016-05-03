@@ -16,6 +16,11 @@ namespace BienvenidosUY
         public DateTime fechaFin { get; set; }
         public decimal precio { get; set; }
 
+        public string Listado
+        {
+            get { return this.fechaInicio.ToString() + " " + this.fechaFin.ToString() + " " + this.precio.ToString(); }
+        }
+
         //LEER 
         public override bool Leer()
         {
@@ -186,7 +191,7 @@ namespace BienvenidosUY
                 {
                     RangoFechas rf = new RangoFechas();
                     rf.id = Convert.ToInt32(drResults["id"]);
-                    rf.fechaInicio = Convert.ToDateTime(drResults["fechaIni"]);
+                    rf.fechaInicio = Convert.ToDateTime(drResults["fechaInicio"]);
                     rf.fechaFin = Convert.ToDateTime(drResults["fechaFin"]);
                     rf.precio = Convert.ToDecimal(drResults["precio"]);
                     lista.Add(rf);

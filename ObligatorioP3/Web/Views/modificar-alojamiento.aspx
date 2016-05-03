@@ -33,7 +33,6 @@
 
 
             <div runat="server" id="contentModificar" Visible="false">
-                hola
                 <div class="form-group">
                     <asp:Label runat="server" ID="lblModAlojamiento" AssociatedControlID="NombreModAlojamiento" CssClass="control-label" Visible="true">Nombre:</asp:Label>
                     <asp:TextBox ID="NombreModAlojamiento" Visible ="true" CssClass="form-control" runat="server"/>

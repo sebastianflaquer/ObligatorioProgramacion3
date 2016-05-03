@@ -88,7 +88,7 @@ namespace Web.Views
             RangoFechas rf = new RangoFechas();
             this.ModRangoFechaListBox.DataSource = rf.CargarRangosFechaDeAnuncio(anu.id);   
             this.ModRangoFechaListBox.DataValueField = "Id";
-            this.ModRangoFechaListBox.DataTextField = "Fecha";   //DEBERIA MOSTRAR FECHAS Y PRECIO
+            this.ModRangoFechaListBox.DataTextField = "Listado";   
             this.ModRangoFechaListBox.DataBind();
             #endregion
 
