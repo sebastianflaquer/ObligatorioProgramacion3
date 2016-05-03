@@ -58,11 +58,10 @@ namespace Web.Views
 
             L1 = anu.CargarAnunciosPorUsuario(Session["mail"].ToString());
 
-            //Recorre la lista de categorias y agrega al select
-            for (int i = 0; i < L1.Count; i++)
-            {
-                ElejAnuncioDropD.Items.Add(L1[i].nombre);
-            }
+            this.ElejAnuncioDropD.DataSource = L1;
+            this.ElejAnuncioDropD.DataValueField = "id";
+            this.ElejAnuncioDropD.DataTextField = "nombre";
+            this.ElejAnuncioDropD.DataBind();
         }
         #endregion
 
@@ -70,12 +69,15 @@ namespace Web.Views
         private void cargarAnuncio()
         {
             Anuncio anu = new Anuncio();
-            anu.nombre = this.ElejAnuncioDropD.SelectedValue;
+            anu.id = int.Parse(this.ElejAnuncioDropD.SelectedValue);
             bool existe = anu.Leer();
 
             //Cargamos el form con los datos del alojamiento
             this.NombreAnuncioMod.Text = anu.nombre;
-            this.AlojamientoDropD.Items.Add(anu.alojamiento.nombre);  // QUEDA EN NULL
+            Alojamiento alo = new Alojamiento();
+            alo.id = anu.alojamiento.id;
+            alo.Leer();
+            this.AlojamientoDropD.Items.Add(alo.nombre);  // QUEDA EN NULL
             this.TextBoxDscModAnu.Text = anu.descripcion;
             this.TextBoxDir1ModAnu.Text = anu.direccion1;
             this.TextBoxDir2ModAnu.Text = anu.direccion2;

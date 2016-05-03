@@ -31,11 +31,10 @@ namespace Web.Views
 
             L1 = aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
 
-            //Recorre la lista de categorias y agrega al select
-            for (int i = 0; i < L1.Count; i++)
-            {
-                ElejAlojamientoDropD.Items.Add(L1[i].nombre);
-            }
+            this.ElejAlojamientoDropD.DataSource = L1;
+            this.ElejAlojamientoDropD.DataValueField = "id";
+            this.ElejAlojamientoDropD.DataTextField = "nombre";
+            this.ElejAlojamientoDropD.DataBind();
             #endregion
         }
 
@@ -55,7 +54,7 @@ namespace Web.Views
         private void cargarAlojamiento()
         {
             Alojamiento aloj = new Alojamiento();
-            aloj.nombre = this.ElejAlojamientoDropD.SelectedValue;    
+            aloj.id = int.Parse(this.ElejAlojamientoDropD.SelectedValue);    
             bool existe = aloj.Leer();                                
 
             //Cargamos el form con los datos del alojamiento

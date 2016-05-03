@@ -32,11 +32,10 @@ namespace Web.Views
             List<Categoria> L1 = new List<Categoria>();
             L1 = Cat.CargarCategorias();
 
-            //Recorre la lista de categorias y agrega al select
-            for (int i = 0; i < L1.Count; i++)
-            {
-                CategoriaDropD.Items.Add(L1[i].nombre);
-            }
+            this.CategoriaDropD.DataSource = L1;
+            this.CategoriaDropD.DataTextField = "nombre";
+            this.CategoriaDropD.DataValueField = "id";
+            this.CategoriaDropD.DataBind();
             #endregion
 
             //Carga el tipo de habitacion
@@ -59,10 +58,10 @@ namespace Web.Views
             List<Ciudad> L2 = new List<Ciudad>();
             L2 = Ciu.CargarCiudades();
 
-            for (int i = 0; i < L2.Count; i++)
-            {
-                CiudadDropD.Items.Add(L2[i].nombre);
-            }
+            this.CiudadDropD.DataSource = L2;
+            this.CiudadDropD.DataValueField = "id";
+            this.CiudadDropD.DataTextField = "nombre";
+            this.CiudadDropD.DataBind();
             #endregion
 
             //Carga los servicios
@@ -86,7 +85,7 @@ namespace Web.Views
             Aloj.nombre = nomAloj;
 
             Categoria cat = new Categoria();
-            cat.nombre = CategoriaDropD.SelectedValue;
+            cat.id = int.Parse(CategoriaDropD.SelectedValue);
             
             //CARGA LOS DATOS DE LA CATEGORIA - FALTA COMPLETAR
             cat.Leer();
@@ -106,7 +105,7 @@ namespace Web.Views
             
             //CIUDAD - LEE LA CIUDAD SELECCIONADA
             Ciudad ciu = new Ciudad();
-            ciu.nombre = CiudadDropD.SelectedValue;
+            ciu.id = int.Parse(CiudadDropD.SelectedValue);
             ciu.Leer();
             Aloj.ciudad = ciu;
 

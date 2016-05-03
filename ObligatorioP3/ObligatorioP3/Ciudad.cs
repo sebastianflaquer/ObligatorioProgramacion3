@@ -89,21 +89,8 @@ namespace BienvenidosUY
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-
-
-                int varid = this.id;
-                string varnombre = this.nombre;
-
-                if (varnombre != null)
-                {
-                    cmd.CommandText = "LeerCiudad";
-                    cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));
-                }
-                else
-                {
-                    cmd.CommandText = "LeerCiudadXId";
-                    cmd.Parameters.Add(new SqlParameter("@id", this.id));
-                }
+                cmd.CommandText = "LeerCiudad";
+                cmd.Parameters.Add(new SqlParameter("@id", this.id));
 
                 SqlDataReader drResults;
 

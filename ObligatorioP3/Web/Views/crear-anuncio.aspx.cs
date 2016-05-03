@@ -33,11 +33,11 @@ namespace Web.Views
 
             L1 = aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
 
-            //Recorre la lista de alojamientos y agrega al select
-            for (int i = 0; i < L1.Count; i++)
-            {
-                this.DropDElegirAloj.Items.Add(L1[i].nombre);
-            }
+            this.DropDElegirAloj.DataSource = L1;
+            this.DropDElegirAloj.DataTextField = "nombre";
+            this.DropDElegirAloj.DataValueField = "id";
+            this.DropDElegirAloj.DataBind();
+
         }
         
         //CREAR Y AGREGAR RANGO FECHAS
@@ -93,7 +93,7 @@ namespace Web.Views
             Anuncio anu = new Anuncio();
             anu.nombre = this.NombreAnuncio.Text;
             Alojamiento aloj = new Alojamiento();
-            aloj.nombre = this.DropDElegirAloj.SelectedValue;
+            aloj.id = int.Parse(this.DropDElegirAloj.SelectedValue);
             aloj.Leer();
             anu.alojamiento = aloj;
             anu.descripcion = this.DscAnuncio.Text;

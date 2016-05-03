@@ -31,20 +31,18 @@ namespace Web.Views
 
             L1 = aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
 
-            //Recorre la lista de alojamientos y agrega al select
-            for (int i = 0; i < L1.Count; i++)
-            {
-                this.DropDElegirAlojamiento.Items.Add(L1[i].nombre);
-            }
+            this.DropDElegirAlojamiento.DataSource = L1;
+            this.DropDElegirAlojamiento.DataValueField = "id";
+            this.DropDElegirAlojamiento.DataTextField = "nombre";
+            this.DropDElegirAlojamiento.DataBind();
         }
         #endregion
 
 
         protected void ConfBajaAlojamiento_Click(object sender, EventArgs e)
         {
-            string nomAlojamiento = this.DropDElegirAlojamiento.SelectedValue;
             Alojamiento alo = new Alojamiento();
-            alo.nombre = nomAlojamiento;
+            alo.id = int.Parse(this.DropDElegirAlojamiento.SelectedValue);
             alo.Leer();
             bool ok = alo.Eliminar();  //IMPLEMENTAR
             if (ok)

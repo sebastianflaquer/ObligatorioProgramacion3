@@ -33,19 +33,17 @@ namespace Web.Views
 
             L1 = anu.CargarAnunciosPorUsuario(Session["mail"].ToString());
 
-            //Recorre la lista de alojamientos y agrega al select
-            for (int i = 0; i < L1.Count; i++)
-            {
-                this.DropDElegirAnuncio.Items.Add(L1[i].nombre);
-            }
+            this.DropDElegirAnuncio.DataSource = L1;
+            this.DropDElegirAnuncio.DataValueField = "id";
+            this.DropDElegirAnuncio.DataTextField = "nombre";
+            this.DropDElegirAnuncio.DataBind();
         }
         #endregion
 
         protected void ConfBajaAnuncio_Click(object sender, EventArgs e)
         {
-            string nomAnuncio = this.DropDElegirAnuncio.SelectedValue;
             Anuncio anu = new Anuncio();
-            anu.nombre = nomAnuncio;
+            anu.id = int.Parse(this.DropDElegirAnuncio.SelectedValue);
             anu.Leer();
             bool ok = anu.Eliminar();  //IMPLEMENTAR
             if (ok)

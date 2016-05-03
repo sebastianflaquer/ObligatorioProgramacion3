@@ -36,21 +36,9 @@ namespace BienvenidosUY
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-
-                int id = this.id;
-                string nombre = this.nombre;
-
-                if (nombre != null)
-                {
-                    cmd.CommandText = "LeerAlojamiento";
-                    cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));    //NO SE PUEDE REPETIR EL NOMBRE DE ALOJAMIENTO PARA UN MISMO USUARIO
-                }
-                else
-                {
-                    cmd.CommandText = "LeerAlojamientoXId";
-                    cmd.Parameters.Add(new SqlParameter("@id", this.id));    
-                }
-
+                cmd.CommandText = "LeerAlojamiento";
+                cmd.Parameters.Add(new SqlParameter("@id", this.id));    
+                
                 SqlDataReader drResults;
 
                 cmd.Connection = cn;
