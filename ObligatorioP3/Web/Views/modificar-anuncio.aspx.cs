@@ -80,6 +80,10 @@ namespace Web.Views
             List<Alojamiento> lista = new List<Alojamiento>();
             lista = alo.CargarAlojamientosPorUsuario(Session["mail"].ToString());
 
+            this.AlojamientoDropD.DataSource = lista;
+            this.AlojamientoDropD.DataValueField = "id";
+            this.AlojamientoDropD.DataTextField = "nombre";
+            this.AlojamientoDropD.DataBind();
             //int i = 0;
             //bool encontrado = false;
             //while (i < lista.Count && encontrado == false)
@@ -88,11 +92,8 @@ namespace Web.Views
             //    {
             //        encontrado = true;
 
-                    this.AlojamientoDropD.DataSource = lista;
-                    this.AlojamientoDropD.DataValueField = "id";
-                    this.AlojamientoDropD.DataTextField = "nombre";
-                   // this.AlojamientoDropD.SelectedIndex = i;
-                    this.AlojamientoDropD.DataBind();
+
+                    this.AlojamientoDropD.SelectedValue = alo.id.ToString();
             //    }
             //    else { i++; }
             //}
