@@ -77,7 +77,28 @@ namespace Web.Views
             Alojamiento alo = new Alojamiento();
             alo.id = anu.alojamiento.id;
             alo.Leer();
-            this.AlojamientoDropD.Items.Add(alo.nombre);  // QUEDA EN NULL
+            List<Alojamiento> lista = new List<Alojamiento>();
+            lista = alo.CargarAlojamientosPorUsuario(Session["mail"].ToString());
+
+            //int i = 0;
+            //bool encontrado = false;
+            //while (i < lista.Count && encontrado == false)
+            //{
+            //    if (lista[i].nombre == alo.nombre)
+            //    {
+            //        encontrado = true;
+
+                    this.AlojamientoDropD.DataSource = lista;
+                    this.AlojamientoDropD.DataValueField = "id";
+                    this.AlojamientoDropD.DataTextField = "nombre";
+                   // this.AlojamientoDropD.SelectedIndex = i;
+                    this.AlojamientoDropD.DataBind();
+            //    }
+            //    else { i++; }
+            //}
+
+
+
             this.TextBoxDscModAnu.Text = anu.descripcion;
             this.TextBoxDir1ModAnu.Text = anu.direccion1;
             this.TextBoxDir2ModAnu.Text = anu.direccion2;

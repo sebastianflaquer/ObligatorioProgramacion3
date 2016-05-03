@@ -18,7 +18,8 @@ namespace BienvenidosUY
 
         public string Listado
         {
-            get { return this.fechaInicio.ToString() + " " + this.fechaFin.ToString() + " " + this.precio.ToString(); }
+            
+            get { return this.fechaInicio.Date.ToString() + " " + this.fechaFin.Date.ToString() + " " + this.precio.ToString(); }
         }
 
         //LEER 

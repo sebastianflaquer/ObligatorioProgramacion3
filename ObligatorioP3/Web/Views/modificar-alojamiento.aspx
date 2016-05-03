@@ -75,6 +75,10 @@
                     <asp:Label runat="server" Visible="true" ID="lblModServ" CssClass="control-label">Servicios del Alojamiento:</asp:Label>
                     <asp:ListBox ID="ModServiciosListBox" Visible="true" runat="server" SelectionMode="Multiple" Height="81px" Width="100%"></asp:ListBox>
                 </div>
+
+                <div>
+                <asp:Button runat="server" Text="Actualizar" CssClass="btn btn-primary pull-right" OnClick="btnActualizar_Click" />
+            </div>
             
             </div>
        

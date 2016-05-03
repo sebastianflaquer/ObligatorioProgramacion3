@@ -170,7 +170,88 @@ namespace BienvenidosUY
         //MODIFICAR
         public override bool Modificar()
         {
-            throw new NotImplementedException();
+            bool retorno = false;
+            SqlConnection cn = null;
+
+            try
+            {
+                cn = new SqlConnection(); //creamos y configuramos la conexion
+                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+                cn.ConnectionString = cadenaConexion;
+
+                int afectadas = 0;
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "ModificarAnuncio";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@id", this.id));
+                    cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));
+                    cmd.Parameters.Add(new SqlParameter("@idAlojamiento", this.alojamiento.id));
+                    cmd.Parameters.Add(new SqlParameter("@descripcion", this.descripcion));
+                    cmd.Parameters.Add(new SqlParameter("@direccion1", this.direccion1));
+                    cmd.Parameters.Add(new SqlParameter("@direccion2", this.direccion2));
+                    cmd.Parameters.Add(new SqlParameter("@fotos", this.fotos));
+                    cmd.Parameters.Add(new SqlParameter("@precioBase", this.precioBase));
+                    //cmd.Parameters.Add(new SqlParameter("@idRegistrado", this.registrado.id));
+                    //cmd.Parameters.Add(new SqlParameter("@rangoFechas", this.rangosFechas));
+                    cn.Open();
+
+                    //creamos la transaction TR        
+                    SqlTransaction tr = cn.BeginTransaction();
+                    //Le pasamos al CMD la transaction
+                    cmd.Transaction = tr;
+
+                    afectadas = cmd.ExecuteNonQuery();
+
+                    if (afectadas == 1)
+                    {
+                        cmd.CommandText = "AsociarRangoFechasAlAlojamiento";  // IMPLEMENTAR ??
+                        bool ok = true;
+                        int i = 0;
+                        while (i < this.rangosFechas.Count && ok)
+                        {
+
+                            cmd.Parameters.Clear();
+                            RangoFechas rf = this.rangosFechas[i];
+
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@IdAnuncio", this.id);
+                            cmd.Parameters.AddWithValue("@fechaIni", rf.fechaInicio);
+                            cmd.Parameters.AddWithValue("@fechaFin", rf.fechaFin);
+                            cmd.Parameters.AddWithValue("@precio", rf.precio);
+                            ok = cmd.ExecuteNonQuery() == 1;
+                            i++;
+                        }
+
+                        if (ok)
+                        {
+                            tr.Commit();
+                            retorno = true;
+                        }
+                        else
+                        {
+                            tr.Rollback();
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                //if (tr != null){
+                //    tr.Rollback();
+                //} 
+                throw;
+            }
+
+            finally
+            {
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
+                //if (reader != null) reader.Close();
+            }
+
+            return retorno;
         }
 
         //ELIMINAR
@@ -185,13 +266,7 @@ namespace BienvenidosUY
                 con.Open();
                 SqlCommand cmd = new SqlCommand("EliminarAnuncio", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@nombre", this.nombre);
-
-                SqlParameter par = new SqlParameter();
-                par.ParameterName = "@nuevoId";
-                par.SqlDbType = SqlDbType.Int;
-                par.Direction = ParameterDirection.Output;
-                cmd.Parameters.Add(par);
+                cmd.Parameters.AddWithValue("@id", this.id);
 
                 //creamos la transaction TR        
                 SqlTransaction tr = con.BeginTransaction();
@@ -202,10 +277,9 @@ namespace BienvenidosUY
 
                 if (afectadas == 1)
                 {
-                    this.id = (int)par.Value;
                     cmd.CommandText = "EliminarRangoFecha";
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id", (int)par.Value);
+                    cmd.Parameters.AddWithValue("@idAnuncio", this.id);
                     bool ok = true;
                     ok = cmd.ExecuteNonQuery() == 1;
 

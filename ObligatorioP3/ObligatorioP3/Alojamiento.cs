@@ -178,13 +178,138 @@ namespace BienvenidosUY
         //MODIFICAR
         public override bool Modificar()
         {
-            throw new NotImplementedException();
+            bool retorno = false;
+            SqlConnection cn = null;
+
+            try
+            {
+                cn = new SqlConnection(); //creamos y configuramos la conexion
+                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+                cn.ConnectionString = cadenaConexion;
+
+                int afectadas = 0;
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "ModificarAlojamiento";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@id", this.id));
+                    cmd.Parameters.Add(new SqlParameter("@nombre", this.nombre));
+                    cmd.Parameters.Add(new SqlParameter("@idCategoria", this.categoria.id));
+                    cmd.Parameters.Add(new SqlParameter("@tipoHabitacion", this.tipoHabitacion));
+                    cmd.Parameters.Add(new SqlParameter("@banioPrivado", this.banioPrivado));
+                    cmd.Parameters.Add(new SqlParameter("@cantHuespedes", this.cantHuespedes));
+                    cmd.Parameters.Add(new SqlParameter("@idCiudad", this.ciudad.id));
+                    cmd.Parameters.Add(new SqlParameter("@barrio", this.barrio));
+                    //cmd.Parameters.Add(new SqlParameter("@servicios", this.servicios));
+                    //cmd.Parameters.Add(new SqlParameter("@calificacion", this.calificacion));
+                    //cmd.Parameters.Add(new SqlParameter("@idRegistrado", this.registrado.id));
+                    cn.Open();
+
+                    //creamos la transaction TR        
+                    SqlTransaction tr = cn.BeginTransaction();
+                    //Le pasamos al CMD la transaction
+                    cmd.Transaction = tr;
+
+                    afectadas = cmd.ExecuteNonQuery();
+
+                    if (afectadas == 1)
+                    {
+                        cmd.CommandText = "AsociarServicioAlAlojamiento";  // MISMO SP DE GUARDAR ??
+                        bool ok = true;
+                        int i = 0;
+                        while (i < this.servicios.Count && ok)
+                        {
+                            Servicio serv = this.servicios[i];
+
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@IdAlojamiento", this.id);
+                            cmd.Parameters.AddWithValue("@IdServicio", serv.id);
+                            ok = cmd.ExecuteNonQuery() == 1;
+                            i++;
+                        }
+
+                        if (ok)
+                        {
+                            tr.Commit();
+                            retorno = true;
+                        }
+                        else
+                        {
+                            tr.Rollback();
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                //if (tr != null){
+                //    tr.Rollback();
+                //} 
+                throw;
+            }
+
+            finally
+            {
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
+                //if (reader != null) reader.Close();
+            }
+
+            return retorno;
         }
 
         //ELIMINAR
         public override bool Eliminar()
         {
-            throw new NotImplementedException();
+            bool retorno = false;
+            SqlConnection con = null;
+
+            try
+            {
+                con = new SqlConnection(Persistente.StringConexion);
+                con.Open();
+                SqlCommand cmd = new SqlCommand("EliminarAlojamiento", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", this.id);
+
+                //creamos la transaction TR        
+                SqlTransaction tr = con.BeginTransaction();
+                //Le pasamos al CMD la transaction
+                cmd.Transaction = tr;
+
+                int afectadas = cmd.ExecuteNonQuery();
+
+                if (afectadas == 1)
+                {
+                    cmd.CommandText = "EliminarAlojamientoServicio";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idAlojamiento", this.id);
+                    bool ok = true;
+                    ok = cmd.ExecuteNonQuery() == 1;
+
+                    if (ok)
+                    {
+                        tr.Commit();
+                        retorno = true;
+                    }
+                    else
+                    {
+                        tr.Rollback();
+                    }
+                }
+            }
+            catch
+            {
+                //if (tr != null) tr.Rollback();
+                throw;
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open) con.Close();
+                //if (reader != null) reader.Close();
+            }
+            return retorno;
         }
 
         //CARGAR ALOJAMIENTOS POR USUARIO

@@ -19,6 +19,7 @@ namespace Web.Views
             }
             else {
                 CargarAlojamientosDeUsuario();
+                Session["listaServicios"] = new List<Servicio>();
             }
         }
 
@@ -82,6 +83,37 @@ namespace Web.Views
             this.ModServiciosListBox.DataTextField = "Nombre";
             this.ModServiciosListBox.DataBind();
             #endregion
+
+        }
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            Alojamiento alo = new Alojamiento();
+            alo.id = int.Parse(this.ElejAlojamientoDropD.SelectedValue);
+            alo.nombre = this.NombreModAlojamiento.Text;
+            alo.categoria.id = int.Parse(this.CategoriaDropD.SelectedValue);
+            alo.tipoHabitacion = this.TipoHabitacionDropD.SelectedValue;
+            alo.banioPrivado = bool.Parse(this.TipoBanioDropD.SelectedValue);
+            alo.cantHuespedes = int.Parse(this.CantHuespedes.Text);
+            alo.ciudad.id = int.Parse(this.CiudadDropD.SelectedValue);
+            alo.barrio = this.BarrioAloj.Text;
+            alo.servicios = Session["listaServicios"] as List<Servicio>;
+            //alo.registrado.id = int.Parse(Session["id"].ToString());
+
+            bool ok = alo.Modificar();
+
+            if (ok)
+            {
+                // Si pudo guardar el Alojamiento
+                    this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El Alojamiento se modificó con exito.</span></div>";
+            }
+            else
+            {
+                //NO pudo guardar el Alojamiento
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar modificar el Alojamiento</span></div>";
+            }
 
         }
     }
