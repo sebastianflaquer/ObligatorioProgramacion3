@@ -10,8 +10,10 @@
                 <Columns>
                     <asp:BoundField HeaderText="Nombre" DataField="nombre" />
                     <asp:BoundField HeaderText="Categoria" DataField="Categoria.nombre" />
-                    <asp:BoundField HeaderText="Tipo de Habitacion" DataField="tipoHabitacion" />
-                    <asp:BoundField HeaderText="Baño Privado" DataField="banioPrivado" />
+                    <asp:BoundField HeaderText="Tipo de Habitacion" DataField="tipoHabitacion" />                    
+                    <asp:TemplateField HeaderText="Tipo de Baño" SortExpression="banioPrivado">
+                        <ItemTemplate><%# (Boolean.Parse(Eval("banioPrivado").ToString())) ? "Privado" : "Compartido" %></ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField HeaderText="Cant Huespedes" DataField="cantHuespedes" />
                     <asp:BoundField HeaderText="Ciudad" DataField="Ciudad.nombre" />
                     <asp:BoundField HeaderText="Barrio" DataField="barrio" />

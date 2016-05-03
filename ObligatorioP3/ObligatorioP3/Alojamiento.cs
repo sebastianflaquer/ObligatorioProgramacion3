@@ -19,7 +19,7 @@ namespace BienvenidosUY
         public int cantHuespedes { get; set; }
         public Ciudad ciudad { get; set; }
         public string barrio { get; set; }
-        public List<Servicio> servicios { get; set; }
+        public List<Servicio> servicios {get; set;}
         public int calificacion { get; set; }
         public Registrado registrado { get; set; }
 
