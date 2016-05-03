@@ -258,29 +258,39 @@ namespace BienvenidosUY
         public override bool Eliminar()
         {
             bool retorno = false;
-            SqlConnection con = null;
+
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
 
             try
             {
-                con = new SqlConnection(Persistente.StringConexion);
-                con.Open();
-                SqlCommand cmd = new SqlCommand("EliminarAnuncio", con);
+                //Elimino rangofechas de un anuncio
+                //cn = new SqlConnection(Persistente.StringConexion);
+                SqlCommand cmd = new SqlCommand();                
+                cn.Open();
+                cmd.CommandText = "LeerCategoria";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id", this.id);
-
+                cmd.Parameters.AddWithValue("@idAnuncio", this.id);
+                
                 //creamos la transaction TR        
-                SqlTransaction tr = con.BeginTransaction();
+                SqlTransaction tr = cn.BeginTransaction();
                 //Le pasamos al CMD la transaction
-                cmd.Transaction = tr;
 
+                cmd.Transaction = tr;
                 int afectadas = cmd.ExecuteNonQuery();
 
+                //si elimino el rangofecha elimino el anuncio
                 if (afectadas == 1)
                 {
-                    cmd.CommandText = "EliminarRangoFecha";
+                    cmd.CommandText = "EliminarAnuncio";
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@idAnuncio", this.id);
+                    cmd.Parameters.AddWithValue("@id", this.id);
+                    //cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.AddWithValue("@idAnuncio", this.id);
+
                     bool ok = true;
+
                     ok = cmd.ExecuteNonQuery() == 1;
 
                     if (ok)
@@ -301,7 +311,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                if (con != null && con.State == ConnectionState.Open) con.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
                 //if (reader != null) reader.Close();
             }
             return retorno;
