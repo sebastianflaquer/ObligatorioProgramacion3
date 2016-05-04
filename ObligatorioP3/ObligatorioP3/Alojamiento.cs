@@ -252,6 +252,14 @@ namespace BienvenidosUY
         //ELIMINAR
         public override bool Eliminar()
         {
+            //PARA ELIMINAR UN ALOJAMIENTO HAY QUE SEGUIR ESTOS PASOS
+
+            //1 - Ver si tiene Reservas activas, si tiene no eliminar
+            //2 - Eliminar Servicios
+            //3 - Eliminar Anuncio con ese idAlojamiento
+            //4 - Eliminar RangoFechas
+            //5 - Eliminar Alojamiento
+
             bool retorno = false;
 
             SqlConnection cn = new SqlConnection();
