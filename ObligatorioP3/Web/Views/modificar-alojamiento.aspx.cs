@@ -68,19 +68,50 @@ namespace Web.Views
 
             //Cargamos el form con los datos del alojamiento
             this.NombreModAlojamiento.Text = aloj.nombre;
-
+            
+            //Carga categorias
             Categoria cat = new Categoria();
-            cat.id = aloj.categoria.id;
-            cat.Leer();
-            this.CategoriaDropD.Items.Add(cat.nombre);
-            this.TipoHabitacionDropD.Items.Add(aloj.tipoHabitacion);
-            this.TipoBanioDropD.Items.Add(aloj.banioPrivado.ToString());
+            List<Categoria> listaCat = cat.CargarCategorias();
+            this.CategoriaDropD.DataSource = listaCat;
+            this.CategoriaDropD.DataValueField = "id";
+            this.CategoriaDropD.DataTextField = "nombre";
+            this.CategoriaDropD.DataBind();
+            this.CategoriaDropD.SelectedValue = aloj.categoria.id.ToString();
+
+            //Cargo tipo de Habitacion
+            this.TipoHabitacionDropD.Items.Add("Privada");
+            this.TipoHabitacionDropD.Items.Add("Compartida");
+            this.TipoHabitacionDropD.Items.Add("Completo");
+            this.TipoHabitacionDropD.SelectedValue = aloj.tipoHabitacion;
+
+
+            //cargo tipo de Baño
+            this.TipoBanioDropD.Items.Add("Privado");
+            this.TipoBanioDropD.Items.Add("Compartido");
+
+            if (aloj.banioPrivado == true)
+            {
+                this.TipoBanioDropD.SelectedValue = "Privado";
+            }
+            else
+            {
+                this.TipoBanioDropD.SelectedValue = "Compartido";
+            }
+            //this.TipoBanioDropD.Items.Add(aloj.banioPrivado.ToString());
+
+            //cargo cantidad de huespedes
             this.CantHuespedes.Text = aloj.cantHuespedes.ToString();
 
+            //cargo ciudades
             Ciudad ciud = new Ciudad();
-            ciud.id = aloj.ciudad.id;
-            ciud.Leer();
-            this.CiudadDropD.Items.Add(ciud.nombre);
+            List<Ciudad> listaC = ciud.CargarCiudades();
+            this.CiudadDropD.DataSource = listaC;
+            this.CiudadDropD.DataValueField = "id";
+            this.CiudadDropD.DataTextField = "nombre";
+            this.CiudadDropD.DataBind();
+            this.CiudadDropD.SelectedValue = aloj.ciudad.id.ToString();
+
+            //Cargo Barrio
             this.BarrioAloj.Text = aloj.barrio;
 
             //Carga los servicios
@@ -94,19 +125,43 @@ namespace Web.Views
 
         }
 
+        private void cargarServicios()
+        {
+            Servicio serv = new Servicio();
+            this.ModServiciosListBox.DataSource = serv.CargarServiciosPorAlojamiento(int.Parse(this.ElejAlojamientoDropD.SelectedValue));
+            this.ModServiciosListBox.DataValueField = "Id";
+            this.ModServiciosListBox.DataTextField = "Nombre";
+            this.ModServiciosListBox.DataBind();
+        }
+
+
+
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             Alojamiento alo = new Alojamiento();
             alo.id = int.Parse(this.ElejAlojamientoDropD.SelectedValue);
             alo.nombre = this.NombreModAlojamiento.Text;
-            alo.categoria.id = int.Parse(this.CategoriaDropD.SelectedValue);
+            Categoria cat = new Categoria();
+            cat.id = int.Parse(this.CategoriaDropD.SelectedValue);
+            alo.categoria = cat;
             alo.tipoHabitacion = this.TipoHabitacionDropD.SelectedValue;
-            alo.banioPrivado = bool.Parse(this.TipoBanioDropD.SelectedValue);
+
+            bool esPrviado;
+            if (this.TipoBanioDropD.SelectedValue == "Privado")
+            { esPrviado = true; }
+            else { esPrviado = false; }
+
+            alo.banioPrivado = esPrviado;
             alo.cantHuespedes = int.Parse(this.CantHuespedes.Text);
-            alo.ciudad.id = int.Parse(this.CiudadDropD.SelectedValue);
+            Ciudad c = new Ciudad();
+            c.id = int.Parse(this.CiudadDropD.SelectedValue);
+            alo.ciudad = c;
             alo.barrio = this.BarrioAloj.Text;
-            alo.servicios = Session["listaServicios"] as List<Servicio>;
-            //alo.registrado.id = int.Parse(Session["id"].ToString());
+            
+            List<Servicio> listaDefinitiva = new List<Servicio>();
+            Servicio s = new Servicio();
+            listaDefinitiva = s.CargarServiciosPorAlojamiento(alo.id);
+            alo.servicios = listaDefinitiva;
 
             bool ok = alo.Modificar();
 
@@ -121,6 +176,73 @@ namespace Web.Views
                 //NO pudo guardar el Alojamiento
                 this.errorField.Visible = true;
                 this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar modificar el Alojamiento</span></div>";
+            }
+
+        }
+
+        private void cargarServiciosQueLeFalta()
+        { 
+        Servicio s = new Servicio();
+        List<Servicio> listaS = new List<Servicio>();
+        listaS = s.CargarServiciosQueLeFalta(int.Parse(this.ElejAlojamientoDropD.SelectedValue));
+            this.DropDownListServicios.DataSource = listaS;
+            this.DropDownListServicios.DataValueField = "id";
+            this.DropDownListServicios.DataTextField = "nombre";
+            this.DropDownListServicios.DataBind();
+        }
+
+        protected void btnAgregarMasServicios_Click(object sender, EventArgs e)
+        {
+            this.lblListaTodosServicios.Visible = true;
+            this.DropDownListServicios.Visible = true;
+            this.btnAgregarServicio.Visible = true;
+            cargarServiciosQueLeFalta();
+        }
+
+        protected void AgregarServicio_Click(object sender, EventArgs e)
+        {
+            Servicio nuevo = new Servicio();
+            nuevo.id = int.Parse(this.DropDownListServicios.SelectedValue);
+            int idAloj = int.Parse(this.ElejAlojamientoDropD.SelectedValue);
+            bool ok = nuevo.AgregarServicioAlAlojamiento(idAloj);
+
+            if (ok)
+            {
+                // Si pudo guardar el Servicios
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El servicio fue agregado.</span></div>";
+                cargarServicios();
+                cargarServiciosQueLeFalta();
+
+            }
+            else
+            {
+                //NO pudo guardar el Servicios
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar agregar el servicio</span></div>";
+            }
+
+
+        }
+
+        protected void btnQuitarServicio_Click(object sender, EventArgs e)
+        {
+            Servicio s = new Servicio();
+            s.id = int.Parse(this.ModServiciosListBox.SelectedValue);
+            bool ok = s.QuitarServicioAlAlojamiento();
+
+            if (ok)
+            {
+                // Si pudo quitar el Servicios
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>Se quitó el servicio.</span></div>";
+                cargarServicios();
+            }
+            else
+            {
+                //NO pudo guardar el Servicios
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar quitar el servicio</span></div>";
             }
 
         }

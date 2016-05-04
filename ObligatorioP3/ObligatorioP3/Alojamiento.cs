@@ -200,40 +200,13 @@ namespace BienvenidosUY
                     //cmd.Parameters.Add(new SqlParameter("@calificacion", this.calificacion));
                     //cmd.Parameters.Add(new SqlParameter("@idRegistrado", this.registrado.id));
                     cn.Open();
-
-                    //creamos la transaction TR        
-                    SqlTransaction tr = cn.BeginTransaction();
-                    //Le pasamos al CMD la transaction
-                    cmd.Transaction = tr;
-
                     afectadas = cmd.ExecuteNonQuery();
 
                     if (afectadas == 1)
                     {
-                        cmd.CommandText = "AsociarServicioAlAlojamiento";  // MISMO SP DE GUARDAR ??
-                        bool ok = true;
-                        int i = 0;
-                        while (i < this.servicios.Count && ok)
-                        {
-                            Servicio serv = this.servicios[i];
-
-                            cmd.Parameters.Clear();
-                            cmd.Parameters.AddWithValue("@IdAlojamiento", this.id);
-                            cmd.Parameters.AddWithValue("@IdServicio", serv.id);
-                            ok = cmd.ExecuteNonQuery() == 1;
-                            i++;
-                        }
-
-                        if (ok)
-                        {
-                            tr.Commit();
-                            retorno = true;
-                        }
-                        else
-                        {
-                            tr.Rollback();
-                        }
+                        retorno = true;
                     }
+                   
                 }
             }
             catch
