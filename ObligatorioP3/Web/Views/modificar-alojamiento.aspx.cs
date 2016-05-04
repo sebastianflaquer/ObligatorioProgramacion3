@@ -237,6 +237,7 @@ namespace Web.Views
                 this.errorField.Visible = true;
                 this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>Se quitó el servicio.</span></div>";
                 cargarServicios();
+                cargarServiciosQueLeFalta();
             }
             else
             {
