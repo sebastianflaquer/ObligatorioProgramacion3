@@ -75,26 +75,23 @@
                     <asp:Label runat="server" Visible="true" ID="lblModServ" CssClass="control-label">Servicios del Alojamiento:</asp:Label>
                     <asp:ListBox ID="ModServiciosListBox" Visible="true" runat="server" SelectionMode="Multiple" Height="81px" Width="100%"></asp:ListBox>
                     <div>
-                <asp:Button runat="server" Text="Quitar Servicio" CssClass="btn btn-primary pull-right" OnClick="btnQuitarServicio_Click"  />
-            </div>
-                    <div>
-                <asp:Button runat="server" Text="Agregar otros" CssClass="btn btn-primary pull-right" OnClick="btnAgregarMasServicios_Click" />
-            </div>
+                        <asp:Button runat="server" ID="btnQuitarServicios" Text="Quitar Servicio" CssClass="btn btn-info pull-right" OnClick="btnQuitarServicio_Click" visible="false" />
+                        <asp:Button runat="server" ID="btnAgregarOtros" Text="Agregar otros" CssClass="btn btn-info pull-right" OnClick="btnAgregarMasServicios_Click" visible="false" />
+                    </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" runat="server">
                     <asp:Label runat="server" Visible="false" ID="lblListaTodosServicios" AssociatedControlID="DropDownListServicios" CssClass="control-label">Servicio:</asp:Label>
                     <asp:DropDownList ID="DropDownListServicios" Visible="false" CssClass="form-control" runat="server"></asp:DropDownList>
-                   <%-- <asp:RequiredFieldValidator runat="server" ControlToValidate="DropDownListServicios" CssClass="text-danger" ErrorMessage="El campo Servicio es obligatorio." />--%>
                     <div>
-                <asp:Button runat="server" ID="btnAgregarServicio" Text="Agregar" CssClass="btn btn-primary pull-right" Visble = "false" OnClick="AgregarServicio_Click" />
-            </div>
+                        <asp:Button runat="server" ID="btnAgregarServicio" Text="Agregar" CssClass="btn btn-warning pull-right" Visble="false" OnClick="AgregarServicio_Click" />
+                    </div>
                 </div>
-
-
+                <br />
+                <br />
                 <div>
-                <asp:Button runat="server" Text="Actualizar" CssClass="btn btn-primary pull-right" OnClick="btnActualizar_Click" />
-            </div>
+                    <asp:Button runat="server" Text="Actualizar" CssClass="btn btn-primary pull-right" Visble="false" OnClick="btnActualizar_Click" />
+                </div>
             
             </div>
        

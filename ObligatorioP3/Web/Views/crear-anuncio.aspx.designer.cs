@@ -31,6 +31,24 @@ namespace Web.Views {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblErrorMsj;
         
         /// <summary>
+        /// Control listaSinAnuncios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listaSinAnuncios;
+        
+        /// <summary>
+        /// Control crearAnuncioPage.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl crearAnuncioPage;
+        
+        /// <summary>
         /// Control NombreAnuncio.
         /// </summary>
         /// <remarks>
@@ -146,23 +164,5 @@ namespace Web.Views {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload Foto3Anuncio;
-        
-        /// <summary>
-        /// Control Foto4Anuncio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload Foto4Anuncio;
-        
-        /// <summary>
-        /// Control Foto5Anuncio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload Foto5Anuncio;
     }
 }

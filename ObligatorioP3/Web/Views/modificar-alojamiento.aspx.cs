@@ -51,8 +51,13 @@ namespace Web.Views
         protected void MostrarFormAModificar_Click(object sender, EventArgs e)
         {
             #region MostrarCampos
+
             //muestra div del contenedor
             this.contentModificar.Visible = true;
+            this.btnAgregarServicio.Visible = false;
+            this.btnAgregarOtros.Visible = true;
+            this.btnQuitarServicios.Visible = true;
+
             #endregion
 
             cargarAlojamiento();
