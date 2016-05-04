@@ -29,20 +29,6 @@ namespace BienvenidosUY
 
         #endregion
 
-        //Lo instanciamos para poder usarlo
-        public static Registrado mInstancia;
-        public static Registrado Instancia
-        {
-            get
-            {
-                if (Registrado.mInstancia == null)
-                {
-                    Registrado.mInstancia = new Registrado();
-                }
-                return Registrado.mInstancia;
-            }
-        }
-
         //LEER USUARIO
         public override bool Leer()
         {
@@ -87,40 +73,9 @@ namespace BienvenidosUY
             finally
             {
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
-                //if (reader != null) reader.Close();
             }
             
             return retorno;
-
-            //bool retorno = false;
-            //SqlConnection con = null;
-            //SqlDataReader reader = null;
-
-            //try
-            //{
-            //    con = new SqlConnection(Persistente.StringConexion);
-            //    List<SqlParameter> pars = new List<SqlParameter>();
-            //    pars.Add(new SqlParameter("@Id", this.id));
-
-            //    con.Open();
-            //    reader = this.EjecutarQuery(con, "ProductoPorId", CommandType.StoredProcedure, pars);
-
-            //    if (reader.Read())
-            //    {
-            //        this.nombre = reader["Nombre"].ToString();
-            //        retorno = true;
-            //    }
-            //}
-            //catch
-            //{
-            //    throw;
-            //}
-            //finally
-            //{
-            //    if (con != null && con.State == ConnectionState.Open) con.Close();
-            //    if (reader != null) reader.Close();
-            //}
-
         }
 
         //GUARDAR
@@ -172,39 +127,9 @@ namespace BienvenidosUY
             finally
             {
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
-                //if (reader != null) reader.Close();
             }
 
             return ok;
-
-
-            //bool retorno = false;
-
-            //try
-            //{
-            //    List<SqlParameter> pars = new List<SqlParameter>();
-
-            //    SqlParameter par = new SqlParameter();
-
-            //    //esto se utiliza si queremos retornar el ID
-            //    //par.ParameterName = "@NuevoId";
-            //    //par.SqlDbType = SqlDbType.Int;
-            //    //par.Direction = ParameterDirection.Output;
-
-            //    pars.Add(par);
-
-            //    int afectadas = this.EjecutarNoQuery("RegistroUsuario", CommandType.StoredProcedure, pars);
-            //    retorno = afectadas == 1;
-
-            //    //esto se utiliza si queremos retornar el ID
-            //    //if (retorno) this.Id = (int)par.Value;
-            //}
-            //catch
-            //{
-            //    throw;
-            //}
-            //
-
         }
 
         //TRAER TODO
@@ -218,12 +143,12 @@ namespace BienvenidosUY
         {
             bool retorno = false;
 
+            SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
-            {
-                SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-                
+            {                
                 int afectadas = 0;
 
                 using (SqlCommand cmd = new SqlCommand())
@@ -252,7 +177,7 @@ namespace BienvenidosUY
             }
             finally
             {
-
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return retorno;
@@ -269,12 +194,12 @@ namespace BienvenidosUY
         {
             string retorno = "";
 
+            SqlConnection cn = new SqlConnection();
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "ComprobarPassword";
@@ -295,6 +220,10 @@ namespace BienvenidosUY
             {
                 throw;
             }
+            finally
+            {
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
+            }
             return retorno;
         }
 
@@ -303,12 +232,12 @@ namespace BienvenidosUY
         {
             bool retorno = false;
 
+            SqlConnection cn = new SqlConnection();
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "LeerUsuario";
@@ -333,50 +262,10 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return retorno;
-
-
-            //    int retorno = -1;
-            //    SqlConnection con = null;
-            //    SqlDataReader reader = null;
-
-            //    try
-            //    {
-            //        con = new SqlConnection(Persistente.StringConexion);
-            //        List<SqlParameter> pars = new List<SqlParameter>();
-            //        //pars.Add(new SqlParameter("@Id", this.id));
-            //        pars.Add(new SqlParameter("@mail", this.mail));
-
-            //        con.Open();
-            //        //reader = this.EjecutarQuery(con, "Registrado_BuscarRegistrado", CommandType.StoredProcedure, pars);
-            //        //reader = this.EjecutarQuery(con, "Login", CommandType.StoredProcedure, pars);
-
-            //        if (reader.Read())
-            //        {
-            //            //this.nombre = reader["Nombre"].ToString();
-            //            this.mail = reader["Mail"].ToString();
-            //            retorno = this.id;
-            //        }
-            //    }
-            //    catch
-            //    {
-            //        throw;
-            //    }
-            //    finally
-            //    {
-            //        if (con != null && con.State == ConnectionState.Open) con.Close();
-            //        if (reader != null) reader.Close();
-            //    }
-
-            //    return retorno;
-
-            //}
-
-
         }
         
     }

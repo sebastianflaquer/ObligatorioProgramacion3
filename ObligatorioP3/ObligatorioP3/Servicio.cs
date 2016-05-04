@@ -31,10 +31,8 @@ namespace BienvenidosUY
 
             SqlDataReader drResults;
 
-
             try
             {
-
                 cmd.Connection = cn;
                 cn.Open();
                 //todo lo que lee queda en drResults 
@@ -49,7 +47,6 @@ namespace BienvenidosUY
                     L1.Add(serv);
 
                 }
-
             }
             catch
             {
@@ -58,7 +55,6 @@ namespace BienvenidosUY
             finally
             {
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
-                //if (drResults != null) drResults.Close();
             }
             return L1;
 
@@ -69,12 +65,12 @@ namespace BienvenidosUY
         {
             bool retorno = false;
 
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "LeerServicio";
@@ -94,7 +90,6 @@ namespace BienvenidosUY
 
                     retorno = true;
                 }
-
             }
             catch
             {
@@ -102,8 +97,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return retorno;
@@ -149,39 +143,10 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return ok;
-
-
-            //bool retorno = false;
-
-            //try
-            //{
-            //    List<SqlParameter> pars = new List<SqlParameter>();
-
-            //    SqlParameter par = new SqlParameter();
-
-            //    //esto se utiliza si queremos retornar el ID
-            //    //par.ParameterName = "@NuevoId";
-            //    //par.SqlDbType = SqlDbType.Int;
-            //    //par.Direction = ParameterDirection.Output;
-
-            //    pars.Add(par);
-
-            //    int afectadas = this.EjecutarNoQuery("RegistroUsuario", CommandType.StoredProcedure, pars);
-            //    retorno = afectadas == 1;
-
-            //    //esto se utiliza si queremos retornar el ID
-            //    //if (retorno) this.Id = (int)par.Value;
-            //}
-            //catch
-            //{
-            //    throw;
-            //}
-            //
         }
         
         //TRAER TODO
@@ -202,16 +167,18 @@ namespace BienvenidosUY
             throw new NotImplementedException();
         }
 
+        //CARGAR SERVICIOS POR ALOJAMIENTO
         public List<Servicio> CargarServiciosPorAlojamiento(int idAloj)
         {
             List<Servicio> lista = new List<Servicio>();
 
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
+                
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "ServiciosPorAlojamiento";
@@ -231,7 +198,6 @@ namespace BienvenidosUY
                     serv.nombre = Convert.ToString(drResults["Nombre"]);
                     lista.Add(serv);
                 }
-
             }
             catch
             {
@@ -239,8 +205,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return lista;

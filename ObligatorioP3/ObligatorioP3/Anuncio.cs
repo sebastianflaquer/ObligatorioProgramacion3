@@ -27,12 +27,12 @@ namespace BienvenidosUY
         {
             bool retorno = false;
 
-            try
-            {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
 
+            try
+            {                
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "LeerAnuncio";
@@ -65,8 +65,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return retorno;
@@ -114,7 +113,6 @@ namespace BienvenidosUY
 
                     afectadas = cmd.ExecuteNonQuery();
 
-
                     if (afectadas == 1)
                     {
                         this.id = (int)par.Value;
@@ -148,14 +146,12 @@ namespace BienvenidosUY
             }
             catch
             {
-                //if (tr != null) tr.Rollback();
                 throw;
             }
 
             finally
             {
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
-                //if (reader != null) reader.Close();
             }
 
             return retorno;
@@ -171,14 +167,13 @@ namespace BienvenidosUY
         public override bool Modificar()
         {
             bool retorno = false;
-            SqlConnection cn = null;
+
+            SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
 
             try
             {
-                cn = new SqlConnection(); //creamos y configuramos la conexion
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 int afectadas = 0;
 
                 using (SqlCommand cmd = new SqlCommand())
@@ -239,16 +234,12 @@ namespace BienvenidosUY
             }
             catch
             {
-                //if (tr != null){
-                //    tr.Rollback();
-                //} 
                 throw;
             }
 
             finally
             {
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
-                //if (reader != null) reader.Close();
             }
 
             return retorno;
@@ -300,83 +291,27 @@ namespace BienvenidosUY
             }
             catch
             {
-                //if(tr != null) tr.Rollback();
                 throw;
             }
             finally
             {
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
-                //if (reader != null) reader.Close();
             }
 
             return retorno;
-
-
-            //try
-            //{
-            //    //Elimino rangofechas de un anuncio
-            //    //cn = new SqlConnection(Persistente.StringConexion);
-            //    SqlCommand cmd = new SqlCommand();                
-            //    cn.Open();
-            //    cmd.CommandText = "LeerCategoria";
-            //    cmd.CommandType = CommandType.StoredProcedure;
-            //    cmd.Parameters.AddWithValue("@idAnuncio", this.id);
-
-            //    //creamos la transaction TR        
-            //    SqlTransaction tr = cn.BeginTransaction();
-            //    //Le pasamos al CMD la transaction
-
-            //    cmd.Transaction = tr;
-            //    int afectadas = cmd.ExecuteNonQuery();
-
-            //    //si elimino el rangofecha elimino el anuncio
-            //    if (afectadas == 1)
-            //    {
-            //        cmd.CommandText = "EliminarAnuncio";
-            //        cmd.CommandType = CommandType.StoredProcedure;
-            //        cmd.Parameters.AddWithValue("@id", this.id);
-            //        //cmd.CommandType = CommandType.StoredProcedure;
-            //        //cmd.Parameters.AddWithValue("@idAnuncio", this.id);
-
-            //        bool ok = true;
-
-            //        ok = cmd.ExecuteNonQuery() == 1;
-
-            //        if (ok)
-            //        {
-            //            tr.Commit();
-            //            retorno = true;
-            //        }
-            //        else
-            //        {
-            //            tr.Rollback();
-            //        }
-            //    }
-            //}
-            //catch
-            //{
-            //    //if (tr != null) tr.Rollback();
-
-            //    throw;
-            //}
-            //finally
-            //{
-            //    if (cn != null && cn.State == ConnectionState.Open) cn.Close();
-            //    //if (reader != null) reader.Close();
-            //}
-            //return retorno;
         }
 
+        //CARGAR ANUNCIOS POR USUARIO
         public List<Anuncio> CargarAnunciosPorUsuario(string mail)
         {
             List<Anuncio> lista = new List<Anuncio>();
 
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "AnunciosPorUsuario";
@@ -401,15 +336,12 @@ namespace BienvenidosUY
 
                     anu.alojamiento = aloj;
 
-
                     anu.descripcion = Convert.ToString(drResults["Descripcion"]);
                     anu.direccion1 = Convert.ToString(drResults["Direccion1"]);
                     anu.direccion2 = Convert.ToString(drResults["Direccion2"]);
-
                     //anu.fotos = ..;
 
                     anu.precioBase = Convert.ToDecimal(drResults["precioBase"]);
-
 
                     lista.Add(anu);
                 }
@@ -421,23 +353,23 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return lista;
         }
 
+        //COMPROBAR NOMBRE DEL ANUNCIO
         public bool ComprobarNombreAnuncio(string nomAnu, int idRegistrado)
         {
             bool retorno = false;
 
+            SqlConnection cn = new SqlConnection();
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "LeerAnuncioPorUsuario";
@@ -463,8 +395,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return retorno;

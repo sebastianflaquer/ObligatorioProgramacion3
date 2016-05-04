@@ -28,12 +28,12 @@ namespace BienvenidosUY
         {
             bool retorno = false;
 
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "LeerAlojamiento";
@@ -69,8 +69,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return retorno;
@@ -154,16 +153,12 @@ namespace BienvenidosUY
             }
             catch
             {
-                //if (tr != null){
-                //    tr.Rollback();
-                //} 
                 throw;
             }
         
             finally
             {
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
-                //if (reader != null) reader.Close();
             }
 
             return retorno;
@@ -179,14 +174,13 @@ namespace BienvenidosUY
         public override bool Modificar()
         {
             bool retorno = false;
-            SqlConnection cn = null;
+            
+            SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
 
             try
             {
-                cn = new SqlConnection(); //creamos y configuramos la conexion
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 int afectadas = 0;
 
                 using (SqlCommand cmd = new SqlCommand())
@@ -244,16 +238,12 @@ namespace BienvenidosUY
             }
             catch
             {
-                //if (tr != null){
-                //    tr.Rollback();
-                //} 
-                throw;
+               throw;
             }
 
             finally
             {
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
-                //if (reader != null) reader.Close();
             }
 
             return retorno;
@@ -311,13 +301,11 @@ namespace BienvenidosUY
             }
             catch
             {
-                //if (tr != null) tr.Rollback();
                 throw;
             }
             finally
             {
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
-                //if (reader != null) reader.Close();
             }
             return retorno;
         }
@@ -327,12 +315,12 @@ namespace BienvenidosUY
         {
             List<Alojamiento> lista = new List<Alojamiento>();
 
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "AlojamientosPorUsuario";
@@ -366,7 +354,7 @@ namespace BienvenidosUY
                     #region ciudad
                     Ciudad ciud = new Ciudad();
                     ciud.id = Convert.ToInt32(drResults["idCiudad"]);
-                    ciud.LeerXId();
+                    ciud.Leer();
                     aloj.ciudad = ciud;
                     #endregion
 
@@ -394,8 +382,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return lista;
@@ -406,12 +393,12 @@ namespace BienvenidosUY
         {
             bool retorno = false;
 
-            try
-            {
-                SqlConnection cn = new SqlConnection();
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
+            SqlConnection cn = new SqlConnection();
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
 
+            try
+            {                
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "LeerAlojamientoPorUsuario";
@@ -437,8 +424,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();                
             }
 
             return retorno;

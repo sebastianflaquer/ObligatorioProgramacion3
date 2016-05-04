@@ -9,10 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
 
-    <%--<asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/bundles/modernizr") %>
-    </asp:PlaceHolder>--%>
-
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
@@ -45,25 +41,25 @@
                         <li>
                             <a id="dropdownMenu2" href="alojamientos.aspx" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Alojamientos</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <li><a href="alojamientos.aspx">Mis Alojamientos</a></li>
-                                <li><a href="crear-alojamiento.aspx">Crear Alojamiento</a></li>
-                                <li><a href="modificar-alojamiento.aspx">Editar Alojamiento</a></li>
-                                <li><a href="baja-alojamiento.aspx">Eliminar Alojamiento</a></li>
+                                <li><a href="alojamientos.aspx"><i class="glyphicon glyphicon-list-alt"></i> Mis Alojamientos</a></li>
+                                <li><a href="crear-alojamiento.aspx"><i class="glyphicon glyphicon-plus"></i> Crear Alojamiento</a></li>
+                                <li><a href="modificar-alojamiento.aspx"><i class="glyphicon glyphicon-pencil"></i> Editar Alojamiento</a></li>
+                                <li><a href="baja-alojamiento.aspx"><i class="glyphicon glyphicon-remove"></i> Eliminar Alojamiento</a></li>
                             </ul>
                         </li>
                         
                         <li>
                             <a id="dropdownMenu3" href="anuncios.aspx" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Anuncios</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                                <li><a href="anuncios.aspx">Mis Anuncios</a></li>
-                                <li><a href="crear-anuncio.aspx">Crear Anuncio</a></li>
-                                <li><a href="modificar-anuncio.aspx">Editar Anuncios</a></li>
-                                <li><a href="baja-anuncio.aspx">Eliminar Anuncios</a></li>
+                                <li><a href="anuncios.aspx"><i class="glyphicon glyphicon-list-alt"></i> Mis Anuncios</a></li>
+                                <li><a href="crear-anuncio.aspx"><i class="glyphicon glyphicon-plus"></i> Crear Anuncio</a></li>
+                                <li><a href="modificar-anuncio.aspx"><i class="glyphicon glyphicon-pencil"></i> Editar Anuncios</a></li>
+                                <li><a href="baja-anuncio.aspx"><i class="glyphicon glyphicon-remove"></i> Eliminar Anuncios</a></li>
                             </ul>
                         </li>
                         
                         <li>
-                            <a runat="server" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><b><asp:Label ID="lblEmailMaster" runat="server"></asp:Label></b></a>
+                            <a runat="server" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><b><i class="glyphicon glyphicon-user"></i> <asp:Label ID="lblEmailMaster" runat="server"></asp:Label></b></a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                 <li><a href="perfil.aspx">Perfil</a></li>
                                 <li><asp:LinkButton ID="btnCerrarSesion"  onclick="btnCerrarSesion_Click" runat="server">Cerrar Sesion</asp:LinkButton></li>
@@ -75,41 +71,6 @@
                         <li><a href="sign-up.aspx">Sign In</a></li>
                         <li><a href="registro.aspx">Register</a></li>
                     </ul>
-
-                    <!-- MENU LOGEADO EMPRESA -->
-                    <%--<ul id="divMenuLogeado" visible=false class="nav navbar-nav" runat="server">
-                        <li><a href="../Account/Register">Alta Emp</a></li>
-                        <li><a runat="server" href="~/Account/listado-eventos.aspx">ListadoEven</a></li>
-                        <li><a runat="server" href="~/Account/listado-empresas.aspx">ListadoEmp</a></li>                        
-                        <li><a runat="server" href="~/Account/buscar-evento-fecha.aspx">Busqueda Evento</a></li>
-                    </ul>--%>
-                    <!-- MENU LOGEADO -->
-
-                    <!-- MENU LOGEADO USUARIO -->
-                    <%--<ul id="divMenuLogeadoUsuario" visible=false class="nav navbar-nav" runat="server">
-                        <li><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Account/crear-evento">Crear Evento</asp:HyperLink></li>
-                        <li><a runat="server" href="~/Account/listado-eventos.aspx">Historial Eventos</a></li>
-                    </ul>--%>
-                    <!-- MENU LOGEADO -->
-
-                    <!-- DATOS LOGEADO -->
-                    <%--<ul id="divDatosLogeado" visible=false class="nav navbar-nav navbar-right" runat="server">
-                        <li>
-                            <a runat="server" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><asp:Label ID="lblEmailMaster" runat="server"></asp:Label></a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="../Account/perfil.aspx">Perfil</a></li>
-                                <li><asp:LinkButton ID="btnCerrarSesion"  onclick="btnCerrarSesion_Click" runat="server">Cerrar Sesion</asp:LinkButton></li>
-                            </ul>
-                        </li>
-                    </ul>--%>
-                    <!-- DATOS LOGEADO -->
-
-                    <!-- MENU NO LOGEADO -->
-                    <%--<ul id="divLogin" class="nav navbar-nav navbar-right" runat="server">
-                        <li><a runat="server" href="~/Account/Register">Registro</a></li>
-                        <li><a runat="server" href="~/Account/Login">Login</a></li>
-                    </ul>--%>
-                    <!-- MENU NO LOGEADO -->
 
                 </div><!--/.nav-collapse -->
 

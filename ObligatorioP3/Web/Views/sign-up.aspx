@@ -53,8 +53,8 @@
                         </div>
                     </div>
                     <p>
-                        <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Registrarse</asp:HyperLink>
-                        si no tiene una cuenta local.
+                        <asp:HyperLink href="/Views/registro.aspx" runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Registrarse</asp:HyperLink>
+                        si no tiene una cuenta.
                     </p>
                 </section>
             </div>

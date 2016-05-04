@@ -24,12 +24,12 @@ namespace BienvenidosUY
 
             List<Categoria> L1 = new List<Categoria>();
 
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "CargarCategorias";
@@ -49,7 +49,6 @@ namespace BienvenidosUY
                     cat.nombre = Convert.ToString(drResults["Nombre"]);
                     L1.Add(cat);
                 }
-
             }
             catch
             {
@@ -57,7 +56,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
                 //if (reader != null) reader.Close();
             }
 
@@ -81,12 +80,12 @@ namespace BienvenidosUY
         {
             bool retorno = false;
 
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "LeerCategoria";
@@ -105,7 +104,6 @@ namespace BienvenidosUY
 
                     retorno = true;
                 }
-
             }
             catch
             {
@@ -113,8 +111,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return retorno;
@@ -131,50 +128,6 @@ namespace BienvenidosUY
         {
             throw new NotImplementedException();
         }
-
-        //LEER POR ID
-        //public bool LeerPorId(){
-
-        //    bool retorno = false;
-
-        //    try
-        //    {
-        //        SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-        //        string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-        //        cn.ConnectionString = cadenaConexion;
-
-        //        SqlCommand cmd = new SqlCommand();
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.CommandText = "LeerCategoriaXId";
-        //        cmd.Parameters.Add(new SqlParameter("@id", this.id));
-
-        //        SqlDataReader drResults;
-
-        //        cmd.Connection = cn;
-        //        cn.Open();
-        //        drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-
-        //        if (drResults.Read())
-        //        {
-        //            id = Convert.ToInt32(drResults["id"]);
-        //            nombre = drResults["nombre"].ToString();
-
-        //            retorno = true;
-        //        }
-
-        //    }
-        //    catch
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        //if (con != null && con.State == ConnectionState.Open) con.Close();
-        //        //if (reader != null) reader.Close();
-        //    }
-
-        //    return retorno;
-        //}
-
+        
     }
 }

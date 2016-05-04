@@ -31,54 +31,63 @@ namespace BienvenidosUY
         public abstract bool Modificar();
         public abstract bool Eliminar();
 
+        //***********************************************************
+        //NO LOS UTILIZAMOS POR AHORA PARA PRACTICAR PARA EL PARCIAL,
+        //PARA LA SEGUNDA ENTREGA LOS IMPLEMENTAREMOS.
+        //***********************************************************
 
         //METODO GENERAL EJECUTA EL QUERY.
-        public SqlDataReader EjecutarQuery(SqlConnection con, string text, CommandType tipo, List<SqlParameter> parametros)
-        {
-            SqlDataReader reader = null;
-            try
-            {
-                SqlCommand comando = new SqlCommand(text, con);
-                comando.CommandType = tipo;
-                //AddRange copia las referencias de la lista. Recibe un array de sqlParameter
-                comando.Parameters.AddRange(parametros.ToArray());
-                reader = comando.ExecuteReader();
-            }
-            catch
-            {
-                throw;
-            }
+        //public SqlDataReader EjecutarQuery(SqlConnection con, string text, CommandType tipo, List<SqlParameter> parametros)
+        //{
+        //    SqlDataReader reader = null;
+        //    try
+        //    {
+        //        SqlCommand comando = new SqlCommand(text, con);
+        //        comando.CommandType = tipo;
+        //        //AddRange copia las referencias de la lista. Recibe un array de sqlParameter
+        //        comando.Parameters.AddRange(parametros.ToArray());
+        //        reader = comando.ExecuteReader();
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
 
-            return reader;
-        }
+        //    return reader;
+        //}
+
+        //***********************************************************
+        //NO LOS UTILIZAMOS POR AHORA PARA PRACTICAR PARA EL PARCIAL,
+        //PARA LA SEGUNDA ENTREGA LOS IMPLEMENTAREMOS.
+        //***********************************************************
 
         //METODO GENERAL QUE EJECUTA EL NONQUERY
-        public int EjecutarNoQuery(string text, CommandType tipo, List<SqlParameter> parametros)
-        {
-            int afectadas = -1;
-            SqlConnection con = null;
+        //public int EjecutarNoQuery(string text, CommandType tipo, List<SqlParameter> parametros)
+        //{
+        //    int afectadas = -1;
+        //    SqlConnection con = null;
 
-            try
-            {
-                con = new SqlConnection(Persistente.stringConexion);
-                SqlCommand comando = new SqlCommand(text, con);
-                comando.CommandType = tipo;
-                //AddRange copia las referencias de la lista. Recibe un array de sqlParameter
-                comando.Parameters.AddRange(parametros.ToArray());
-                con.Open();
-                afectadas = comando.ExecuteNonQuery();
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                if (con != null && con.State == ConnectionState.Open) con.Close();
-            }
+        //    try
+        //    {
+        //        con = new SqlConnection(Persistente.stringConexion);
+        //        SqlCommand comando = new SqlCommand(text, con);
+        //        comando.CommandType = tipo;
+        //        //AddRange copia las referencias de la lista. Recibe un array de sqlParameter
+        //        comando.Parameters.AddRange(parametros.ToArray());
+        //        con.Open();
+        //        afectadas = comando.ExecuteNonQuery();
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        if (con != null && con.State == ConnectionState.Open) con.Close();
+        //    }
 
-            return afectadas;
-        }
-        
+        //    return afectadas;
+        //}
+
     }
 }

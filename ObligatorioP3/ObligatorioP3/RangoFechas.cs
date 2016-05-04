@@ -27,12 +27,12 @@ namespace BienvenidosUY
         {
             bool retorno = false;
 
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "LeerRangoFecha";
@@ -61,19 +61,15 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
-
             return retorno;
-
         }
 
 
         //GUARDAR
         public override bool Guardar()
         {
-
             SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
             string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
             cn.ConnectionString = cadenaConexion;
@@ -86,12 +82,12 @@ namespace BienvenidosUY
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = cn;
-                    cmd.CommandText = "NuevoRangoFechas";                        //FALTA ID DEL ANUNCIO EN EL SP !!!!
+                    cmd.CommandText = "NuevoRangoFechas";//FALTA ID DEL ANUNCIO EN EL SP !!!!
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@fechaIni", this.fechaInicio));
                     cmd.Parameters.Add(new SqlParameter("@fechaFin", this.fechaFin));
                     cmd.Parameters.Add(new SqlParameter("@precio", this.precio));
-                    //  cmd.Parameters.Add(new SqlParameter("@idAnuncio", this.Anuncio.id));
+                    //cmd.Parameters.Add(new SqlParameter("@idAnuncio", this.Anuncio.id));
                     cn.Open();
                     afectadas = cmd.ExecuteNonQuery();
                     cn.Close();
@@ -111,39 +107,10 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
 
             return ok;
-
-
-            //bool retorno = false;
-
-            //try
-            //{
-            //    List<SqlParameter> pars = new List<SqlParameter>();
-
-            //    SqlParameter par = new SqlParameter();
-
-            //    //esto se utiliza si queremos retornar el ID
-            //    //par.ParameterName = "@NuevoId";
-            //    //par.SqlDbType = SqlDbType.Int;
-            //    //par.Direction = ParameterDirection.Output;
-
-            //    pars.Add(par);
-
-            //    int afectadas = this.EjecutarNoQuery("RegistroUsuario", CommandType.StoredProcedure, pars);
-            //    retorno = afectadas == 1;
-
-            //    //esto se utiliza si queremos retornar el ID
-            //    //if (retorno) this.Id = (int)par.Value;
-            //}
-            //catch
-            //{
-            //    throw;
-            //}
-            //
         }
 
 
@@ -165,17 +132,17 @@ namespace BienvenidosUY
             throw new NotImplementedException();
         }
 
-
+        //CARGAR RANGO FECHA DE ANUNCIO
         public List<RangoFechas> CargarRangosFechaDeAnuncio(int idAnuncio)
         {
             List<RangoFechas> lista = new List<RangoFechas>();
 
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "RangoFechasPorAnuncio";
@@ -205,7 +172,7 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
                 //if (reader != null) reader.Close();
             }
 

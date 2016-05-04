@@ -35,10 +35,8 @@ namespace BienvenidosUY
 
             SqlDataReader drResults;
 
-
             try
             {
-
                 cmd.Connection = cn;
                 cn.Open();
                 //todo lo que lee queda en drResults 
@@ -52,7 +50,6 @@ namespace BienvenidosUY
                     L1.Add(ciud);
 
                 }
-
             }
             catch
             {
@@ -61,32 +58,34 @@ namespace BienvenidosUY
             finally
             {
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
-                //if (drResults != null) drResults.Close();
             }
             return L1;
 
         }
 
+        //ELIMINAR
         public override bool Eliminar()
         {
             throw new NotImplementedException();
         }
 
+        //GUARDAR
         public override bool Guardar()
         {
             throw new NotImplementedException();
         }
 
+        //LEER
         public override bool Leer()
         {
             bool retorno = false;
 
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
             try
             {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "LeerCiudad";
@@ -105,7 +104,6 @@ namespace BienvenidosUY
 
                     retorno = true;
                 }
-
             }
             catch
             {
@@ -113,67 +111,21 @@ namespace BienvenidosUY
             }
             finally
             {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
-
             return retorno;
         }
 
+        //MODIFICAR
         public override bool Modificar()
         {
             throw new NotImplementedException();
         }
 
+        //TRAER TODO
         public override IEnumerable<object> TraerTodo()
         {
             throw new NotImplementedException();
         }
-
-
-        public bool LeerXId()
-        {
-            bool retorno = false;
-
-            try
-            {
-                SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
-                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
-                cn.ConnectionString = cadenaConexion;
-
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "LeerCiudadXId";
-                cmd.Parameters.Add(new SqlParameter("@id", this.id));
-
-                SqlDataReader drResults;
-
-                cmd.Connection = cn;
-                cn.Open();
-                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-
-                if (drResults.Read())
-                {
-                    id = Convert.ToInt32(drResults["id"]);
-                    nombre = drResults["nombre"].ToString();
-
-                    retorno = true;
-                }
-
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                //if (con != null && con.State == ConnectionState.Open) con.Close();
-                //if (reader != null) reader.Close();
-            }
-
-            return retorno;
-        }
-
-
     }
 }
