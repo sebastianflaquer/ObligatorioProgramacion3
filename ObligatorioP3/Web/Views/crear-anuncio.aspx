@@ -18,7 +18,7 @@
             <!-- NOMBRE ANUNCIO -->
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="NombreAnuncio" CssClass="control-label">NombreAnuncio:</asp:Label>
-                <asp:TextBox ID="NombreAnuncio" CssClass="form-control" runat="server"/>
+                <asp:TextBox ID="NombreAnuncio" CssClass="form-control" MaxLength="128" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="NombreAnuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="El campo Nombre es obligatorio." />
             </div>
             
@@ -38,15 +38,15 @@
             
             <!-- DIRECCION 1 -->
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="Dir1Anuncio" CssClass="control-label">Dirección 1:</asp:Label>
-                <asp:TextBox ID="Dir1Anuncio" CssClass="form-control" runat="server"/>
+                <asp:Label runat="server" AssociatedControlID="Dir1Anuncio" CssClass="control-label">Direccion linea 1:</asp:Label>
+                <asp:TextBox ID="Dir1Anuncio" CssClass="form-control" placeholder="Nombre calle, Numero" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Dir1Anuncio" ValidationGroup="anuncio"  CssClass="text-danger" ErrorMessage="El campo Dirección 1 es obligatorio." />
             </div>  
             
             <!-- DIRECCION 2 -->
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="Dir2Anuncio" CssClass="control-label">Dirección 2:</asp:Label>
-                <asp:TextBox ID="Dir2Anuncio" CssClass="form-control" runat="server"/>
+                <asp:Label runat="server" AssociatedControlID="Dir2Anuncio" CssClass="control-label">Dirección linea 2:</asp:Label>
+                <asp:TextBox ID="Dir2Anuncio" CssClass="form-control" placeholder="Nombre Edificio, block, etc" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Dir2Anuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="El campo Dirección 2 es obligatorio." />
             </div>  
 
@@ -96,7 +96,7 @@
             <!-- PRECIO BASE -->
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="PrecioBaseAnuncio" CssClass="control-label">Precio Base:</asp:Label>
-                <asp:TextBox ID="PrecioBaseAnuncio" CssClass="form-control" TextMode="Number" runat="server"/>
+                <asp:TextBox ID="PrecioBaseAnuncio" CssClass="form-control" placeholder="U$S" TextMode="Number" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioBaseAnuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="El campo Precio Base es obligatorio." />
             </div>
             

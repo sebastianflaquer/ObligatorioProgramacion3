@@ -27,7 +27,7 @@
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="UsuarioNombre" CssClass="col-md-2 control-label">Nombre</asp:Label>
                 <div class="col-md-10">
-                    <asp:TextBox runat="server" ID="UsuarioNombre" CssClass="form-control" />
+                    <asp:TextBox runat="server" ID="UsuarioNombre" placeholder="Nombre" CssClass="form-control" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="UsuarioNombre" CssClass="text-danger" ErrorMessage="El campo de nombre de Empresa es obligatorio." />
                 </div>
             </div>
@@ -37,7 +37,7 @@
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="UsuarioApellido" CssClass="col-md-2 control-label">Apellido</asp:Label>
                 <div class="col-md-10">
-                    <asp:TextBox runat="server" ID="UsuarioApellido" CssClass="form-control" />
+                    <asp:TextBox runat="server" ID="UsuarioApellido" placeholder="Apellido" CssClass="form-control" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="UsuarioApellido" CssClass="text-danger" ErrorMessage="El campo de Apellido es obligatorio." />
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="UsuarioMail" CssClass="col-md-2 control-label">Mail</asp:Label>
                 <div class="col-md-10">
-                    <asp:TextBox runat="server" ID="UsuarioMail" TextMode="Email" CssClass="form-control" />
+                    <asp:TextBox runat="server" ID="UsuarioMail" TextMode="Email" placeholder="mail@mail.com" CssClass="form-control" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="UsuarioMail" CssClass="text-danger" ErrorMessage="El campo de Mail Principal es obligatorio." />
                 </div>
             </div>
@@ -56,6 +56,7 @@
             <!-- PASSWORD EMPRESA -->
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="UsuarioPassword" CssClass="col-md-2 control-label">Contraseña</asp:Label>
+                <p></p>
                 <div class="col-md-10">
                     <asp:TextBox runat="server" ID="UsuarioPassword" TextMode="Password" CssClass="form-control" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="UsuarioPassword" CssClass="text-danger" ErrorMessage="El campo de contraseña es obligatorio." />

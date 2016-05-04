@@ -13,7 +13,8 @@
     <div class="starter-template">
         <h2><%: Title %></h2>
         <br />
-        <p class="lead">Aca van a ir cargado todos los Alojamientos</p>
+        <h3>BienvenidosUY</h3>
+        <p class="lead">Sistema de gestion de Alojamientos y Anuncios</p>
     </div>
 
 </asp:Content>
