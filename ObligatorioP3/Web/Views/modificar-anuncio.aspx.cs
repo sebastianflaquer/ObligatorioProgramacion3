@@ -130,7 +130,7 @@ namespace Web.Views
 
             rangoF.precio = decimal.Parse(this.PrecioRango.Text);
 
-            List<RangoFechas> listaRF = Session["listaRangoFechas"] as List<RangoFechas>;
+            List<RangoFechas> listaRF = rangoF.CargarRangosFechaDeAnuncio(int.Parse(this.ElejAnuncioDropD.SelectedValue));
 
             if (rangoF.fechaFin < rangoF.fechaInicio)
             {
@@ -149,13 +149,13 @@ namespace Web.Views
                 }
                 else
                 {
-                    listaRF.Add(rangoF);
+                    rangoF.AgregarRangoFechaAlAnuncio(int.Parse(this.ElejAnuncioDropD.SelectedValue));
                     //LIMPIAR 
                     fchaIniAnuncio.Text = "";
                     fchaFinAnuncio.Text = "";
                     PrecioRango.Text = "";
 
-                    //Si pudo guardar el Alojamiento
+                    //Si pudo guardar el rango
                     this.errorField.Visible = true;
                     this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El rango de fechas se guardó con exito</span></div>";
                     cargarListBoxConFR();
@@ -224,9 +224,10 @@ namespace Web.Views
             anu.descripcion = this.TextBoxDscModAnu.Text;
             anu.direccion1 = this.TextBoxDir1ModAnu.Text;
             anu.direccion2 = this.TextBoxDir2ModAnu.Text;
-            //anu.fotos =    ESTO FALTA
+            anu.fotos = "mg@gmail.com - 1 - 28_09 - a.jpg; mg @gmail.com - 2 - 51aeac63520f2.jpg; mg @gmail.com - 3 - 517e5ad2e49ee.jpg";
             anu.precioBase = decimal.Parse(this.TextBoxPrecioBase.Text);
-            anu.rangosFechas = Session["listaRangoFechas"] as List<RangoFechas>;
+            RangoFechas rf = new RangoFechas();
+            anu.rangosFechas = rf.CargarRangosFechaDeAnuncio(anu.id);
 
             bool ok = anu.Modificar();
 
@@ -243,6 +244,29 @@ namespace Web.Views
                 this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar modificar el Anuncio</span></div>";
             }
 
+        }
+
+        protected void btnQuitarRango_Click(object sender, EventArgs e)
+        {
+            RangoFechas rf = new RangoFechas();
+            rf.id = int.Parse(this.ModRangoFechaListBox.SelectedValue);
+            bool ok = rf.QuitarRangoFechaDeAnuncio();
+
+            if (ok)
+            {
+                //Si pudo guardar el rango
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El rango de fechas se quitó con exito</span></div>";
+                cargarListBoxConFR();
+            }
+            else
+            {
+                //NO pudo guardar el rango
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar quitar el rango de fechas</span></div>";
+            }
+
+            
         }
     }
 }

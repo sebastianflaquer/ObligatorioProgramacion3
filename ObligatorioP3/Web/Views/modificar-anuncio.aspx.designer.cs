@@ -193,6 +193,15 @@ namespace Web.Views {
         protected global::System.Web.UI.WebControls.ListBox ModRangoFechaListBox;
         
         /// <summary>
+        /// Control btnQuitarRango.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnQuitarRango;
+        
+        /// <summary>
         /// Control btnMstAgrRf.
         /// </summary>
         /// <remarks>

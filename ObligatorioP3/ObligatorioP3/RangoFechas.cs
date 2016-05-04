@@ -18,8 +18,8 @@ namespace BienvenidosUY
 
         public string Listado
         {
-            
-            get { return this.fechaInicio.Date.ToString() + " " + this.fechaFin.Date.ToString() + " " + this.precio.ToString(); }
+
+            get { return "Fecha Inicio: " + this.fechaInicio.Date.ToString("dd/mm/yyyy") + ", Fecha Fin: " + this.fechaFin.Date.ToString("dd/mm/yyyy") + " - Precio: " + this.precio.ToString(); }
         }
 
         //LEER 
@@ -179,5 +179,96 @@ namespace BienvenidosUY
             return lista;
         }
 
+        //AGREGAR UN RANGO FECHA A UN ANUNCIO
+        public bool AgregarRangoFechaAlAnuncio(int idAnuncio)
+        {
+            SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
+            bool ok = false;
+            int afectadas = 0;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "INSERT INTO RANGOFECHAS VALUES (@fechaIni, @fechaFin, @precio, @idAnuncio)";
+                    cmd.Parameters.Add(new SqlParameter("@fechaIni", this.fechaInicio));
+                    cmd.Parameters.Add(new SqlParameter("@fechaFin", this.fechaFin));
+                    cmd.Parameters.Add(new SqlParameter("@precio", this.precio));
+                    cmd.Parameters.Add(new SqlParameter("@idAnuncio", idAnuncio));
+                    cn.Open();
+                    afectadas = cmd.ExecuteNonQuery();
+                    cn.Close();
+                }
+
+                if (afectadas != -1)
+                {
+                    ok = true;
+                }
+                else {
+                    ok = false;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
+            }
+
+
+            return ok;
+        }
+
+
+        //QUITA UN RANGO FECHA DE UN ANUNCIO
+        public bool QuitarRangoFechaDeAnuncio()
+        {
+
+            SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
+            bool ok = false;
+            int afectadas = 0;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "DELETE FROM RANGOFECHAS WHERE id = @id";
+                    cmd.Parameters.Add(new SqlParameter("@id", this.id));
+                    cn.Open();
+                    afectadas = cmd.ExecuteNonQuery();
+                    cn.Close();
+                }
+
+                if (afectadas != -1)
+                {
+                    ok = true;
+                }
+                else {
+                    ok = false;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
+            }
+
+
+            return ok;
+
+        }
     }
 }
