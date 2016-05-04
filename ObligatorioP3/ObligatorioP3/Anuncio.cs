@@ -193,42 +193,11 @@ namespace BienvenidosUY
                     //cmd.Parameters.Add(new SqlParameter("@rangoFechas", this.rangosFechas));
                     cn.Open();
 
-                    //creamos la transaction TR        
-                    SqlTransaction tr = cn.BeginTransaction();
-                    //Le pasamos al CMD la transaction
-                    cmd.Transaction = tr;
-
                     afectadas = cmd.ExecuteNonQuery();
 
                     if (afectadas == 1)
                     {
-                        cmd.CommandText = "AsociarRangoFechasAlAlojamiento";  // IMPLEMENTAR ??
-                        bool ok = true;
-                        int i = 0;
-                        while (i < this.rangosFechas.Count && ok)
-                        {
-
-                            cmd.Parameters.Clear();
-                            RangoFechas rf = this.rangosFechas[i];
-
-                            cmd.Parameters.Clear();
-                            cmd.Parameters.AddWithValue("@IdAnuncio", this.id);
-                            cmd.Parameters.AddWithValue("@fechaIni", rf.fechaInicio);
-                            cmd.Parameters.AddWithValue("@fechaFin", rf.fechaFin);
-                            cmd.Parameters.AddWithValue("@precio", rf.precio);
-                            ok = cmd.ExecuteNonQuery() == 1;
-                            i++;
-                        }
-
-                        if (ok)
-                        {
-                            tr.Commit();
-                            retorno = true;
-                        }
-                        else
-                        {
-                            tr.Rollback();
-                        }
+                        retorno = true;
                     }
                 }
             }

@@ -70,6 +70,7 @@
                 <asp:Label runat="server" ID="lblRangoFechasMod"  CssClass="control-label" Visible="false">Rango de Fechas:</asp:Label>
                 <asp:ListBox ID="ModRangoFechaListBox" Visible="false" runat="server"  Height="81px" Width="100%"></asp:ListBox>
              </div>
+            <asp:Button runat="server" Text="Quitar" CssClass="btn btn-primary pull-right" CausesValidation="false"  ID="btnQuitarRango" OnClick="btnQuitarRango_Click" />
             <asp:Button runat="server" Text="Agregar Rangos" CssClass="btn btn-primary pull-right" CausesValidation="false" ID="btnMstAgrRf" OnClick="btnMstAgrRf_Click"/>
             <div id="mostrarCamposAgrRF" runat="server" visible=false>
             <!-- FECHA INICIO -->
@@ -92,6 +93,7 @@
                 <asp:TextBox ID="PrecioRango" CssClass="form-control" TextMode="Number" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioRango" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Precio del Rango es obligatorio." />
                  <asp:Button runat="server" Text="Confirmar Rango" CssClass="btn btn-primary pull-right" CausesValidation="false" ID="btnConfRF" OnClick="btnConfRF_Click" />
+
             </div>
             </div>
 
