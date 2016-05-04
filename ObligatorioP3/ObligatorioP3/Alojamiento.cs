@@ -226,6 +226,79 @@ namespace BienvenidosUY
         public override bool Eliminar()
         {
             bool retorno = false;
+            bool tieneReserva = false;
+
+            Alojamiento Aloj = new Alojamiento();
+            //carga los datos del alojamiento
+            this.Leer();
+
+            //cargar el anuncio por alojamiento
+            Anuncio unA = new Anuncio();
+            unA.alojamiento = this;
+            unA.id = cargarAnuncioPorAlojamiento();
+            unA.Leer();
+
+            tieneReserva = unA.tieneReserva();
+
+            if (tieneReserva)//si tiene reservas
+            {
+                retorno = false;
+            }
+            else //si no tiene reservas
+            {
+                SqlConnection cn = new SqlConnection();
+                string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+                cn.ConnectionString = cadenaConexion;
+
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand())//creamos y configuramos el comando
+                    {
+                        cmd.Connection = cn;
+                        cmd.CommandText = "EliminarAlojamientoYDependencias";
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("@idAlojamiento", Aloj.id));
+                        cmd.Parameters.Add(new SqlParameter("@idAnuncio", unA.id));
+
+                        cn.Open();//abrimos conexion
+
+                        SqlTransaction tr = cn.BeginTransaction();
+                        cmd.Transaction = tr;
+                        int afectadas = cmd.ExecuteNonQuery();
+
+                        if (afectadas >= 0)
+                        {   
+                            retorno = true;
+                        }
+
+                        if (retorno)
+                        {
+                            tr.Commit();
+                        }
+                        else
+                        {
+                            tr.Rollback();
+                        }
+                    }
+                }
+                catch
+                {
+                    throw;
+                }
+                finally
+                {
+
+                }
+            }
+
+            return retorno;
+            //return retorno;
+        }
+
+        //CARGAR ANUNCIO POR ALOJAMIENTO
+        private int cargarAnuncioPorAlojamiento()
+        {
+            int retorno = -1;
 
             SqlConnection cn = new SqlConnection();
             string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
@@ -233,42 +306,20 @@ namespace BienvenidosUY
 
             try
             {
-                using (SqlCommand cmd = new SqlCommand())//creamos y configuramos el comando
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "CargarAnuncioXAlojamiento";
+                cmd.Parameters.Add(new SqlParameter("@idAlojamiento", this.id));
+
+                SqlDataReader drResults;
+
+                cmd.Connection = cn;
+                cn.Open();
+                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                if (drResults.Read())
                 {
-                    cmd.Connection = cn;
-                    cmd.CommandText = "EliminarAlojamientoServicio";
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@idAlojamiento", this.id));
-
-                    cn.Open();//abrimos conexion
-
-                    SqlTransaction tr = cn.BeginTransaction();
-                    cmd.Transaction = tr;
-                    int afectadas = cmd.ExecuteNonQuery();
-
-                    if (afectadas >= 0)
-                    {
-                        cmd.CommandText = "EliminarAlojamiento";
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Clear();
-                        cmd.Parameters.Add(new SqlParameter("@Id", this.id));
-
-                        int newafectadas = cmd.ExecuteNonQuery();
-
-                        if (newafectadas >= 0)
-                        {
-                            retorno = true;
-                        }
-                    }
-
-                    if (retorno)
-                    {
-                        tr.Commit();
-                    }
-                    else
-                    {
-                        tr.Rollback();
-                    }
+                    retorno = Convert.ToInt32(drResults["id"]);
                 }
 
             }
@@ -280,6 +331,7 @@ namespace BienvenidosUY
             {
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
             }
+            
             return retorno;
         }
 
