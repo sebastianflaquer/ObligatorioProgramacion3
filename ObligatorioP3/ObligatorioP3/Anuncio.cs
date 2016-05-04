@@ -301,6 +301,58 @@ namespace BienvenidosUY
             return retorno;
         }
 
+        //SE FIJA SI UN ANUNCIO TIENE RESERVA
+        public bool tieneReserva()
+        {
+            bool retorno = false;
+            List<Reserva> Lr = new List<Reserva>();
+
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "ReservaPorAnuncio";
+                cmd.Parameters.Add(new SqlParameter("@idAnuncio", this.id));
+
+                SqlDataReader drResults;
+
+                cmd.Connection = cn;
+                cn.Open();
+                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                //RECORRER LA TABLA OBTENIDA DE LA CONSULTA, IR AGREGANDO LOS VALORES A LA LIST                
+                while (drResults.Read())
+                {
+                    Reserva Reserva = new Reserva();
+                    Reserva.id = Convert.ToInt32(drResults["id"]);
+                    Reserva.anuncio.id = Convert.ToInt32(drResults["idAnuncio"]);
+
+                    Lr.Add(Reserva);
+                }
+
+                //si hay items en la lista
+                if (Lr.Count > 0) retorno = true;
+                //si no hay items en la lista
+                else retorno = false;
+                
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
+            }
+
+            return retorno;
+
+        }
+        
         //CARGAR ANUNCIOS POR USUARIO
         public List<Anuncio> CargarAnunciosPorUsuario(string mail)
         {
