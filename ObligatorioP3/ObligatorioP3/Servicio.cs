@@ -211,5 +211,137 @@ namespace BienvenidosUY
             return lista;
         }
 
+        //AGREGA A LOS ALOJAMIENTOS UN SERVICIO SELECCIONADO
+        public bool AgregarServicioAlAlojamiento(int idAlojamiento)
+        {
+
+            SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
+            bool ok = false;
+            int afectadas = 0;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "INSERT INTO ALOJAMIENTO_SERVICIO VALUES (@idAlojamiento, @idServicio)";
+                    cmd.Parameters.Add(new SqlParameter("@idAlojamiento", idAlojamiento));
+                    cmd.Parameters.Add(new SqlParameter("@idServicio", this.id));
+                    cn.Open();
+                    afectadas = cmd.ExecuteNonQuery();
+                    cn.Close();
+                }
+
+                if (afectadas != -1)
+                {
+                    ok = true;
+                }
+                else {
+                    ok = false;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
+            }
+
+
+            return ok;
+        }
+
+        //CARGA LOS SERVICIOS QUE AUN NO TIENE EL ALOJAMIENTO
+        public List<Servicio> CargarServiciosQueLeFalta(int idAloj)
+        {
+            List<Servicio> lista = new List<Servicio>();
+
+            SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "ServiciosQueLeFaltan";
+                cmd.Parameters.Add(new SqlParameter("@idAlojamiento", idAloj));
+
+                SqlDataReader drResults;
+
+                cmd.Connection = cn;
+                cn.Open();
+                drResults = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                //RECORRER LA TABLA OBTENIDA DE LA CONSULTA, IR AGREGANDO LOS VALORES A LA LIST                
+                while (drResults.Read())
+                {
+                    Servicio serv = new Servicio();
+                    serv.id = Convert.ToInt32(drResults["Id"]);
+                    serv.nombre = Convert.ToString(drResults["Nombre"]);
+                    lista.Add(serv);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
+            }
+
+            return lista;
+        }
+
+        //QUITA UN SERVICIO DE UN ALOJAMIENTO
+        public bool QuitarServicioAlAlojamiento()
+        {
+
+            SqlConnection cn = new SqlConnection(); //creamos y configuramos la conexion
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
+            cn.ConnectionString = cadenaConexion;
+
+            bool ok = false;
+            int afectadas = 0;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = "DELETE FROM ALOJAMIENTO_SERVICIO WHERE idServicio = @IdServicio";
+                    cmd.Parameters.Add(new SqlParameter("@idServicio", this.id));
+                    cn.Open();
+                    afectadas = cmd.ExecuteNonQuery();
+                    cn.Close();
+                }
+
+                if (afectadas != -1)
+                {
+                    ok = true;
+                }
+                else {
+                    ok = false;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (cn != null && cn.State == ConnectionState.Open) cn.Close();
+            }
+
+
+            return ok;
+        }
     }
 }
