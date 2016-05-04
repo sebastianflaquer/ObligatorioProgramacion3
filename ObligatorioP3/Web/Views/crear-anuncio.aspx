@@ -17,7 +17,7 @@
                 
             <!-- NOMBRE ANUNCIO -->
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="NombreAnuncio" CssClass="control-label">NombreAnuncio:</asp:Label>
+                <asp:Label runat="server" AssociatedControlID="NombreAnuncio" CssClass="control-label">Nombre del Anuncio:</asp:Label>
                 <asp:TextBox ID="NombreAnuncio" CssClass="form-control" MaxLength="128" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="NombreAnuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="El campo Nombre es obligatorio." />
             </div>
@@ -48,8 +48,61 @@
                 <asp:Label runat="server" AssociatedControlID="Dir2Anuncio" CssClass="control-label">Dirección linea 2:</asp:Label>
                 <asp:TextBox ID="Dir2Anuncio" CssClass="form-control" placeholder="Nombre Edificio, block, etc" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Dir2Anuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="El campo Dirección 2 es obligatorio." />
-            </div>  
+            </div>
 
+            <!-- PRECIO BASE -->
+            <div class="form-group">
+                <asp:Label runat="server" AssociatedControlID="PrecioBaseAnuncio" CssClass="control-label">Precio Base:</asp:Label>
+                <asp:TextBox ID="PrecioBaseAnuncio" CssClass="form-control" placeholder="U$S" TextMode="Number" runat="server"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioBaseAnuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="El campo Precio Base es obligatorio." />
+            </div>
+            
+            <!-- RANGO FECHAS -->
+            <div class="form-group">
+                <h4>Rango de Fechas</h4>      
+            </div>
+
+            <!-- CREAR Y AGREGAR RANGO -->
+            <div>
+                <asp:Button runat="server" Text="Nuevo Rango" CssClass="btn btn-primary pull-right" OnClick="mostrarFormRango_Click" />
+            </div>
+
+
+            
+
+            <div runat="server" id="formRangoFechas" visible="false">
+
+                <!-- FECHA INICIO -->
+                <div class="form-group">
+                    <asp:Label runat="server" AssociatedControlID="fchaIniAnuncio" CssClass="control-label">Fecha Inicio:</asp:Label>
+                    <asp:TextBox ID="fchaIniAnuncio" CssClass="form-control" runat="server" TextMode="Date"/>
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="fchaIniAnuncio" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Fecha Inicio es obligatorio." />
+                </div>
+
+                <!-- FECHA FIN -->
+                <div class="form-group">
+                    <asp:Label runat="server" AssociatedControlID="fchaFinAnuncio" CssClass="control-label">Fecha Fin:</asp:Label>
+                    <asp:TextBox ID="fchaFinAnuncio" CssClass="form-control" runat="server" TextMode="Date"/>
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="fchaFinAnuncio" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Fecha Fin es obligatorio." />
+                </div>
+
+                <!-- PRECIO -->
+                <div class="form-group">
+                    <asp:Label runat="server" AssociatedControlID="PrecioRango" CssClass="control-label">Precio:</asp:Label>
+                    <asp:TextBox ID="PrecioRango" CssClass="form-control" TextMode="Number" runat="server"/>
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioRango" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Precio del Rango es obligatorio." />
+                </div>
+            
+                <!-- CREAR Y AGREGAR RANGO -->
+                <div>
+                    <asp:Button runat="server" Text="Agregar Rango" ValidationGroup="DatosRangoFch" CssClass="btn btn-primary pull-right" OnClick="CrearYagregarRango_Click" />
+                </div>
+
+            </div>
+
+            
+            <br />
+            
             <!-- FOTO 1-->
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="Foto1Anuncio" CssClass="col-md-2 control-label">Fotos:</asp:Label>
@@ -74,7 +127,7 @@
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="Foto3Anuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="Debe subir una foto de Anuncio." />
                 </div>
             </div>
-           <%-- <!-- FOTO 4-->
+            <!-- FOTO 4-->
             <div class="form-group">
                 <asp:Label runat="server" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-10">
@@ -90,53 +143,15 @@
                     <asp:FileUpload ID="Foto5Anuncio" runat="server"/>                    
                     <!--<asp:RequiredFieldValidator runat="server" ControlToValidate="Foto5Anuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="Debe subir una foto de Anuncio." />-->
                 </div>
-            </div>--%>
-
-
-            <!-- PRECIO BASE -->
-            <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="PrecioBaseAnuncio" CssClass="control-label">Precio Base:</asp:Label>
-                <asp:TextBox ID="PrecioBaseAnuncio" CssClass="form-control" placeholder="U$S" TextMode="Number" runat="server"/>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioBaseAnuncio" ValidationGroup="anuncio" CssClass="text-danger" ErrorMessage="El campo Precio Base es obligatorio." />
-            </div>
-            
-            <!-- RANGO FECHAS -->
-            <div class="form-group">
-                <h4>Rango de Fechas</h4>      
-            </div>      
-
-            <!-- FECHA INICIO -->
-            <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="fchaIniAnuncio" CssClass="control-label">Fecha Inicio:</asp:Label>
-                <asp:TextBox ID="fchaIniAnuncio" CssClass="form-control" runat="server" TextMode="Date"/>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="fchaIniAnuncio" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Fecha Inicio es obligatorio." />
             </div>
 
-            <!-- FECHA FIN -->
-            <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="fchaFinAnuncio" CssClass="control-label">Fecha Fin:</asp:Label>
-                <asp:TextBox ID="fchaFinAnuncio" CssClass="form-control" runat="server" TextMode="Date"/>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="fchaFinAnuncio" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Fecha Fin es obligatorio." />
-            </div>
-
-            <!-- PRECIO -->
-            <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="PrecioRango" CssClass="control-label">Precio:</asp:Label>
-                <asp:TextBox ID="PrecioRango" CssClass="form-control" TextMode="Number" runat="server"/>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioRango" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Precio del Rango es obligatorio." />
-            </div>
-            
-            <!-- CREAR Y AGREGAR RANGO -->
-            <div>
-                <asp:Button runat="server" Text="Agregar Rango" ValidationGroup="DatosRangoFch" CssClass="btn btn-primary pull-right" OnClick="CrearYagregarRango_Click" />
-            </div>
-            
-            <br />
             <br />
             
             <div>
                 <asp:Button runat="server" Text="Crear Anuncio" ValidationGroup="anuncio" CssClass="btn btn-primary pull-right" OnClick="ConfAnuncio_Click" />
             </div>
+            <br />
+            <br />
         </div>
 
     </div>
