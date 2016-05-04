@@ -70,7 +70,32 @@
                 <asp:Label runat="server" ID="lblRangoFechasMod"  CssClass="control-label" Visible="false">Rango de Fechas:</asp:Label>
                 <asp:ListBox ID="ModRangoFechaListBox" Visible="false" runat="server"  Height="81px" Width="100%"></asp:ListBox>
              </div>
-            <asp:Button runat="server" Text="Actualizar" CssClass="btn btn-primary pull-right" CausesValidation="false" Visible ="false" ID="btnActAnu"/>
+            <asp:Button runat="server" Text="Agregar Rangos" CssClass="btn btn-primary pull-right" CausesValidation="false" ID="btnMstAgrRf" OnClick="btnMstAgrRf_Click"/>
+            <div id="mostrarCamposAgrRF" runat="server" visible=false>
+            <!-- FECHA INICIO -->
+            <div class="form-group">
+                <asp:Label runat="server" AssociatedControlID="fchaIniAnuncio" CssClass="control-label">Fecha Inicio:</asp:Label>
+                <asp:TextBox ID="fchaIniAnuncio" CssClass="form-control" runat="server" TextMode="Date"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="fchaIniAnuncio" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Fecha Inicio es obligatorio." />
+            </div>
+
+            <!-- FECHA FIN -->
+            <div class="form-group">
+                <asp:Label runat="server" AssociatedControlID="fchaFinAnuncio" CssClass="control-label">Fecha Fin:</asp:Label>
+                <asp:TextBox ID="fchaFinAnuncio" CssClass="form-control" runat="server" TextMode="Date"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="fchaFinAnuncio" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Fecha Fin es obligatorio." />
+            </div>
+
+            <!-- PRECIO -->
+            <div class="form-group">
+                <asp:Label runat="server" AssociatedControlID="PrecioRango" CssClass="control-label">Precio:</asp:Label>
+                <asp:TextBox ID="PrecioRango" CssClass="form-control" TextMode="Number" runat="server"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioRango" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Precio del Rango es obligatorio." />
+                 <asp:Button runat="server" Text="Confirmar Rango" CssClass="btn btn-primary pull-right" CausesValidation="false" ID="btnConfRF" OnClick="btnConfRF_Click" />
+            </div>
+            </div>
+
+            <asp:Button runat="server" Text="Actualizar" CssClass="btn btn-primary pull-right" CausesValidation="false" Visible ="false" ID="btnActAnu" OnClick="btnActAnu_Click"/>
 
 
 

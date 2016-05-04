@@ -22,6 +22,7 @@ namespace Web.Views
                 else
                 {
                     CargarAnunciosDeUsuario();
+                    Session["listaRangoFechas"] = new List<RangoFechas>();
                 }
             }
             else //Si no esta logeado lo redirecciona al login
@@ -99,21 +100,7 @@ namespace Web.Views
             this.AlojamientoDropD.DataValueField = "id";
             this.AlojamientoDropD.DataTextField = "nombre";
             this.AlojamientoDropD.DataBind();
-            //int i = 0;
-            //bool encontrado = false;
-            //while (i < lista.Count && encontrado == false)
-            //{
-            //    if (lista[i].nombre == alo.nombre)
-            //    {
-            //        encontrado = true;
-
-
-                    this.AlojamientoDropD.SelectedValue = alo.id.ToString();
-            //    }
-            //    else { i++; }
-            //}
-
-
+            this.AlojamientoDropD.SelectedValue = alo.id.ToString();
 
             this.TextBoxDscModAnu.Text = anu.descripcion;
             this.TextBoxDir1ModAnu.Text = anu.direccion1;
@@ -122,12 +109,139 @@ namespace Web.Views
 
             //Carga los rangos de Fecha
             #region Rangos Fecha
-            RangoFechas rf = new RangoFechas();
-            this.ModRangoFechaListBox.DataSource = rf.CargarRangosFechaDeAnuncio(anu.id);   
-            this.ModRangoFechaListBox.DataValueField = "Id";
-            this.ModRangoFechaListBox.DataTextField = "Listado";   
-            this.ModRangoFechaListBox.DataBind();
+            cargarListBoxConFR();
             #endregion
+
+        }
+
+        protected void btnMstAgrRf_Click(object sender, EventArgs e)
+        {
+            this.mostrarCamposAgrRF.Visible = true;
+        }
+
+        protected void btnConfRF_Click(object sender, EventArgs e)
+        {
+            //Crea un nuevo objeto RangoFechas y le carga los campos del formulario
+            RangoFechas rangoF = new RangoFechas();
+            string txtDesde = this.fchaIniAnuncio.Text;
+            string txtHasta = this.fchaFinAnuncio.Text;
+            rangoF.fechaInicio = DateTime.Parse(txtDesde);
+            rangoF.fechaFin = DateTime.Parse(txtHasta);
+
+            rangoF.precio = decimal.Parse(this.PrecioRango.Text);
+
+            List<RangoFechas> listaRF = Session["listaRangoFechas"] as List<RangoFechas>;
+
+            if (rangoF.fechaFin < rangoF.fechaInicio)
+            {
+                //Rango  no valido
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>El Rango no es válido</span></div>";
+
+            }
+            else
+            {
+                if (yaEstaRangoF(rangoF.fechaInicio, rangoF.fechaFin, listaRF) || fechaValida(rangoF) == false)
+                {
+                    //NO pudo guardar el rango
+                    this.errorField.Visible = true;
+                    this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar agregar al rango de fechas o el año no es válido</span></div>";
+                }
+                else
+                {
+                    listaRF.Add(rangoF);
+                    //LIMPIAR 
+                    fchaIniAnuncio.Text = "";
+                    fchaFinAnuncio.Text = "";
+                    PrecioRango.Text = "";
+
+                    //Si pudo guardar el Alojamiento
+                    this.errorField.Visible = true;
+                    this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El rango de fechas se guardó con exito</span></div>";
+                    cargarListBoxConFR();
+                }
+
+            }
+        }
+
+        protected void cargarListBoxConFR()
+        {
+            RangoFechas rf = new RangoFechas();
+            this.ModRangoFechaListBox.DataSource = rf.CargarRangosFechaDeAnuncio(int.Parse(this.ElejAnuncioDropD.SelectedValue));
+            this.ModRangoFechaListBox.DataValueField = "Id";
+            this.ModRangoFechaListBox.DataTextField = "Listado";
+            this.ModRangoFechaListBox.DataBind();
+        }
+
+        //VALIDACIONES DE RANGO DE FECHAS
+        protected bool yaEstaRangoF(DateTime fIni, DateTime fFin, List<RangoFechas> lista)
+        {
+            bool ok = false;
+
+            if (lista.Count == 0)
+            {
+                return ok;
+            }
+            else
+            {
+                int i = 0;
+                //SI NO ESTA VACÍA..RECORRELA
+                while (i < lista.Count && ok == false)
+                {
+                    if (fIni >= lista[i].fechaInicio && fIni <= lista[i].fechaFin || fFin <= lista[i].fechaFin && fFin >= lista[i].fechaInicio)
+                    {
+                        ok = true;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+                return ok;
+            }
+        }
+
+        //VALIDA LAS FECHAS
+        protected bool fechaValida(RangoFechas rango)
+        {
+            bool ok = false;
+
+            if (rango.fechaInicio.Year == DateTime.Today.Year && rango.fechaFin.Year == DateTime.Today.Year)
+            {
+                ok = true;
+            }
+            return ok;
+        }
+
+        protected void btnActAnu_Click(object sender, EventArgs e)
+        {
+            Anuncio anu = new Anuncio();
+            anu.id = int.Parse(this.ElejAnuncioDropD.SelectedValue);
+            anu.nombre = this.NombreAnuncioMod.Text;
+            Alojamiento a = new Alojamiento();
+            a.id = int.Parse(this.AlojamientoDropD.SelectedValue);
+            anu.alojamiento = a;
+            anu.descripcion = this.TextBoxDscModAnu.Text;
+            anu.direccion1 = this.TextBoxDir1ModAnu.Text;
+            anu.direccion2 = this.TextBoxDir2ModAnu.Text;
+            //anu.fotos =    ESTO FALTA
+            anu.precioBase = decimal.Parse(this.TextBoxPrecioBase.Text);
+            anu.rangosFechas = Session["listaRangoFechas"] as List<RangoFechas>;
+
+            bool ok = anu.Modificar();
+
+            if (ok)
+            {
+                // Si pudo quitar el Servicios
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El Anuncio se modificó con exito</span></div>";
+            }
+            else
+            {
+                //NO pudo guardar el Servicios
+                this.errorField.Visible = true;
+                this.lblErrorMsj.InnerHtml = "<div class='alert alert-warning'><button data-dismiss='alert' class='close' type='button'>×</button><span>Error al intentar modificar el Anuncio</span></div>";
+            }
 
         }
     }
