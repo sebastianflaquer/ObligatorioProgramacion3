@@ -13,14 +13,22 @@ namespace Web.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Si es PostBack
-            if (IsPostBack)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
+                //Si es PostBack
+                if (IsPostBack)
+                {
 
+                }
+                else
+                {
+                    CargarAlojamientosDeUsuario();
+                    Session["listaRangoFechas"] = new List<RangoFechas>();
+                }
             }
-            else {
-                CargarAlojamientosDeUsuario();
-                Session["listaRangoFechas"] = new List<RangoFechas>();
+            else //Si no esta logeado lo redirecciona al login
+            {
+                Response.Redirect("../Views/sign-up.aspx");
             }
         }
 

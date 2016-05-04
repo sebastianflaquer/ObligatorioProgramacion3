@@ -262,41 +262,34 @@ namespace BienvenidosUY
             SqlConnection cn = new SqlConnection();//Creamos y configuramos la concexion.
             string cadenaConexion = ConfigurationManager.ConnectionStrings["conexionBD"].ConnectionString;
             cn.ConnectionString = cadenaConexion;
-
+            
             try
             {
-                //Elimino rangofechas de un anuncio
-                //cn = new SqlConnection(Persistente.StringConexion);
-                SqlCommand cmd = new SqlCommand();                
-                cn.Open();
-                cmd.CommandText = "LeerCategoria";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idAnuncio", this.id);
-                
-                //creamos la transaction TR        
-                SqlTransaction tr = cn.BeginTransaction();
-                //Le pasamos al CMD la transaction
-
-                cmd.Transaction = tr;
-                int afectadas = cmd.ExecuteNonQuery();
-
-                //si elimino el rangofecha elimino el anuncio
-                if (afectadas == 1)
+                using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.CommandText = "EliminarAnuncio";
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id", this.id);
-                    //cmd.CommandType = CommandType.StoredProcedure;
-                    //cmd.Parameters.AddWithValue("@idAnuncio", this.id);
+                    cmd.Connection = cn;
+                    cmd.CommandText = "EliminarRangoFecha";//Consulta a ejecutar
+                    cmd.CommandType = CommandType.StoredProcedure;//tipo de consulta
+                    cmd.Parameters.Add(new SqlParameter("@idAnuncio", this.id));
+                    cn.Open();//abrimos la conexion
 
-                    bool ok = true;
+                    SqlTransaction tr = cn.BeginTransaction();
+                    cmd.Transaction = tr;
+                    int afectadas = cmd.ExecuteNonQuery();
 
-                    ok = cmd.ExecuteNonQuery() == 1;
+                    if (afectadas >= 0)
+                    {
+                        cmd.CommandText = "EliminarAnuncio";
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.Add(new SqlParameter("@id", this.id));
+                        cmd.ExecuteNonQuery();
 
-                    if (ok)
+                        retorno = true;
+                    }
+
+                    if (retorno)
                     {
                         tr.Commit();
-                        retorno = true;
                     }
                     else
                     {
@@ -306,7 +299,7 @@ namespace BienvenidosUY
             }
             catch
             {
-                //if (tr != null) tr.Rollback();
+                //if(tr != null) tr.Rollback();
                 throw;
             }
             finally
@@ -314,7 +307,63 @@ namespace BienvenidosUY
                 if (cn != null && cn.State == ConnectionState.Open) cn.Close();
                 //if (reader != null) reader.Close();
             }
+
             return retorno;
+
+
+            //try
+            //{
+            //    //Elimino rangofechas de un anuncio
+            //    //cn = new SqlConnection(Persistente.StringConexion);
+            //    SqlCommand cmd = new SqlCommand();                
+            //    cn.Open();
+            //    cmd.CommandText = "LeerCategoria";
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    cmd.Parameters.AddWithValue("@idAnuncio", this.id);
+
+            //    //creamos la transaction TR        
+            //    SqlTransaction tr = cn.BeginTransaction();
+            //    //Le pasamos al CMD la transaction
+
+            //    cmd.Transaction = tr;
+            //    int afectadas = cmd.ExecuteNonQuery();
+
+            //    //si elimino el rangofecha elimino el anuncio
+            //    if (afectadas == 1)
+            //    {
+            //        cmd.CommandText = "EliminarAnuncio";
+            //        cmd.CommandType = CommandType.StoredProcedure;
+            //        cmd.Parameters.AddWithValue("@id", this.id);
+            //        //cmd.CommandType = CommandType.StoredProcedure;
+            //        //cmd.Parameters.AddWithValue("@idAnuncio", this.id);
+
+            //        bool ok = true;
+
+            //        ok = cmd.ExecuteNonQuery() == 1;
+
+            //        if (ok)
+            //        {
+            //            tr.Commit();
+            //            retorno = true;
+            //        }
+            //        else
+            //        {
+            //            tr.Rollback();
+            //        }
+            //    }
+            //}
+            //catch
+            //{
+            //    //if (tr != null) tr.Rollback();
+
+            //    throw;
+            //}
+            //finally
+            //{
+            //    if (cn != null && cn.State == ConnectionState.Open) cn.Close();
+            //    //if (reader != null) reader.Close();
+            //}
+            //return retorno;
         }
 
         public List<Anuncio> CargarAnunciosPorUsuario(string mail)

@@ -14,17 +14,33 @@
     <br />
     <div class="row">
         <div class="col-md-8">
-                
-            <!-- ELEGIR ANUNCIO -->
-            <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="DropDElegirAnuncio" CssClass="control-label">Seleccionar Anuncio:</asp:Label>
-                <asp:DropDownList ID="DropDElegirAnuncio" CssClass="form-control" runat="server" DataTextField="Nombre" DataValueField="Id"></asp:DropDownList>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="DropDElegirAnuncio" CssClass="text-danger" ErrorMessage="El campo Seleccionar Anuncio es obligatorio." />
+            
+            <!-- LISTA SIN ANUNCIO -->
+            <div class="row" runat="server" id="listaSinAnuncios">
+                <%--<div class="col-md-12">
+                    <h1>Upss!!!</h1>
+                    <h3>No tienes anuncios para eliminar</h3><br />
+                    <a class="btn btn-warning" href="home.aspx">Volver al home</a>
+                </div>--%>
             </div>
-            <div>
-                <asp:Button runat="server" Text="Eliminar"  CssClass="btn btn-primary pull-right" OnClick="ConfBajaAnuncio_Click" />
-            </div>
+            <!-- END -->
 
+            <!-- FORM ELIMINAR ANUNCIO -->
+            <div class="row" runat="server" id="formEliminarAnuncio">
+                <div class="col-md-12">
+                    <!-- ELEGIR ANUNCIO -->
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="DropDElegirAnuncio" CssClass="control-label">Seleccionar Anuncio:</asp:Label>
+                        <asp:DropDownList ID="DropDElegirAnuncio" CssClass="form-control" runat="server" DataTextField="Nombre" DataValueField="Id"></asp:DropDownList>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="DropDElegirAnuncio" CssClass="text-danger" ErrorMessage="El campo Seleccionar Anuncio es obligatorio." />
+                    </div>
+                    <div>
+                        <asp:Button runat="server" Text="Eliminar"  CssClass="btn btn-primary pull-right" OnClick="ConfBajaAnuncio_Click" />
+                    </div>
+                </div>
             </div>
+            <!-- FORM ELIMINAR ANUNCIO -->
+
         </div>
+    </div>
 </asp:Content>

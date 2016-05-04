@@ -55,7 +55,7 @@
                         <li>
                             <a id="dropdownMenu3" href="anuncios.aspx" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Anuncios</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                                <li><a href="alojamientos.aspx">Mis Anuncios</a></li>
+                                <li><a href="anuncios.aspx">Mis Anuncios</a></li>
                                 <li><a href="crear-anuncio.aspx">Crear Anuncio</a></li>
                                 <li><a href="modificar-anuncio.aspx">Editar Anuncios</a></li>
                                 <li><a href="baja-anuncio.aspx">Eliminar Anuncios</a></li>

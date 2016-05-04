@@ -31,6 +31,24 @@ namespace Web.Views {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblErrorMsj;
         
         /// <summary>
+        /// listaSinAnuncios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listaSinAnuncios;
+        
+        /// <summary>
+        /// formEliminarAnuncio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl formEliminarAnuncio;
+        
+        /// <summary>
         /// DropDElegirAnuncio control.
         /// </summary>
         /// <remarks>

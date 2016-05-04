@@ -12,9 +12,19 @@ namespace Web.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Anuncio anu = new Anuncio();
-            this.GridAnuncioss.DataSource = anu.CargarAnunciosPorUsuario(Session["mail"].ToString());
-            this.GridAnuncioss.DataBind();
+            if ((bool)Session["logueado"]) //Si esta logeado
+            {
+                if (!Page.IsPostBack)
+                {
+                    Anuncio anu = new Anuncio();
+                    this.GridAnuncioss.DataSource = anu.CargarAnunciosPorUsuario(Session["mail"].ToString());
+                    this.GridAnuncioss.DataBind();
+                }
+            }
+            else //Si no esta logeado lo redirecciona al login
+            {
+                Response.Redirect("../Views/sign-up.aspx");
+            }
         }
     }
 }
