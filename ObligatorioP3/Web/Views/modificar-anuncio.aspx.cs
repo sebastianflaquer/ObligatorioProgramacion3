@@ -59,19 +59,26 @@ namespace Web.Views
         //CARGA LOS ANUNCIOS DEL USUSARIO LOGUEADO
         protected void CargarAnunciosDeUsuario()
         {
-
-            #region Anuncios
             Anuncio anu = new Anuncio();
             List<Anuncio> L1 = new List<Anuncio>();
-
+            
             L1 = anu.CargarAnunciosPorUsuario(Session["mail"].ToString());
 
-            this.ElejAnuncioDropD.DataSource = L1;
-            this.ElejAnuncioDropD.DataValueField = "id";
-            this.ElejAnuncioDropD.DataTextField = "nombre";
-            this.ElejAnuncioDropD.DataBind();
+            if (L1.Count == 0)//si no tiene items en la lista
+            {
+                this.listaSinAnuncios.Visible = true;
+                this.formModificar.Visible = false;
+                this.listaSinAnuncios.InnerHtml = "<div class='col-md-12'><h1>Upss!!!</h1><h3>No tienes anuncios</h3><br /><a class='btn btn-warning' href='home.aspx'>Volver al home</a></div>";
+            }
+            else//si tiene items en la lista
+            {
+                this.ElejAnuncioDropD.DataSource = L1;
+                this.ElejAnuncioDropD.DataValueField = "id";
+                this.ElejAnuncioDropD.DataTextField = "nombre";
+                this.ElejAnuncioDropD.DataBind();
+            }
         }
-        #endregion
+
 
         //CARGAR DATOS DEL ANUNCIO SELECCIONADO
         private void cargarAnuncio()

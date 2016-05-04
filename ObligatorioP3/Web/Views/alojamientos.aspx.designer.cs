@@ -13,6 +13,15 @@ namespace Web.Views {
     public partial class alojamientos {
         
         /// <summary>
+        /// listaSinAnuncios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listaSinAnuncios;
+        
+        /// <summary>
         /// GridAlojamientos control.
         /// </summary>
         /// <remarks>

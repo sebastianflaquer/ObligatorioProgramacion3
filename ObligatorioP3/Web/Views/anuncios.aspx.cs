@@ -15,10 +15,22 @@ namespace Web.Views
             if ((bool)Session["logueado"]) //Si esta logeado
             {
                 if (!Page.IsPostBack)
-                {
+                {   
                     Anuncio anu = new Anuncio();
-                    this.GridAnuncioss.DataSource = anu.CargarAnunciosPorUsuario(Session["mail"].ToString());
-                    this.GridAnuncioss.DataBind();
+                    List<Anuncio> L1 = new List<Anuncio>();
+                    L1 = anu.CargarAnunciosPorUsuario(Session["mail"].ToString());
+
+                    if (L1.Count == 0)//si no tiene items en la lista
+                    {
+                        this.listaSinAnuncios.Visible = true;
+                        this.GridAnuncioss.Visible = false;
+                        this.listaSinAnuncios.InnerHtml = "<div class='col-md-12'><h1>Upss!!!</h1><h3>No tienes anuncios</h3><br /><a class='btn btn-warning' href='home.aspx'>Volver al home</a></div>";
+                    }
+                    else//si tiene items en la lista
+                    {
+                        this.GridAnuncioss.DataSource = L1;
+                        this.GridAnuncioss.DataBind();
+                    }
                 }
             }
             else //Si no esta logeado lo redirecciona al login

@@ -17,9 +17,20 @@ namespace Web.Views
                 if (!Page.IsPostBack)
                 {
                     Alojamiento Aloj = new Alojamiento();
-                    this.GridAlojamientos.DataSource = Aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
-                    this.GridAlojamientos.DataBind();
+                    List<Alojamiento> L1 = new List<Alojamiento>();
+                    L1 = Aloj.CargarAlojamientosPorUsuario(Session["mail"].ToString());
 
+                    if (L1.Count == 0)//si no tiene items en la lista
+                    {
+                        this.listaSinAnuncios.Visible = true;
+                        this.GridAlojamientos.Visible = false;
+                        this.listaSinAnuncios.InnerHtml = "<div class='col-md-12'><h1>Upss!!!</h1><h3>No tienes Alojamientos</h3><br /><a class='btn btn-warning' href='home.aspx'>Volver al home</a></div>";
+                    }
+                    else//si tiene items en la lista
+                    {
+                        this.GridAlojamientos.DataSource = L1;
+                        this.GridAlojamientos.DataBind();
+                    }
                 }
             }
             else //Si no esta logeado lo redirecciona al login

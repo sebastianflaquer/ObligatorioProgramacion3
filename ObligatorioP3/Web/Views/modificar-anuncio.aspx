@@ -1,7 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/site.Master" AutoEventWireup="true" CodeBehind="modificar-anuncio.aspx.cs" Inherits="Web.Views.modificar_anuncio" %>
+﻿<%@ Page Title="Editar Anuncios" Language="C#" MasterPageFile="~/site.Master" AutoEventWireup="true" CodeBehind="modificar-anuncio.aspx.cs" Inherits="Web.Views.modificar_anuncio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
     <h2><%: Title %></h2>
+    
     <br />
+
     <div class="row-fluid" id="errorField" runat="server" visible=false>
         <div class="span12" ID="lblErrorMsj" runat="server">
             <div class="alert alert-error" >
@@ -13,8 +16,19 @@
 
     <br />
     <div class="row">
-        <div class="col-md-8">
-    <div class="form-group">
+
+        <!-- LISTA SIN ANUNCIO -->
+        <div class="row" runat="server" id="listaSinAnuncios">
+            <%--<div class="col-md-12">
+                <h1>Upss!!!</h1>
+                <h3>No tienes anuncios para eliminar</h3><br />
+                <a class="btn btn-warning" href="home.aspx">Volver al home</a>
+            </div>--%>
+        </div>
+        <!-- END -->
+
+        <div class="col-md-8" id="formModificar" runat="server">
+            <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="ElejAnuncioDropD" CssClass="control-label">Seleccionar Anuncio:</asp:Label>
                 <asp:DropDownList ID="ElejAnuncioDropD" CssClass="form-control" runat="server"></asp:DropDownList>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ElejAnuncioDropD" CssClass="text-danger" ErrorMessage="El campo Seleccionar Anuncio es obligatorio." />

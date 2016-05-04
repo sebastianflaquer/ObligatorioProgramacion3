@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/site.Master" AutoEventWireup="true" CodeBehind="baja-alojamiento.aspx.cs" Inherits="Web.Views.baja_alojamiento" %>
+﻿<%@ Page Title="Eliminar Alojamiento" Language="C#" MasterPageFile="~/site.Master" AutoEventWireup="true" CodeBehind="baja-alojamiento.aspx.cs" Inherits="Web.Views.baja_alojamiento" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2><%: Title %></h2>
     <br />

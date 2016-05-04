@@ -4,8 +4,18 @@
     <h2><%: Title %></h2>
 
     <div class="row">
-
         <div class="col-md-12">
+
+            <!-- LISTA SIN ANUNCIO -->
+            <div class="row" runat="server" id="listaSinAnuncios">
+                <%--<div class="col-md-12">
+                    <h1>Upss!!!</h1>
+                    <h3>No tienes anuncios para eliminar</h3><br />
+                    <a class="btn btn-warning" href="home.aspx">Volver al home</a>
+                </div>--%>
+            </div>
+            <!-- END -->
+
             <asp:GridView ID="GridAlojamientos" CssClass="table table-bordered" runat="server" Width="100%" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField HeaderText="Nombre" DataField="nombre" />
@@ -22,8 +32,6 @@
                 </Columns>
             </asp:GridView>
         </div>
-        
-
 
     </div>
 

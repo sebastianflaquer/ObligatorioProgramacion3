@@ -282,9 +282,10 @@ namespace BienvenidosUY
                         cmd.CommandText = "EliminarAnuncio";
                         cmd.Parameters.Clear();
                         cmd.Parameters.Add(new SqlParameter("@id", this.id));
-                        cmd.ExecuteNonQuery();
-
-                        retorno = true;
+                        afectadas = cmd.ExecuteNonQuery();
+                        if (afectadas >= 0) {
+                            retorno = true;
+                        }
                     }
 
                     if (retorno)

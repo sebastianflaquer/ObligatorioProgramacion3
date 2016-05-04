@@ -6,11 +6,11 @@
     <div class="row">
         <div class="col-md-12">
 
-             <!-- LISTA SIN ANUNCIO -->
+            <!-- LISTA SIN ANUNCIO -->
             <div class="row" runat="server" id="listaSinAnuncios">
                 <%--<div class="col-md-12">
                     <h1>Upss!!!</h1>
-                    <h3>No tienes anuncios</h3><br />
+                    <h3>No tienes anuncios para eliminar</h3><br />
                     <a class="btn btn-warning" href="home.aspx">Volver al home</a>
                 </div>--%>
             </div>

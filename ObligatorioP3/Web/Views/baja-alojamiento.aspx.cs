@@ -32,10 +32,9 @@ namespace Web.Views
             }
         }
 
+        //CARGA LOS ALOJAMIENTOS DEL USUARIO
         protected void CargarAlojamientosDeUsuario()
         {
-
-            #region ALOJAMIENTOS
             Alojamiento aloj = new Alojamiento();
             List<Alojamiento> L1 = new List<Alojamiento>();
 
@@ -46,9 +45,8 @@ namespace Web.Views
             this.DropDElegirAlojamiento.DataTextField = "nombre";
             this.DropDElegirAlojamiento.DataBind();
         }
-        #endregion
 
-
+        //ELIMINA EL ALOJAMIENTO SELECIONADO
         protected void ConfBajaAlojamiento_Click(object sender, EventArgs e)
         {
             Alojamiento alo = new Alojamiento();
@@ -60,6 +58,9 @@ namespace Web.Views
                 //Si pudo Eliminar el Anuncio
                 this.errorField.Visible = true;
                 this.lblErrorMsj.InnerHtml = "<div class='alert alert-success'><button data-dismiss='alert' class='close' type='button'>×</button><span>El Alojamiento fue eliminado</span></div>";
+
+                //carga otra vez el combo con los alojamientos
+                CargarAlojamientosDeUsuario();
             }
             else
             {
