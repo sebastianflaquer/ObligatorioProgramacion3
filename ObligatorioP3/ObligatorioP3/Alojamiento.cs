@@ -257,7 +257,7 @@ namespace BienvenidosUY
                         cmd.Connection = cn;
                         cmd.CommandText = "EliminarAlojamientoYDependencias";
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(new SqlParameter("@idAlojamiento", Aloj.id));
+                        cmd.Parameters.Add(new SqlParameter("@idAlojamiento", this.id));
                         cmd.Parameters.Add(new SqlParameter("@idAnuncio", unA.id));
 
                         cn.Open();//abrimos conexion
