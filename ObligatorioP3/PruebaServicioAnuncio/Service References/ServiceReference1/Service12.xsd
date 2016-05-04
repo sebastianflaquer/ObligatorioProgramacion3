@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DTOs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DTOs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfDTOanuncio">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DTOanuncio" nillable="true" type="tns:DTOanuncio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDTOanuncio" nillable="true" type="tns:ArrayOfDTOanuncio" />
+  <xs:complexType name="DTOanuncio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Alojamiento" nillable="true" type="tns:DTOalojamiento" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="PrecioBase" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Registrado" nillable="true" type="tns:DTOregistrado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DTOanuncio" nillable="true" type="tns:DTOanuncio" />
+  <xs:complexType name="DTOalojamiento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DTOalojamiento" nillable="true" type="tns:DTOalojamiento" />
+  <xs:complexType name="DTOregistrado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Apellido" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Mail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DTOregistrado" nillable="true" type="tns:DTOregistrado" />
+</xs:schema>
