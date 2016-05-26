@@ -193,6 +193,24 @@ namespace Web.Views {
         protected global::System.Web.UI.WebControls.ListBox ModServiciosListBox;
         
         /// <summary>
+        /// Control btnQuitarServicios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnQuitarServicios;
+        
+        /// <summary>
+        /// Control btnAgregarOtros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarOtros;
+        
+        /// <summary>
         /// Control lblListaTodosServicios.
         /// </summary>
         /// <remarks>

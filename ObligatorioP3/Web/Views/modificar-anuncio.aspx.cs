@@ -54,6 +54,8 @@ namespace Web.Views
             #endregion
 
             cargarAnuncio();
+            this.btnMstAgrRf.Visible = true;
+            this.btnQuitarRango.Visible = true;
 
         }
 
