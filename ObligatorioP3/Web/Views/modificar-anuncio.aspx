@@ -92,7 +92,7 @@
                 <asp:Label runat="server" AssociatedControlID="PrecioRango" CssClass="control-label">Precio:</asp:Label>
                 <asp:TextBox ID="PrecioRango" CssClass="form-control" TextMode="Number" runat="server"/>
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="PrecioRango" ValidationGroup="DatosRangoFch" CssClass="text-danger" ErrorMessage="El campo Precio del Rango es obligatorio." />
-                 <asp:Button runat="server" Text="Confirmar Rango" CssClass="btn btn-primary pull-right"  visible=false CausesValidation="false" ID="btnConfRF" OnClick="btnConfRF_Click" />
+                 <asp:Button runat="server" Text="Confirmar Rango" CssClass="btn btn-primary pull-right"  visible=true CausesValidation="false" ID="btnConfRF" OnClick="btnConfRF_Click" />
 
             </div>
             </div>
