@@ -3,3 +3,8 @@ D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\Obli
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.pdb
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.exe
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.pdb
+D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.exe.config
+D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.exe
+D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.pdb
+D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.exe
+D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.pdb
