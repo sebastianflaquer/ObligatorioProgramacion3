@@ -123,5 +123,23 @@ namespace MVC.Controllers
             }
             base.Dispose(disposing);
         }
+
+        
+        //CODIGO NUESTRO
+        public ActionResult SearchIndex(string searchString)
+        {
+            var anuncios = from m in db.Anuncios select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                anuncios = anuncios.Where(s => s.nombre.Contains(searchString));
+            }
+
+            return View(anuncios.ToList());
+        }
+
+
+
+
     }
 }

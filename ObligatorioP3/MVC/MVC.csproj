@@ -161,6 +161,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606101909361_InitialCreate.cs" />
+    <Compile Include="Migrations\201606101909361_InitialCreate.Designer.cs">
+      <DependentUpon>201606101909361_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606110059304_AlojamientoSerch.cs" />
+    <Compile Include="Migrations\201606110059304_AlojamientoSerch.Designer.cs">
+      <DependentUpon>201606110059304_AlojamientoSerch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BienvenidosUyContext.cs" />
     <Compile Include="Models\Reserva.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -210,6 +219,7 @@
     <Content Include="Views\Reservas\Details.cshtml" />
     <Content Include="Views\Reservas\Edit.cshtml" />
     <Content Include="Views\Reservas\Index.cshtml" />
+    <Content Include="Views\Reservas\SearchIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -227,6 +237,14 @@
       <Project>{abb64897-94dc-417d-a76a-301611b216fd}</Project>
       <Name>Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606101909361_InitialCreate.resx">
+      <DependentUpon>201606101909361_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606110059304_AlojamientoSerch.resx">
+      <DependentUpon>201606110059304_AlojamientoSerch.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
