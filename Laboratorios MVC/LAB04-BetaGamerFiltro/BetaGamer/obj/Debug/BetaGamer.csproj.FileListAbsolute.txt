@@ -1,0 +1,192 @@
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\ApplicationInsights.config
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\csc.exe
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\Microsoft.CodeAnalysis.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\Microsoft.CSharp.Core.targets
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\Microsoft.VisualBasic.Core.targets
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\System.Collections.Immutable.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\System.Reflection.Metadata.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\vbc.exe
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\VBCSCompiler.exe
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\roslyn\VBCSCompiler.exe.config
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\BetaGamer.dll.config
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\BetaGamer.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\BetaGamer.pdb
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Antlr3.Runtime.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\EntityFramework.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\EntityFramework.SqlServer.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.AI.Agent.Intercept.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.AI.DependencyCollector.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.AI.PerfCounterCollector.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.AI.ServerTelemetryChannel.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.AI.Web.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.AI.WindowsServer.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.ApplicationInsights.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.Web.Infrastructure.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Newtonsoft.Json.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.Helpers.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.Mvc.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.Optimization.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.Razor.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.WebPages.Deployment.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.WebPages.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.WebPages.Razor.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\WebGrease.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\EntityFramework.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\EntityFramework.SqlServer.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.AI.DependencyCollector.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.AI.ServerTelemetryChannel.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.AI.Web.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.AI.WindowsServer.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.ApplicationInsights.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.Helpers.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.Mvc.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.Optimization.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.Razor.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.WebPages.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.WebPages.Deployment.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\System.Web.WebPages.Razor.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Antlr3.Runtime.pdb
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\Newtonsoft.Json.xml
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\es\System.Web.Helpers.resources.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\es\System.Web.Mvc.resources.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\es\System.Web.Optimization.resources.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\es\System.Web.Razor.resources.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\es\System.Web.WebPages.resources.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\es\System.Web.WebPages.Deployment.resources.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\bin\es\System.Web.WebPages.Razor.resources.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\obj\Debug\BetaGamer.csprojResolveAssemblyReference.cache
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\obj\Debug\BetaGamer.dll
+d:\documentos\visual studio 2015\Projects\BetaGamer\BetaGamer\obj\Debug\BetaGamer.pdb
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\ApplicationInsights.config
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\csc.exe
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\System.Collections.Immutable.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\System.Reflection.Metadata.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\vbc.exe
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\VBCSCompiler.exe
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\roslyn\VBCSCompiler.exe.config
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\BetaGamer.dll.config
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\BetaGamer.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\BetaGamer.pdb
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Antlr3.Runtime.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\EntityFramework.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\EntityFramework.SqlServer.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.AI.Agent.Intercept.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.AI.DependencyCollector.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.AI.PerfCounterCollector.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.AI.ServerTelemetryChannel.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.AI.Web.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.AI.WindowsServer.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.ApplicationInsights.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.Web.Infrastructure.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Newtonsoft.Json.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.Helpers.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.Mvc.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.Optimization.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.Razor.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.WebPages.Deployment.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.WebPages.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.WebPages.Razor.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\WebGrease.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\EntityFramework.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\EntityFramework.SqlServer.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.AI.DependencyCollector.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.AI.ServerTelemetryChannel.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.AI.Web.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.AI.WindowsServer.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.ApplicationInsights.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.Helpers.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.Mvc.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.Optimization.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.Razor.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.WebPages.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.WebPages.Deployment.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\System.Web.WebPages.Razor.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Antlr3.Runtime.pdb
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\Newtonsoft.Json.xml
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\es\System.Web.Helpers.resources.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\es\System.Web.Mvc.resources.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\es\System.Web.Optimization.resources.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\es\System.Web.Razor.resources.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\es\System.Web.WebPages.resources.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\es\System.Web.WebPages.Deployment.resources.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\bin\es\System.Web.WebPages.Razor.resources.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\obj\Debug\BetaGamer.csprojResolveAssemblyReference.cache
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\obj\Debug\BetaGamer.dll
+G:\Programacion 3\Laboratorios MVC\LAB04-BetaGamer++\BetaGamer\obj\Debug\BetaGamer.pdb
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\ApplicationInsights.config
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\csc.exe
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\vbc.exe
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\VBCSCompiler.exe
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\BetaGamer.dll.config
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\BetaGamer.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\BetaGamer.pdb
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Antlr3.Runtime.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\EntityFramework.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\EntityFramework.SqlServer.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.AI.Web.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Newtonsoft.Json.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.Helpers.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.Mvc.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.Optimization.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.Razor.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.WebPages.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.WebPages.Razor.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\WebGrease.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\EntityFramework.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\EntityFramework.SqlServer.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.AI.Web.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.Helpers.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.Mvc.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.Optimization.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.Razor.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.WebPages.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\System.Web.WebPages.Razor.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Antlr3.Runtime.pdb
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\Newtonsoft.Json.xml
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\es\System.Web.Optimization.resources.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\es\System.Web.Razor.resources.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\es\System.Web.WebPages.resources.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\obj\Debug\BetaGamer.csprojResolveAssemblyReference.cache
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\obj\Debug\BetaGamer.dll
+C:\Users\Mauro\Desktop\Laboratorios MVC\LAB04-BetaGamerFiltro\BetaGamer\obj\Debug\BetaGamer.pdb

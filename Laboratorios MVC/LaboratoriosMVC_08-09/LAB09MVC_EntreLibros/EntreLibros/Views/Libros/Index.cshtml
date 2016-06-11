@@ -1,0 +1,95 @@
+﻿@model IEnumerable<EntreLibros.Models.Libro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaPublicacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripción)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPublicacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripción)
+            </td>
+            <td>
+                @Html.ActionLink("Ver Detalle en página detalle", "Details",
+                                                           new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+<div id="gridContent" class="table">
+
+    <h2>La Grilla:</h2>
+    @{
+        var grid = new WebGrid(
+            Model,
+            canPage: true,
+            rowsPerPage: 5,
+            selectionFieldName: "seleccionado"
+        );
+
+        grid.Pager(WebGridPagerModes.NextPrevious);
+    }
+
+    @grid.GetHtml(
+        columns: grid.Columns(
+            grid.Column("Ver detalle abajo", format: (item) => item.GetSelectLink("Ver")),
+         grid.Column(header: "Título", columnName: "Titulo"),
+         grid.Column(header: "Publicado el", columnName: "FechaPublicacion",
+           format: (item) => item.FechaPublicacion.ToShortDateString()),
+      grid.Column(header: "Descripción", columnName: "Descripción"),
+         grid.Column(header: "Ver detalle en página detalle",
+           format: (item) => Html.ActionLink("Ver", "Details", new { id = item.Id }))
+        )
+    )
+
+
+</div>
+
+<div>
+
+    @{
+        EntreLibros.Models.Libro libro = new EntreLibros.Models.Libro();
+    }
+
+    @if (grid.HasSelection)
+    {
+        <h2>Seleccionado:</h2>
+        libro = (EntreLibros.Models.Libro)grid.Rows[grid.SelectedIndex].Value;
+        <b>Id </b> @libro.Id<br />
+        <b>Título </b> @libro.Titulo<br />
+        <b>Descripción </b> @libro.Descripción<br />
+        <b>Fecha publicado </b> @libro.FechaPublicacion.ToShortDateString()<br />
+    }
+
+</div>
+
+
+
+

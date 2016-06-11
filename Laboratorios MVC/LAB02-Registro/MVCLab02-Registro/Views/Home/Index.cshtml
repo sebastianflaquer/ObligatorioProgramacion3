@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        
+       
+
+        @Html.ValidationSummary()
+        @using (Html.BeginForm())
+        {
+            @model MVCLab02_Registro.Models.Usuario
+    <p>
+        @Html.LabelFor(m => m.Nombre)
+        @Html.TextBoxFor(m => m.Nombre)
+        @Html.ValidationMessageFor(m => m.Nombre)
+    </p>
+        <p>
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </p>
+            <p>
+                <label for="Password">Password:</label>
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </p>
+
+
+            <p>
+                <input type="submit" value="Registrarse" />
+            </p>}
+
+
+</div>
+</body>
+</html>

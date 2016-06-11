@@ -1,0 +1,23 @@
+
+
+
+1)BUSQUEDA DE ALOJAMIENTO:
+
+a. vista de busqueda(searchIndex), busca por ciudad, barrio, fechas Hospedaje. 
+b. agregar filtros, tipo alojamiento, tipo habitacion, servicios, rangos, precios, baño.
+c. mostrar listado con alojamientos disponibles.
+d. Detalle de alojamiento seleccionado, con datos de anfitrion.
+e. mostrar puntaje y comentarios.
+
+
+
+2) RESERVA
+a. preguntar por login
+b. boton de reservar en detalle de alojamiento.
+c. vista de datos de la reserva, rango de fechas, cant huespedes, texto consulta.
+d. Vista mis Reservas, listado historico de las reservas y detalles de cualquiera de ellas. (detalles del anfitrion, boton cancelar).
+
+
+3)CALIFICACION DE ALOJAMIENTO
+a. vista para calificar el alojamiento, puntuacion 1 a 5 y comentario.
+
