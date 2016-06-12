@@ -1,4 +1,17 @@
 
+/**********************************************/
+/* PREGUNTAS PARA EL PROFESOR                 */
+/**********************************************/
+
+1 - LOS PROYECTOS VAN SEPARADOS?
+2 - QUE PASA CON EL LOGIN, ARMAMOS OTRO? SINO COMO INTEGRAMOS LOS 2 LOGINS?
+3 -
+4 -
+5 -
+6 -
+7 -
+8 -
+9 -
 
 
 1)BUSQUEDA DE ALOJAMIENTO:
