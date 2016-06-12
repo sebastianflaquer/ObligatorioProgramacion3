@@ -124,22 +124,24 @@ namespace MVC.Controllers
             base.Dispose(disposing);
         }
 
-        
         //CODIGO NUESTRO
-        public ActionResult SearchIndex(string searchString)
+
+        // GET: Reservas/SearchIndex/
+        public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
         {
             var anuncios = from m in db.Anuncios select m;
+
+            var ciudad = SearchCiudad;
+            var barrio = SearchBarrio;
+            var fechaI = SearchFechaI;
+            var fechaF = SearchFechaF;
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 anuncios = anuncios.Where(s => s.nombre.Contains(searchString));
             }
-
+            
             return View(anuncios.ToList());
         }
-
-
-
-
     }
 }

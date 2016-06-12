@@ -11,8 +11,8 @@ namespace MVC.Models
     public class BienvenidosUyContext : DbContext
     {
         public DbSet<Reserva> Reservas { get; set; }
-        public DbSet<Anuncio> Anuncios { get; set; }
-        public DbSet<Alojamiento> Alojamientos { get; set; }
+        virtual public DbSet<Anuncio> Anuncios { get; set; }
+        virtual public DbSet<Alojamiento> Alojamientos { get; set; }
 
         public BienvenidosUyContext() : base("conexionBD") { }
         
