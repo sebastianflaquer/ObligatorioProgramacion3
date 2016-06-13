@@ -140,7 +140,18 @@ namespace MVC.Controllers
             {
                 anuncios = anuncios.Where(s => s.nombre.Contains(searchString));
             }
+            if (!String.IsNullOrEmpty(SearchCiudad))
+            {
+                anuncios = anuncios.Where(s => s.alojamiento.ciudad.nombre.Contains(searchString));
+            }
+            if (!String.IsNullOrEmpty(SearchCiudad))
+            {
+                anuncios = anuncios.Where(s => s.alojamiento.barrio.Contains(searchString));
+            }
             
+
+
+
             return View(anuncios.ToList());
         }
     }

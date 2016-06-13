@@ -19,7 +19,7 @@ namespace BienvenidosUY
         public string direccion2 { get; set; }
         public string fotos { get; set; }
         public decimal precioBase { get; set; }
-        public List<RangoFechas> rangosFechas { get; set; }
+        public virtual List<RangoFechas> rangosFechas { get; set; }
         public Registrado registrado { get; set; }
 
         //LEER
