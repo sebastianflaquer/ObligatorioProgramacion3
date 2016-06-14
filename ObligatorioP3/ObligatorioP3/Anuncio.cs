@@ -157,6 +157,11 @@ namespace BienvenidosUY
             return retorno;
         }
 
+        public bool tieneRango(string searchFechaI, string searchFechaF)
+        {
+            throw new NotImplementedException();
+        }
+
         //TRAER TODO
         public override IEnumerable<object> TraerTodo()
         {
@@ -421,6 +426,11 @@ namespace BienvenidosUY
 
             return retorno;
         }
+
+
+
+
+
 
     }
 }

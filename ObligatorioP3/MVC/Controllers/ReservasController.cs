@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC.Models;
+using BienvenidosUY;
 
 namespace MVC.Controllers
 {
@@ -130,12 +131,7 @@ namespace MVC.Controllers
         public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
         {
             var anuncios = from m in db.Anuncios select m;
-
-            var ciudad = SearchCiudad;
-            var barrio = SearchBarrio;
-            var fechaI = SearchFechaI;
-            var fechaF = SearchFechaF;
-
+            
             if (!String.IsNullOrEmpty(searchString))
             {
                 anuncios = anuncios.Where(s => s.nombre.Contains(searchString));
@@ -144,14 +140,12 @@ namespace MVC.Controllers
             {
                 anuncios = anuncios.Where(s => s.alojamiento.ciudad.nombre.Contains(searchString));
             }
-            if (!String.IsNullOrEmpty(SearchCiudad))
+            if (!String.IsNullOrEmpty(SearchBarrio))
             {
                 anuncios = anuncios.Where(s => s.alojamiento.barrio.Contains(searchString));
             }
-            
 
-
-
+            anuncios = anuncios.Where(s => s.tieneRango(SearchFechaI, SearchFechaF) == true);
             return View(anuncios.ToList());
         }
     }

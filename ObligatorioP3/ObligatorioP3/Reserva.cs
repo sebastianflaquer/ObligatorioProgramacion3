@@ -15,4 +15,11 @@ namespace BienvenidosUY
         public Registrado registrado { get; set; }
 
     }
+
+    
+
+
+
+
+
 }
