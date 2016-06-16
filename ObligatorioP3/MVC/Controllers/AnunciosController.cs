@@ -154,5 +154,18 @@ namespace MVC.Controllers
 
 
 
+        public ActionResult Reservar(int idAnuncio)
+        {
+            Anuncio anuncio = db.Anuncios.Find(idAnuncio);
+            if (anuncio == null)
+            {
+                return HttpNotFound();
+            }
+            return View(anuncio);
+        }
+
+
+
+
     }
 }
