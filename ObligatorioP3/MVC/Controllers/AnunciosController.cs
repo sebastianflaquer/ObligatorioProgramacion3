@@ -10,107 +10,107 @@ using MVC.Models;
 
 namespace MVC.Controllers
 {
-    public class ReservasController : Controller
+    public class AnunciosController : Controller
     {
         private BienvenidosUyContext db = new BienvenidosUyContext();
 
-        // GET: Reservas
+        // GET: Anuncios
         public ActionResult Index()
         {
-            return View(db.Reservas.ToList());
+            return View(db.Anuncios.ToList());
         }
 
-        // GET: Reservas/Details/5
+        // GET: Anuncios/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reserva reserva = db.Reservas.Find(id);
-            if (reserva == null)
+            Anuncio anuncio = db.Anuncios.Find(id);
+            if (anuncio == null)
             {
                 return HttpNotFound();
             }
-            return View(reserva);
+            return View(anuncio);
         }
 
-        // GET: Reservas/Create
+        // GET: Anuncios/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Reservas/Create
+        // POST: Anuncios/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FechaInicio,FechaFin,CantHuespedes,TextoConsultas")] Reserva reserva)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Descripcion,Direccion1,Direccion2,Fotos,PrecioBase")] Anuncio anuncio)
         {
             if (ModelState.IsValid)
             {
-                db.Reservas.Add(reserva);
+                db.Anuncios.Add(anuncio);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(reserva);
+            return View(anuncio);
         }
 
-        // GET: Reservas/Edit/5
+        // GET: Anuncios/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reserva reserva = db.Reservas.Find(id);
-            if (reserva == null)
+            Anuncio anuncio = db.Anuncios.Find(id);
+            if (anuncio == null)
             {
                 return HttpNotFound();
             }
-            return View(reserva);
+            return View(anuncio);
         }
 
-        // POST: Reservas/Edit/5
+        // POST: Anuncios/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FechaInicio,FechaFin,CantHuespedes,TextoConsultas")] Reserva reserva)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Descripcion,Direccion1,Direccion2,Fotos,PrecioBase")] Anuncio anuncio)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(reserva).State = EntityState.Modified;
+                db.Entry(anuncio).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(reserva);
+            return View(anuncio);
         }
 
-        // GET: Reservas/Delete/5
+        // GET: Anuncios/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reserva reserva = db.Reservas.Find(id);
-            if (reserva == null)
+            Anuncio anuncio = db.Anuncios.Find(id);
+            if (anuncio == null)
             {
                 return HttpNotFound();
             }
-            return View(reserva);
+            return View(anuncio);
         }
 
-        // POST: Reservas/Delete/5
+        // POST: Anuncios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Reserva reserva = db.Reservas.Find(id);
-            db.Reservas.Remove(reserva);
+            Anuncio anuncio = db.Anuncios.Find(id);
+            db.Anuncios.Remove(anuncio);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -124,6 +124,35 @@ namespace MVC.Controllers
             base.Dispose(disposing);
         }
 
-        
+
+
+
+
+
+
+
+        //CODIGO NUESTRO
+
+        // GET: Reservas/SearchIndex/
+        public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
+        {
+            var anuncios = from m in db.Anuncios select m;
+
+            var ciudad = SearchCiudad;
+            var barrio = SearchBarrio;
+            var fechaI = SearchFechaI;
+            var fechaF = SearchFechaF;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                anuncios = anuncios.Where(s => s.Nombre.Contains(searchString));
+            }
+
+            return View(anuncios.ToList());
+        }
+
+
+
+
     }
 }

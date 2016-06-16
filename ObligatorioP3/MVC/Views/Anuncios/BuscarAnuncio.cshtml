@@ -1,7 +1,7 @@
-﻿@model IEnumerable<BienvenidosUY.Anuncio>
+﻿@model IEnumerable<MVC.Models.Anuncio>
 
 @{
-    ViewBag.Title = "SearchIndex";
+    ViewBag.Title = "BuscarAnuncio";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,7 +9,7 @@
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-inline" }))
 {
-        <h3>Ingrese su Busqueda:</h3>
+    <h3>Ingrese su Busqueda:</h3>
         <div class="form-group">
             <label class="sr-only">Palabra</label>
             @Html.TextBox("SearchString", null, new { @class = "form-control", @placeHolder = "Nombre del Anuncio" })
@@ -38,19 +38,19 @@
     <tr>
         <th>
             Nombre
-            @*@Html.DisplayNameFor(model => model.nombre)*@
+            @*@Html.DisplayNameFor(model => model.Nombre)*@
         </th>
         <th>
             Ciudad
-            @*@Html.DisplayNameFor(model => model.alojamiento.nombre)*@
+            @*@Html.DisplayNameFor(model => model.Alojamiento.Nombre)*@
         </th>
         <th>
             Alojamiento
-            @*@Html.DisplayNameFor(model => model.alojamiento.nombre)*@
+            @*@Html.DisplayNameFor(model => model.Alojamiento.Nombre)*@
         </th>
         <th>
             Descripcion
-            @*@Html.DisplayNameFor(model => model.descripcion)*@
+            @*@Html.DisplayNameFor(model => model.Descripcion)*@
         </th>
         <th>
             Opciones
@@ -60,22 +60,23 @@
     {
         <tr>
             <th>
-                @Html.DisplayFor(modelItem => item.nombre)
+                @Html.DisplayFor(modelItem => item.Nombre)
             </th>
             <th>
-                @Html.DisplayFor(modelItem => item.alojamiento.ciudad.nombre)
+                @Html.DisplayFor(modelItem => item.Alojamiento.Ciudad.Nombre)
             </th>
             <th>
-                @Html.DisplayFor(modelItem => item.alojamiento.nombre)
+                @Html.DisplayFor(modelItem => item.Alojamiento.Nombre)
             </th>
             <th>
-                @Html.DisplayFor(modelItem => item.descripcion)
+                @Html.DisplayFor(modelItem => item.Descripcion)
             </th>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
     }
 </table>
+

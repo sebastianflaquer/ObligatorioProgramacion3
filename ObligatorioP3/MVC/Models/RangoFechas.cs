@@ -5,14 +5,11 @@ using System.Web;
 
 namespace MVC.Models
 {
-    public class Reserva
+    public class RangoFechas
     {
         public int Id { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
-        public Registrado Registrado { get; set; }
-        public int CantHuespedes { get; set; }
-        public string TextoConsultas { get; set; }
-
+        public decimal Precio { get; set; }
     }
 }

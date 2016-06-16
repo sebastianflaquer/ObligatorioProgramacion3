@@ -156,6 +156,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AnunciosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReservasController.cs" />
     <Compile Include="Global.asax.cs">
@@ -169,9 +170,20 @@
     <Compile Include="Migrations\201606110059304_AlojamientoSerch.Designer.cs">
       <DependentUpon>201606110059304_AlojamientoSerch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606162124453_cambios.cs" />
+    <Compile Include="Migrations\201606162124453_cambios.Designer.cs">
+      <DependentUpon>201606162124453_cambios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Alojamiento.cs" />
+    <Compile Include="Models\Anuncio.cs" />
     <Compile Include="Models\BienvenidosUyContext.cs" />
+    <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\Ciudad.cs" />
+    <Compile Include="Models\RangoFechas.cs" />
+    <Compile Include="Models\Registrado.cs" />
     <Compile Include="Models\Reserva.cs" />
+    <Compile Include="Models\Servicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -219,7 +231,12 @@
     <Content Include="Views\Reservas\Details.cshtml" />
     <Content Include="Views\Reservas\Edit.cshtml" />
     <Content Include="Views\Reservas\Index.cshtml" />
-    <Content Include="Views\Reservas\BuscarAnuncio.cshtml" />
+    <Content Include="Views\Anuncios\Create.cshtml" />
+    <Content Include="Views\Anuncios\Delete.cshtml" />
+    <Content Include="Views\Anuncios\Details.cshtml" />
+    <Content Include="Views\Anuncios\Edit.cshtml" />
+    <Content Include="Views\Anuncios\Index.cshtml" />
+    <Content Include="Views\Anuncios\BuscarAnuncio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -233,17 +250,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ObligatorioP3\Dominio.csproj">
-      <Project>{abb64897-94dc-417d-a76a-301611b216fd}</Project>
-      <Name>Dominio</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201606101909361_InitialCreate.resx">
       <DependentUpon>201606101909361_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606110059304_AlojamientoSerch.resx">
       <DependentUpon>201606110059304_AlojamientoSerch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606162124453_cambios.resx">
+      <DependentUpon>201606162124453_cambios.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
