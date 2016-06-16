@@ -12,8 +12,8 @@ namespace BienvenidosUY
     public class RangoFechas : Persistente
     {
         public int id { get; set; }
-        public DateTime fechaInicio { get; set; }
-        public DateTime fechaFin { get; set; }
+        public virtual DateTime fechaInicio { get; set; }
+        public virtual DateTime fechaFin { get; set; }
         public decimal precio { get; set; }
 
         public string Listado
@@ -224,8 +224,7 @@ namespace BienvenidosUY
 
             return ok;
         }
-
-
+        
         //QUITA UN RANGO FECHA DE UN ANUNCIO
         public bool QuitarRangoFechaDeAnuncio()
         {
@@ -270,5 +269,14 @@ namespace BienvenidosUY
             return ok;
 
         }
+
+        //BUSCAR RANGO FECHAS
+        public bool BuscarRango(DateTime rangoFechaI, DateTime rangoFechaF)
+        {
+
+            bool retorno = false;
+            return retorno;
+        }
+
     }
 }

@@ -14,5 +14,19 @@ namespace MVC.Models
         public int CantHuespedes { get; set; }
         public string TextoConsultas { get; set; }
 
+        
+        public bool funciontest() {
+            return true;
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }

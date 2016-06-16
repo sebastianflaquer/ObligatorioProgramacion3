@@ -1,5 +1,6 @@
 D:\git\ObligatorioProgramacion3\ObligatorioP3\DTOs\bin\Debug\DTOs.dll
 D:\git\ObligatorioProgramacion3\ObligatorioP3\DTOs\bin\Debug\DTOs.pdb
+D:\git\ObligatorioProgramacion3\ObligatorioP3\DTOs\obj\Debug\DTOs.csprojResolveAssemblyReference.cache
 D:\git\ObligatorioProgramacion3\ObligatorioP3\DTOs\obj\Debug\DTOs.dll
 D:\git\ObligatorioProgramacion3\ObligatorioP3\DTOs\obj\Debug\DTOs.pdb
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\DTOs\bin\Debug\DTOs.dll
