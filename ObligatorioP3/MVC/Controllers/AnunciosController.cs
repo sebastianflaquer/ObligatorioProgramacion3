@@ -152,8 +152,7 @@ namespace MVC.Controllers
         }
 
 
-
-
+        //RESERVAR
         public ActionResult Reservar(int idAnuncio)
         {
             Anuncio anuncio = db.Anuncios.Find(idAnuncio);
@@ -161,7 +160,7 @@ namespace MVC.Controllers
             {
                 return HttpNotFound();
             }
-            return View(anuncio);
+            return RedirectToAction("Create", "ReservasController", new { id = anuncio.Id });            
         }
 
 

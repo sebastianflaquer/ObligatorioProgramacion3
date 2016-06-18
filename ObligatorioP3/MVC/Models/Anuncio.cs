@@ -16,6 +16,6 @@ namespace MVC.Models
         public string Fotos { get; set; }
         public decimal PrecioBase { get; set; }
         public List<RangoFechas> RangosFechas { get; set; }
-        public Registrado Registrado { get; set; }
+        public virtual Registrado Registrado { get; set; }
     }
 }

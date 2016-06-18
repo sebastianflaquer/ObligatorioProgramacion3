@@ -21,26 +21,3 @@ D:\git\ObligatorioProgramacion3\ObligatorioP3\WcfService2\bin\Microsoft.Applicat
 D:\git\ObligatorioProgramacion3\ObligatorioP3\WcfService2\obj\Debug\WcfService2.csprojResolveAssemblyReference.cache
 D:\git\ObligatorioProgramacion3\ObligatorioP3\WcfService2\obj\Debug\WcfService2.dll
 D:\git\ObligatorioProgramacion3\ObligatorioP3\WcfService2\obj\Debug\WcfService2.pdb
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\ApplicationInsights.config
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\WcfService2.dll.config
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\WcfService2.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\WcfService2.pdb
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\DAL.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\DTOs.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.AI.Agent.Intercept.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.AI.DependencyCollector.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.AI.PerfCounterCollector.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.AI.ServerTelemetryChannel.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.AI.Web.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.AI.WindowsServer.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.ApplicationInsights.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\DAL.pdb
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\DTOs.pdb
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.AI.DependencyCollector.xml
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.AI.ServerTelemetryChannel.xml
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.AI.Web.xml
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.AI.WindowsServer.xml
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\bin\Microsoft.ApplicationInsights.xml
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\obj\Debug\WcfService2.csprojResolveAssemblyReference.cache
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\obj\Debug\WcfService2.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\WcfService2\obj\Debug\WcfService2.pdb

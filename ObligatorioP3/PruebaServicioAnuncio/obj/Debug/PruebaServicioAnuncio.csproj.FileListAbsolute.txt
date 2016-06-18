@@ -4,8 +4,3 @@ D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\Pr
 D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.csprojResolveAssemblyReference.cache
 D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.exe
 D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.pdb
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.exe.config
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.exe
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.pdb
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.exe
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.pdb

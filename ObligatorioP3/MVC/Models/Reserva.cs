@@ -18,7 +18,7 @@ namespace MVC.Models
         public int CantHuespedes { get; set; }
         [Display(Name = "Consultas")]
         public string TextoConsultas { get; set; }
-        public Anuncio Anuncio { get; set; }
+        public virtual Anuncio Anuncio { get; set; }
 
 
         public bool funciontest() {
@@ -26,13 +26,15 @@ namespace MVC.Models
         }
 
 
-
-
-
-
-
-
-
+        public bool ValidarFechaParaCancelar()
+        {
+            bool ret = false;
+            if (this.FechaInicio > DateTime.Now.Date)
+            {
+                ret = true;
+            }
+            return ret;
+        }
 
     }
 }

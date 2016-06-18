@@ -20,7 +20,7 @@ namespace BienvenidosUY
         public string fotos { get; set; }
         public decimal precioBase { get; set; }
         public virtual List<RangoFechas> rangosFechas { get; set; }
-        public Registrado registrado { get; set; }
+        public virtual Registrado registrado { get; set; }
 
         //LEER
         public override bool Leer()

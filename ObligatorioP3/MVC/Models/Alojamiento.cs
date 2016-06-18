@@ -17,6 +17,6 @@ namespace MVC.Models
         public string Barrio { get; set; }
         public List<Servicio> Servicios { get; set; }
         public int Calificacion { get; set; }
-        public Registrado Registrado { get; set; }
+        public virtual Registrado Registrado { get; set; }
     }
 }

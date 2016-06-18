@@ -37,7 +37,7 @@ namespace MVC.Controllers
 
         // GET: Reservas/Create
         public ActionResult Create()
-        {
+        {   
             return View();
         }
 
@@ -46,10 +46,21 @@ namespace MVC.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FechaInicio,FechaFin,CantHuespedes,TextoConsultas")] Reserva reserva)
+        public ActionResult Create(int? id,[Bind(Include = "Id,FechaInicio,FechaFin,CantHuespedes,TextoConsultas")] Reserva reserva)
         {
             if (ModelState.IsValid)
             {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Anuncio anuncio = db.Anuncios.Find(id);
+                //si no encuentra el anuncio tira error
+                if (anuncio == null)
+                {
+                    return HttpNotFound();
+                }
+                reserva.Anuncio = anuncio;
                 db.Reservas.Add(reserva);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -115,6 +126,7 @@ namespace MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -124,6 +136,45 @@ namespace MVC.Controllers
             base.Dispose(disposing);
         }
 
-        
+
+
+
+
+
+
+        // GET: Reservas/Cancel/5
+        public ActionResult CancelarReserva(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Reserva reserva = db.Reservas.Find(id);
+            if (reserva == null)
+            {
+                return HttpNotFound();
+            }
+            if (reserva.ValidarFechaParaCancelar()==true)
+            {
+                db.Reservas.Remove(reserva);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
+        // POST: Reservas/Cancel/5
+        [HttpPost, ActionName("CancelarReserva")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CancelConfirmed(int id)
+        {
+            Reserva reserva = db.Reservas.Find(id);
+            db.Reservas.Remove(reserva);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }
