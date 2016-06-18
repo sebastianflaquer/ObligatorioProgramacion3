@@ -34,16 +34,54 @@
         <dd>
             @Html.DisplayFor(model => model.CantHuespedes)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.TextoConsultas)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.TextoConsultas)
         </dd>
-
     </dl>
+
+    <h3>Datos del Anfitrion</h3>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Anuncio.Registrado.Nombre) 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Anuncio.Alojamiento.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Anuncio.Registrado.Apellido)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Anuncio.Registrado.Apellido)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Anuncio.Registrado.Mail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Anuncio.Registrado.Mail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Anuncio.Registrado.Celular)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Anuncio.Registrado.Celular)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Anuncio.Registrado.Foto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Anuncio.Registrado.Foto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Anuncio.Registrado.Descripcion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Anuncio.Registrado.Descripcion)
+        </dd>
+    </dl>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

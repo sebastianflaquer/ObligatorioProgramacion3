@@ -1,0 +1,67 @@
+﻿@model MVC.Models.Anuncio
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Anuncio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fotos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fotos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioBase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioBase)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Reservar", "../Reservas/Create", new { id = Model.Id }) |
+    @*@Html.ActionLink("Volver al Listado", "Index")*@
+</p>

@@ -2,29 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BienvenidosUY;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVC.Models
 {
     public class Reserva
     {
         public int Id { get; set; }
-
+        [Display(Name ="Fecha Inicio")]
         public DateTime FechaInicio { get; set; }
-
+        [Display(Name = "Fecha Fin")]
         public DateTime FechaFin { get; set; }
-
         public Registrado Registrado { get; set; }
-
-        [Range (1,10)]
-        [DataType(DataType.Currency)]
+        [Display(Name = "Cantidad de Huéspedes")]
         public int CantHuespedes { get; set; }
-
-        [Required]
-        [StringLength(250)]
+        [Display(Name = "Consultas")]
         public string TextoConsultas { get; set; }
+        public virtual Anuncio Anuncio { get; set; }
+
+
+        public bool funciontest() {
+            return true;
+        }
+
+
+        public bool ValidarFechaParaCancelar()
+        {
+            bool ret = false;
+            if (this.FechaInicio > DateTime.Now.Date)
+            {
+                ret = true;
+            }
+            return ret;
+        }
 
     }
 }

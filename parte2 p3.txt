@@ -3,8 +3,8 @@
 /* PREGUNTAS PARA EL PROFESOR                 */
 /**********************************************/
 
-1 - LOS PROYECTOS VAN SEPARADOS?
-2 - QUE PASA CON EL LOGIN, ARMAMOS OTRO? SINO COMO INTEGRAMOS LOS 2 LOGINS?
+
+
 3 -
 4 -
 5 -
@@ -16,21 +16,21 @@
 
 1)BUSQUEDA DE ALOJAMIENTO:
 
-a. vista de busqueda(searchIndex), busca por ciudad, barrio, fechas Hospedaje. 
-b. agregar filtros, tipo alojamiento, tipo habitacion, servicios, rangos, precios, baño.
-c. mostrar listado con alojamientos disponibles.
-d. Detalle de alojamiento seleccionado, con datos de anfitrion.
-e. mostrar puntaje y comentarios.
+a. vista de busqueda(searchIndex), busca por ciudad, barrio, fechas Hospedaje. - FALTA TERMINAR
+b. agregar filtros, tipo alojamiento, tipo habitacion, servicios, rangos, precios, baño. - FALTA
+c. mostrar listado con alojamientos disponibles. - FALTA
+d. Detalle de alojamiento seleccionado, con datos de anfitrion. - FALTA
+e. mostrar puntaje y comentarios. - FALTA
 
 
 
 2) RESERVA
-a. preguntar por login
-b. boton de reservar en detalle de alojamiento.
-c. vista de datos de la reserva, rango de fechas, cant huespedes, texto consulta.
-d. Vista mis Reservas, listado historico de las reservas y detalles de cualquiera de ellas. (detalles del anfitrion, boton cancelar).
+a. preguntar por login - FALTA
+b. boton de reservar en detalle de alojamiento. - LISTO
+c. vista de datos de la reserva, rango de fechas, cant huespedes, texto consulta. - LISTO
+d. Vista mis Reservas, listado historico de las reservas y detalles de cualquiera de ellas. (detalles del anfitrion, boton cancelar). - FALTA
 
 
 3)CALIFICACION DE ALOJAMIENTO
-a. vista para calificar el alojamiento, puntuacion 1 a 5 y comentario.
+a. vista para calificar el alojamiento, puntuacion 1 a 5 y comentario. - FALTA
 
