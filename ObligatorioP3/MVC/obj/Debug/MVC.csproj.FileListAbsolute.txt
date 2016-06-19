@@ -27,7 +27,6 @@ D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\Microsoft.Ap
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\Microsoft.Web.Infrastructure.dll
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\Newtonsoft.Json.dll
-D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\ObligatorioP3.dll
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\System.Web.Helpers.dll
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\System.Web.Mvc.dll
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\System.Web.Optimization.dll
@@ -36,7 +35,6 @@ D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\System.Web.W
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\System.Web.WebPages.dll
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\System.Web.WebPages.Razor.dll
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\WebGrease.dll
-D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\ObligatorioP3.pdb
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\EntityFramework.xml
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\EntityFramework.SqlServer.xml
 D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\bin\Microsoft.AI.DependencyCollector.xml
@@ -135,3 +133,5 @@ D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\Obli
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\MVC\obj\Debug\MVC.csproj.GenerateResource.Cache
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\MVC\obj\Debug\MVC.dll
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\MVC\obj\Debug\MVC.pdb
+D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\obj\Debug\MVC.Migrations.cambios.resources
+D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\obj\Debug\MVC.Migrations.agregoAttAReserva.resources

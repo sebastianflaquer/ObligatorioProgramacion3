@@ -158,6 +158,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AnunciosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegistradoController.cs" />
     <Compile Include="Controllers\ReservasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -242,6 +243,11 @@
     <Content Include="Views\Anuncios\Index.cshtml" />
     <Content Include="Views\Anuncios\BuscarAnuncio.cshtml" />
     <Content Include="Views\Anuncios\Reservar.cshtml" />
+    <Content Include="Views\Registrado\Create.cshtml" />
+    <Content Include="Views\Registrado\Delete.cshtml" />
+    <Content Include="Views\Registrado\Details.cshtml" />
+    <Content Include="Views\Registrado\Edit.cshtml" />
+    <Content Include="Views\Registrado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

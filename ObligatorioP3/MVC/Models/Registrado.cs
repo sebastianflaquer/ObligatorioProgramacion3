@@ -17,5 +17,27 @@ namespace MVC.Models
         public string Celular { get; set; }
         public string Foto { get; set; }
         public string Descripcion { get; set; }
+
+
+        
+        //VALIDAR REGISTRO
+        public bool validarRegistro()
+        {
+            bool retorno = false;
+
+            //validaMail
+            string mail = Mail;
+            //no se como consultar a la base de datos para saber si existe
+            //valida que ya no exista
+            //Registrado registrado = db.Registrados.Find(Mail);
+
+
+            return retorno;
+        }
+
+
+
+
     }
+
 }
