@@ -51,15 +51,28 @@ namespace MVC.Controllers
             if (ModelState.IsValid)
             {
 
-                
+                //1 - Valida si ese mail ya no esta registrado, (si ya esta tira error)
+                //2 - Si no esta registrado, hay que validar que las contraseñas sean igual (password y confirmacion)
+                //3 - Hacer toda la parte de encriptacion de contraseña
+                //4 - Registrar al usuario
+                //5 - Mostrar mensaje de que quedo registrado, redireccional al login
 
 
+                //Lisatamos todos los registrados
+                var reg = db.Registrados.ToList();
+                //guardamos en la consulta el usuario que tiene ese mail
+                var query = from unreg in reg
+                            where unreg.Mail == registrado.Mail
+                            select unreg.Mail;
 
-                if (registrado.validarRegistro())
-                {
+                //Si es null, lo registra
+                if (query != null){
+                    //valida el registro
                     db.Registrados.Add(registrado);
                     db.SaveChanges();
                 }
+                db.Registrados.Add(registrado);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

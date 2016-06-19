@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,35 +9,30 @@ namespace MVC.Models
     public class Registrado
     {
         public int Id { get; set; }
+        [Required]
         public string Nombre { get; set; }
+        [Required]
         public string Apellido { get; set; }
+        [Required]
         public string Mail { get; set; }
+        [Required]
+        [MinLength(8)]
         public string Password { get; set; }
+        [Compare("Password")]
+        [MinLength(8)]
+        [Display(Name ="Confirmar Password")]
+        public string ConfirmPassword { get; set; }
         public string Salt { get; set; }
+        [Required]
         public string Direccion { get; set; }
+        [Required]
+        [MinLength(8)]
         public string Celular { get; set; }
+        [Required]
         public string Foto { get; set; }
+        [Required]
         public string Descripcion { get; set; }
-
-
         
-        //VALIDAR REGISTRO
-        public bool validarRegistro()
-        {
-            bool retorno = false;
-
-            //validaMail
-            string mail = Mail;
-            //no se como consultar a la base de datos para saber si existe
-            //valida que ya no exista
-            //Registrado registrado = db.Registrados.Find(Mail);
-
-
-            return retorno;
-        }
-
-
-
 
     }
 
