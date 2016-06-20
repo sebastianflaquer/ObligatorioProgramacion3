@@ -1,0 +1,75 @@
+﻿@model MVC.Models.Calificacion
+
+@{
+    ViewBag.Title = "CalificarReserva";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Calificar Reserva</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div>
+            <legend>Datos de la Reserva</legend>
+            <div class="panel-title">Id</div>
+            <div class="text-left">
+                <!--Este campo será utilizado para poder recibir y pasar en el post el id del objeto al controlador-->
+                <input type="text" name="ReservaID" id="ReservaID" value="@ViewBag.Reserva.Id" />
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Titulo Alojamiento</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Categoria</th>
+                </tr>
+                <tr>
+                    <td>@ViewBag.Reserva.Anuncio.Alojamiento.Nombre</td>
+                    <td>@{ String.Format("{0:g}", ViewBag.Reserva.FechaInicio);}</td>
+                    <td>@{ String.Format("{0:g}", ViewBag.Reserva.FechaFin);}</td>
+                    <td>@ViewBag.Reserva.Anuncio.Alojamiento.Categoria.Nombre</td>
+                </tr>
+            </table>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comentario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comentario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Puntaje, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Puntaje, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Puntaje, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+                        }
+
+<div>
+    @Html.ActionLink("Ver comentarios", "Details", new { id = ViewBag.Reserva.Id }) )
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

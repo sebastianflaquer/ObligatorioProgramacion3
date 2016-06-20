@@ -37,7 +37,7 @@ namespace MVC.Controllers
 
         // GET: Reservas/Create
         public ActionResult Create()
-        {   
+        {
             return View();
         }
 
@@ -46,7 +46,7 @@ namespace MVC.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(int? id,[Bind(Include = "Id,FechaInicio,FechaFin,CantHuespedes,TextoConsultas")] Reserva reserva)
+        public ActionResult Create(int? id, [Bind(Include = "Id,FechaInicio,FechaFin,CantHuespedes,TextoConsultas")] Reserva reserva)
         {
             if (ModelState.IsValid)
             {
@@ -126,7 +126,7 @@ namespace MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -154,7 +154,7 @@ namespace MVC.Controllers
             {
                 return HttpNotFound();
             }
-            if (reserva.ValidarFechaParaCancelar()==true)
+            if (reserva.ValidarFechaParaCancelar() == true)
             {
                 db.Reservas.Remove(reserva);
                 db.SaveChanges();
@@ -172,6 +172,51 @@ namespace MVC.Controllers
             db.Reservas.Remove(reserva);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+
+
+
+
+        //CALIFICACION DE RESERVAS
+
+        public ActionResult CalificarReserva(int? id)
+        {
+            using (var db = new BienvenidosUyContext())
+            {
+                ViewBag.Reserva = db.Reservas.Find(id);
+                return View();
+            }
+        }
+
+
+
+
+
+        [HttpPost]
+        public ActionResult CalificarReserva(Calificacion newCalificacion)
+        {
+            try
+            {
+                //obtenemos el id de la Reserva Comentada
+                var ReservaId = int.Parse(Request["ReservaID"]);
+
+                using (var db = new BienvenidosUyContext())
+                {
+                    //buscamos la Reserva y le agregamos la calificacion al alojamiento
+                    Reserva res = db.Reservas.Find(ReservaId);
+                    newCalificacion.Alojamiento = res.Anuncio.Alojamiento;
+                    db.Calificaciones.Add(newCalificacion);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+
         }
 
 

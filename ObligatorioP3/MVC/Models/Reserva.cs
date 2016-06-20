@@ -36,5 +36,16 @@ namespace MVC.Models
             return ret;
         }
 
+
+        public bool ValidarFechaParaCalificar()
+        {
+            bool ret = false;
+            if (this.FechaFin < DateTime.Now.Date)
+            {
+                ret = true;
+            }
+            return ret;
+        }
+
     }
 }

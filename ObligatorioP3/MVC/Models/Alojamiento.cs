@@ -16,7 +16,9 @@ namespace MVC.Models
         public virtual Ciudad Ciudad { get; set; }
         public string Barrio { get; set; }
         public List<Servicio> Servicios { get; set; }
-        public int Calificacion { get; set; }
+        //public int Calificacion { get; set; }
         public virtual Registrado Registrado { get; set; }
+        public virtual ICollection<Calificacion> Calificaciones { get; set; }
+
     }
 }

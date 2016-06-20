@@ -17,6 +17,7 @@ namespace MVC.Models
         public DbSet<RangoFechas> RangoFechas { get; set; }
         public DbSet<Registrado> Registrados { get; set; }
         public DbSet<Servicio> Servicios { get; set; }
+        public DbSet<Calificacion> Calificaciones { get; set; }
 
         public BienvenidosUyContext() : base("conexionBD") { }
         

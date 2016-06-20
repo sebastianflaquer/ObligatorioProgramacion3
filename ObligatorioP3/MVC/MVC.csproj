@@ -179,10 +179,19 @@
     <Compile Include="Migrations\201606162236421_agregoAttAReserva.Designer.cs">
       <DependentUpon>201606162236421_agregoAttAReserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606201940233_agregoClificacion.cs" />
+    <Compile Include="Migrations\201606201940233_agregoClificacion.Designer.cs">
+      <DependentUpon>201606201940233_agregoClificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606202010251_agregoDbset.cs" />
+    <Compile Include="Migrations\201606202010251_agregoDbset.Designer.cs">
+      <DependentUpon>201606202010251_agregoDbset.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alojamiento.cs" />
     <Compile Include="Models\Anuncio.cs" />
     <Compile Include="Models\BienvenidosUyContext.cs" />
+    <Compile Include="Models\Calificacion.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Ciudad.cs" />
     <Compile Include="Models\RangoFechas.cs" />
@@ -248,6 +257,7 @@
     <Content Include="Views\Registrado\Details.cshtml" />
     <Content Include="Views\Registrado\Edit.cshtml" />
     <Content Include="Views\Registrado\Index.cshtml" />
+    <Content Include="Views\Reservas\CalificarReserva.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -272,6 +282,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606162236421_agregoAttAReserva.resx">
       <DependentUpon>201606162236421_agregoAttAReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606201940233_agregoClificacion.resx">
+      <DependentUpon>201606201940233_agregoClificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606202010251_agregoDbset.resx">
+      <DependentUpon>201606202010251_agregoDbset.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
