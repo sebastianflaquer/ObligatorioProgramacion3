@@ -10,7 +10,6 @@ namespace MVC.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "MVC.Models.BienvenidosUyContext";
         }
 
         protected override void Seed(MVC.Models.BienvenidosUyContext context)

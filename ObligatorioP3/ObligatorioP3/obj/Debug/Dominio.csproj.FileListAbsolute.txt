@@ -1,28 +1,9 @@
-D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.dll
-D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.pdb
-D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.dll
-D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.pdb
-D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\ObligatorioP3\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
-D:\git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.dll
-D:\git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.pdb
-D:\git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
-D:\git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.dll
-D:\git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.pdb
-<<<<<<< HEAD
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.pdb
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\ObligatorioP3\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.dll
-D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.pdb
-=======
-D:\git\OP3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.dll.config
-D:\git\OP3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.dll
-D:\git\OP3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.pdb
-D:\git\OP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.dll
-D:\git\OP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.SqlServer.dll
-D:\git\OP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.xml
-D:\git\OP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.SqlServer.xml
-D:\git\OP3\ObligatorioP3\ObligatorioP3\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
-D:\git\OP3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.dll
-D:\git\OP3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.pdb
->>>>>>> d5c4631a542e3687f765cca9373edf5af25197b2
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.dll.config
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.dll
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.pdb
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.dll
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.SqlServer.dll
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.xml
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.SqlServer.xml
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.dll
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.pdb
