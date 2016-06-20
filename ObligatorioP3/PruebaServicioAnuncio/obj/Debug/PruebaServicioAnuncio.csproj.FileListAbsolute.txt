@@ -4,3 +4,8 @@ D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\Pr
 D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.csprojResolveAssemblyReference.cache
 D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.exe
 D:\git\ObligatorioProgramacion3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.pdb
+D:\git\OP3\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.exe.config
+D:\git\OP3\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.exe
+D:\git\OP3\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.pdb
+D:\git\OP3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.exe
+D:\git\OP3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.pdb

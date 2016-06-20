@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC.Models;
+using System.Web.Security;
 
 namespace MVC.Controllers
 {
@@ -59,6 +60,7 @@ namespace MVC.Controllers
 
 
                 //Lisatamos todos los registrados
+
                 var reg = db.Registrados.ToList();
                 //guardamos en la consulta el usuario que tiene ese mail
                 var query = from unreg in reg
@@ -67,6 +69,9 @@ namespace MVC.Controllers
 
                 //Si es null, lo registra
                 if (query != null){
+                    string pimienta = "p1m13n7a";
+                    registrado.Password = registrado.EncriptarPass(registrado.Password, registrado.generarSalPass(), pimienta);
+
                     //valida el registro
                     db.Registrados.Add(registrado);
                     db.SaveChanges();
@@ -144,5 +149,41 @@ namespace MVC.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // GET: Registrado/Login
+        //    return View();
+        //}
+
+        [HttpPost]
+        public ActionResult Login(Models.Registrado userr)
+        {
+
+            //    //1 - Buscar el usuario
+            //    //2 - chekear que el paswors esta ok
+            //    //3 - redireccionar el home y logearlo
+
+
+
+            //if (ModelState.IsValid)
+            //{
+            if (IsValid(userr.Mail, userr.Password))
+            {
+                FormsAuthentication.SetAuthCookie(userr.Mail, false);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Login details are wrong.");
+            }
+            return View(userr);
+        }
+
+        private bool IsValid(string email, string password)
+        {
+            return true;
+        }
+
+
+
     }
 }
