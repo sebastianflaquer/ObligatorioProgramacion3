@@ -3,7 +3,7 @@ namespace MVC.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class cambios : DbMigration
+    public partial class _201606101909361_InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -15,6 +15,15 @@ namespace MVC.Migrations
             DropIndex("dbo.Servicio", new[] { "Alojamiento_id" });
             DropIndex("dbo.RangoFechas", new[] { "Anuncio_id" });
             DropIndex("dbo.Reserva", new[] { "Registrado_id" });
+            AddColumn("dbo.Registrado", "ConfirmPassword", c => c.String());
+            AddColumn("dbo.Reserva", "Anuncio_Id", c => c.Int());
+            AlterColumn("dbo.Registrado", "Nombre", c => c.String(nullable: false));
+            AlterColumn("dbo.Registrado", "Apellido", c => c.String(nullable: false));
+            AlterColumn("dbo.Registrado", "Mail", c => c.String(nullable: false));
+            AlterColumn("dbo.Registrado", "Password", c => c.String(nullable: false));
+            AlterColumn("dbo.Registrado", "Direccion", c => c.String(nullable: false));
+            AlterColumn("dbo.Registrado", "Celular", c => c.String(nullable: false));
+            AlterColumn("dbo.Registrado", "Foto", c => c.String(nullable: false));
             CreateIndex("dbo.Alojamiento", "Categoria_Id");
             CreateIndex("dbo.Alojamiento", "Ciudad_Id");
             CreateIndex("dbo.Alojamiento", "Registrado_Id");
@@ -22,12 +31,16 @@ namespace MVC.Migrations
             CreateIndex("dbo.Anuncio", "Alojamiento_Id");
             CreateIndex("dbo.Anuncio", "Registrado_Id");
             CreateIndex("dbo.RangoFechas", "Anuncio_Id");
+            CreateIndex("dbo.Reserva", "Anuncio_Id");
             CreateIndex("dbo.Reserva", "Registrado_Id");
+            AddForeignKey("dbo.Reserva", "Anuncio_Id", "dbo.Anuncio", "Id");
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Reserva", "Anuncio_Id", "dbo.Anuncio");
             DropIndex("dbo.Reserva", new[] { "Registrado_Id" });
+            DropIndex("dbo.Reserva", new[] { "Anuncio_Id" });
             DropIndex("dbo.RangoFechas", new[] { "Anuncio_Id" });
             DropIndex("dbo.Anuncio", new[] { "Registrado_Id" });
             DropIndex("dbo.Anuncio", new[] { "Alojamiento_Id" });
@@ -35,6 +48,15 @@ namespace MVC.Migrations
             DropIndex("dbo.Alojamiento", new[] { "Registrado_Id" });
             DropIndex("dbo.Alojamiento", new[] { "Ciudad_Id" });
             DropIndex("dbo.Alojamiento", new[] { "Categoria_Id" });
+            AlterColumn("dbo.Registrado", "Foto", c => c.String());
+            AlterColumn("dbo.Registrado", "Celular", c => c.String());
+            AlterColumn("dbo.Registrado", "Direccion", c => c.String());
+            AlterColumn("dbo.Registrado", "Password", c => c.String());
+            AlterColumn("dbo.Registrado", "Mail", c => c.String());
+            AlterColumn("dbo.Registrado", "Apellido", c => c.String());
+            AlterColumn("dbo.Registrado", "Nombre", c => c.String());
+            DropColumn("dbo.Reserva", "Anuncio_Id");
+            DropColumn("dbo.Registrado", "ConfirmPassword");
             CreateIndex("dbo.Reserva", "Registrado_id");
             CreateIndex("dbo.RangoFechas", "Anuncio_id");
             CreateIndex("dbo.Servicio", "Alojamiento_id");

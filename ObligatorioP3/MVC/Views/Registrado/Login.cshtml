@@ -1,0 +1,35 @@
+﻿@model MVC.Models.Registrado
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<div class="col-md-4">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <form class="form-signin">
+
+            <h2 class="form-signin-heading">Please sign in</h2>
+            
+            @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "sr-only" })
+            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "sr-only" } })
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+            
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "sr-only" })
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "sr-only" } })
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            
+            <input type="submit" value="Sign in" class="btn btn-default" />
+        </form>
+    }
+</div>

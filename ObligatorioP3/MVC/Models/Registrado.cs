@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 
 namespace MVC.Models
 {
@@ -16,23 +17,45 @@ namespace MVC.Models
         [Required]
         public string Mail { get; set; }
         [Required]
-        [MinLength(8)]
         public string Password { get; set; }
-        [Compare("Password")]
-        [MinLength(8)]
-        [Display(Name ="Confirmar Password")]
         public string ConfirmPassword { get; set; }
         public string Salt { get; set; }
         [Required]
         public string Direccion { get; set; }
         [Required]
-        [MinLength(8)]
         public string Celular { get; set; }
         [Required]
         public string Foto { get; set; }
-        [Required]
-        public string Descripcion { get; set; }
         
+        public string Descripcion { get; set; }
+
+
+        //GENERA LA SAL
+        public string generarSalPass()
+        {
+            //crea un obketo random y setea el numero del resultado.
+            Random r = new Random();
+            string retorno = r.Next().ToString();
+            return retorno;
+        }
+
+        //funciones creadas por nosotros
+        public string EncriptarPass(string passwordIngreso, string salt, string pimienta)
+        {
+            string hashresult = FormsAuthentication.HashPasswordForStoringInConfigFile(passwordIngreso + salt + pimienta, "SHA1");
+            return hashresult;
+        }
+
+        //validarLogin
+        public bool validarUsuario(){
+            return true;
+        }
+
+
+
+
+
+
 
     }
 

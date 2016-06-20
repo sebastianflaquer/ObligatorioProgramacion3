@@ -17,5 +17,14 @@ namespace MVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            Session["logueado"] = false;
+            Session["nombre"] = "";
+            Session["mail"] = "";
+            Session["id"] = "";
+        }
+
     }
 }
