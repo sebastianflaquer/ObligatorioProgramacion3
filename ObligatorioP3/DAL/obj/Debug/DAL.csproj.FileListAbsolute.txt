@@ -12,3 +12,10 @@ D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\Obli
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\DAL\obj\Debug\DAL.dll
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\DAL\obj\Debug\DAL.pdb
+D:\git\ObligatorioP3\ObligatorioP3\DAL\bin\Debug\DAL.dll
+D:\git\ObligatorioP3\ObligatorioP3\DAL\bin\Debug\DAL.pdb
+D:\git\ObligatorioP3\ObligatorioP3\DAL\bin\Debug\DTOs.dll
+D:\git\ObligatorioP3\ObligatorioP3\DAL\bin\Debug\DTOs.pdb
+D:\git\ObligatorioP3\ObligatorioP3\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\git\ObligatorioP3\ObligatorioP3\DAL\obj\Debug\DAL.dll
+D:\git\ObligatorioP3\ObligatorioP3\DAL\obj\Debug\DAL.pdb

@@ -163,29 +163,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606101909361_InitialCreate.cs" />
-    <Compile Include="Migrations\201606101909361_InitialCreate.Designer.cs">
-      <DependentUpon>201606101909361_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606110059304_AlojamientoSerch.cs" />
-    <Compile Include="Migrations\201606110059304_AlojamientoSerch.Designer.cs">
-      <DependentUpon>201606110059304_AlojamientoSerch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606162124453_cambios.cs" />
-    <Compile Include="Migrations\201606162124453_cambios.Designer.cs">
-      <DependentUpon>201606162124453_cambios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606162236421_agregoAttAReserva.cs" />
-    <Compile Include="Migrations\201606162236421_agregoAttAReserva.Designer.cs">
-      <DependentUpon>201606162236421_agregoAttAReserva.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606201940233_agregoClificacion.cs" />
-    <Compile Include="Migrations\201606201940233_agregoClificacion.Designer.cs">
-      <DependentUpon>201606201940233_agregoClificacion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606202010251_agregoDbset.cs" />
-    <Compile Include="Migrations\201606202010251_agregoDbset.Designer.cs">
-      <DependentUpon>201606202010251_agregoDbset.cs</DependentUpon>
+    <Compile Include="Migrations\201606202351166_initial.cs" />
+    <Compile Include="Migrations\201606202351166_initial.Designer.cs">
+      <DependentUpon>201606202351166_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alojamiento.cs" />
@@ -271,23 +251,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606101909361_InitialCreate.resx">
-      <DependentUpon>201606101909361_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606110059304_AlojamientoSerch.resx">
-      <DependentUpon>201606110059304_AlojamientoSerch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606162124453_cambios.resx">
-      <DependentUpon>201606162124453_cambios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606162236421_agregoAttAReserva.resx">
-      <DependentUpon>201606162236421_agregoAttAReserva.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606201940233_agregoClificacion.resx">
-      <DependentUpon>201606201940233_agregoClificacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606202010251_agregoDbset.resx">
-      <DependentUpon>201606202010251_agregoDbset.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606202351166_initial.resx">
+      <DependentUpon>201606202351166_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
