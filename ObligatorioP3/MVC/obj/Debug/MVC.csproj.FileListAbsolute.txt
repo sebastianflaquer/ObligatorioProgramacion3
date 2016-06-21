@@ -140,8 +140,6 @@ D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\Obli
 D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\MVC\obj\Debug\MVC.pdb
 <<<<<<< HEAD
 =======
-D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\obj\Debug\MVC.Migrations.cambios.resources
-D:\Git\ObligatorioProgramacion3\ObligatorioP3\ObligatorioP3\MVC\obj\Debug\MVC.Migrations.agregoAttAReserva.resources
 D:\git\OP3\ObligatorioP3\MVC\bin\ApplicationInsights.config
 D:\git\OP3\ObligatorioP3\MVC\bin\roslyn\csc.exe
 D:\git\OP3\ObligatorioP3\MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
