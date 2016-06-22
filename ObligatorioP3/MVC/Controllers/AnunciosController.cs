@@ -115,6 +115,7 @@ namespace MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        //DISPOSE
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -123,34 +124,30 @@ namespace MVC.Controllers
             }
             base.Dispose(disposing);
         }
-
-
-
-
-
-
-
-
+        
         //CODIGO NUESTRO
-
         // GET: Reservas/SearchIndex/
-        public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
+        public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaFin)
         {
             var anuncios = from m in db.Anuncios select m;
-
-            var ciudad = SearchCiudad;
-            var barrio = SearchBarrio;
-            var fechaI = SearchFechaI;
-            var fechaF = SearchFechaF;
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 anuncios = anuncios.Where(s => s.Nombre.Contains(searchString));
+                anuncios = anuncios.Where(s => s.Nombre.Contains(SearchCiudad));
+                anuncios = anuncios.Where(s => s.Nombre.Contains(SearchBarrio));
+                //anuncios = anuncios.buscarFechas(anuncios);
+                //falta lo de las fechas
+                //Anuncio anuncio = db.Anuncios.Find(id);
+
+                //var query = (from a in db.Anuncios
+                //             where a.RangosFechas.FechaInicio == SearchFechaI)
+                
+
             }
 
             return View(anuncios.ToList());
         }
-
 
         //RESERVAR
         public ActionResult Reservar(int idAnuncio)
@@ -162,9 +159,6 @@ namespace MVC.Controllers
             }
             return RedirectToAction("Create", "ReservasController", new { id = anuncio.Id });            
         }
-
-
-
 
     }
 }

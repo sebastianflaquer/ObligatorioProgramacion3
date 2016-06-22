@@ -11,5 +11,6 @@ namespace MVC.Models
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public decimal Precio { get; set; }
+
     }
 }

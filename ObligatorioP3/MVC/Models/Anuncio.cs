@@ -15,7 +15,18 @@ namespace MVC.Models
         public string Direccion2 { get; set; }
         public string Fotos { get; set; }
         public decimal PrecioBase { get; set; }
-        public List<RangoFechas> RangosFechas { get; set; }
+        public virtual List<RangoFechas> RangosFechas { get; set; }
         public virtual Registrado Registrado { get; set; }
+
+
+        public Anuncio buscarFechas(Anuncio unA)
+        {
+            Anuncio retorno = new Anuncio();
+
+
+            return retorno;
+
+        }
+
     }
 }
