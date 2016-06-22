@@ -208,3 +208,4 @@ D:\git\OP3\ObligatorioP3\MVC\obj\Debug\MVC.pdb
 D:\git\OP3\ObligatorioP3\MVC\obj\Debug\MVC.csprojResolveAssemblyReference.cache
 D:\git\OP3\ObligatorioP3\MVC\obj\Debug\MVC.Migrations._201606101909361_InitialCreate.resources
 >>>>>>> d5c4631a542e3687f765cca9373edf5af25197b2
+D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\ObligatorioP3\MVC\obj\Debug\MVC.Migrations.initial.resources
