@@ -196,6 +196,7 @@
     </Content>
     <Content Include="Web.config" />
     <Content Include="Views\Reservas\CalificarReserva.cshtml" />
+    <Content Include="Views\Reservas\DetalleComentarios.cshtml" />
     <None Include="Web.Release.config" />
     <None Include="Web.Debug.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

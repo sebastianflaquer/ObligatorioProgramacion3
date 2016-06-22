@@ -225,5 +225,25 @@ namespace MVC.Controllers
                 return View();
             }
         }
+
+
+        public ActionResult DetalleComentarios(int id)
+        {
+            List<Calificacion> listaCalif = new List<Calificacion>();
+            Reserva res = db.Reservas.Find(id);
+            int idAloj = res.Anuncio.Alojamiento.Id;
+
+            foreach (Calificacion c in db.Calificaciones)
+            {
+                if (c.Alojamiento.Id == idAloj)
+                {
+                    listaCalif.Add(c);
+                }
+            }
+            return View(listaCalif.ToList());
+        }
+
+
+
     }
 }
