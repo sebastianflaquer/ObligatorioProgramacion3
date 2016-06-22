@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC.Models;
-using MVC.ViewModel;
 
 namespace MVC.Controllers
 {
@@ -169,20 +168,7 @@ namespace MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        //CALIFICACION DE RESERVAS
-        //public ActionResult CalificarReserva(int? id)
-        //{
-        //    using (var db = new BienvenidosUyContext())
-        //    {
-        //        Reserva reserva = db.Reservas.Find(id);
-        //        CalificacionVM califVm = new CalificacionVM()
-        //        {
-        //            FechaInicio = reserva.FechaInicio;
-        //        }
-        //        //ViewBag.Reserva = ;
-        //        return View(califVm);
-        //    }
-        //}
+       
 
         public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
         {
@@ -199,6 +185,21 @@ namespace MVC.Controllers
             }
 
             return View(anuncios.ToList());
+        }
+
+
+
+
+
+
+        //CALIFICACION DE RESERVAS
+        public ActionResult CalificarReserva(int id)
+        {
+            using (var db = new BienvenidosUyContext())
+            {
+                ViewBag.Reserva = db.Reservas.Find(id);
+                return View();
+            }
         }
 
         [HttpPost]
