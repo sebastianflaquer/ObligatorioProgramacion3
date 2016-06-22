@@ -127,7 +127,7 @@ namespace MVC.Controllers
         
         //CODIGO NUESTRO
         // GET: Reservas/SearchIndex/
-        public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaI)
+        public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaFin)
         {
             var anuncios = from m in db.Anuncios select m;
 
@@ -136,12 +136,12 @@ namespace MVC.Controllers
                 anuncios = anuncios.Where(s => s.Nombre.Contains(searchString));
                 anuncios = anuncios.Where(s => s.Nombre.Contains(SearchCiudad));
                 anuncios = anuncios.Where(s => s.Nombre.Contains(SearchBarrio));
-                anuncios = anuncios.buscarFechas(anuncios);
+                //anuncios = anuncios.buscarFechas(anuncios);
                 //falta lo de las fechas
                 //Anuncio anuncio = db.Anuncios.Find(id);
 
-                var query = (from a in db.Anuncios
-                             where a.RangosFechas.FechaInicio == SearchFechaI)
+                //var query = (from a in db.Anuncios
+                //             where a.RangosFechas.FechaInicio == SearchFechaI)
                 
 
             }

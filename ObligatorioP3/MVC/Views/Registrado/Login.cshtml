@@ -2,34 +2,27 @@
 
 @{
     ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Login</h2>
-<div class="col-md-4">
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-signin" }))
+{
+    <h3>Ingresa los datos:</h3>
+    <label class="sr-only">Email</label>
+    @Html.TextBox("InputMail", null, new { @class = "form-control", @placeHolder = "Mail" })
+    <label class="sr-only">Password</label>
+    @Html.TextBox("InputPass", null, new { @class = "form-control", @placeHolder = "Password", @type = "password" })
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <input type="submit" class="btn btn-default" value="Login" />
 
-        <form class="form-signin">
 
-            <h2 class="form-signin-heading">Please sign in</h2>
-            
-            @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "sr-only" })
-            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "sr-only" } })
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-            
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "sr-only" })
-            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "sr-only" } })
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-            
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            
-            <input type="submit" value="Sign in" class="btn btn-default" />
-        </form>
-    }
-</div>
+
+
+
+}

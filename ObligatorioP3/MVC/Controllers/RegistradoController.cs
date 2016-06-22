@@ -66,15 +66,18 @@ namespace MVC.Controllers
                             where unreg.Mail == registrado.Mail
                             select unreg.Mail;
 
+                var existe = query.ToList();
+
                 //Si es diferente a null, muestra mensaje ya esta registrado
-                if (query != null)
+                if (existe.Count != 0)
                 {
                     ModelState.AddModelError("", "Ya existe un usuario con ese mail");
                 }
                 //si es nullo crea el registro
                 else {
                     string pimienta = "p1m13n7a";
-                    registrado.Password = registrado.EncriptarPass(registrado.Password, registrado.generarSalPass(), pimienta);
+                    registrado.Salt = registrado.generarSalPass();
+                    registrado.Password = registrado.EncriptarPass(registrado.Password, registrado.Salt, pimienta);
 
                     //valida el registro
                     db.Registrados.Add(registrado);
@@ -151,36 +154,42 @@ namespace MVC.Controllers
             base.Dispose(disposing);
         }
 
-        // GET: Registrado/Login
-        //    return View();
-        //}
-
-        [HttpPost]
-        public ActionResult Login(Models.Registrado userr)
+        // GET: Registrado/Login        
+        public ActionResult Login()
         {
+            return View();
+        }
 
-            //    //1 - Buscar el usuario
-            //    //2 - chekear que el paswors esta ok
-            //    //3 - redireccionar el home y logearlo
-            var reg = db.Registrados.ToList();
 
-            //guardamos en la consulta el usuario que tiene ese mail
-            var query = from unreg in reg
-                        where unreg.Mail == userr.Mail
-                        select unreg.Id;
-
-            //if (ModelState.IsValid)
-            //{
-            if (IsValid(userr.Mail, userr.Password))
+        [HttpPost, ActionName("Login")]
+        public ActionResult Login(string InputMail, string InputPass)
+        {
+            if (ModelState.IsValid)
             {
-                FormsAuthentication.SetAuthCookie(userr.Mail, false);
-                return RedirectToAction("Index", "Home");
+                //    //1 - Buscar el usuario
+                //    //2 - chekear que el paswors esta ok
+                //    //3 - redireccionar el home y logearlo
+                var reg = db.Registrados.ToList();
+
+                //guardamos en la consulta el usuario que tiene ese mail
+                var query = from unreg in reg
+                        where unreg.Mail == InputMail
+                        select unreg;
+                
+                Registrado User = db.Registrados.Find(query);
+
+                            //
+                //if (IsValid(userr.Mail, userr.Password))
+                //{
+                //    FormsAuthentication.SetAuthCookie(userr.Mail, false);
+                //    return RedirectToAction("Index", "Home");
+                //}
+                //else
+                //{
+                //    ModelState.AddModelError("", "Login details are wrong.");
+                //}
             }
-            else
-            {
-                ModelState.AddModelError("", "Login details are wrong.");
-            }
-            return View(userr);
+            return View(User);
         }
 
         private bool IsValid(string email, string password)
