@@ -57,19 +57,20 @@ namespace MVC.Controllers
                 //3 - Hacer toda la parte de encriptacion de contraseña
                 //4 - Registrar al usuario
                 //5 - Mostrar mensaje de que quedo registrado, redireccional al login
-                
+
                 //Lisatamos todos los registrados
-
-                var reg = db.Registrados.ToList();
+                var reg = db.Registrados.Where(c => c.Mail == registrado.Mail ).FirstOrDefault();
+                
+                //var reg = db.Registrados.ToList();
                 //guardamos en la consulta el usuario que tiene ese mail
-                var query = from unreg in reg
-                            where unreg.Mail == registrado.Mail
-                            select unreg.Mail;
+                //var query = from unreg in reg
+                            //where unreg.Mail == registrado.Mail
+                            //select unreg.Mail;
 
-                var existe = query.ToList();
+                //var existe = query.ToList();
 
                 //Si es diferente a null, muestra mensaje ya esta registrado
-                if (existe.Count != 0)
+                if (reg != null)
                 {
                     ModelState.AddModelError("", "Ya existe un usuario con ese mail");
                 }
