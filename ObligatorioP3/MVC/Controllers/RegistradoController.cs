@@ -169,16 +169,37 @@ namespace MVC.Controllers
                 //    //1 - Buscar el usuario
                 //    //2 - chekear que el paswors esta ok
                 //    //3 - redireccionar el home y logearlo
-                var reg = db.Registrados.ToList();
-
+                // var reg = db.Registrados.ToList();
+                //funcion hasheado pass
                 //guardamos en la consulta el usuario que tiene ese mail
-                var query = from unreg in reg
-                        where unreg.Mail == InputMail
-                        select unreg;
-                
-                Registrado User = db.Registrados.Find(query);
+                var registrado = db.Registrados.Where(c => c.Mail == InputMail && c.Password == InputPass).FirstOrDefault();
+                if(registrado != null)//Loggeo correcto
+                {
 
-                            //
+                }else
+                {//incorrecto+
+
+                }
+                
+                wRegistrado User = db.Registrados.Find(query);
+
+                if (true)
+                {
+                    //Le agrega los datos a la Session
+                    Session["logueado"] = true;
+                    Session["mail"] = User.Mail;
+                    Session["id"] = User.Id;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    //Usuario inexistente o contraseña incorrecta
+                    ModelState.AddModelError("", "Mail o contraseña Incorrectos");
+                }
+
+
+
+                //
                 //if (IsValid(userr.Mail, userr.Password))
                 //{
                 //    FormsAuthentication.SetAuthCookie(userr.Mail, false);

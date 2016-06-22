@@ -1,0 +1,5 @@
+D:\git\ObligatorioP3\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.exe.config
+D:\git\ObligatorioP3\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.exe
+D:\git\ObligatorioP3\ObligatorioP3\PruebaServicioAnuncio\bin\Debug\PruebaServicioAnuncio.pdb
+D:\git\ObligatorioP3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.exe
+D:\git\ObligatorioP3\ObligatorioP3\PruebaServicioAnuncio\obj\Debug\PruebaServicioAnuncio.pdb

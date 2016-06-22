@@ -1,0 +1,9 @@
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.dll.config
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.dll
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\ObligatorioP3.pdb
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.dll
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.SqlServer.dll
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.xml
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\bin\Debug\EntityFramework.SqlServer.xml
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.dll
+D:\git\ObligatorioP3\ObligatorioP3\ObligatorioP3\obj\Debug\ObligatorioP3.pdb
