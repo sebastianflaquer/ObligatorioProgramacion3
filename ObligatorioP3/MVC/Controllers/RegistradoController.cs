@@ -172,6 +172,7 @@ namespace MVC.Controllers
                 // var reg = db.Registrados.ToList();
                 //funcion hasheado pass
                 //guardamos en la consulta el usuario que tiene ese mail
+
                 var registrado = db.Registrados.Where(c => c.Mail == InputMail && c.Password == InputPass).FirstOrDefault();
                 if(registrado != null)//Loggeo correcto
                 {
@@ -181,21 +182,21 @@ namespace MVC.Controllers
 
                 }
                 
-                wRegistrado User = db.Registrados.Find(query);
+                //wRegistrado User = db.Registrados.Find(query);
 
-                if (true)
-                {
-                    //Le agrega los datos a la Session
-                    Session["logueado"] = true;
-                    Session["mail"] = User.Mail;
-                    Session["id"] = User.Id;
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    //Usuario inexistente o contraseña incorrecta
-                    ModelState.AddModelError("", "Mail o contraseña Incorrectos");
-                }
+                //if (true)
+                //{
+                //    //Le agrega los datos a la Session
+                //    Session["logueado"] = true;
+                //    Session["mail"] = User.Mail;
+                //    Session["id"] = User.Id;
+                //    return RedirectToAction("Index", "Home");
+                //}
+                //else
+                //{
+                //    //Usuario inexistente o contraseña incorrecta
+                //    ModelState.AddModelError("", "Mail o contraseña Incorrectos");
+                //}
 
 
 
