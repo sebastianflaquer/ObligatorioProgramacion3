@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
 
 namespace MVC.Models
 {
+    [Bind(Exclude = "ConfirmPassword")]
     public class Registrado
     {
         public int Id { get; set; }
