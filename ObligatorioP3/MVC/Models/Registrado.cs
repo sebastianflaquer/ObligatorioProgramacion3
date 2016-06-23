@@ -40,7 +40,7 @@ namespace MVC.Models
         }
 
         //funciones creadas por nosotros
-        public string EncriptarPass(string passwordIngreso, string salt, string pimienta)
+        public static string EncriptarPass(string passwordIngreso, string salt, string pimienta)
         {
             string hashresult = FormsAuthentication.HashPasswordForStoringInConfigFile(passwordIngreso + salt + pimienta, "SHA1");
             return hashresult;
@@ -50,6 +50,15 @@ namespace MVC.Models
         public bool validarUsuario(){
             return true;
         }
+
+        //PIMIENTA
+        public static string getPimienta()
+        {
+            string pimienta = "p1m13n7a";
+            return pimienta;
+        }
+
+
 
 
 

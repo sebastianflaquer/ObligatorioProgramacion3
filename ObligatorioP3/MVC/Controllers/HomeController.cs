@@ -10,6 +10,17 @@ namespace MVC.Controllers
     {
         public ActionResult Index()
         {
+
+            if ((bool)Session["logueado"]) //Si esta logeado
+            {
+                ViewBag.Logeado = true;
+                ViewBag.Mail = Session["mail"].ToString();
+            }
+            else //Si no esta logeado
+            {
+                
+            }
+
             return View();
         }
 
@@ -26,5 +37,15 @@ namespace MVC.Controllers
 
             return View();
         }
+
+        public ActionResult CerrarSesion()
+        {
+            Session["logueado"] = null;
+            Session["mail"] = "";
+
+            return View("Index");
+        }
+
+
     }
 }

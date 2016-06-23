@@ -17,7 +17,21 @@ namespace MVC.Controllers
         // GET: Reservas
         public ActionResult Index()
         {
-            return View(db.Reservas.ToList());
+            if ((bool)Session["logueado"]) //Si esta logeado
+            {
+                ViewBag.Logeado = true;
+                ViewBag.Mail = Session["mail"].ToString();
+                
+                string idsesion = Session["mail"].ToString();
+                var res = db.Reservas.Where(r => r.Registrado.Mail == idsesion).ToList();
+
+                return View(res.ToList());               
+
+            }
+            else //Si no esta logeado
+            {
+                return RedirectToAction("Registrado/Login");
+            }
         }
 
         // GET: Reservas/Details/5
@@ -196,9 +210,16 @@ namespace MVC.Controllers
         public ActionResult CalificarReserva(int id)
         {
             using (var db = new BienvenidosUyContext())
-            {
+            {                
                 ViewBag.Reserva = db.Reservas.Find(id);
-                return View();
+                if (ViewBag.Reserva.ValidarFechaParaCalificar())
+                {
+                    return View();
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
             }
         }
 
