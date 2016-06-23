@@ -149,6 +149,8 @@ namespace MVC.Controllers
             return View(anuncios.ToList());
         }
 
+
+
         //RESERVAR
         public ActionResult Reservar(int idAnuncio)
         {

@@ -74,10 +74,15 @@ namespace MVC.Controllers
                 {
                     return HttpNotFound();
                 }
-                reserva.Anuncio = anuncio;
-                db.Reservas.Add(reserva);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                else
+                {
+                    //if(reserva.SiEstaAnunciado(anuncio.RangosFechas, reserva))
+                    reserva.Anuncio = anuncio;
+                    db.Reservas.Add(reserva);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                
             }
 
             return View(reserva);

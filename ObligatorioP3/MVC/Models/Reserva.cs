@@ -47,5 +47,16 @@ namespace MVC.Models
             return ret;
         }
 
+
+
+        public bool SiEstaAnunciado(List<RangoFechas> rangosAnuncio, Reserva reserva)
+        {
+            bool ret = false;
+           
+
+
+            return ret;
+        }
+
     }
 }
