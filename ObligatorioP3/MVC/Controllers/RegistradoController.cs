@@ -51,33 +51,19 @@ namespace MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                //1 - Valida si ese mail ya no esta registrado, (si ya esta tira error)
-                //2 - Si no esta registrado, hay que validar que las contraseñas sean igual (password y confirmacion)
-                //3 - Hacer toda la parte de encriptacion de contraseña
-                //4 - Registrar al usuario
-                //5 - Mostrar mensaje de que quedo registrado, redireccional al login
                 
-                //Lisatamos todos los registrados
+                //Busca si hay un usuaurio con ese mail
+                var reg = db.Registrados.Where(c => c.Mail == registrado.Mail).FirstOrDefault();
 
-                var reg = db.Registrados.ToList();
-                //guardamos en la consulta el usuario que tiene ese mail
-                var query = from unreg in reg
-                            where unreg.Mail == registrado.Mail
-                            select unreg.Mail;
-
-                var existe = query.ToList();
-
-                //Si es diferente a null, muestra mensaje ya esta registrado
-                if (existe.Count != 0)
-                {
+                //si existe un usuario con ese mail
+                if(reg != null){
                     ModelState.AddModelError("", "Ya existe un usuario con ese mail");
                 }
-                //si es nullo crea el registro
-                else {
-                    string pimienta = "p1m13n7a";
+                //si NO existe un usuario con ese mail
+                else
+                {
                     registrado.Salt = registrado.generarSalPass();
-                    registrado.Password = registrado.EncriptarPass(registrado.Password, registrado.Salt, pimienta);
+                    registrado.Password = Registrado.EncriptarPass(registrado.Password, registrado.Salt, Registrado.getPimienta());
 
                     //valida el registro
                     db.Registrados.Add(registrado);
@@ -166,28 +152,31 @@ namespace MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                //    //1 - Buscar el usuario
-                //    //2 - chekear que el paswors esta ok
-                //    //3 - redireccionar el home y logearlo
-                var reg = db.Registrados.ToList();
-
-                //guardamos en la consulta el usuario que tiene ese mail
-                var query = from unreg in reg
-                        where unreg.Mail == InputMail
-                        select unreg;
+                //Busca si existe un objeto con ese mail y ese password
+                var reg = db.Registrados.Where(c => c.Mail == InputMail).FirstOrDefault();
                 
-                Registrado User = db.Registrados.Find(query);
-
-                            //
-                //if (IsValid(userr.Mail, userr.Password))
-                //{
-                //    FormsAuthentication.SetAuthCookie(userr.Mail, false);
-                //    return RedirectToAction("Index", "Home");
-                //}
-                //else
-                //{
-                //    ModelState.AddModelError("", "Login details are wrong.");
-                //}
+                //Si el Loggeo es correcto
+                if (reg != null)
+                {
+                    if (reg.Password == Registrado.EncriptarPass(InputPass, reg.Salt, Registrado.getPimienta()))
+                    {
+                        //Le agrega los datos a la Session
+                        Session["logueado"] = true;
+                        Session["mail"] = reg.Mail;
+                        Session["id"] = reg.Id;
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Contraseña Incorrecta");
+                    }
+                    
+                }
+                //Si el Loggeo es incorrecto
+                else
+                {
+                    ModelState.AddModelError("", "Mail o contraseña Incorrectos");
+                }
             }
             return View(User);
         }

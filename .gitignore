@@ -2,6 +2,7 @@ ObligatorioP3/packages/
 ObligatorioP3/Web/Web.config
 ObligatorioP3/Web/bin/Web.dll.config
 ObligatorioP3/.vs/config/applicationhost.config
+<<<<<<< HEAD
 ObligatorioP3/DAL/obj/Debug/DAL.csproj.FileListAbsolute.txt
 ObligatorioP3/DTOs/obj/Debug/DTOs.csproj.FileListAbsolute.txt
 ObligatorioP3/MVC/Web.config
@@ -11,3 +12,9 @@ ObligatorioP3/ObligatorioP3/obj/Debug/Dominio.csproj.FileListAbsolute.txt
 ObligatorioP3/PruebaServicioAnuncio/obj/Debug/PruebaServicioAnuncio.csproj.FileListAbsolute.txt
 ObligatorioP3/WcfService2/obj/Debug/WcfService2.csproj.FileListAbsolute.txt
 ObligatorioP3/Web/obj/Debug/Web.csproj.FileListAbsolute.txt
+=======
+ObligatorioP3/ObligatorioP3/obj/
+ObligatorioP3/MVC/obj/
+ObligatorioP3/PruebaServicioAnuncio/obj/Debug/PruebaServicioAnuncio.csproj.FileListAbsolute.txt
+ObligatorioP3/MVC/Web.config
+>>>>>>> 689a68211c8daefe283b149bbb27380384eb3817

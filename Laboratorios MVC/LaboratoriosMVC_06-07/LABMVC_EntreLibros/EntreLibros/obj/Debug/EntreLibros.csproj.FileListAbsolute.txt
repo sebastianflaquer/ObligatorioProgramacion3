@@ -62,3 +62,5 @@ F:\Programacion 3\Laboratorios MVC\LaboratoriosMVC_06-07\EntreLibros\EntreLibros
 F:\Programacion 3\Laboratorios MVC\LaboratoriosMVC_06-07\EntreLibros\EntreLibros\obj\Debug\EntreLibros.csprojResolveAssemblyReference.cache
 F:\Programacion 3\Laboratorios MVC\LaboratoriosMVC_06-07\EntreLibros\EntreLibros\obj\Debug\EntreLibros.dll
 F:\Programacion 3\Laboratorios MVC\LaboratoriosMVC_06-07\EntreLibros\EntreLibros\obj\Debug\EntreLibros.pdb
+D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\Laboratorios MVC\LaboratoriosMVC_06-07\LABMVC_EntreLibros\EntreLibros\obj\Debug\EntreLibros.dll
+D:\Documentos\Mauro\ORT\ATI\05.Semestre 3\Programación 3\ObligatorioGithub\Laboratorios MVC\LaboratoriosMVC_06-07\LABMVC_EntreLibros\EntreLibros\obj\Debug\EntreLibros.pdb

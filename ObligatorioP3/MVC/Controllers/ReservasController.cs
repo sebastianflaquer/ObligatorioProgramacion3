@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC.Models;
-using MVC.ViewModel;
 
 namespace MVC.Controllers
 {
@@ -18,7 +17,21 @@ namespace MVC.Controllers
         // GET: Reservas
         public ActionResult Index()
         {
-            return View(db.Reservas.ToList());
+            if ((bool)Session["logueado"]) //Si esta logeado
+            {
+                ViewBag.Logeado = true;
+                ViewBag.Mail = Session["mail"].ToString();
+                
+                string idsesion = Session["mail"].ToString();
+                var res = db.Reservas.Where(r => r.Registrado.Mail == idsesion).ToList();
+
+                return View(res.ToList());               
+
+            }
+            else //Si no esta logeado
+            {
+                return RedirectToAction("Registrado/Login");
+            }
         }
 
         // GET: Reservas/Details/5
@@ -61,10 +74,15 @@ namespace MVC.Controllers
                 {
                     return HttpNotFound();
                 }
-                reserva.Anuncio = anuncio;
-                db.Reservas.Add(reserva);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                else
+                {
+                    //if(reserva.SiEstaAnunciado(anuncio.RangosFechas, reserva))
+                    reserva.Anuncio = anuncio;
+                    db.Reservas.Add(reserva);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                
             }
 
             return View(reserva);
@@ -169,20 +187,7 @@ namespace MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        //CALIFICACION DE RESERVAS
-        //public ActionResult CalificarReserva(int? id)
-        //{
-        //    using (var db = new BienvenidosUyContext())
-        //    {
-        //        Reserva reserva = db.Reservas.Find(id);
-        //        CalificacionVM califVm = new CalificacionVM()
-        //        {
-        //            FechaInicio = reserva.FechaInicio;
-        //        }
-        //        //ViewBag.Reserva = ;
-        //        return View(califVm);
-        //    }
-        //}
+       
 
         public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
         {
@@ -199,6 +204,28 @@ namespace MVC.Controllers
             }
 
             return View(anuncios.ToList());
+        }
+
+
+
+
+
+
+        //CALIFICACION DE RESERVAS
+        public ActionResult CalificarReserva(int id)
+        {
+            using (var db = new BienvenidosUyContext())
+            {                
+                ViewBag.Reserva = db.Reservas.Find(id);
+                if (ViewBag.Reserva.ValidarFechaParaCalificar())
+                {
+                    return View();
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
         }
 
         [HttpPost]
@@ -224,5 +251,25 @@ namespace MVC.Controllers
                 return View();
             }
         }
+
+
+        public ActionResult DetalleComentarios(int id)
+        {
+            List<Calificacion> listaCalif = new List<Calificacion>();
+            Reserva res = db.Reservas.Find(id);
+            int idAloj = res.Anuncio.Alojamiento.Id;
+
+            foreach (Calificacion c in db.Calificaciones)
+            {
+                if (c.Alojamiento.Id == idAloj)
+                {
+                    listaCalif.Add(c);
+                }
+            }
+            return View(listaCalif.ToList());
+        }
+
+
+
     }
 }
