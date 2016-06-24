@@ -25,12 +25,12 @@ e. mostrar puntaje y comentarios. - FALTA
 
 
 2) RESERVA
-a. preguntar por login - FALTA
+a. preguntar por login - LIsto
 b. boton de reservar en detalle de alojamiento. - LISTO
 c. vista de datos de la reserva, rango de fechas, cant huespedes, texto consulta. - LISTO
-d. Vista mis Reservas, listado historico de las reservas y detalles de cualquiera de ellas. (detalles del anfitrion, boton cancelar). - FALTA
+d. Vista mis Reservas, listado historico de las reservas y detalles de cualquiera de ellas. (detalles del anfitrion, boton cancelar). - CASI
 
 
 3)CALIFICACION DE ALOJAMIENTO
-a. vista para calificar el alojamiento, puntuacion 1 a 5 y comentario. - FALTA
+a. vista para calificar el alojamiento, puntuacion 1 a 5 y comentario. - CASI, FALTAN VALIDACIONES
 
