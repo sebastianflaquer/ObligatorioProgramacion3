@@ -7,13 +7,13 @@ namespace MVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class exclude : IMigrationMetadata
+    public sealed partial class fecha : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(exclude));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fecha));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606231418336_exclude"; }
+            get { return "201606241856181_fecha"; }
         }
         
         string IMigrationMetadata.Source

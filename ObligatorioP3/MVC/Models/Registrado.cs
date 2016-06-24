@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,6 +21,7 @@ namespace MVC.Models
         public string Mail { get; set; }
         [Required]
         public string Password { get; set; }
+        [NotMapped]
         public string ConfirmPassword { get; set; }
         public string Salt { get; set; }
         [Required]

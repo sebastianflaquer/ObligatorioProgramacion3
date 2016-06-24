@@ -167,9 +167,13 @@
     <Compile Include="Migrations\201606202351166_initial.Designer.cs">
       <DependentUpon>201606202351166_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606231418336_exclude.cs" />
-    <Compile Include="Migrations\201606231418336_exclude.Designer.cs">
-      <DependentUpon>201606231418336_exclude.cs</DependentUpon>
+    <Compile Include="Migrations\201606241634397_notmapped.cs" />
+    <Compile Include="Migrations\201606241634397_notmapped.Designer.cs">
+      <DependentUpon>201606241634397_notmapped.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606241856181_fecha.cs" />
+    <Compile Include="Migrations\201606241856181_fecha.Designer.cs">
+      <DependentUpon>201606241856181_fecha.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alojamiento.cs" />
@@ -256,8 +260,11 @@
     <EmbeddedResource Include="Migrations\201606202351166_initial.resx">
       <DependentUpon>201606202351166_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606231418336_exclude.resx">
-      <DependentUpon>201606231418336_exclude.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606241634397_notmapped.resx">
+      <DependentUpon>201606241634397_notmapped.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606241856181_fecha.resx">
+      <DependentUpon>201606241856181_fecha.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
