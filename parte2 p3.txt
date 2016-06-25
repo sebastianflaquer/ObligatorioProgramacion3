@@ -16,9 +16,9 @@
 
 1)BUSQUEDA DE ALOJAMIENTO:
 
-a. vista de busqueda(searchIndex), busca por ciudad, barrio, fechas Hospedaje. - FALTA TERMINAR
+a. vista de busqueda(searchIndex), busca por ciudad, barrio, fechas Hospedaje. - LISTO
 b. agregar filtros, tipo alojamiento, tipo habitacion, servicios, rangos, precios, baño. - FALTA
-c. mostrar listado con alojamientos disponibles. - FALTA
+c. mostrar listado con alojamientos disponibles. - LISTO
 d. Detalle de alojamiento seleccionado, con datos de anfitrion. - FALTA
 e. mostrar puntaje y comentarios. - FALTA
 

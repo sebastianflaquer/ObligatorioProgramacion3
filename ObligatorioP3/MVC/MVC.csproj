@@ -175,6 +175,10 @@
     <Compile Include="Migrations\201606241856181_fecha.Designer.cs">
       <DependentUpon>201606241856181_fecha.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606251643292_agregoAttenCalif.cs" />
+    <Compile Include="Migrations\201606251643292_agregoAttenCalif.Designer.cs">
+      <DependentUpon>201606251643292_agregoAttenCalif.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alojamiento.cs" />
     <Compile Include="Models\Anuncio.cs" />
@@ -265,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606241856181_fecha.resx">
       <DependentUpon>201606241856181_fecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606251643292_agregoAttenCalif.resx">
+      <DependentUpon>201606251643292_agregoAttenCalif.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

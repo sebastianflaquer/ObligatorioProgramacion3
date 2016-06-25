@@ -12,8 +12,8 @@
 
     <div class="form-horizontal">
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+        
+          @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div>
             @*<legend>Datos de la Reserva</legend>*@
@@ -22,23 +22,7 @@
                 <!--Este campo será utilizado para poder recibir y pasar en el post el id del objeto al controlador-->
                 <input type="text" name="ReservaID" id="ReservaID" value="@ViewBag.Reserva.Id" hidden="hidden"/>
             </div>
-            @*<table class="table">
-                <tr>
-                    <th>Cantidad de Huespedes</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
-                    <th>Consultas</th>
-                </tr>
-                <tr>
-                    <td>@ViewBag.Reserva.CantHuespedes</td>
-                    <td>@ViewBag.Reserva.FechaInicio</td>
-                    <td>@ViewBag.Reserva.FechaFin</td>
-                    <td>@ViewBag.Reserva.TextoConsultas</td>
-                </tr>
-            </table>*@
         </div>
-
-
 
         <div class="form-group">
             @Html.LabelFor(model => model.Puntaje, htmlAttributes: new { @class = "control-label col-md-2" })

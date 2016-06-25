@@ -183,35 +183,25 @@ namespace MVC.Controllers
 
         //CODIGO NUESTRO
         // GET: Reservas/SearchIndex/
-        public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaFin)
+        public ActionResult BuscarAnuncio(string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
         {
-            if ((bool)Session["logueado"]) //Si esta logeado
+            var anuncios = from m in db.Anuncios select m;
+
+            if (!String.IsNullOrEmpty(SearchCiudad))
             {
-                var anuncios = from m in db.Anuncios select m;
-
-                if (!String.IsNullOrEmpty(searchString))
-                {
-                    anuncios = anuncios.Where(s => s.Nombre.Contains(searchString));
-                    anuncios = anuncios.Where(s => s.Nombre.Contains(SearchCiudad));
-                    anuncios = anuncios.Where(s => s.Nombre.Contains(SearchBarrio));
-                    //anuncios = anuncios.buscarFechas(anuncios);
-                    //falta lo de las fechas
-                    //Anuncio anuncio = db.Anuncios.Find(id);
-
-                    //var query = (from a in db.Anuncios
-                    //             where a.RangosFechas.FechaInicio == SearchFechaI)
-
-
-                }
-                return View(anuncios.ToList());
+                anuncios = anuncios.Where(s => s.Alojamiento.Ciudad.Nombre.Contains(SearchCiudad));                
             }
-            else //Si no esta logeado
+            if (!String.IsNullOrEmpty(SearchBarrio))
             {
-                return RedirectToAction("../Registrado/Login");
+                anuncios = anuncios.Where(s => s.Alojamiento.Barrio.Contains(SearchBarrio));
             }
-        }
-
-
+            if(!String.IsNullOrEmpty(SearchFechaI) && !String.IsNullOrEmpty(SearchFechaF))
+            {
+                //traer los anuncios que esten entre esas fechas
+                anuncios = Anuncio.traerAnunciosXFecha(anuncios, Convert.ToDateTime(SearchFechaI), Convert.ToDateTime(SearchFechaF));
+            }
+            return View(anuncios.ToList());
+        }        
 
         //RESERVAR
         public ActionResult Reservar(int idAnuncio)

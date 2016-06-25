@@ -299,35 +299,30 @@ namespace MVC.Controllers
         }
 
 
+        //BUSCAR ANUNCIO
+        //public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
+        //{
+        //    if ((bool)Session["logueado"]) //Si esta logeado
+        //    {
+        //        var anuncios = from m in db.Anuncios select m;
 
-        public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
-        {
-            if ((bool)Session["logueado"]) //Si esta logeado
-            {
-                var anuncios = from m in db.Anuncios select m;
+        //        var ciudad = SearchCiudad;
+        //        var barrio = SearchBarrio;
+        //        var fechaI = SearchFechaI;
+        //        var fechaF = SearchFechaF;
 
-                var ciudad = SearchCiudad;
-                var barrio = SearchBarrio;
-                var fechaI = SearchFechaI;
-                var fechaF = SearchFechaF;
+        //        if (!String.IsNullOrEmpty(searchString))
+        //        {
+        //            anuncios = anuncios.Where(s => s.Nombre.Contains(searchString));
+        //        }
 
-                if (!String.IsNullOrEmpty(searchString))
-                {
-                    anuncios = anuncios.Where(s => s.Nombre.Contains(searchString));
-                }
-
-                return View(anuncios.ToList());
-            }
-            else //Si no esta logeado
-            {
-                return RedirectToAction("../Registrado/Login");
-            }
-        }
-
-
-
-
-
+        //        return View(anuncios.ToList());
+        //    }
+        //    else //Si no esta logeado
+        //    {
+        //        return RedirectToAction("../Registrado/Login");
+        //    }
+        //}
 
         //CALIFICACION DE RESERVAS
         public ActionResult CalificarReserva(int id)
@@ -339,11 +334,20 @@ namespace MVC.Controllers
                     ViewBag.Reserva = db.Reservas.Find(id);
                     if (ViewBag.Reserva.ValidarFechaParaCalificar())
                     {
+                        //if (ViewBag.Reserva.ReservaYaCalificadaPorUsuario(ViewBag.Reserva, (int)Session["id"]))
+                        //{
+                        //    ModelState.AddModelError("", "La Reserva ya fue calificada por el usuario");
+                        //}
+                        //else
+                        //{
+                        //    return View();
+                        //}
                         return View();
                     }
                     else
                     {
-                        return HttpNotFound();
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                        //ModelState.AddModelError("", "Aun no puede calificar esta Reserva");
                     }
                 }
             }
@@ -351,8 +355,10 @@ namespace MVC.Controllers
             {
                 return RedirectToAction("../Registrado/Login");
             }
+            //return View();
         }
 
+        // POST: 
         [HttpPost]
         public ActionResult CalificarReserva(Calificacion newCalificacion)
         {
@@ -407,8 +413,6 @@ namespace MVC.Controllers
                 return RedirectToAction("../Registrado/Login");
             }
         }
-
-
 
     }
 }

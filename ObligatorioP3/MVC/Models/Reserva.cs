@@ -51,6 +51,23 @@ namespace MVC.Models
             return ret;
         }
 
+        // Valida si la Reserva ya fue calificada por el Usuario logueado
+        public static bool ReservaYaCalificadaPorUsuario(Reserva reserva, int idRegistrado)
+        {
+            bool ret = false;
+
+            BienvenidosUyContext db = new BienvenidosUyContext();
+
+            var calif = from c in db.Calificaciones
+                        where c.Registrado.Id == idRegistrado && c.Alojamiento.Id == reserva.Anuncio.Alojamiento.Id
+                        select c;
+            if (calif != null)
+            {
+                ret = true;
+            }
+            return ret;
+        }
+
 
 
         public decimal anuncioTieneFechas(List<RangoFechas> rangosAnuncio, Reserva reserva)

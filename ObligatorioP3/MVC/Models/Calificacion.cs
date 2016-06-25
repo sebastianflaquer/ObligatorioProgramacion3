@@ -11,5 +11,6 @@ namespace MVC.Models
         public int Puntaje { get; set; }
         public string Comentario { get; set; }
         public virtual Alojamiento Alojamiento { get; set; }
+        public virtual Registrado Registrado { get; set; }
     }
 }

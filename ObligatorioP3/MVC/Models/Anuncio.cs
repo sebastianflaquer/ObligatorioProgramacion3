@@ -16,17 +16,60 @@ namespace MVC.Models
         public string Fotos { get; set; }
         public decimal PrecioBase { get; set; }
         public virtual List<RangoFechas> RangosFechas { get; set; }
-        public virtual Registrado Registrado { get; set; }
 
 
         public Anuncio buscarFechas(Anuncio unA)
         {
             Anuncio retorno = new Anuncio();
-
-
             return retorno;
-
         }
 
+        //TRAER TODOS LOS ANUNCIOS
+        public static IQueryable<Anuncio> traerAnunciosXFecha(IQueryable<Anuncio> anuncios, DateTime searchFechaI, DateTime searchFechaFin)
+        {
+            //VAR
+            DateTime fecha = searchFechaI;
+            List<Anuncio> AResult = new List<Anuncio>();
+            List<Anuncio> ListaResultado = new List<Anuncio>();
+
+            bool encontrado = false;
+            int a = 0;
+            int r = 0;
+            AResult = anuncios.ToList();
+            int cantidadDiasRango = (int)(searchFechaFin - searchFechaI).TotalDays;
+            int cantidadDiasEnco = 0;
+
+            while (a < AResult.Count) 
+            {
+                fecha = searchFechaI;
+                cantidadDiasEnco = 0;
+                while (fecha < searchFechaFin)
+                {
+                    encontrado = false;
+                    while (r < AResult[a].RangosFechas.Count && encontrado == false)
+                    {
+                        if(AResult[a].RangosFechas[r].FechaInicio <= fecha && AResult[a].RangosFechas[r].FechaFin >= fecha)
+                        {   
+                            encontrado = true;
+                            cantidadDiasEnco += 1;
+                        }
+                        else
+                        {
+                            r++;
+                        }
+                        
+                    }
+                    fecha = fecha.AddDays(1);
+                }
+                if (cantidadDiasRango == cantidadDiasEnco)
+                {
+                    ListaResultado.Add(AResult[a]);
+                }
+                a++;
+
+            }
+            
+            return ListaResultado.AsQueryable();
+        }
     }
 }
