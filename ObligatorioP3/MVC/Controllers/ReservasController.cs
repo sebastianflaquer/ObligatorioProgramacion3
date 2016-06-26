@@ -346,8 +346,8 @@ namespace MVC.Controllers
                     }
                     else
                     {
-                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                        //ModelState.AddModelError("", "Aun no puede calificar esta Reserva");
+                        //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                        ModelState.AddModelError("", "Aun no puede calificar esta Reserva");
                     }
                 }
             }
@@ -355,7 +355,7 @@ namespace MVC.Controllers
             {
                 return RedirectToAction("../Registrado/Login");
             }
-            //return View();
+            return View(); // no va
         }
 
         // POST: 

@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalles de la Reserva</h2>
 
 <div>
-    <h4>Reserva</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -48,7 +48,7 @@
             @Html.DisplayNameFor(model => model.Anuncio.Alojamiento.Registrado.Nombre) 
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Anuncio.Alojamiento.Nombre)
+            @Html.DisplayFor(model => model.Anuncio.Alojamiento.Registrado.Nombre)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Anuncio.Alojamiento.Registrado.Apellido)
@@ -84,6 +84,10 @@
 
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Cancelar Reserva", "CancelarReserva", new { id = Model.Id }, new { @class = "btn btn-info" })
+</p>
+
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
     @Html.ActionLink("Back to List", "Index")
 </p>
