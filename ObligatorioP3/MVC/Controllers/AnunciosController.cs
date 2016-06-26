@@ -185,6 +185,12 @@ namespace MVC.Controllers
         // GET: Reservas/SearchIndex/
         public ActionResult BuscarAnuncio(string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
         {
+
+            //CARGA LOS FILTROS
+            ViewBag.CategoriaList = new SelectList(db.Categorias, "Id", "Nombre");
+            ViewBag.ServiciosList = new SelectList(db.Servicios, "Id", "Nombre");
+            //ViewBag.CategoriaList = new SelectList(db.Categorias, "Id", "Nombre");
+
             var anuncios = from m in db.Anuncios select m;
 
             if (!String.IsNullOrEmpty(SearchCiudad))
