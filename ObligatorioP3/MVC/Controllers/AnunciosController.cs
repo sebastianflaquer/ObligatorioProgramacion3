@@ -17,28 +17,49 @@ namespace MVC.Controllers
         // GET: Anuncios
         public ActionResult Index()
         {
-            return View(db.Anuncios.ToList());
+            if ((bool)Session["logueado"]) //Si esta logeado
+            {
+                return View(db.Anuncios.ToList());
+            }
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
         // GET: Anuncios/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Anuncio anuncio = db.Anuncios.Find(id);
+                if (anuncio == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(anuncio);
             }
-            Anuncio anuncio = db.Anuncios.Find(id);
-            if (anuncio == null)
+            else //Si no esta logeado
             {
-                return HttpNotFound();
+                return RedirectToAction("../Registrado/Login");
             }
-            return View(anuncio);
         }
 
         // GET: Anuncios/Create
         public ActionResult Create()
         {
-            return View();
+            if ((bool)Session["logueado"]) //Si esta logeado
+            {
+                return View();
+            }
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
         // POST: Anuncios/Create
@@ -48,29 +69,43 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nombre,Descripcion,Direccion1,Direccion2,Fotos,PrecioBase")] Anuncio anuncio)
         {
-            if (ModelState.IsValid)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                db.Anuncios.Add(anuncio);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Anuncios.Add(anuncio);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            return View(anuncio);
+                return View(anuncio);
+            }
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
         // GET: Anuncios/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Anuncio anuncio = db.Anuncios.Find(id);
+                if (anuncio == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(anuncio);
             }
-            Anuncio anuncio = db.Anuncios.Find(id);
-            if (anuncio == null)
+            else //Si no esta logeado
             {
-                return HttpNotFound();
+                return RedirectToAction("../Registrado/Login");
             }
-            return View(anuncio);
         }
 
         // POST: Anuncios/Edit/5
@@ -80,28 +115,42 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nombre,Descripcion,Direccion1,Direccion2,Fotos,PrecioBase")] Anuncio anuncio)
         {
-            if (ModelState.IsValid)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                db.Entry(anuncio).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(anuncio).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(anuncio);
             }
-            return View(anuncio);
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
         // GET: Anuncios/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Anuncio anuncio = db.Anuncios.Find(id);
+                if (anuncio == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(anuncio);
             }
-            Anuncio anuncio = db.Anuncios.Find(id);
-            if (anuncio == null)
+            else //Si no esta logeado
             {
-                return HttpNotFound();
+                return RedirectToAction("../Registrado/Login");
             }
-            return View(anuncio);
         }
 
         // POST: Anuncios/Delete/5
@@ -109,10 +158,17 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Anuncio anuncio = db.Anuncios.Find(id);
-            db.Anuncios.Remove(anuncio);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if ((bool)Session["logueado"]) //Si esta logeado
+            {
+                Anuncio anuncio = db.Anuncios.Find(id);
+                db.Anuncios.Remove(anuncio);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
         //DISPOSE
@@ -124,42 +180,45 @@ namespace MVC.Controllers
             }
             base.Dispose(disposing);
         }
-        
+
         //CODIGO NUESTRO
         // GET: Reservas/SearchIndex/
-        public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaFin)
+        public ActionResult BuscarAnuncio(string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
         {
             var anuncios = from m in db.Anuncios select m;
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(SearchCiudad))
             {
-                anuncios = anuncios.Where(s => s.Nombre.Contains(searchString));
-                anuncios = anuncios.Where(s => s.Nombre.Contains(SearchCiudad));
-                anuncios = anuncios.Where(s => s.Nombre.Contains(SearchBarrio));
-                //anuncios = anuncios.buscarFechas(anuncios);
-                //falta lo de las fechas
-                //Anuncio anuncio = db.Anuncios.Find(id);
-
-                //var query = (from a in db.Anuncios
-                //             where a.RangosFechas.FechaInicio == SearchFechaI)
-                
-
+                anuncios = anuncios.Where(s => s.Alojamiento.Ciudad.Nombre.Contains(SearchCiudad));                
             }
-
+            if (!String.IsNullOrEmpty(SearchBarrio))
+            {
+                anuncios = anuncios.Where(s => s.Alojamiento.Barrio.Contains(SearchBarrio));
+            }
+            if(!String.IsNullOrEmpty(SearchFechaI) && !String.IsNullOrEmpty(SearchFechaF))
+            {
+                //traer los anuncios que esten entre esas fechas
+                anuncios = Anuncio.traerAnunciosXFecha(anuncios, Convert.ToDateTime(SearchFechaI), Convert.ToDateTime(SearchFechaF));
+            }
             return View(anuncios.ToList());
-        }
-
-
+        }        
 
         //RESERVAR
         public ActionResult Reservar(int idAnuncio)
         {
-            Anuncio anuncio = db.Anuncios.Find(idAnuncio);
-            if (anuncio == null)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                return HttpNotFound();
+                Anuncio anuncio = db.Anuncios.Find(idAnuncio);
+                if (anuncio == null)
+                {
+                    return HttpNotFound();
+                }
+                return RedirectToAction("Create", "ReservasController", new { id = anuncio.Id });
             }
-            return RedirectToAction("Create", "ReservasController", new { id = anuncio.Id });            
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
     }

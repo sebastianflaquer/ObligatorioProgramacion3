@@ -13,8 +13,8 @@ namespace MVC.Controllers
 
             if ((bool)Session["logueado"]) //Si esta logeado
             {
-                ViewBag.Logeado = true;
-                ViewBag.Mail = Session["mail"].ToString();
+                //ViewBag.Logeado = true;
+                //ViewBag.Mail = Session["mail"].ToString();
             }
             else //Si no esta logeado
             {
@@ -40,7 +40,7 @@ namespace MVC.Controllers
 
         public ActionResult CerrarSesion()
         {
-            Session["logueado"] = null;
+            Session["logueado"] = false;
             Session["mail"] = "";
 
             return View("Index");

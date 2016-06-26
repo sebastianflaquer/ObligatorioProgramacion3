@@ -21,38 +21,72 @@ namespace MVC.Controllers
             {
                 ViewBag.Logeado = true;
                 ViewBag.Mail = Session["mail"].ToString();
-                
+
                 string idsesion = Session["mail"].ToString();
                 var res = db.Reservas.Where(r => r.Registrado.Mail == idsesion).ToList();
 
-                return View(res.ToList());               
+                return View(res.ToList());
 
             }
             else //Si no esta logeado
             {
-                return RedirectToAction("Registrado/Login");
+                return RedirectToAction("../Registrado/Login");
             }
         }
 
         // GET: Reservas/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Reserva reserva = db.Reservas.Find(id);
+                if (reserva == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(reserva);
+
             }
-            Reserva reserva = db.Reservas.Find(id);
-            if (reserva == null)
+            else //Si no esta logeado
             {
-                return HttpNotFound();
+                return RedirectToAction("../Registrado/Login");
             }
-            return View(reserva);
+
         }
 
         // GET: Reservas/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            return View();
+            //Si esta logeado
+            if ((bool)Session["logueado"])
+            {
+                //Si no hay ningun ID en la URL
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                else
+                {
+                    //Busca todos los anuncios
+                    Anuncio anuncio = db.Anuncios.Find(id);
+                    //si no encuentra el anuncio tira error
+                    if (anuncio == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    else
+                    {
+                        return View();
+                    }
+                }
+            }
+            else {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
         // POST: Reservas/Create
@@ -62,45 +96,87 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(int? id, [Bind(Include = "Id,FechaInicio,FechaFin,CantHuespedes,TextoConsultas")] Reserva reserva)
         {
-            if (ModelState.IsValid)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                if (id == null)
+                //si todos los campos son validos
+                if (ModelState.IsValid)
                 {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                Anuncio anuncio = db.Anuncios.Find(id);
-                //si no encuentra el anuncio tira error
-                if (anuncio == null)
-                {
-                    return HttpNotFound();
-                }
-                else
-                {
-                    //if(reserva.SiEstaAnunciado(anuncio.RangosFechas, reserva))
-                    reserva.Anuncio = anuncio;
-                    db.Reservas.Add(reserva);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                
-            }
+                    //Si no hay ningun ID en la URL
+                    if (id == null)
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    }
+                    //si hay un id
+                    else
+                    {
+                        //Busca todos los anuncios
+                        Anuncio anuncio = db.Anuncios.Find(id);
+                        reserva.Anuncio = anuncio;
 
-            return View(reserva);
+                        //si no encuentra el anuncio tira error
+                        if (anuncio == null)
+                        {
+                            return HttpNotFound();
+                        }
+                        //si lo encuentra
+                        else
+                        {
+                            //1 - Ver si el anuncio tiene esas fechas
+                            decimal costo = reserva.anuncioTieneFechas(anuncio.RangosFechas, reserva);
+                            //Si se puede reservar
+                            if (costo != -1)
+                            {
+                                bool nodisponible = reserva.otraValidacion(anuncio.RangosFechas, reserva);
+
+                                if(nodisponible)
+                                {
+                                    ModelState.AddModelError("", "Ya hay otra reserva en esta fecha o la cantidad de huespedes es mayor a la permitida");                                    
+                                }
+                                else
+                                {
+                                    //crea la reserva
+                                    reserva.Registrado = db.Registrados.Find(Session["id"]);
+                                    db.Reservas.Add(reserva);
+                                    db.SaveChanges();
+                                    return RedirectToAction("Index");
+                                }
+                                
+                            }
+                            else {
+                                ModelState.AddModelError("", "Uno o mas dias dentro del rango de fechas no estan disponibles. Ingrese una nueva consulta");
+                            }
+                        }
+                    }
+                }
+
+                return View(reserva);
+            }
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
         // GET: Reservas/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Reserva reserva = db.Reservas.Find(id);
+                if (reserva == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(reserva);
             }
-            Reserva reserva = db.Reservas.Find(id);
-            if (reserva == null)
+            else //Si no esta logeado
             {
-                return HttpNotFound();
+                return RedirectToAction("../Registrado/Login");
             }
-            return View(reserva);
         }
 
         // POST: Reservas/Edit/5
@@ -110,28 +186,42 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FechaInicio,FechaFin,CantHuespedes,TextoConsultas")] Reserva reserva)
         {
-            if (ModelState.IsValid)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                db.Entry(reserva).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(reserva).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(reserva);
             }
-            return View(reserva);
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
         // GET: Reservas/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Reserva reserva = db.Reservas.Find(id);
+                if (reserva == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(reserva);
             }
-            Reserva reserva = db.Reservas.Find(id);
-            if (reserva == null)
+            else //Si no esta logeado
             {
-                return HttpNotFound();
+                return RedirectToAction("../Registrado/Login");
             }
-            return View(reserva);
         }
 
         // POST: Reservas/Delete/5
@@ -139,10 +229,17 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Reserva reserva = db.Reservas.Find(id);
-            db.Reservas.Remove(reserva);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if ((bool)Session["logueado"]) //Si esta logeado
+            {
+                Reserva reserva = db.Reservas.Find(id);
+                db.Reservas.Remove(reserva);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
 
@@ -158,22 +255,29 @@ namespace MVC.Controllers
         // GET: Reservas/Cancel/5
         public ActionResult CancelarReserva(int? id)
         {
-            if (id == null)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Reserva reserva = db.Reservas.Find(id);
-            if (reserva == null)
-            {
-                return HttpNotFound();
-            }
-            if (reserva.ValidarFechaParaCancelar() == true)
-            {
-                db.Reservas.Remove(reserva);
-                db.SaveChanges();
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Reserva reserva = db.Reservas.Find(id);
+                if (reserva == null)
+                {
+                    return HttpNotFound();
+                }
+                if (reserva.ValidarFechaParaCancelar() == true)
+                {
+                    db.Reservas.Remove(reserva);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
                 return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
         // POST: Reservas/Cancel/5
@@ -181,95 +285,136 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CancelConfirmed(int id)
         {
-            Reserva reserva = db.Reservas.Find(id);
-            db.Reservas.Remove(reserva);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-       
-
-        public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
-        {
-            var anuncios = from m in db.Anuncios select m;
-
-            var ciudad = SearchCiudad;
-            var barrio = SearchBarrio;
-            var fechaI = SearchFechaI;
-            var fechaF = SearchFechaF;
-
-            if (!String.IsNullOrEmpty(searchString))
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                anuncios = anuncios.Where(s => s.Nombre.Contains(searchString));
+                Reserva reserva = db.Reservas.Find(id);
+                db.Reservas.Remove(reserva);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-
-            return View(anuncios.ToList());
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
 
 
+        //BUSCAR ANUNCIO
+        //public ActionResult BuscarAnuncio(string searchString, string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
+        //{
+        //    if ((bool)Session["logueado"]) //Si esta logeado
+        //    {
+        //        var anuncios = from m in db.Anuncios select m;
 
+        //        var ciudad = SearchCiudad;
+        //        var barrio = SearchBarrio;
+        //        var fechaI = SearchFechaI;
+        //        var fechaF = SearchFechaF;
 
+        //        if (!String.IsNullOrEmpty(searchString))
+        //        {
+        //            anuncios = anuncios.Where(s => s.Nombre.Contains(searchString));
+        //        }
 
+        //        return View(anuncios.ToList());
+        //    }
+        //    else //Si no esta logeado
+        //    {
+        //        return RedirectToAction("../Registrado/Login");
+        //    }
+        //}
 
         //CALIFICACION DE RESERVAS
         public ActionResult CalificarReserva(int id)
         {
-            using (var db = new BienvenidosUyContext())
-            {                
-                ViewBag.Reserva = db.Reservas.Find(id);
-                if (ViewBag.Reserva.ValidarFechaParaCalificar())
+            if ((bool)Session["logueado"]) //Si esta logeado
+            {
+                using (var db = new BienvenidosUyContext())
                 {
-                    return View();
-                }
-                else
-                {
-                    return HttpNotFound();
+                    ViewBag.Reserva = db.Reservas.Find(id);
+                    if (ViewBag.Reserva.ValidarFechaParaCalificar())
+                    {
+                        //if (ViewBag.Reserva.ReservaYaCalificadaPorUsuario(ViewBag.Reserva, (int)Session["id"]))
+                        //{
+                        //    ModelState.AddModelError("", "La Reserva ya fue calificada por el usuario");
+                        //}
+                        //else
+                        //{
+                        //    return View();
+                        //}
+                        return View();
+                    }
+                    else
+                    {
+                        //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                        ModelState.AddModelError("", "Aun no puede calificar esta Reserva");
+                    }
                 }
             }
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
+            return View(); // no va
         }
 
+        // POST: 
         [HttpPost]
         public ActionResult CalificarReserva(Calificacion newCalificacion)
         {
-            try
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                //obtenemos el id de la Reserva Comentada
-                var ReservaId = int.Parse(Request["ReservaID"]);
-
-                using (var db = new BienvenidosUyContext())
+                try
                 {
-                    //buscamos la Reserva y le agregamos la calificacion al alojamiento
-                    Reserva res = db.Reservas.Find(ReservaId);
-                    newCalificacion.Alojamiento = res.Anuncio.Alojamiento;
-                    db.Calificaciones.Add(newCalificacion);
-                    db.SaveChanges();
+                    //obtenemos el id de la Reserva Comentada
+                    var ReservaId = int.Parse(Request["ReservaID"]);
+
+                    using (var db = new BienvenidosUyContext())
+                    {
+                        //buscamos la Reserva y le agregamos la calificacion al alojamiento
+                        Reserva res = db.Reservas.Find(ReservaId);
+                        newCalificacion.Alojamiento = res.Anuncio.Alojamiento;
+                        Registrado reg = db.Registrados.Find(Session["id"]);
+                        newCalificacion.Registrado = reg;
+                        db.Calificaciones.Add(newCalificacion);
+                        db.SaveChanges();
+                    }
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else //Si no esta logeado
             {
-                return View();
+                return RedirectToAction("../Registrado/Login");
             }
         }
 
 
         public ActionResult DetalleComentarios(int id)
         {
-            List<Calificacion> listaCalif = new List<Calificacion>();
-            Reserva res = db.Reservas.Find(id);
-            int idAloj = res.Anuncio.Alojamiento.Id;
-
-            foreach (Calificacion c in db.Calificaciones)
+            if ((bool)Session["logueado"]) //Si esta logeado
             {
-                if (c.Alojamiento.Id == idAloj)
+                List<Calificacion> listaCalif = new List<Calificacion>();
+                Reserva res = db.Reservas.Find(id);
+                int idAloj = res.Anuncio.Alojamiento.Id;
+
+                foreach (Calificacion c in db.Calificaciones)
                 {
-                    listaCalif.Add(c);
+                    if (c.Alojamiento.Id == idAloj)
+                    {
+                        listaCalif.Add(c);
+                    }
                 }
+                return View(listaCalif.ToList());
             }
-            return View(listaCalif.ToList());
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
         }
-
-
 
     }
 }

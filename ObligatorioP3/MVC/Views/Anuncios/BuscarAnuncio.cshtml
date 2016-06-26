@@ -10,10 +10,7 @@
 @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-inline" }))
 {
     <h3>Ingrese su Busqueda:</h3>
-        <div class="form-group">
-            <label class="sr-only">Palabra</label>
-            @Html.TextBox("SearchString", null, new { @class = "form-control", @placeHolder = "Nombre del Anuncio" })
-        </div>
+        
         <div class="form-group">
             <label class="sr-only">Ciudad</label>
             @Html.TextBox("SearchCiudad", null, new { @class = "form-control", @placeHolder = "Ciudad" })
@@ -24,11 +21,11 @@
         </div>
         <div class="form-group">
             <label class="sr-only">Fecha Inicial</label>
-            @Html.TextBox("SearchFechaI", null, new { @class = "form-control", @placeHolder = "Fecha Inicio" })
+            @Html.TextBox("SearchFechaI", null, new { @class = "form-control", @placeHolder = "Fecha Inicio", @type = "date" })
         </div>
         <div class="form-group">
             <label class="sr-only">Fecha Fin</label>
-            @Html.TextBox("SearchFechaF", null, new { @class = "form-control", @placeHolder = "Fecha Fin" })
+            @Html.TextBox("SearchFechaF", null, new { @class = "form-control", @placeHolder = "Fecha Fin", @type = "date" })
         </div>
         <input type="submit" class="btn btn-default" value="Buscar" />
 }
@@ -71,9 +68,9 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) 
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-danger" }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info" }) 
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })*@ 
             </td>
         </tr>
     }

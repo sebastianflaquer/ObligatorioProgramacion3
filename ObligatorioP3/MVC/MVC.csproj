@@ -167,6 +167,22 @@
     <Compile Include="Migrations\201606202351166_initial.Designer.cs">
       <DependentUpon>201606202351166_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606241634397_notmapped.cs" />
+    <Compile Include="Migrations\201606241634397_notmapped.Designer.cs">
+      <DependentUpon>201606241634397_notmapped.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606241856181_fecha.cs" />
+    <Compile Include="Migrations\201606241856181_fecha.Designer.cs">
+      <DependentUpon>201606241856181_fecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606251643292_agregoAttenCalif.cs" />
+    <Compile Include="Migrations\201606251643292_agregoAttenCalif.Designer.cs">
+      <DependentUpon>201606251643292_agregoAttenCalif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606262149110_dataannotations.cs" />
+    <Compile Include="Migrations\201606262149110_dataannotations.Designer.cs">
+      <DependentUpon>201606262149110_dataannotations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alojamiento.cs" />
     <Compile Include="Models\Anuncio.cs" />
@@ -251,6 +267,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201606202351166_initial.resx">
       <DependentUpon>201606202351166_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606241634397_notmapped.resx">
+      <DependentUpon>201606241634397_notmapped.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606241856181_fecha.resx">
+      <DependentUpon>201606241856181_fecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606251643292_agregoAttenCalif.resx">
+      <DependentUpon>201606251643292_agregoAttenCalif.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606262149110_dataannotations.resx">
+      <DependentUpon>201606262149110_dataannotations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
