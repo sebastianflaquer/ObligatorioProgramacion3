@@ -28,7 +28,7 @@ e. mostrar puntaje y comentarios. - FALTA
 a. preguntar por login - LIsto
 b. boton de reservar en detalle de alojamiento. - LISTO
 c. vista de datos de la reserva, rango de fechas, cant huespedes, texto consulta. - LISTO
-d. Vista mis Reservas, listado historico de las reservas y detalles de cualquiera de ellas. (detalles del anfitrion, boton cancelar). - CASI
+d. Vista mis Reservas, listado historico de las reservas y detalles de cualquiera de ellas. (detalles del anfitrion, boton cancelar). - LISTO
 
 
 3)CALIFICACION DE ALOJAMIENTO

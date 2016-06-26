@@ -374,6 +374,8 @@ namespace MVC.Controllers
                         //buscamos la Reserva y le agregamos la calificacion al alojamiento
                         Reserva res = db.Reservas.Find(ReservaId);
                         newCalificacion.Alojamiento = res.Anuncio.Alojamiento;
+                        Registrado reg = db.Registrados.Find(Session["id"]);
+                        newCalificacion.Registrado = reg;
                         db.Calificaciones.Add(newCalificacion);
                         db.SaveChanges();
                     }
