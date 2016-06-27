@@ -183,12 +183,22 @@ namespace MVC.Controllers
 
         //CODIGO NUESTRO
         // GET: Reservas/SearchIndex/
-        public ActionResult BuscarAnuncio(string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF)
+        public ActionResult BuscarAnuncio()
+        {
+            ViewBag.CategoriaList = new SelectList(db.Categorias, "Id", "Nombre");
+            ViewBag.ServiciosList = new SelectList(db.Servicios, "Id", "Nombre");
+            var anuncios = from m in db.Anuncios select m;
+            
+            return View(anuncios.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult BuscarAnuncio(string SearchCiudad, string SearchBarrio, string SearchFechaI, string SearchFechaF /*,int? CategoriaList, string TipoHabitacion, string banio,string precioDesde, string precioHasta*/) 
         {
 
             //CARGA LOS FILTROS
-            ViewBag.CategoriaList = new SelectList(db.Categorias, "Id", "Nombre");
-            ViewBag.ServiciosList = new SelectList(db.Servicios, "Id", "Nombre");
+            //ViewBag.CategoriaList = new SelectList(db.Categorias, "Id", "Nombre");
+            //ViewBag.ServiciosList = new SelectList(db.Servicios, "Id", "Nombre");
             //ViewBag.CategoriaList = new SelectList(db.Categorias, "Id", "Nombre");
 
             var anuncios = from m in db.Anuncios select m;
@@ -206,8 +216,54 @@ namespace MVC.Controllers
                 //traer los anuncios que esten entre esas fechas
                 anuncios = Anuncio.traerAnunciosXFecha(anuncios, Convert.ToDateTime(SearchFechaI), Convert.ToDateTime(SearchFechaF));
             }
+
             return View(anuncios.ToList());
-        }        
+
+            ////CATEGORIAS
+            //if(CategoriaList.ToString() != "" || CategoriaList.ToString() != null)
+            //{
+            //    Categoria cat = db.Categorias.Find(CategoriaList);
+            //    anuncios = anuncios.Where(s => s.Alojamiento.Categoria.Nombre == cat.Nombre);
+            //}
+            //////SERVICIO
+            ////if (ServiciosList.ToString() != "")
+            ////{
+            ////    Servicio serv = db.Servicios.Find(ServiciosList);
+            ////    anuncios = Anuncio.traerAnunciosXServcio(anuncios,serv);
+            ////}
+
+            ////TIPO HABITACION
+            //if (TipoHabitacion.ToString() != "")
+            //{
+            //    anuncios = anuncios.Where(s => s.Alojamiento.TipoHabitacion == TipoHabitacion);
+            //}
+
+            ////TIPO BAÑO
+            //if (banio.ToString() != "")
+            //{
+            //    bool tbanio = false;
+            //    if (banio == "Privado")
+            //    {
+            //        tbanio = true;
+            //    }
+            //    anuncios = anuncios.Where(s => s.Alojamiento.BanioPrivado == tbanio);
+            //}
+            //PRECIOS
+            //if (precioDesde != "" && precioHasta != "")
+            //{
+            //    decimal precioD = decimal.Parse(precioDesde);
+            //    decimal precioH = decimal.Parse(precioHasta);
+            //    anuncios = anuncios.Where(s => s.PrecioBase >= precioD && s.PrecioBase <= precioH);
+            //}
+
+
+
+
+        }
+
+
+
+
 
         //RESERVAR
         public ActionResult Reservar(int idAnuncio)

@@ -71,8 +71,8 @@
         <dt>
             @Html.DisplayNameFor(model => model.Anuncio.Alojamiento.Registrado.Foto)
         </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Anuncio.Alojamiento.Registrado.Foto)
+        <dd>            
+            <img class="img-thumbnail" src="@Url.Content("~/Imagenes/Usuarios/"+Model.Anuncio.Alojamiento.Registrado.Foto )" alt="foto" style="max-width:200px" />
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Anuncio.Alojamiento.Registrado.Descripcion)

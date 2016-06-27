@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201606262149110_dataannotations.Designer.cs">
       <DependentUpon>201606262149110_dataannotations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606272007242_attEnRegs.cs" />
+    <Compile Include="Migrations\201606272007242_attEnRegs.Designer.cs">
+      <DependentUpon>201606272007242_attEnRegs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alojamiento.cs" />
     <Compile Include="Models\Anuncio.cs" />
@@ -213,6 +217,7 @@
     <Content Include="Web.config" />
     <Content Include="Views\Reservas\CalificarReserva.cshtml" />
     <Content Include="Views\Reservas\DetalleComentarios.cshtml" />
+    <Content Include="Views\Reservas\ComentariosDeAlojamiento.cshtml" />
     <None Include="Web.Release.config" />
     <None Include="Web.Debug.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -255,6 +260,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagenes\Anuncios\" />
+    <Folder Include="Imagenes\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -279,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606262149110_dataannotations.resx">
       <DependentUpon>201606262149110_dataannotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606272007242_attEnRegs.resx">
+      <DependentUpon>201606272007242_attEnRegs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

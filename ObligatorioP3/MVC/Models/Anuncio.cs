@@ -71,5 +71,50 @@ namespace MVC.Models
             
             return ListaResultado.AsQueryable();
         }
+
+
+
+        //public static IQueryable<Anuncio> traerAnunciosXServcio(IQueryable<Anuncio> anuncios, Servicio serv)
+        //{
+        //    List<Anuncio> AResult = new List<Anuncio>();
+        //    List<Anuncio> ListaResultado = new List<Anuncio>();
+        //    AResult = anuncios.ToList();
+
+        //    foreach (Anuncio a in AResult)
+        //    {   
+        //        foreach (Servicio s in a.Alojamiento.Servicios)
+        //        {
+        //            if (s.Id == serv.Id)
+        //            {
+        //                ListaResultado.Add(a);
+        //            }
+        //        }
+        //    }
+
+
+        //    //foreach (Anuncio a in anuncios)
+        //    //{
+        //    //    if (a.Alojamiento.Servicios.Contains(serv.Nombre))
+        //    //    {
+        //    //        ListaResultado.Add(a);
+        //    //    }
+        //    //}
+
+
+
+        //    //var query = from a in anuncios
+        //    //            where a.Alojamiento.Servicios.Contains(serv)
+        //    //            select a;
+
+
+        //    return ListaResultado.AsQueryable();
+        //}
+
+
+
+
+
+
+
     }
 }

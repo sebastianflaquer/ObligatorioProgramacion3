@@ -16,7 +16,7 @@ namespace MVC.Models
         [DataType(DataType.Date)]
         [Display(Name = "Fecha Fin")]
         public DateTime FechaFin { get; set; }
-        public Registrado Registrado { get; set; }
+        public virtual Registrado Registrado { get; set; }
         [Display(Name = "Cantidad de Huéspedes")]
         public int CantHuespedes { get; set; }
         [Display(Name = "Consultas")]
@@ -54,16 +54,17 @@ namespace MVC.Models
         // Valida si la Reserva ya fue calificada por el Usuario logueado
         public static bool ReservaYaCalificadaPorUsuario(Reserva reserva, int idRegistrado)
         {
-            bool ret = false;
+            bool ret = true;
 
             BienvenidosUyContext db = new BienvenidosUyContext();
 
             var calif = from c in db.Calificaciones
                         where c.Registrado.Id == idRegistrado && c.Alojamiento.Id == reserva.Anuncio.Alojamiento.Id
                         select c;
+
             if (calif != null)
             {
-                ret = true;
+                ret = false;
             }
             return ret;
         }
