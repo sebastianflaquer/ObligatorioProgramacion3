@@ -206,6 +206,18 @@ namespace MVC.Controllers
                 //traer los anuncios que esten entre esas fechas
                 anuncios = Anuncio.traerAnunciosXFecha(anuncios, Convert.ToDateTime(SearchFechaI), Convert.ToDateTime(SearchFechaF));
             }
+
+
+            //FILTROS
+            //if()
+            //{
+
+            //}
+
+
+
+
+
             return View(anuncios.ToList());
         }        
 
