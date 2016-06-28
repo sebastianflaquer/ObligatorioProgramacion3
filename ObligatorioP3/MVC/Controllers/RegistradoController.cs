@@ -47,7 +47,7 @@ namespace MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Mail,Password,Salt,Direccion,Celular,Foto,Descripcion")] Registrado registrado)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Mail,Password,Salt,Direccion,Celular,Foto,Descripcion,Archivo")] Registrado registrado)
         {
             if (ModelState.IsValid)
             {
@@ -65,10 +65,13 @@ namespace MVC.Controllers
                     registrado.Salt = registrado.generarSalPass();
                     registrado.Password = Registrado.EncriptarPass(registrado.Password, registrado.Salt, Registrado.getPimienta());
 
-                    //valida el registro
-                    db.Registrados.Add(registrado);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    if (registrado.Mapear())
+                    {
+                        //valida el registro
+                        db.Registrados.Add(registrado);
+                        db.SaveChanges();
+                        return RedirectToAction("../Home/Index");
+                    }
                 }
             }
             return View(registrado);
@@ -169,6 +172,7 @@ namespace MVC.Controllers
                     else
                     {
                         ModelState.AddModelError("", "Contraseña Incorrecta");
+                        return View();
                     }
                     
                 }
@@ -176,6 +180,7 @@ namespace MVC.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Mail o contraseña Incorrectos");
+                    return View();
                 }
             }
             return View(User);

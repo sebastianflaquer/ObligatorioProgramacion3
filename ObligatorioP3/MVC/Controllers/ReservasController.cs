@@ -43,13 +43,20 @@ namespace MVC.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Reserva reserva = db.Reservas.Find(id);
-                if (reserva == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(reserva);
 
+                //valida que la reserva sea de ese usuario
+                Reserva reserva = db.Reservas.Find(id);
+                int idRegistrado = (int)Session["id"];
+                
+                if (reserva == null || reserva.Registrado.Id != idRegistrado)
+                {
+                    return RedirectToAction("../Reservas");
+                    //return HttpNotFound();
+                }
+                else
+                {
+                    return View(reserva);
+                }
             }
             else //Si no esta logeado
             {
@@ -327,35 +334,32 @@ namespace MVC.Controllers
         //CALIFICACION DE RESERVAS
         public ActionResult CalificarReserva(int id)
         {
-            if ((bool)Session["logueado"]) //Si esta logeado
+            if ((bool)Session["logueado"])    //Si esta logueado
             {
                 using (var db = new BienvenidosUyContext())
                 {
                     ViewBag.Reserva = db.Reservas.Find(id);
                     if (ViewBag.Reserva.ValidarFechaParaCalificar())
                     {
-                        //if (ViewBag.Reserva.ReservaYaCalificadaPorUsuario(ViewBag.Reserva, (int)Session["id"]))
-                        //{
-                        //    ModelState.AddModelError("", "La Reserva ya fue calificada por el usuario");
-                        //}
-                        //else
-                        //{
-                        //    return View();
-                        //}
-                        return View();
+                        if (Reserva.ReservaYaCalificadaPorUsuario(ViewBag.Reserva, (int)Session["id"]) == false)
+                        {
+                            ModelState.AddModelError("", "La Reserva ya fue calificada por el usuario");
+                            return View();
+                        }
                     }
                     else
                     {
-                        //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                         ModelState.AddModelError("", "Aun no puede calificar esta Reserva");
+                        return View();
                     }
                 }
+                ModelState.AddModelError("", "Calificacion exitosa");
+                return View();//Acá también podrían redirigir a otra página donde se vea la calificación ingresada, etc.
             }
-            else //Si no esta logeado
+            else     //Si no esta logueado
             {
                 return RedirectToAction("../Registrado/Login");
             }
-            return View(); // no va
         }
 
         // POST: 
@@ -399,7 +403,7 @@ namespace MVC.Controllers
             {
                 List<Calificacion> listaCalif = new List<Calificacion>();
                 Reserva res = db.Reservas.Find(id);
-                int idAloj = res.Anuncio.Alojamiento.Id;
+                    int idAloj = res.Anuncio.Alojamiento.Id;
 
                 foreach (Calificacion c in db.Calificaciones)
                 {
@@ -409,6 +413,30 @@ namespace MVC.Controllers
                     }
                 }
                 return View(listaCalif.ToList());
+            }
+            else //Si no esta logeado
+            {
+                return RedirectToAction("../Registrado/Login");
+            }
+        }
+
+
+        public ActionResult ComentariosDeAlojamiento(int id)
+        {
+            if ((bool)Session["logueado"]) //Si esta logeado
+            {
+                //List<Calificacion> listaCalif = new List<Calificacion>();
+
+                Alojamiento a = db.Alojamientos.Find(id);
+
+                //foreach (Calificacion c in db.Calificaciones)
+                //{
+                //    if (c.Alojamiento.Id == id)
+                //    {
+                //        listaCalif.Add(c);
+                //    }
+                //}
+                return View(a.Calificaciones.ToList());
             }
             else //Si no esta logeado
             {

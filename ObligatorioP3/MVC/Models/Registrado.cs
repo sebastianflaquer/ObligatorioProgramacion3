@@ -28,10 +28,11 @@ namespace MVC.Models
         public string Direccion { get; set; }
         [Required]
         public string Celular { get; set; }
-        [Required]
         public string Foto { get; set; }
         
         public string Descripcion { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase Archivo { get; set; }
 
 
         //GENERA LA SAL
@@ -62,13 +63,38 @@ namespace MVC.Models
             return pimienta;
         }
 
+        //MAPEA EL NOMBRE DE LA FOTO
+        public bool Mapear()
+        {
+            if (this.Archivo != null)
+            {
+                if (guardarArchivo(Archivo))
+                {
+                    this.Foto = this.Mail + "-" + Archivo.FileName.ToLower().Replace(" ", "_");
+                    //BienvenidosUyContext db = new BienvenidosUyContext();
+                    //this.UnLibro.MiTema = db.Temas.Find(this.IdTemaSeleccionado);
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        //GUARDA LA FOTO
+        private bool guardarArchivo(HttpPostedFileBase archivo)
+        {
+            if (archivo != null)
+            {
+                string ruta = System.IO.Path.Combine
+                (AppDomain.CurrentDomain.BaseDirectory, "Imagenes/Usuarios");
+                if (!System.IO.Directory.Exists(ruta))
+                    System.IO.Directory.CreateDirectory(ruta);
 
-
-
-
-
-
+                ruta = System.IO.Path.Combine(ruta, this.Mail + "-" + archivo.FileName.ToLower().Replace(" ", "_"));
+                archivo.SaveAs(ruta);
+                return true;
+            }
+            else return false;
+        }
 
     }
 

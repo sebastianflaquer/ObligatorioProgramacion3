@@ -26,54 +26,52 @@
         <label class="sr-only">Fecha Fin</label>
         @Html.TextBox("SearchFechaF", null, new { @class = "form-control", @placeHolder = "Fecha Fin", @type = "date" })
     </div>
+
+    @*<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        + Filtros
+    </a>
+    <br />
+    <br />
+    <div class="collapse" id="collapseExample">
+        <div class="well">
+
+            <div class="form-group">
+                <label>Tipo alojamiento</label>
+                @Html.DropDownList("CategoriaList", string.Empty)
+            </div>
+            <div class="form-group">
+                <label>Tipo Habitacion</label>
+                <select id="TipoHabitacion" name="TipoHabitacion">
+                    <option value=""></option>
+                    <option>Compartida</option>
+                    <option>Privada</option>
+                    <option>Completo</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Precios</label>
+               @Html.TextBox("precioDesde", null, new { @class = "form-control", @type = "number" }) a@Html.TextBox("precioDesde", null, new { @class = "form-control", @type = "number" })
+            </div>
+            <div class="form-group">
+                <label>Baño</label>
+                <select id="banio" name="banio">
+                    <option value=""></option>
+                    <option>Compartido</option>
+                    <option>Privado</option>
+                </select>
+            </div>
+        </div>
+    </div>*@
+
     <input type="submit" class="btn btn-primary" value="Buscar" />
 }
 
 <br />
 <br />
 
-<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    + Filtros
-</a>
 
-<div class="collapse" id="collapseExample">
-    <div class="well">
 
-        @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-inline" }))
-        {
 
-        <div class="form-group">
-            <label>Tipo alojamiento</label>                
-            @Html.DropDownList("CategoriaList" , "EmptyString")
-        </div>
-        <div class="form-group">
-            <label>Tipo Habitacion</label>
-            <select>
-                <option>Compartida</option>
-                <option>Privada</option>
-                <option>Completo</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Servicios</label>
-            @Html.DropDownList("ServiciosList")
-        </div>
-        <div class="form-group">
-            <label>Precios</label>
-            <input type="number" placeholder="$" /> a <input type="number" placeholder="$$$" />
-        </div>
-        <div class="form-group">
-            <label>Baño</label>
-            <select>
-                <option>Compartido</option>
-                <option>Privado</option>
-            </select>
-        </div>
-        <input type="submit" class="btn btn-primary" value="Buscar" />
-
-        }
-    </div>
-</div>
 <br />
 <br />
 

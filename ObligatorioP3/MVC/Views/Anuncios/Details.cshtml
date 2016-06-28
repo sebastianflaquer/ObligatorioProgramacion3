@@ -48,7 +48,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Fotos)
+            <img class="img-thumbnail" src="@Url.Content("~/Imagenes/Anuncios/"+Model.Fotos )" alt="foto" style="max-width:200px"/>
         </dd>
 
         <dt>
@@ -60,10 +60,53 @@
         </dd>
 
     </dl>
+
+
+    <h3>Datos del Anfitrion</h3>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Alojamiento.Registrado.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alojamiento.Registrado.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alojamiento.Registrado.Apellido)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alojamiento.Registrado.Apellido)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alojamiento.Registrado.Mail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alojamiento.Registrado.Mail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alojamiento.Registrado.Celular)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alojamiento.Registrado.Celular)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alojamiento.Registrado.Foto)
+        </dt>
+        <dd>
+            <img class="img-thumbnail" src="@Url.Content("~/Imagenes/Usuarios/"+Model.Alojamiento.Registrado.Foto )" alt="foto" style="max-width:200px" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Alojamiento.Registrado.Descripcion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Alojamiento.Registrado.Descripcion)
+        </dd>
+    </dl>
+
+
 </div>
 <p>
-    @Html.ActionLink("Reservar", "../Reservas/Create", new { id = Model.Id }, new { @class = "btn btn-info" }) | 
-    @Html.ActionLink("Ver Calificaciones", "../Reservas/DetalleComentarios", new { id = Model.Alojamiento.Id }, new { @class = "btn btn-info" })
-    
+    @Html.ActionLink("Reservar", "../Reservas/Create", new { id = Model.Id }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Ver Calificaciones", "../Reservas/ComentariosDeAlojamiento", new { id = Model.Alojamiento.Id }, new { @class = "btn btn-info" })
+
     @*@Html.ActionLink("Volver al Listado", "Index")*@
 </p>
